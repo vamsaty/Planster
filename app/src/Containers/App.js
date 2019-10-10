@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import logo from '../logo.svg';
 import './App.css';
-
+import Dashboard from '../Components/Dashboard/Dashboard';
 
 class App extends Component{
   
@@ -13,7 +13,7 @@ class App extends Component{
       <div>
         <h1> SE Project Begins </h1>
         <img src={logo} className="App-logo" alt="logo" />
-        
+        <Dashboard />
       </div>
     );
   }
