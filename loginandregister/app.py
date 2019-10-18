@@ -59,7 +59,7 @@ def login():
     password = request.form['password'];
     x=usercol.find_one({"Username":username})
     if(not(x)):
-        return "Username does not exists!",400
+        return "Username does not exist!",400
     if(x):
         if(x['Password']==password):
             return "",201
