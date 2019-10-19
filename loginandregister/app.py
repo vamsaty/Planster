@@ -6,7 +6,7 @@ Created on Mon Oct 14 09:10:45 2019
 """    
 import json
 from flask import Flask, render_template, Markup, request, redirect, jsonify, abort, session, redirect, url_for, escape
-
+from datetime import datetime
 import requests
 from flask_cors import CORS
 #from form import myForm
@@ -30,6 +30,7 @@ mongo = pymongo.MongoClient('mongodb+srv://satyam:mongodb1234@planster-c1-tjz95.
 db = pymongo.database.Database(mongo, 'db1')
 usercol = pymongo.collection.Collection(db, 'usercol')
 groupscol=pymongo.collection.Collection(db,'groupscol')
+tripscol=pymongo.collection.Collection(db,'tripscol')
 
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
@@ -62,14 +63,14 @@ def registration():
 def login():
     username =  request.form['username'];
     password = request.form['password'];
-    x=usercol.find_one({"Username":username})
-    print(x)
-    if(not(x)):
+    current_user=usercol.find_one({"Username":username})
+    print(current_user)
+    if(not(current_user)):
         return "Username does not exist!",400
-    if(x):
-        if(x['Password']==password):
-            session['id']= str(x['_id'])
-            session['username'] = x['Username']
+    if(current_user):
+        if(current_user['Password']==password):
+            session['id']= str(current_user['_id'])
+            session['username'] = current_user['Username']
             print(str(session['id']))
             print("Done")
             return "",200
@@ -127,12 +128,40 @@ def add_friend_to_group():
         return "",201
     return "Permission Denied",403
 
+
+@app.route('/api/v1/trips/<trip_name>', methods=['GET'])
+def view_trip(trip_name):
+    current_trip = tripscol.find_one({"Name":trip_name})
+    if(current_trip):
+        session['trip']= str(current_trip['_id'])
+        print(str(session['trip']))
+        return "",200
+    return "Trip Not Created Yet",404
+    return "", 200
+    
+@app.route('/api/v1/trips/set_dates', methods=['POST'])#@app.route('/api/v1/trips/<trip_name>/set_dates', methods=['POST'])
+def set_free_dates():#def set_free_dates(trip_name):
+    print(session['trip'])
+    current_trip = tripscol.find_one({"_id":ObjectId(session['trip'])})
+    print(current_trip)
+    start_date = datetime.strptime(request.form['start_date'], '%d %m %Y')
+    end_date = datetime.strptime(request.form['end_date'], '%d %m %Y')
+    if((end_date - start_date).days > int(current_trip['NoOfDays'])):
+        return "Choose lesser days", 400
+    date_range = {'start_date': start_date, 'end_date': end_date} 
+    #pref_date = 
+    tripscol.update({'_id': current_trip['_id']}, {'$push': {'TentativeDateRange': {session['id']: date_range}}})
+    return "", 200
+
+
 @app.route('/api/v1/groups/<group_name>', methods=['GET'])
 def view_group(group_name):
-    current_group_id = groupscol.find_one({"Name":group_name})["_id"]
-    if(current_group_id):
+    current_group = groupscol.find_one({"Name":group_name})["_id"]
+    if(current_group):
+        session['group']= str(current_group['_id'])
+        print(str(session['group']))
         return "",200
-    return "Group Not Found",204
+    return "Group Does Not Exist",404
     
 @app.route('/api/v1/groups/list/<user_id>',methods=['GET'])
 def list_group(user_id):
@@ -144,12 +173,30 @@ def list_group(user_id):
                 break
     return jsonify({"Groups":groups}),200
 
+@app.route('/api/v1/user/friends', methods=['GET'])
+def list_friends():
+    current_user = usercol.find_one({"_id":ObjectId(session['id'])})
+    friends = current_user["Friends"]
+    return jsonify({"Friends":friends}), 200
+
+@app.route('/api/v1/user/expenses', methods=['GET'])#HAVE TO CHANGE LATER
+def get_expense():
+    current_user = usercol.find_one({"_id":ObjectId(session['id'])})
+    expense = current_user["Expense"]
+    return jsonify({"Expense":expense}), 200
+    
 @app.route('/api/v1/groups/del_user/<group_id>/<user_id>',methods=['DELETE'])
 def del_user_from_group(group_id,user_id):
     print(group_id)
     print(user_id)
 
     return "",204
+
+@app.route('/api/v1/del_user', methods=['DELETE'])
+def del_user():
+    print(session[id])
+    return "", 204
+
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
