@@ -14,7 +14,7 @@ import logging
 from flask_pymongo import PyMongo
 import pymongo
 from bson import ObjectId
-
+#from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -46,9 +46,9 @@ def create_trip():
     location= request.form['Location']
     group_id= request.form['group_id']
     ndays= request.form['no_of_days']
-    #from_date= request.form['from_date']
-    #to_date= request.form['to_date']
-    trip_id=tripscol.insert({"AdminId":admin_id,"Location":location,"group_id":group_id,"NoOfDays":ndays, "IndividualExpense":[]})
+    name= request.form['name']
+    tentative_date_range={}
+    trip_id=tripscol.insert({"AdminId":admin_id,"Name":name,"Location":location,"group_id":group_id,"NoOfDays":ndays, "IndividualExpense":[], "TentativeDateRange":tentative_date_range})
     trip_id=str(trip_id)
     group=groupscol.find_one({"_id":ObjectId(group_id)})
     if(group['AdminId']==admin_id):
@@ -57,11 +57,25 @@ def create_trip():
         groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
     return "",201
 
+@app.route('/api/v1/groups/del_trip/<trip_id>', methods=['DELETE'])
+def delete_trip(trip_id):
+    trip=tripscol.find_one({"_id":ObjectId(trip_id)})
+    group_id=trip["group_id"]
+    group=groupscol.find_one({"_id":ObjectId(group_id)})
+    old_trips=group["Trips"]
+    print(old_trips)
+    new_trips=[]
+    for i in old_trips:
+        if(i==trip_id):
+            continue
+        else:
+            new_trips.append(i) 
+    print(new_trips)           
+    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
+    tripscol.delete_one({"_id":ObjectId(trip_id)})
 
-  
 
-
-
+    return "",204
 
 if __name__ == '__main__':
     app.run(debug=True)
