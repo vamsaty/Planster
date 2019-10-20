@@ -237,7 +237,7 @@ def create_trip():
         groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
     return "",201
 
-@app.route('/api/v1/groups/del_trip/<trip_id>', methods=['DELETE'])
+@app.route('/api/v1/trips/del_trip/<trip_id>', methods=['DELETE'])
 def delete_trip(trip_id):
     trip=tripscol.find_one({"_id":ObjectId(trip_id)})
     group_id=trip["group_id"]
