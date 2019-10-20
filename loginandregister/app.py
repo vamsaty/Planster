@@ -175,30 +175,47 @@ def user_leave_from_group():
     user_id=request.form['user_id']
     group_id=request.form['group_id']
     group=groupscol.find_one({"_id":ObjectId(group_id)})
-    new_users=group["Users"]
-    new_users.remove(user_id)
-    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Users":new_users}})
     user=usercol.find_one({"_id":ObjectId(user_id)})
-    new_groups=user['Groups']
-    for x in new_groups:
+    current_users=group["Current_Users"]
+    current_users.remove(user_id)
+    old_users=group["Old_Users"]
+    old_users.append(user_id)
+    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Current_Users":current_users}})
+    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Old_Users":old_users}})
+    current_groups=user["Current_Groups"]
+    for x in current_groups:
         if(x[0]==group_id):
-            new_groups.remove(x)
+            current_groups.remove(x)
             break
-    usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"Groups":new_groups}})
+    old_groups=user["Old_Groups"]
+    old_groups.append(x)
+    usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"Current_Groups":current_groups}})
+    usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"Old_Groups":old_groups}})
     return "",204
     
-
-
-@app.route('/api/v1/groups/del',methods=['DELETE'])
-def del_group():
-    group_id=request.form['group_id']
-    group=groupscol.delete_one({"_id":ObjectId(group_id)})
+@app.route('/api/v1/groups/del/<group_name>',methods=['DELETE'])
+def del_group(group_name):
+    group_id = groupscol.find_one({"Name":group_name})["_id"]
+    admin_id=request.form['admin_id']
+    group=groupscol.find_one({"_id":ObjectId(group_id)})
     for x in usercol.find():
-        new_groups=x['Groups']
-        for y in new_groups:
+        current_groups=x['Current_Groups']
+        old_groups=x['Old_Groups']
+        expenses=0
+        for y in current_groups:
             if(y[0]==group_id):
-                new_groups.remove(y)
-        usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Groups":new_groups}})
+                current_groups.remove(y)
+                expenses+=y[1]
+        for y in old_groups:
+            if(y[0]==group_id):
+                old_groups.remove(y)
+                expenses+=y[1]
+        usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Current_Groups":current_groups}})
+        usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Old_Groups":old_groups}})
+        usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Total Expenses":expenses}})
+    for x in group['Trips']:
+        requests.delete('http://127.0.0.1:5000/api/v1/trips/del'+x)
+    group=groupscol.delete_one({"_id":ObjectId(group_id)})
     return "",204
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
