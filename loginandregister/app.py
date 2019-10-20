@@ -93,8 +93,8 @@ def add_friend(friend_username):
         """new_friends = user['Friends']
         new_friends.append(friend)
         usercol.update_one({"_id":ObjectId(current_user_id)},{ "$set" :{"Friends":new_friends}})"""
-        usercol.update({'_id': ObjectId(session['User_Id'])}, {'$push': {'Friends': friend['_id']}})
-        usercol.update({'_id': friend['_id']}, {'$push': {'Friends': user['_id']}})
+        usercol.update({'_id': ObjectId(session['User_Id'])}, {'$push': {'Friends': str(friend.get('_id'))}})
+        usercol.update({'_id': friend['_id']}, {'$push': {'Friends': str(user.get('_id'))}})
         return "Friend Added", 200
     return "This username does not exist", 204
     
@@ -198,28 +198,34 @@ def user_leave_from_group():
     
 @app.route('/api/v1/groups/del/<group_name>',methods=['DELETE'])
 def del_group(group_name):
-    group_id = groupscol.find_one({"Name":group_name})["_id"]
-    admin_id=request.form['admin_id']
-    group=groupscol.find_one({"_id":ObjectId(group_id)})
-    for x in usercol.find():
-        current_groups=x['Current_Groups']
-        old_groups=x['Old_Groups']
-        expenses=0
-        for y in current_groups:
-            if(y[0]==group_id):
-                current_groups.remove(y)
-                expenses+=y[1]
-        for y in old_groups:
-            if(y[0]==group_id):
-                old_groups.remove(y)
-                expenses+=y[1]
-        usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Current_Groups":current_groups}})
-        usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Old_Groups":old_groups}})
-        usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Total Expenses":expenses}})
-    for x in group['Trips']:
-        requests.delete('http://127.0.0.1:5000/api/v1/trips/del_trip/'+x)
-    group=groupscol.delete_one({"_id":ObjectId(group_id)})
-    return "",204
+    group = groupscol.find_one({"Name":group_name})
+    group_id=str(group.get('_id'))
+    admin_id=session['User_Id']
+    if(admin_id==group["Admin_Id"]):
+        for x in usercol.find():
+            current_groups=x['Current_Groups']
+            old_groups=x['Old_Groups']
+            expenses=0
+            for y in current_groups:
+                if(y[0]==group_id):
+                    current_groups.remove(y)
+                    expenses+=y[1]
+            for y in old_groups:
+                if(y[0]==group_id):
+                    old_groups.remove(y)
+                    expenses+=y[1]
+            new_expenses=x['Total_Expense']
+            new_expenses=new_expenses-expenses
+            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Current_Groups":current_groups}})
+            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Old_Groups":old_groups}})
+            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Total Expenses":new_expenses}})
+            print(new_expenses)
+        for x in group['Trips']:
+            trip=tripscol.find_one({"_id":ObjectId(x)})
+            requests.delete('http://127.0.0.1:5000/api/v1/trips/del_trip/'+trip['Name'])
+        group=groupscol.delete_one({"_id":ObjectId(group_id)})
+        return "",204
+    return "Permission Denied!",403
 
 
 @app.route('/api/v1/trips/create',methods=['POST'])
@@ -271,40 +277,46 @@ def delete_trip(trip_name):
             new_trips.remove(trip_id)
             usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"Trips":new_trips}})
     tripscol.delete_one({"_id":ObjectId(trip_id)})
-
-
     return "",204
 
-        
+@app.route('/api/v1/trips/<trip_name>', methods=['GET'])
+def view_trip(trip_name):
+    current_trip = tripscol.find_one({"Name":trip_name})
+    if(current_trip):
+        session['Trip_Id']= str(current_trip['_id'])
+        print(str(session['Trip_Id']))
+        return "",200
+    return "Trip Not Created Yet",404
+    return "", 200
     
 @app.route('/api/v1/trips/set_dates', methods=['POST'])#@app.route('/api/v1/trips/<trip_name>/set_dates', methods=['POST'])
 def set_free_dates():#def set_free_dates(trip_name):
-    print(session['trip'])
-    current_trip = tripscol.find_one({"_id":ObjectId(session['trip'])})
+    print(session['Trip_Id'])
+    current_trip = tripscol.find_one({"_id":ObjectId(session['Trip_Id'])})
     print(current_trip)
-    start_date = datetime.strptime(request.form['start_date'], '%d %m %Y')
-    end_date = datetime.strptime(request.form['end_date'], '%d %m %Y')
-    if((end_date - start_date).days > int(current_trip['NoOfDays'])):
+    start_date = datetime.strptime(request.form['Start_Date'], '%d %m %Y')
+    end_date = datetime.strptime(request.form['End_Date'], '%d %m %Y')
+    if((end_date - start_date).days > int(current_trip['No_Of_Days'])):
         return "Choose lesser days", 400
-    date_range = {'start_date': start_date, 'end_date': end_date} 
+    date_range = {'Start_Date': start_date, 'End_Date': end_date} 
     #pref_date = 
-    tripscol.update({'_id': current_trip['_id']}, {'$push': {'TentativeDateRange': {session['user_id']: date_range}}})
+    #tripscol.update({'_id': current_trip['_id']}, {'$push': {'Tentative_Date_Range': {session['User_Id']: date_range}}})
     return "", 200
 
 @app.route('/api/v1/trips/schedule_trip', methods = ['POST'])
 def schedule_dates():
-    current_trip = tripscol.find_one({"_id":ObjectId(session['trip'])})
-    if(session['user_id'] == current_trip['AdminId']):
-        pref_dates =current_trip["TentativeDateRange"]
+    current_trip = tripscol.find_one({"_id":ObjectId(session['Trip_Id'])})
+    if(session['User_Id'] == current_trip['Admin_Id']):
+        pref_dates =current_trip["Tentative_Date_Range"]
         for date in pref_dates:
             s_d = max(d['start_date'] for d in date.values())
-            e_d = min(d['end_date'] for d in date.values())
-            if((e_d - s_d).days > current_trip['NoOfDays']):
+            e_d = min(d['End_Date'] for d in date.values())
+            if((e_d - s_d).days > current_trip['No_Of_Days']):
                 e_d = s_d + timedelta(days=5)
             elif((e_d - s_d).days < 0):
                 return "Cannot Schedule Trip", 400
-            f_d ={"start_date":s_d, "end_date":e_d}
-            tripscol.update({'_id': current_trip['_id']}, {'$set': {'FinalDate': f_d}})
+            f_d ={"Start_Date":s_d, "End_Date":e_d}
+            #tripscol.update({'_id': current_trip['_id']}, {'$set': {'Final_Date': f_d}})
         return "", 201
     return "", 401
     
@@ -313,20 +325,20 @@ def schedule_dates():
 
 @app.route('/api/v1/user/friends', methods=['GET'])
 def list_friends():
-    current_user = usercol.find_one({"_id":ObjectId(session['user_id'])})
+    current_user = usercol.find_one({"_id":ObjectId(session['User_Id'])})
     friends = current_user["Friends"]
     return jsonify({"Friends":friends}), 200
 
 @app.route('/api/v1/user/expenses', methods=['GET'])#HAVE TO CHANGE LATER
 def get_expense():
-    current_user = usercol.find_one({"_id":ObjectId(session['user_id'])})
-    expense = current_user["Expense"]
+    current_user = usercol.find_one({"_id":ObjectId(session['User_Id'])})
+    expense = current_user["Total_Expense"]
     return jsonify({"Expense":expense}), 200
     
 
 @app.route('/api/v1/del_user', methods=['DELETE'])
 def del_user():
-    print(session['user_id'])
+    print(session['User_Id'])
     return "", 204
   
 
