@@ -55,7 +55,8 @@ def create_trip():
         new_trips=group["Trips"]
         new_trips.append(trip_id)
         groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
-    return "",201
+        return "",201
+    return "Permission Denied",403
 
 @app.route('/api/v1/groups/del_trip/<trip_id>', methods=['DELETE'])
 def delete_trip(trip_id):
