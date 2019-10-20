@@ -5,8 +5,12 @@ Created on Mon Oct 14 09:10:45 2019
 @author: satys
 """    
 import json
+<<<<<<< HEAD
 from flask import Flask, render_template, Markup, request, jsonify, abort, session, redirect, url_for, escape
 from datetime import datetime, timedelta
+=======
+from flask import Flask, render_template, Markup, request, redirect, jsonify, abort
+>>>>>>> parent of 5695e5a... Merge branch 'Shalini' into shirisha
 import requests
 from flask_cors import CORS
 #from form import myForm
@@ -15,8 +19,13 @@ from flask_static_compress import FlaskStaticCompress
 import logging
 from flask_pymongo import PyMongo
 import pymongo
+<<<<<<< HEAD
 from bson.objectid import ObjectId
 
+=======
+from bson import ObjectId
+#from datetime import datetime
+>>>>>>> parent of 5695e5a... Merge branch 'Shalini' into shirisha
 
 app = Flask(__name__)
 CORS(app)
@@ -34,13 +43,12 @@ tripscol=pymongo.collection.Collection(db,'tripscol')
 
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
-def index():
-    if('username' in session):
-        print("Currents user's ID is %s" % session['user_id'])
-        return 'Logged in as %s' % escape(session['username'])
-    return 'You are not logged in'
+def home():
+    """Landing page."""
+    #data={"userame":"test1","password":"pass","name":"T"}
+    #usercol.insert(data)
 
-
+<<<<<<< HEAD
 @app.route('/api/v1/register',methods=['POST'])
 def registration():
     name =  request.form['name']
@@ -116,6 +124,21 @@ def add_friend_to_group():
     admin_id=request.form['admin_id']
     user_id=request.form['user_id']
     group_id=request.form['group_id']
+=======
+    #recent_searches = list(col_results)
+    #return "Hello"
+
+@app.route('/api/v1/trips/create',methods=['POST'])
+def create_trip():
+    admin_id= request.form['user_id']
+    location= request.form['Location']
+    group_id= request.form['group_id']
+    ndays= request.form['no_of_days']
+    name= request.form['name']
+    tentative_date_range={}
+    trip_id=tripscol.insert({"AdminId":admin_id,"Name":name,"Location":location,"group_id":group_id,"NoOfDays":ndays, "IndividualExpense":[], "TentativeDateRange":tentative_date_range})
+    trip_id=str(trip_id)
+>>>>>>> parent of 5695e5a... Merge branch 'Shalini' into shirisha
     group=groupscol.find_one({"_id":ObjectId(group_id)})
     if(group['AdminId']==admin_id):
         new_users=group["Users"]
@@ -128,6 +151,7 @@ def add_friend_to_group():
         return "",201
     return "Permission Denied",403
 
+<<<<<<< HEAD
 
 @app.route('/api/v1/trips/<trip_name>', methods=['GET'])
 def view_trip(trip_name):
@@ -217,6 +241,28 @@ def del_user():
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
+=======
+@app.route('/api/v1/trips/del_trip/<trip_id>', methods=['DELETE'])
+def delete_trip(trip_id):
+    trip=tripscol.find_one({"_id":ObjectId(trip_id)})
+    group_id=trip["group_id"]
+    group=groupscol.find_one({"_id":ObjectId(group_id)})
+    old_trips=group["Trips"]
+    print(old_trips)
+    new_trips=[]
+    for i in old_trips:
+        if(i==trip_id):
+            continue
+        else:
+            new_trips.append(i) 
+    print(new_trips)           
+    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
+    tripscol.delete_one({"_id":ObjectId(trip_id)})
+
+
+    return "",204
+
+>>>>>>> parent of 5695e5a... Merge branch 'Shalini' into shirisha
 if __name__ == '__main__':
     app.run(debug=True)
     
