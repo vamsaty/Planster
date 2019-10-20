@@ -36,42 +36,42 @@ tripscol=pymongo.collection.Collection(db,'tripscol')
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
     if('username' in session):
-        print("Currents user's ID is %s" % session['user_id'])
-        return 'Logged in as %s' % escape(session['username'])
+        print("Currents user's ID is %s" % session['User_Id'])
+        return 'Logged in as %s' % escape(session['Username'])
     return 'You are not logged in'
 
 
 @app.route('/api/v1/register',methods=['POST'])
 def registration():
-    name =  request.form['name']
-    email =  request.form['email']
-    username =  request.form['username']
-    password = request.form['password']
-    age = request.form['age']
-    phone = request.form['phone']
-    address = request.form['address']
-    city = request.form['city']
+    name =  request.form['Name']
+    email =  request.form['Email']
+    username =  request.form['Username']
+    password = request.form['Password']
+    age = request.form['Age']
+    phone = request.form['Phone']
+    address = request.form['Address']
+    city = request.form['City']
                          
     if(usercol.find_one({"Email":email})):
         return "Email exists!",400
     if(usercol.find_one({"Username":username})):
         return "Username exists!",400
-    usercol.insert({"Name":name,"Email":email,"Username":username,"Password":password,"Age":age, "Phone":phone, "Address":address, "City":city, "Total Expense": 0, "Current_Groups":[], "Old_Groups":[],"Friends":[], "Trips":[]});
+    usercol.insert({"Name":name,"Email":email,"Username":username,"Password":password,"Age":age, "Phone":phone, "Address":address, "City":city, "Total_Expense": 0, "Current_Groups":[], "Old_Groups":[],"Friends":[], "Trips":[]});
     return "",201
 
 @app.route('/api/v1/login',methods=['POST'])
 def login():
-    username =  request.form['username'];
-    password = request.form['password'];
-    x=usercol.find_one({"Username":username})
-    print(x)
-    if(not(x)):
+    username =  request.form['Username'];
+    password = request.form['Password'];
+    current_user=usercol.find_one({"Username":username})
+    print(current_user)
+    if(not(current_user)):
         return "Username does not exist!",400
     if(current_user):
         if(current_user['Password']==password):
-            session['user_id']= str(current_user['_id'])
-            session['username'] = current_user['Username']
-            print(str(session['user_id']))
+            session['User_Id']= str(current_user['_id'])
+            session['Username'] = current_user['Username']
+            print(str(session['User_Id']))
             print("Done")
             return "",200
         else:
@@ -79,30 +79,30 @@ def login():
 
 @app.route('/api/v1/logout', methods=['POST'])
 def logout():
-    session.pop('username', None)
-    session.pop('id', None)
-    return "",201
+    session.pop('Username', None)
+    session.pop('User_Id', None)
+    return "",200
 
 @app.route('/api/v1/add_friend/<friend_username>', methods=['POST'])
 def add_friend(friend_username):
     friend = usercol.find_one({"Username":friend_username}) 
     if(friend):
         print("Found")
-        user=usercol.find_one({"_id":ObjectId(session['user_id'])})
+        user=usercol.find_one({"_id":ObjectId(session['User_Id'])})
         print(user)
         """new_friends = user['Friends']
         new_friends.append(friend)
         usercol.update_one({"_id":ObjectId(current_user_id)},{ "$set" :{"Friends":new_friends}})"""
-        usercol.update({'_id': ObjectId(session['user_id'])}, {'$push': {'Friends': friend['_id']}})
+        usercol.update({'_id': ObjectId(session['User_Id'])}, {'$push': {'Friends': friend['_id']}})
         usercol.update({'_id': friend['_id']}, {'$push': {'Friends': user['_id']}})
         return "Friend Added", 200
     return "This username does not exist", 204
     
 @app.route('/api/v1/groups/create',methods=['POST'])
 def create_group():
-    admin_id= request.form['user_id']
+    admin_id= session['User_Id']
     name=request.form['Name']
-    group_id=groupscol.insert({"Name":name,"AdminId":admin_id,"Expense":0,"Current_Users":[admin_id],"Old_Users":[],"Trips":[]})
+    group_id=groupscol.insert({"Name":name,"Admin_Id":admin_id,"Expense":0,"Current_Users":[admin_id],"Old_Users":[],"Trips":[]})
     user=usercol.find_one({"_id":ObjectId(admin_id)})
     group_id=str(group_id)
     #print(x)
@@ -114,20 +114,23 @@ def create_group():
 
 @app.route('/api/v1/groups/<group_name>', methods=['GET'])
 def view_group(group_name):
-    current_group_id = groupscol.find_one({"Name":group_name})["_id"]
-    if(current_group_id):
+    current_group = groupscol.find_one({"Name":group_name})
+    if(current_group):
+        session['Group_Id']= str(current_group.get('_id'))
+        print(str(session['Group_Id']))
         return "",200
-    return "Group Not Found",204
+    return "Group Does Not Exist",404
 
-@app.route('/api/v1/groups/add_user',methods=['POST'])
+@app.route('/api/v1/groups/add_friend',methods=['POST'])
 def add_friend_to_group():
-    admin_id=request.form['admin_id']
-    username=request.form['username']
-    group_id=request.form['group_id']
+    admin_id=session['User_Id']
+    username=request.form['Username']
+    group_id=session['Group_Id']
     group=groupscol.find_one({"_id":ObjectId(group_id)})
     user=usercol.find_one({"Username":username})
-    user_id=user.get('_id')
-    if(group['AdminId']==admin_id):
+    user_id=str(user.get('_id'))
+    #print(type(user_id))
+    if(group['Admin_Id']==admin_id):
         current_users=group["Current_Users"]
         current_users.append(user_id)
         groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Current_Users":current_users}})
@@ -138,7 +141,6 @@ def add_friend_to_group():
     return "Permission Denied",403
 
 
-    
 @app.route('/api/v1/groups/list/<username>',methods=['GET'])
 def list_group(username):
     user=usercol.find_one({"Username":username})
@@ -146,13 +148,13 @@ def list_group(username):
 
 @app.route('/api/v1/groups/del_user',methods=['DELETE'])
 def del_user_from_group():
-    admin_id=request.form['admin_id']
-    username=request.form['username']
-    group_id=request.form['group_id']
+    admin_id=session['User_Id']
+    username=request.form['Username']
+    group_id=session['Group_Id']
     group=groupscol.find_one({"_id":ObjectId(group_id)})
-    if(group['AdminId']==admin_id):
+    if(group['Admin_Id']==admin_id):
         user=usercol.find_one({"Username":username})
-        user_id=user.get("_id")
+        user_id=str(user.get("_id"))
         current_users=group["Current_Users"]
         current_users.remove(user_id)
         old_users=group["Old_Users"]
@@ -173,8 +175,8 @@ def del_user_from_group():
 
 @app.route('/api/v1/groups/user_leave',methods=['DELETE'])
 def user_leave_from_group():
-    user_id=request.form['user_id']
-    group_id=request.form['group_id']
+    user_id=session['User_Id']
+    group_id=session['Group_Id']
     group=groupscol.find_one({"_id":ObjectId(group_id)})
     user=usercol.find_one({"_id":ObjectId(user_id)})
     current_users=group["Current_Users"]
@@ -215,23 +217,23 @@ def del_group(group_name):
         usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Old_Groups":old_groups}})
         usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"Total Expenses":expenses}})
     for x in group['Trips']:
-        requests.delete('http://127.0.0.1:5000/api/v1/trips/del'+x)
+        requests.delete('http://127.0.0.1:5000/api/v1/trips/del_trip/'+x)
     group=groupscol.delete_one({"_id":ObjectId(group_id)})
     return "",204
 
 
 @app.route('/api/v1/trips/create',methods=['POST'])
 def create_trip():
-    admin_id= request.form['user_id']
+    admin_id= session['User_Id']
     location= request.form['Location']
-    group_id= request.form['group_id']
-    ndays= request.form['no_of_days']
-    name= request.form['name']
+    group_id= session['Group_Id']
+    ndays= request.form['No_Of_Days']
+    name= request.form['Name']
     tentative_date_range={}
-    trip_id=tripscol.insert({"AdminId":admin_id,"Name":name,"Location":location,"group_id":group_id,"NoOfDays":ndays, "IndividualExpense":[], "TentativeDateRange":tentative_date_range})
+    trip_id=tripscol.insert({"Admin_Id":admin_id,"Name":name,"Location":location,"Group_Id":group_id,"No_Of_Days":ndays, "Individual_Expense":[], "Tentative_Date_Range":tentative_date_range})
     trip_id=str(trip_id)
     group=groupscol.find_one({"_id":ObjectId(group_id)})
-    if(group['AdminId']==admin_id):
+    if(group['Admin_Id']==admin_id):
         new_trips=group["Trips"]
         new_trips.append(trip_id)
         groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
@@ -290,14 +292,7 @@ def schedule_dates():
         return "", 201
     return "", 401
     
-@app.route('/api/v1/groups/<group_name>', methods=['GET'])
-def view_group(group_name):
-    current_group = groupscol.find_one({"Name":group_name})["_id"]
-    if(current_group):
-        session['group']= str(current_group['_id'])
-        print(str(session['group']))
-        return "",200
-    return "Group Does Not Exist",404
+
     
 
 @app.route('/api/v1/user/friends', methods=['GET'])
