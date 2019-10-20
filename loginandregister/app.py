@@ -152,7 +152,23 @@ def set_free_dates():#def set_free_dates(trip_name):
     tripscol.update({'_id': current_trip['_id']}, {'$push': {'TentativeDateRange': {session['id']: date_range}}})
     return "", 200
 
-
+@app.route('/api/v1/trips/schedule_trip', methods = ['POST'])
+def schedule_dates():
+    current_trip = tripscol.find_one({"_id":ObjectId(session['trip'])})
+    if(session['user_id'] == current_trip['AdminId']):
+        pref_dates =current_trip["TentativeDateRange"]
+        for date in pref_dates:
+            s_d = max(d['start_date'] for d in date.values())
+            e_d = min(d['end_date'] for d in date.values())
+            if((e_d - s_d).days > current_trip['NoOfDays']):
+                e_d = s_d + timedelta(days=5)
+            elif((e_d - s_d).days < 0):
+                return "Cannot Schedule Trip", 400
+            f_d ={"start_date":s_d, "end_date":e_d}
+            tripscol.update({'_id': current_trip['_id']}, {'$set': {'FinalDate': f_d}})
+        return "", 201
+    return "", 401
+    
 @app.route('/api/v1/groups/<group_name>', methods=['GET'])
 def view_group(group_name):
     current_group = groupscol.find_one({"Name":group_name})["_id"]
