@@ -218,6 +218,44 @@ def del_group(group_name):
     group=groupscol.delete_one({"_id":ObjectId(group_id)})
     return "",204
 
+
+@app.route('/api/v1/trips/create',methods=['POST'])
+def create_trip():
+    admin_id= request.form['user_id']
+    location= request.form['Location']
+    group_id= request.form['group_id']
+    ndays= request.form['no_of_days']
+    name= request.form['name']
+    tentative_date_range={}
+    trip_id=tripscol.insert({"AdminId":admin_id,"Name":name,"Location":location,"group_id":group_id,"NoOfDays":ndays, "IndividualExpense":[], "TentativeDateRange":tentative_date_range})
+    trip_id=str(trip_id)
+    group=groupscol.find_one({"_id":ObjectId(group_id)})
+    if(group['AdminId']==admin_id):
+        new_trips=group["Trips"]
+        new_trips.append(trip_id)
+        groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
+    return "",201
+
+@app.route('/api/v1/groups/del_trip/<trip_id>', methods=['DELETE'])
+def delete_trip(trip_id):
+    trip=tripscol.find_one({"_id":ObjectId(trip_id)})
+    group_id=trip["group_id"]
+    group=groupscol.find_one({"_id":ObjectId(group_id)})
+    old_trips=group["Trips"]
+    print(old_trips)
+    new_trips=[]
+    for i in old_trips:
+        if(i==trip_id):
+            continue
+        else:
+            new_trips.append(i) 
+    print(new_trips)           
+    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
+    tripscol.delete_one({"_id":ObjectId(trip_id)})
+
+
+    return "",204
+
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 
