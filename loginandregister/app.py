@@ -58,7 +58,7 @@ def create_trip():
         return "",201
     return "Permission Denied",403
 
-@app.route('/api/v1/groups/del_trip/<trip_id>', methods=['DELETE'])
+@app.route('/api/v1/trips/del_trip/<trip_id>', methods=['DELETE'])
 def delete_trip(trip_id):
     trip=tripscol.find_one({"_id":ObjectId(trip_id)})
     group_id=trip["group_id"]
