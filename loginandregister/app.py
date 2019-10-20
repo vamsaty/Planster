@@ -237,12 +237,18 @@ def create_trip():
         new_trips=group["Trips"]
         new_trips.append(trip_id)
         groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
+        for x in group["Current_Users"]:
+            user=usercol.find_one({"_id":ObjectId(x)})
+            new_trips=user["Trips"]
+            new_trips.append(trip_id)
+            usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"Trips":new_trips}})
     return "",201
 
-@app.route('/api/v1/trips/del_trip/<trip_id>', methods=['DELETE'])
-def delete_trip(trip_id):
-    trip=tripscol.find_one({"_id":ObjectId(trip_id)})
-    group_id=trip["group_id"]
+@app.route('/api/v1/trips/del_trip/<trip_name>', methods=['DELETE'])
+def delete_trip(trip_name):
+    trip=tripscol.find_one({"Name":trip_name})
+    trip_id=str(trip.get('_id'))
+    group_id=trip["Group_Id"]
     group=groupscol.find_one({"_id":ObjectId(group_id)})
     old_trips=group["Trips"]
     print(old_trips)
@@ -254,6 +260,16 @@ def delete_trip(trip_id):
             new_trips.append(i) 
     print(new_trips)           
     groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"Trips":new_trips}})
+    for x in group["Current_Users"]:
+            user=usercol.find_one({"_id":ObjectId(x)})
+            new_trips=user["Trips"]
+            new_trips.remove(trip_id)
+            usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"Trips":new_trips}})
+    for x in group["Old_Users"]:
+            user=usercol.find_one({"_id":ObjectId(x)})
+            new_trips=user["Trips"]
+            new_trips.remove(trip_id)
+            usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"Trips":new_trips}})
     tripscol.delete_one({"_id":ObjectId(trip_id)})
 
 
