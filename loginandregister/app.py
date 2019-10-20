@@ -6,7 +6,7 @@ Created on Mon Oct 14 09:10:45 2019
 """    
 import json
 from flask import Flask, render_template, Markup, request, redirect, jsonify, abort, session, redirect, url_for, escape
-
+from datetime import datetime
 import requests
 from flask_cors import CORS
 #from form import myForm
@@ -30,12 +30,13 @@ mongo = pymongo.MongoClient('mongodb+srv://satyam:mongodb1234@planster-c1-tjz95.
 db = pymongo.database.Database(mongo, 'db1')
 usercol = pymongo.collection.Collection(db, 'usercol')
 groupscol=pymongo.collection.Collection(db,'groupscol')
+tripscol=pymongo.collection.Collection(db,'tripscol')
 
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
     if('username' in session):
-        print("Currents user's ID is %s" % session['id'])
+        print("Currents user's ID is %s" % session['user_id'])
         return 'Logged in as %s' % escape(session['username'])
     return 'You are not logged in'
 
@@ -66,11 +67,11 @@ def login():
     print(x)
     if(not(x)):
         return "Username does not exist!",400
-    if(x):
-        if(x['Password']==password):
-            session['id']= str(x['_id'])
-            session['username'] = x['Username']
-            print(str(session['id']))
+    if(current_user):
+        if(current_user['Password']==password):
+            session['user_id']= str(current_user['_id'])
+            session['username'] = current_user['Username']
+            print(str(session['user_id']))
             print("Done")
             return "",200
         else:
@@ -87,12 +88,12 @@ def add_friend(friend_username):
     friend = usercol.find_one({"Username":friend_username}) 
     if(friend):
         print("Found")
-        user=usercol.find_one({"_id":ObjectId(session['id'])})
+        user=usercol.find_one({"_id":ObjectId(session['user_id'])})
         print(user)
         """new_friends = user['Friends']
         new_friends.append(friend)
         usercol.update_one({"_id":ObjectId(current_user_id)},{ "$set" :{"Friends":new_friends}})"""
-        usercol.update({'_id': ObjectId(session['id'])}, {'$push': {'Friends': friend['_id']}})
+        usercol.update({'_id': ObjectId(session['user_id'])}, {'$push': {'Friends': friend['_id']}})
         usercol.update({'_id': friend['_id']}, {'$push': {'Friends': user['_id']}})
         return "Friend Added", 200
     return "This username does not exist", 204
@@ -255,6 +256,69 @@ def delete_trip(trip_id):
 
 
     return "",204
+
+        
+    
+@app.route('/api/v1/trips/set_dates', methods=['POST'])#@app.route('/api/v1/trips/<trip_name>/set_dates', methods=['POST'])
+def set_free_dates():#def set_free_dates(trip_name):
+    print(session['trip'])
+    current_trip = tripscol.find_one({"_id":ObjectId(session['trip'])})
+    print(current_trip)
+    start_date = datetime.strptime(request.form['start_date'], '%d %m %Y')
+    end_date = datetime.strptime(request.form['end_date'], '%d %m %Y')
+    if((end_date - start_date).days > int(current_trip['NoOfDays'])):
+        return "Choose lesser days", 400
+    date_range = {'start_date': start_date, 'end_date': end_date} 
+    #pref_date = 
+    tripscol.update({'_id': current_trip['_id']}, {'$push': {'TentativeDateRange': {session['user_id']: date_range}}})
+    return "", 200
+
+@app.route('/api/v1/trips/schedule_trip', methods = ['POST'])
+def schedule_dates():
+    current_trip = tripscol.find_one({"_id":ObjectId(session['trip'])})
+    if(session['user_id'] == current_trip['AdminId']):
+        pref_dates =current_trip["TentativeDateRange"]
+        for date in pref_dates:
+            s_d = max(d['start_date'] for d in date.values())
+            e_d = min(d['end_date'] for d in date.values())
+            if((e_d - s_d).days > current_trip['NoOfDays']):
+                e_d = s_d + timedelta(days=5)
+            elif((e_d - s_d).days < 0):
+                return "Cannot Schedule Trip", 400
+            f_d ={"start_date":s_d, "end_date":e_d}
+            tripscol.update({'_id': current_trip['_id']}, {'$set': {'FinalDate': f_d}})
+        return "", 201
+    return "", 401
+    
+@app.route('/api/v1/groups/<group_name>', methods=['GET'])
+def view_group(group_name):
+    current_group = groupscol.find_one({"Name":group_name})["_id"]
+    if(current_group):
+        session['group']= str(current_group['_id'])
+        print(str(session['group']))
+        return "",200
+    return "Group Does Not Exist",404
+    
+
+@app.route('/api/v1/user/friends', methods=['GET'])
+def list_friends():
+    current_user = usercol.find_one({"_id":ObjectId(session['user_id'])})
+    friends = current_user["Friends"]
+    return jsonify({"Friends":friends}), 200
+
+@app.route('/api/v1/user/expenses', methods=['GET'])#HAVE TO CHANGE LATER
+def get_expense():
+    current_user = usercol.find_one({"_id":ObjectId(session['user_id'])})
+    expense = current_user["Expense"]
+    return jsonify({"Expense":expense}), 200
+    
+
+@app.route('/api/v1/del_user', methods=['DELETE'])
+def del_user():
+    print(session['user_id'])
+    return "", 204
+  
+
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
