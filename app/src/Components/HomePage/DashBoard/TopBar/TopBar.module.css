@@ -1,0 +1,7 @@
+.groupName{
+    position: fixed;
+    top: 2%;
+    font: 20px tahoma;
+    color: white;
+    z-index: 12123;
+}

@@ -1,34 +1,56 @@
 import React,{Component} from 'react';
-// import logo from '../logo.svg';
 import './App.css';
-import appcss from './App.module.css';
-import HomeIcon from '@material-ui/icons/Home';
-// import Dashboard from '../Components/Dashboard/Dashboard';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import Box from '@material-ui/core/Box';
-import SignUpPage from '../Components/LR/SIgnUpPage';
-// import ToolBar from '../Components/ToolBar/ToolBar';
-import HomePage from '../Components/HomePage/HomePage';
-import Normal from '../Components/HomePage/normal';
-import ChatApp from './ChatApp/ChatApp';
-import { register } from '../serviceWorker';
+import {withRouter, Route,Link,Switch} from 'react-router-dom';
+import Layout from '../hoc/Layout/Layout';
+import Register from '../components/Registration/Register';
+import Login from '../components/Login/Login';
+import Logout from '../components/Logout/Logout';
+import HomePage from '../components/HomePage/HomePage';
+import DashBoard from '../components/HomePage/DashBoard/DashBoard';
 
+// import DashLayout from '../hoc/Layout/DashLayout';
+
+// import DashBoard from '../components/'
 
 class App extends Component{
   
-  constructor(){
-    super();
+  state = {
+    lod : false
+  }
+
+  componentWillMount(){
+    if(sessionStorage.getItem("userData")){
+      this.setState({
+        lod : true
+      });
+    }else{
+      this.setState({
+        lod : false
+      });
+    }
   }
 
   render(){
     
-
-    return (
+    let mainBody = (
       <>
+        <Switch>
+          <Route exact path="/" component = {HomePage} />
+          <Route exact path="/user" component = {DashBoard} />
+          <Route exact path="/login" component = {Login} />
+          <Route exact path="/logout" component = {Logout} />
+          <Route exact path="/register" component = {Register} />
+        </Switch>
       </>
     );
+      
+    return (
+        <Layout>
+          {mainBody}
+        </Layout>
+    );
+
   }
 }
 
-export default App;
+export default withRouter(App);
