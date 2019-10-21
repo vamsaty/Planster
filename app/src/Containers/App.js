@@ -15,23 +15,25 @@ import DashBoard from '../components/HomePage/DashBoard/DashBoard';
 class App extends Component{
   
   state = {
-    lod : false
+    userLoggedIn : false
   }
 
   componentWillMount(){
     if(sessionStorage.getItem("userData")){
       this.setState({
-        lod : true
+        userLoggedIn : true
       });
     }else{
       this.setState({
-        lod : false
+        userLoggedIn : false
       });
     }
   }
 
   render(){
     
+  console.log("LOGIN___DATA ?? ", this.state)
+
     let mainBody = (
       <>
         <Switch>

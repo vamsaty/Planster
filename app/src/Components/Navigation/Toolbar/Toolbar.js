@@ -10,14 +10,13 @@ const toolbar = ( props ) => {
 
     return(
 
-
         <header className={classes.Toolbar}>
             <DrawerToggle clicked={props.drawerToggleClicked} />
             <div className={classes.Logo}>
                 <Logo />
             </div>
             <nav className={classes.DesktopOnly}>
-                <NavigationItems hist = {props.history} match = {props.match} loc = {props.location} />
+                <NavigationItems loggedIn = {props.loggedIn} hist = {props.history} match = {props.match} loc = {props.location} />
             </nav>
         </header>
     );
