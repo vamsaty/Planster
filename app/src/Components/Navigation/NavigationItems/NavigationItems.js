@@ -32,13 +32,11 @@ class NavigationItems extends Component {
     logOut = () =>{
         
         sessionStorage.setItem("userData",'');
-        
-        this.props.history.push("/");
-
         sessionStorage.clear();
         this.setState({
             showLogin : true
         });
+        this.props.history.push("/");
     }
     
 
@@ -65,7 +63,6 @@ class NavigationItems extends Component {
         
         return (
              <ul className={classes.NavigationItems}>
-                {/* {homie} */}
                 {displayLoginReg}
             </ul>
         );

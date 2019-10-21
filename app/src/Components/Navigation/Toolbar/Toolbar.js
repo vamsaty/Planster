@@ -16,10 +16,10 @@ const toolbar = ( props ) => {
                 <Logo />
             </div>
             <nav className={classes.DesktopOnly}>
-                <NavigationItems loggedIn = {props.loggedIn} hist = {props.history} match = {props.match} loc = {props.location} />
+                <NavigationItems />
             </nav>
         </header>
     );
 }
 
-export default withRouter(toolbar);
+export default toolbar;

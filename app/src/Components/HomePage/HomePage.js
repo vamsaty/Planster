@@ -16,10 +16,11 @@ class HomePage extends Component{
     
     componentWillMount(){
         if(sessionStorage.getItem("userData")){
-            this.props.history.push('/user');
+            
             this.setState({
                 loggedIn : true
             });
+            // this.props.history.push('/user');
         }else{
             this.setState({
                 loggedIn : false

@@ -54,6 +54,7 @@ class ContactData extends Component {
     }
 
     orderHandler = ( event ) => {
+        console.log("here we are")
         event.preventDefault();
         this.setState( { loading: true } );
         const formData = {};
@@ -69,15 +70,12 @@ class ContactData extends Component {
             .then( response => {
 
                 let responseData = response;
-                
+                console.log(response.data.userData)
                 if(responseData.data.userData){
                     sessionStorage.setItem("userData", responseData.data.userData)
                 }
-                console.log("werlqwjeroqjweorijqwoeiruqwoer")
                 this.setState( { loading: false } );
-                this.props.history.push('/');
-                console.log('123123019283091283091283091820398')
-
+                this.props.history.push('/user');
             } )
             .catch( error => {
                 this.setState( { loading: false } );

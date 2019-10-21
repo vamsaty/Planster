@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DashLayout from '../../../hoc/Layout/DashLayout';
-
+import axios from 'axios';
 
 class DashBoard extends Component{
 
@@ -21,12 +21,18 @@ class DashBoard extends Component{
         }
     }
 
-    render(){
+    showUser(){
+        console.log(sessionStorage("userData"));
+    }
 
+    render(){
 
         return(
             <DashLayout>
-                <p>asdf</p>
+                <button onClick={this.showUser}>
+                    get it
+                </button>
+                <h1>asdf</h1>
             </DashLayout>
         );
     }

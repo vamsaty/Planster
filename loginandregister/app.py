@@ -15,13 +15,17 @@ from flask_static_compress import FlaskStaticCompress
 import logging
 from flask_pymongo import PyMongo
 import pymongo
-from bson.objectid import ObjectId
+from os import urandom
+
+from bson.objectidjectid import ObjectId
 
 
 app = Flask(__name__)
 CORS(app)
 
 app.config["MONGO_URI"] = "mongodb+srv://satyam:mongodb1234@planster-c1-tjz95.mongodb.net/test?retryWrites=true&w=majority"
+
+app.secret_key = urandom(24)
 
 mongo = pymongo.MongoClient('mongodb+srv://satyam:mongodb1234@planster-c1-tjz95.mongodb.net/test?retryWrites=true&w=majority', maxPoolSize=50, connect=False)
 
@@ -35,7 +39,8 @@ tripscol=pymongo.collection.Collection(db,'tripscol')
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
-    if('username' in session):
+    
+    if('Username' in session):
         print("Currents user's ID is %s" % session['User_Id'])
         return 'Logged in as %s' % escape(session['Username'])
     return 'You are not logged in'
@@ -64,16 +69,22 @@ def login():
     username =  request.json['Username'];
     password = request.json['Password'];
     current_user=usercol.find_one({"Username":username})
+    #return "asfdasfd"
+    #return current_user
     print(current_user)
     if(not(current_user)):
         return "Username does not exist!",400
     if(current_user):
+        
         if(current_user['Password']==password):
             session['User_Id']= str(current_user['_id'])
             session['Username'] = current_user['Username']
+            
+            
             print(str(session['User_Id']))
             print("Done")
-            return "",200
+            
+            return jsonify({'userData' : session['Username']}),200
         else:
             return "Password Incorrect!",400
 

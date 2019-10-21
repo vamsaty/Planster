@@ -9,7 +9,6 @@ import HomePage from '../components/HomePage/HomePage';
 import DashBoard from '../components/HomePage/DashBoard/DashBoard';
 
 // import DashLayout from '../hoc/Layout/DashLayout';
-
 // import DashBoard from '../components/'
 
 class App extends Component{
@@ -32,8 +31,6 @@ class App extends Component{
 
   render(){
     
-  console.log("LOGIN___DATA ?? ", this.state)
-
     let mainBody = (
       <>
         <Switch>

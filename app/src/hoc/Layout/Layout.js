@@ -37,8 +37,7 @@ class Layout extends Component {
     render () {
         return (
             <Aux>
-                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
-                {/* <AppToolBar drawerToggleClicked={this.sideDrawerToggleHandler}/> */}
+                <Toolbar  drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <SideDrawer
                     open={this.state.showSideDrawer}
                     closed={this.sideDrawerClosedHandler} />
@@ -52,4 +51,4 @@ class Layout extends Component {
     }
 }
 
-export default withRouter(Layout);
+export default Layout;

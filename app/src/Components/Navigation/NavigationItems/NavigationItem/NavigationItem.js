@@ -13,17 +13,16 @@ const navigationItem = ( props ) => {
         </NavLink>
     );
 
-    console.log("props ->> ", props)
     if(props.logout){
         item = (
-            <Link
+            <NavLink
                 to = {props.link}
                 onClick = {props.handleLogout}
-                activeClassName={classes.active}>
+                >
 
                     {props.children}
 
-            </Link>
+            </NavLink>
         );
     }
 
