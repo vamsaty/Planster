@@ -4,10 +4,8 @@ import {withRouter} from 'react-router-dom';
 import Aux from '../_Aux/_Aux';
 
 import classes from './Layout.module.css';
-import TopBar from '../../components/HomePage/DashBoard/TopBar/TopBar'
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
-import axios from 'axios';
+// import TopBar from '../../components/HomePage/DashBoard/TopBar/TopBar'
+
 
 class DashLayout extends Component {
     state = {

@@ -15,17 +15,14 @@ from flask_static_compress import FlaskStaticCompress
 import logging
 from flask_pymongo import PyMongo
 import pymongo
-from os import urandom
 
-from bson.objectidjectid import ObjectId
+from bson.objectid import ObjectId
 
 
 app = Flask(__name__)
 CORS(app)
 
 app.config["MONGO_URI"] = "mongodb+srv://satyam:mongodb1234@planster-c1-tjz95.mongodb.net/test?retryWrites=true&w=majority"
-
-app.secret_key = urandom(24)
 
 mongo = pymongo.MongoClient('mongodb+srv://satyam:mongodb1234@planster-c1-tjz95.mongodb.net/test?retryWrites=true&w=majority', maxPoolSize=50, connect=False)
 
@@ -39,7 +36,6 @@ tripscol=pymongo.collection.Collection(db,'tripscol')
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
-    
     if('Username' in session):
         print("Currents user's ID is %s" % session['User_Id'])
         return 'Logged in as %s' % escape(session['Username'])
@@ -48,14 +44,14 @@ def index():
 
 @app.route('/api/v1/register',methods=['POST'])
 def registration():
-    name =  request.json['Name']
-    email =  request.json['Email']
-    username =  request.json['Username']
-    password = request.json['Password']
-    age = request.json['Age']
-    phone = request.json['Phone']
-    address = request.json['Address']
-    city = request.json['City']
+    name =  request.form['Name']
+    email =  request.form['Email']
+    username =  request.form['Username']
+    password = request.form['Password']
+    age = request.form['Age']
+    phone = request.form['Phone']
+    address = request.form['Address']
+    city = request.form['City']
                          
     if(usercol.find_one({"Email":email})):
         return "Email exists!",400
@@ -66,25 +62,19 @@ def registration():
 
 @app.route('/api/v1/login',methods=['POST'])
 def login():
-    username =  request.json['Username'];
-    password = request.json['Password'];
+    username =  request.form['Username'];
+    password = request.form['Password'];
     current_user=usercol.find_one({"Username":username})
-    #return "asfdasfd"
-    #return current_user
     print(current_user)
     if(not(current_user)):
         return "Username does not exist!",400
     if(current_user):
-        
         if(current_user['Password']==password):
             session['User_Id']= str(current_user['_id'])
             session['Username'] = current_user['Username']
-            
-            
             print(str(session['User_Id']))
             print("Done")
-            
-            return jsonify({'userData' : session['Username']}),200
+            return "",200
         else:
             return "Password Incorrect!",400
 
@@ -112,7 +102,7 @@ def add_friend(friend_username):
 @app.route('/api/v1/groups/create',methods=['POST'])
 def create_group():
     admin_id= session['User_Id']
-    name=request.json['Name']
+    name=request.form['Name']
     group_id=groupscol.insert({"Name":name,"Admin_Id":admin_id,"Expense":0,"Current_Users":[admin_id],"Old_Users":[],"Trips":[]})
     user=usercol.find_one({"_id":ObjectId(admin_id)})
     group_id=str(group_id)
@@ -135,7 +125,7 @@ def view_group(group_name):
 @app.route('/api/v1/groups/add_friend',methods=['POST'])
 def add_friend_to_group():
     admin_id=session['User_Id']
-    username=request.json['Username']
+    username=request.form['Username']
     group_id=session['Group_Id']
     group=groupscol.find_one({"_id":ObjectId(group_id)})
     user=usercol.find_one({"Username":username})
@@ -160,7 +150,7 @@ def list_group(username):
 @app.route('/api/v1/groups/del_user',methods=['DELETE'])
 def del_user_from_group():
     admin_id=session['User_Id']
-    username=request.json['Username']
+    username=request.form['Username']
     group_id=session['Group_Id']
     group=groupscol.find_one({"_id":ObjectId(group_id)})
     if(group['Admin_Id']==admin_id):
@@ -242,10 +232,10 @@ def del_group(group_name):
 @app.route('/api/v1/trips/create',methods=['POST'])
 def create_trip():
     admin_id= session['User_Id']
-    location= request.json['Location']
+    location= request.form['Location']
     group_id= session['Group_Id']
-    ndays= request.json['No_Of_Days']
-    name= request.json['Name']
+    ndays= request.form['No_Of_Days']
+    name= request.form['Name']
     tentative_date_range={}
     trip_id=tripscol.insert({"Admin_Id":admin_id,"Name":name,"Location":location,"Group_Id":group_id,"No_Of_Days":ndays, "Individual_Expense":[], "Tentative_Date_Range":tentative_date_range})
     trip_id=str(trip_id)
@@ -305,8 +295,8 @@ def set_free_dates():#def set_free_dates(trip_name):
     print(session['Trip_Id'])
     current_trip = tripscol.find_one({"_id":ObjectId(session['Trip_Id'])})
     print(current_trip)
-    start_date = datetime.strptime(request.json['Start_Date'], '%d %m %Y')
-    end_date = datetime.strptime(request.json['End_Date'], '%d %m %Y')
+    start_date = datetime.strptime(request.form['Start_Date'], '%d %m %Y')
+    end_date = datetime.strptime(request.form['End_Date'], '%d %m %Y')
     if((end_date - start_date).days > int(current_trip['No_Of_Days'])):
         return "Choose lesser days", 400
     date_range = {'Start_Date': start_date, 'End_Date': end_date} 

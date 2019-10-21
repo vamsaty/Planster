@@ -7,6 +7,7 @@ import Login from '../components/Login/Login';
 import Logout from '../components/Logout/Logout';
 import HomePage from '../components/HomePage/HomePage';
 import DashBoard from '../components/HomePage/DashBoard/DashBoard';
+import { classes } from 'istanbul-lib-coverage';
 
 // import DashLayout from '../hoc/Layout/DashLayout';
 // import DashBoard from '../components/'
@@ -32,15 +33,21 @@ class App extends Component{
   render(){
     
     let mainBody = (
-      <>
+      // <div className={"main_body"}>
         <Switch>
           <Route exact path="/" component = {HomePage} />
-          <Route exact path="/user" component = {DashBoard} />
+          <Route path="/user" component = {DashBoard} />
           <Route exact path="/login" component = {Login} />
           <Route exact path="/logout" component = {Logout} />
           <Route exact path="/register" component = {Register} />
+          
+          {/* <Route render={()=>{
+            return(
+              <h1>HOME BABy</h1>
+            )
+          }} /> */}
         </Switch>
-      </>
+      // </div>
     );
       
     return (

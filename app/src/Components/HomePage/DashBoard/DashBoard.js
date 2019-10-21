@@ -2,10 +2,29 @@ import React, { Component } from 'react';
 import DashLayout from '../../../hoc/Layout/DashLayout';
 import axios from 'axios';
 
+
+import AddFriend from './UserFunctions/AddFriend/AddFriend';
+import ListFriends from './UserFunctions/ListFriends/ListFriends';
+import ListGroups from './UserFunctions/ListGroups/ListGroups';
+import CreateGroup from './UserFunctions/CreateGroup/CreateGroup';
+import Content from './UserFunctions/UserContent/UserContent';
+
+import UserSideBar from './UserSideBar/UserSideBar';
+import classes from './DashBoard.module.css';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+
 class DashBoard extends Component{
 
-    state = {
-        loggedIn : false
+    constructor(){
+        super();
+        this.state = {
+            userInfo : {
+                name : 'Satyam',
+                age : 21,
+                email : 'sae@gmail.com',
+                address : 'asdfasdf'
+            }
+        }
     }
 
     componentWillMount(){
@@ -14,10 +33,10 @@ class DashBoard extends Component{
                 loggedIn : true
             });
         }else{
-            this.props.history.push('/');
             this.setState({
                 loggedIn : false
             });
+            // this.props.history.push('/');
         }
     }
 
@@ -26,14 +45,28 @@ class DashBoard extends Component{
     }
 
     render(){
+        
+
+        const userFunctionalities = (
+            <Switch>
+                <Route path = {this.props.match.path+'/add-friends'}  component ={AddFriend} /> 
+                <Route path = {this.props.match.path+'/create-group'}  component ={CreateGroup} /> 
+                <Route path = {this.props.match.path+'/list-group'}  component ={ListGroups} /> 
+                <Route path = {this.props.match.path+'/list-friends'}  component ={ListFriends} /> 
+            </Switch>
+        );
 
         return(
-            <DashLayout>
-                <button onClick={this.showUser}>
-                    get it
-                </button>
-                <h1>asdf</h1>
-            </DashLayout>
+                <div className={classes.mainWrapper}>
+                    <UserSideBar userInfo = {this.state.userInfo} />
+
+                    <main className={classes.Content}>
+                        
+                        {userFunctionalities}
+
+                    </main>
+                    
+                </div>
         );
     }
 
