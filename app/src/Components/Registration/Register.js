@@ -141,14 +141,14 @@ class ContactData extends Component {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
         }
         const order = {
-            Name : this.state.orderForm.name.value,
-            Username : this.state.orderForm.username.value,
-            Password : this.state.orderForm.password.value,
-            Address : this.state.orderForm.address.value,
-            City : this.state.orderForm.city.value,
-            Email : this.state.orderForm.email.value,
-            Phone : this.state.orderForm.phone.value,
-            Age : this.state.orderForm.age.value
+            name : this.state.orderForm.name.value,
+            username : this.state.orderForm.username.value,
+            password : this.state.orderForm.password.value,
+            address : this.state.orderForm.address.value,
+            city : this.state.orderForm.city.value,
+            email : this.state.orderForm.email.value,
+            phone : this.state.orderForm.phone.value,
+            age : this.state.orderForm.age.value
         }
 
         axios.post('http://localhost:5000/api/v1/register', order )

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DashLayout from '../../../hoc/Layout/DashLayout';
 import axios from 'axios';
 
 
@@ -7,7 +6,13 @@ import AddFriend from './UserFunctions/AddFriend/AddFriend';
 import ListFriends from './UserFunctions/ListFriends/ListFriends';
 import ListGroups from './UserFunctions/ListGroups/ListGroups';
 import CreateGroup from './UserFunctions/CreateGroup/CreateGroup';
-import Content from './UserFunctions/UserContent/UserContent';
+
+// import Cookies from 'universal-cookie';
+
+import {ArrowForward,ArrowBack}  from '@material-ui/icons';
+import {Button,CircularProgress} from '@material-ui/core';
+
+import Fab from '@material-ui/core/Fab';
 
 import UserSideBar from './UserSideBar/UserSideBar';
 import classes from './DashBoard.module.css';
@@ -19,24 +24,47 @@ class DashBoard extends Component{
         super();
         this.state = {
             userInfo : {
-                name : 'Satyam',
-                age : 21,
-                email : 'sae@gmail.com',
-                address : 'asdfasdf'
-            }
+                name : null,
+                age : null,
+                email : null,
+                address : null,
+                groups : null
+            },
+            
+            showBar : false,
+            loading : true,
+            loadingUserData : true
         }
     }
+
+
+    getUserInfo = () => {
+        axios.get('http://localhost:5000/api/v1/details/' + String(sessionStorage.getItem("userData"))).
+        then(res => {
+            const updatedInfo = res.data.details
+            console.log(updatedInfo)
+            this.setState({
+                userInfo : updatedInfo,
+                loadingUserData : false
+            });
+            
+        });        
+    }
+
 
     componentWillMount(){
         if(sessionStorage.getItem("userData")){
             this.setState({
-                loggedIn : true
+                loggedIn : true,
+                loadingUserData : true
             });
+            
+            this.getUserInfo();
+
         }else{
             this.setState({
                 loggedIn : false
             });
-            // this.props.history.push('/');
         }
     }
 
@@ -46,24 +74,67 @@ class DashBoard extends Component{
 
     render(){
         
+        if(!sessionStorage.getItem("userData")){
+            return(
+                <Redirect to="/" />
+            );
+        }
 
+
+        
         const userFunctionalities = (
             <Switch>
-                <Route path = {this.props.match.path+'/add-friends'}  component ={AddFriend} /> 
-                <Route path = {this.props.match.path+'/create-group'}  component ={CreateGroup} /> 
-                <Route path = {this.props.match.path+'/list-group'}  component ={ListGroups} /> 
-                <Route path = {this.props.match.path+'/list-friends'}  component ={ListFriends} /> 
+
+                <Route 
+                    path = {this.props.match.path+'/add-friends'}  
+                    component ={AddFriend} /> 
+
+                <Route 
+                    path = {this.props.match.path+'/create-group'}  
+                    render ={(props)=><CreateGroup {...props} userInfo = {this.state.userInfo} /> } /> 
+                
+                <Route 
+                    path = {this.props.match.path+'/list-group'}  
+                    component ={ListGroups} /> 
+                
+                <Route 
+                    path = {this.props.match.path+'/list-friends'}  
+                    component ={ListFriends} />
+
             </Switch>
         );
 
+        let buttonClass = classes.forward;
+        let contentClass = [classes.Content, classes.Grow]
+        let arrow = (
+            <ArrowForward />
+        )
+        if(this.state.showBar){
+            arrow = (
+                <ArrowBack />
+            )
+            buttonClass = classes.backward;
+            contentClass = [classes.Content, classes.Shrink]
+        }
+        
+
         return(
                 <div className={classes.mainWrapper}>
-                    <UserSideBar userInfo = {this.state.userInfo} />
 
-                    <main className={classes.Content}>
-                        
+                    <Fab size="small" color="primary" className={buttonClass} onClick = {()=>{this.setState({ showBar : !this.state.showBar})}}>
+                        {arrow}
+                   </Fab>           
+
+                    <UserSideBar
+                        loading = {this.state.loadingUserData}
+                        userInfo = {this.state.userInfo} 
+                        show = {this.state.showBar}
+                    />
+
+
+
+                    <main className={contentClass.join(' ')}>
                         {userFunctionalities}
-
                     </main>
                     
                 </div>

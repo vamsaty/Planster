@@ -1,4 +1,6 @@
 .Content {
-    margin-top: 72px;
+    margin-top:5%;
+    /* z-index: 100012; */
     width: 100%;
+    margin-bottom: 5%;
 }

@@ -62,15 +62,15 @@ class ContactData extends Component {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
         }
         const order = {
-            Username : this.state.orderForm.username.value,
-            Password : this.state.orderForm.password.value
+            username : this.state.orderForm.username.value,
+            password : this.state.orderForm.password.value
         }
 
         axios.post('http://localhost:5000/api/v1/login', order )
             .then( response => {
 
                 let responseData = response;
-                console.log(response.data.userData)
+                console.log("---->>>",response.data)
                 if(responseData.data.userData){
                     sessionStorage.setItem("userData", responseData.data.userData)
                 }

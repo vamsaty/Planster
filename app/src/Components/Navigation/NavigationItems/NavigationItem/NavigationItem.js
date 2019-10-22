@@ -2,27 +2,42 @@ import React from 'react';
 import { NavLink,Link } from 'react-router-dom';
 import classes from './NavigationItem.module.css';
 
+import Button from '@material-ui/core/Button';
+
 const navigationItem = ( props ) => {
 
     let item = (
-        <NavLink 
-            to={props.link}
-            exact={props.exact}
-            activeClassName={classes.active}>
-                {props.children}
-        </NavLink>
+           <Button
+                variant="contained"
+                color="primary"
+                className={[classes.button, classes.buttonActive].join(' ')}
+                >
+                <NavLink 
+                    to={props.link}
+                    exact={props.exact}
+                    activeClassName={classes.active}>
+                       {props.children}
+                </NavLink>
+            </Button>
+        
     );
 
     if(props.logout){
         item = (
-            <NavLink
-                to = {props.link}
-                onClick = {props.handleLogout}
-                >
+            
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        className={[classes.button, classes.active].join(' ')}
+                        ><NavLink
+                        to = {props.link}
+                        onClick = {props.handleLogout}
+                        >
+                       {props.children}
+                       </NavLink>
+                    </Button>
 
-                    {props.children}
-
-            </NavLink>
+            
         );
     }
 
