@@ -122,32 +122,21 @@ def add_friend(friend_username,current_username):
 
         return "friend added", 200
 
-    return "this username does not exist", 204
+    return "this username does not exist", 400
     
 @app.route('/api/v1/groups/create/<username>',methods=['POST'])
 def create_group(username):
-    user_name = usercol.find_one({"username" : username})
-    
-    admin_id = user_name['_id']
+    user = usercol.find_one({"username" : username})
+    admin_id = str(user.get('_id'))
+    print(admin_id)
     name = request.json['name']
-    
-    groupscol.insert_one({"name":name,"admin_id":admin_id,"expense":0,"current_users":[admin_id],"old_users":[],"trips":[]})
-    user = usercol.find_one({"_id":ObjectId(admin_id)})
-    
-    group = groupscol.find_one({'admin_id' : admin_id})
-    group_id = group['_id']
-    
+    print(name)
+    group_id=groupscol.insert({"name":name,"admin_id":admin_id,"expense":0,"current_users":[admin_id],"old_users":[],"trips":[]})
+    group_id=str(group_id)
     current_groups = user['current_groups']
     current_groups.append([group_id,0])
-
-    #print(new_groups)
-    # return jsonify({'groups' :  groupsreturn}),200
-
-    
-    # usercol.update_one({"_id":ObjectId(admin_id)},{ "$set" :{"current_groups":current_groups}})
-    usercol.update_one({"_id":admin_id},{ "$set" :{"current_groups":current_groups}})
-    
-    return jsonify({"asd":"Created"}),201
+    usercol.update_one({"_id":ObjectId(admin_id)},{ "$set" :{"current_groups":current_groups}})
+    return jsonify({"message":"Created"}),201
 
 @app.route('/api/v1/groups/<group_name>', methods=['GET'])
 def view_group(group_name):
@@ -208,12 +197,11 @@ def list_group(username):
     user=usercol.find_one({"username":username})
     groups = []
     for i in user['current_groups']:
-        for x in i:
-            groups.append(json.loads(json_util.dumps(x)))
-    
+        group=groupscol.find_one({"_id":ObjectId(i[0])})
+        groups.append(group["name"])
     return jsonify({
         "groups" : groups
-    }),201
+    }),200
     # return jsonify({}),201
 
 

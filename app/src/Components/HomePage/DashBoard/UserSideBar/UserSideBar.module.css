@@ -1,16 +1,17 @@
 .sideBar{
     
-    background-color: slategray;
+    background-color: rgb(18, 63, 116);
     display: flex;
     padding: 10px;
-    width: 14%;
-    height: 80%;
+    width: 16%;
+    height: 90%;
     box-shadow: 0 0 10px black;
-    position: fixed;
+    position: absolute;
     box-sizing: border-box;
     justify-content: center;
     flex-direction: column;
     left: 0;
+    top:10%;
     transition: transform 0.3s ease-out;
 }
 
@@ -20,6 +21,9 @@
 
 .Close {
     transform: translateX(-100%);
+}
+body{
+    text-transform: capitalize;
 }
 
 .Logo {
