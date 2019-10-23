@@ -16,7 +16,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'name'
+                    placeholder: 'Name'
                 },
                 value: '',
                 validation: {
@@ -29,7 +29,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'email',
-                    placeholder: 'email'
+                    placeholder: 'Email'
                 },
                 value: '',
                 validation: {
@@ -42,7 +42,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'username'
+                    placeholder: 'Username'
                 },
                 value: '',
                 validation: {
@@ -55,7 +55,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'password'
+                    placeholder: 'Password'
                 },
                 value: '',
                 validation: {
@@ -68,7 +68,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'ph no'
+                    placeholder: 'Ph No'
                 },
                 value: '',
                 validation: {
@@ -81,7 +81,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'city'
+                    placeholder: 'City'
                 },
                 value: '',
                 validation: {
@@ -95,7 +95,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'address'
+                    placeholder: 'Address'
                 },
                 value: '',
                 validation: {
@@ -108,7 +108,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'age'
+                    placeholder: 'Age'
                 },
                 value: '',
                 validation: {
@@ -222,7 +222,7 @@ class ContactData extends Component {
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
-                <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
+                <Button btnType="Success" disabled={!this.state.formIsValid}>Sign Up!</Button>
             </form>
         );
         if ( this.state.loading ) {
@@ -230,7 +230,9 @@ class ContactData extends Component {
         }
         return (
             <div className={classes.RegisterData}>
-                <h4>Enter your Registration Data</h4>
+                <h4>
+                 
+                </h4>
                 {form}
             </div>
         );

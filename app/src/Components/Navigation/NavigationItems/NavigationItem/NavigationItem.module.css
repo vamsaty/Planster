@@ -5,7 +5,9 @@
     width: 100%;
     margin: 5px;
 }
-
+.home {
+    color : black;
+}
 .NavigationItem a {
     color: white;
     text-decoration: none;
@@ -13,7 +15,6 @@
     box-sizing: border-box;
     display: block;
 }
-
 
 .NavigationItem a:hover,
 .NavigationItem a:active,
