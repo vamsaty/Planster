@@ -3,9 +3,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  background-image: url('./assets//background/rest2_trip.jpg');
+ 
+  background-image: url('assets/images/background.jpg');
   background-size: cover;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;

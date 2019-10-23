@@ -11,7 +11,7 @@ import CreateGroup from './UserFunctions/CreateGroup/CreateGroup';
 
 import {ArrowForward,ArrowBack}  from '@material-ui/icons';
 import {Button,CircularProgress} from '@material-ui/core';
-
+import DehazeIcon from '@material-ui/icons/Dehaze';
 import Fab from '@material-ui/core/Fab';
 
 import UserSideBar from './UserSideBar/UserSideBar';
@@ -107,11 +107,11 @@ class DashBoard extends Component{
         let buttonClass = classes.forward;
         let contentClass = [classes.Content, classes.Grow]
         let arrow = (
-            <ArrowForward />
+            <DehazeIcon  />
         )
         if(this.state.showBar){
             arrow = (
-                <ArrowBack />
+                <DehazeIcon />
             )
             buttonClass = classes.backward;
             contentClass = [classes.Content, classes.Shrink]

@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-
+import './AddFriend.css'
 
 class AddFriend extends Component{
 
@@ -35,7 +35,7 @@ class AddFriend extends Component{
         let err = null;
         if(this.state.show){
             err = <h3>
-                ADDed {this.state.friendName}
+                Added {this.state.friendName}
             </h3>;
         }
         
@@ -48,7 +48,7 @@ class AddFriend extends Component{
                         friendName : ''
                     })
                 }}>
-                    ERROR CAN'T FIND THE USER
+                    Error! Can't Find The User.
                 </h3>
             );
         }

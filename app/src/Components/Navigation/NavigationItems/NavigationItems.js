@@ -45,16 +45,17 @@ class NavigationItems extends Component {
         
         let displayLoginReg = (
             <>
-                <NavigationItem link="/" exact>home</NavigationItem>
-                <NavigationItem link="/register">register</NavigationItem>
+                
+                <NavigationItem home link="/">home</NavigationItem>
                 <NavigationItem link="/login">login</NavigationItem>
+                <NavigationItem link="/register">register</NavigationItem>
             </>
         );
 
         if(!this.state.showLogin){
             displayLoginReg = (
                 <>
-                    <NavigationItem exact link="/user" exact>home</NavigationItem>
+                    <NavigationItem exact home link="/user" exact>home</NavigationItem>
                     <NavigationItem logout handleLogout = {this.logOut} link="/" >logout</NavigationItem>
                 </>
             );

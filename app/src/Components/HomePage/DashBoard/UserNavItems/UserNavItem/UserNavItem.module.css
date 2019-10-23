@@ -13,7 +13,7 @@
     /* padding: 15px; */
 }
 .UserNavItem a {
-    color: red;
+    color: rgb(248, 103, 7);
     text-decoration: none;
     width: 100%;
     box-sizing: border-box;
@@ -23,8 +23,8 @@
 .UserNavItem a:hover,
 .UserNavItem a:active,
 .UserNavItem a.active {
-    color: white;
-    background-color: royalblue;
+    color: black;
+    background-color: rgb(193, 208, 253);
 
     /* margin-top:10px ; */
 

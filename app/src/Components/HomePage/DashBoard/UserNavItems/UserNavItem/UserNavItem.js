@@ -14,7 +14,7 @@ const userNavItem = (props) =>{
     );
     return(
         <li className={classes.UserNavItem}>
-            <Button variant="outlined" color="secondary" style={{padding:'0'}}>
+            <Button variant="outlined" color="default" style={{padding:'0'}}>
                 {item}
             </Button>
         </li>

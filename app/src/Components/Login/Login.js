@@ -8,6 +8,8 @@ import classes from './Login.module.css';
 import axios from 'axios';
 import Input from '../../components/UI/Input/Input';
 
+
+
 class ContactData extends Component {
     state = {
         redirect : false,
@@ -16,7 +18,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'username'
+                    placeholder: 'Username'
                 },
                 value: '',
                 validation: {
@@ -29,7 +31,7 @@ class ContactData extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'password'
+                    placeholder: 'Password'
                 },
                 value: '',
                 validation: {
@@ -142,7 +144,7 @@ class ContactData extends Component {
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
-                <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
+                <Button btnType="Success" disabled={!this.state.formIsValid}>Lets Go!</Button>
             </form>
         );
         if ( this.state.loading ) {
@@ -151,8 +153,9 @@ class ContactData extends Component {
         
         return (
             <div className={classes.ContactData}>
-                <h4>Enter your Login Data</h4>
-                {form}
+                <div className="login">
+                <h4>Login</h4>
+                {form}</div>
             </div>
         );
     }

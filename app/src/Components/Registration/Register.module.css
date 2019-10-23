@@ -1,13 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Alef|Antic|Biryani|Dosis|Fredericka+the+Great|Jaldi|Josefin+Sans|Julius+Sans+One|Reem+Kufi|Varela+Round&display=swap');
 .RegisterData {
-    margin: 20px auto;
-    width: 80%;
+    margin: 0px auto;
+    width: 60%;
     text-align: center;
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #eee;
-    padding: 10px;
+   
     box-sizing: border-box;
 }
 
+.RegisterData{
+    background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+background-attachment: fixed;
+background-repeat: no-repeat;
+
+
+opacity: 0.95;
+/* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+   height: 100vh;
+   width:60vh;
+   position: absolute;
+   right: 0px;
+   top:0px;
+   padding:50px 0;
+   font-size:20px;
+   
+   width:400px;
+   font-family: 'Jaldi', sans-serif;
+   margin:0 auto;
+   text-align:center;
+   
+}  
+input{
+    font-family: 'Jaldi', sans-serif;
+    font-weight:300;
+    border:0;
+    border-bottom:1px solid #12186e;
+    margin: 3px;
+    width:30%;
+    height:15px;
+    font-size:5px;
+  }
+  input:focus{
+    outline:none;
+    box-shadow:none;
+    background:#ffeae2;
+  }
+  
+  button{
+    border:0;
+    background:#05043b;
+  color:#fff;
+  font-family: 'Jaldi', sans-serif;
+    padding:10px;
+    margin-bottom:30px;
+    position:relative;
+    outline:0;
+    font-size:15px;
+  }
+  
+  input:focus::-webkit-input-placeholder  {
+    opacity: 0;
+  -ms-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+  }
 @media (min-width: 600px) {
     .RegisterData {
         width: 500px;
