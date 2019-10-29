@@ -180,7 +180,7 @@ handleClose = () =>{
       <DialogTitle id="alert-dialog-title">{"Log Out"}</DialogTitle>
       <DialogContent>
        <DialogContentText id="alert-dialog-description">
-         Are you Sure You want to Log Out?
+         Are you sure you want to Log Out?
        </DialogContentText>
       </DialogContent>
       <DialogActions>
