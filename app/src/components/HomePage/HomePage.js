@@ -14,7 +14,7 @@ const styles = theme => ({
     },
     subheading :{
     fontFamily:'Quicksand',
-    fontSize:"1.4em",
+    fontSize:"1.6em",
     textAlign:"center",
     fontWeight:"bold",
     }
@@ -54,9 +54,9 @@ class HomePage extends Component{
             One Place Destination For All Your Trips.
             </div><div><br/></div>
             <div className={classes.subheading}>
-              <span style={{color:"#FF5733 "}}>PLAN.</span>
-              <span style={{color:"#FFC300 "}}>  SCHEDULE.</span>
-              <span style={{color:"#28B463 "}}>  TRACK.</span>
+              <span style={{color:"#91190D",fontWeight:"bolder"}}>PLAN.</span>
+              <span style={{color:"#ECBE68  "}}>  SCHEDULE.</span>
+              <span style={{color:"#35D3A6     "}}>  TRACK.</span>
               <span style={{color:"#6C3483  "}}>  EXPLORE.</span>
             </div>
           </div>

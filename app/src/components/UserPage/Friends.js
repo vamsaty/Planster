@@ -73,7 +73,7 @@ render(){
 
   return (
     <List className={classes.root}>
-    <AddFriend change_friends={this.listFriendsHandler}/>
+    <AddFriend change_friends={this.listFriendsHandler} friends={this.state.friends}/>
         {this.state.friends.map( (val, ind) => (
               <div><ListItem alignItems="flex-start">
               <ListItemAvatar>

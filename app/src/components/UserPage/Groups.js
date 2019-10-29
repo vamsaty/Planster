@@ -9,7 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import dp from '../../assets/images/background.jpg';
 import AddGroups from './UserFunctions/AddGroups.js'
 import Typography from '@material-ui/core/Typography';
-
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 const styles = theme => ({
   root: {
@@ -25,7 +25,9 @@ const styles = theme => ({
   },
   tooltip:{
     cursor:"pointer",position:"relative",top:9,
-  }
+  },
+
+  
   
 });
 
@@ -73,7 +75,7 @@ render(){
  
   return (
     <List className={classes.root}>
-      <AddGroups change_groups={this.listGroupsHandler}/>
+      <AddGroups change_groups={this.listGroupsHandler} groups={this.state.groups}/>
            {this.state.groups.map( (val, ind) => (
                 <div><ListItem alignItems="flex-start">
                 <ListItemAvatar>

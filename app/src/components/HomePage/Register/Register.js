@@ -60,7 +60,7 @@ class Register extends Component
     handleSubmit(event) {
         event.preventDefault()
         axios.post('http://localhost:5000/api/v1/register',
-        {'username':this.state.name.trim() ,'password':this.state.password.trim(),
+        {'username':this.state.username.trim() ,'password':this.state.password.trim(),
           'email':this.state.email.trim(),'age':this.state.age.trim(),
           'phone':this.state.phone.trim(),'address':this.state.address.trim(),
           'city':this.state.city.trim(),'name':this.state.name.trim()})
@@ -71,9 +71,16 @@ class Register extends Component
             }
             this.setState({
                 open:0,
-            });
+            })
             this.props.history.push('/');
-        });
+          })
+            .catch(error => {
+              alert(error.response.data)
+              this.props.history.push('/');
+            });
+
+            
+    
         
       }
 

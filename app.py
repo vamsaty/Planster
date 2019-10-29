@@ -54,9 +54,9 @@ def registration():
     city = request.json['city']
                          
     if(usercol.find_one({"email":email})):
-        return "email exists!",400
+        return "Email exists!",400
     if(usercol.find_one({"username":username})):
-        return "username exists!",400
+        return "Username already exists!",400
     
     usercol.insert({
                 "name":name,"email":email,
@@ -79,7 +79,7 @@ def login():
     
     print(current_user)
     if(not(current_user)):
-        return "username does not exist!",400
+        return "Username does not exists!",400
     
     if(current_user):
         if(current_user['password']==password):
@@ -90,13 +90,31 @@ def login():
             print(current_user["name"])
             return jsonify({"userData" : session['username'],"Name":current_user["name"]}),200
         else:
-            return "password incorrect!",400
+            return "Password Incorrect!",400
 
 @app.route('/api/v1/logout', methods=['POST'])
 def logout():
     session.pop('username', None)
     session.pop('user_id', None)
     return "",200
+
+@app.route('/api/v1/user/friend/del/<friend_username>',methods=['DELETE'])
+def del_friend(friend_username):
+    username = request.json["username"]
+    friend = usercol.find_one({"name":friend_username}) 
+    user = usercol.find_one({"username" : username})
+    x=[]
+    print(friend)
+    if(friend):
+        x=user["friends"]
+        x.remove(str(friend.get('_id')))
+        y=friend["friends"]
+        y.remove(str(user.get('_id')))
+        usercol.update_one({"_id":friend["_id"]},{ "$set" :{"friends":y}})
+        usercol.update_one({"_id":user["_id"]},{ "$set" :{"friends":x}})
+        return "",204
+        
+
 
 @app.route('/api/v1/user/friend/add/<username>', methods=['POST'])
 def add_friend(username):
@@ -124,7 +142,7 @@ def add_friend(username):
 
         return "friend added", 200
 
-    return "this username does not exist", 400
+    return "This username does not exist", 400
     
 @app.route('/api/v1/groups/create/<username>',methods=['POST'])
 def create_group(username):
@@ -261,7 +279,10 @@ def user_leave_from_group():
 def del_group(group_name):
     group = groupscol.find_one({"name":group_name})
     group_id=str(group.get('_id'))
-    admin_id=session['user_id']
+    username=request.json['username']
+    print('username')
+    user = usercol.find_one({"username" : username})
+    admin_id = str(user.get('_id'))
     if(admin_id==group["admin_id"]):
         for x in usercol.find():
             current_groups=x['current_groups']
