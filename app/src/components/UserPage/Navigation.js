@@ -5,14 +5,14 @@ import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import avatar from '../../assets/images/avatar.jpg';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import EditIcon from '@material-ui/icons/Edit';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import HomePage from '../HomePage/HomePage'
-
+import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = theme => ({
   root: {
@@ -30,7 +30,8 @@ const styles = theme => ({
   add:{
     position:"fixed",
     top:"200px",
-    left:"230px",
+    left:"220px",
+    color:"black",
 
   },
   box:
@@ -40,8 +41,9 @@ const styles = theme => ({
     left:'110px',
     fontFamily:'Quicksand',
     alignItems:'center',
-    fontWeight:'bold',
-    color:"white",
+    fontWeight:'bolder',
+    color:"black",
+    fontSize:"1em"
     
 
   },
@@ -155,9 +157,9 @@ handleClose = () =>{
     
     
      <div className={classes.box} >
-     <Avatar alt="Remy Sharp" src={avatar} className={classes.bigAvatar} />
-  
-     <AddCircleIcon className={classes.add}/>
+     <Avatar alt="" src={avatar} className={classes.bigAvatar} />
+     <Tooltip title="Change Photo">
+     <EditIcon className={classes.add}/></Tooltip>
      <br/>
      <div className={classes.box}>
      <p>{String(sessionStorage.getItem("Name"))}</p>
