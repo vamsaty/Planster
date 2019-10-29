@@ -33,6 +33,7 @@ class NavigationItems extends Component {
         
         sessionStorage.setItem("userData",'');
         sessionStorage.clear();
+        console.log("LOGOUT")
         this.setState({
             showLogin : true
         });
@@ -44,19 +45,19 @@ class NavigationItems extends Component {
 
         
         let displayLoginReg = (
-            <>
-                
-                <NavigationItem home link="/">home</NavigationItem>
-                <NavigationItem link="/login">login</NavigationItem>
-                <NavigationItem link="/register">register</NavigationItem>
+            <>  
+                <NavigationItem exact link="/">home</NavigationItem>
+                <NavigationItem exact link="/login">login</NavigationItem>
+                <NavigationItem exact link="/register">register</NavigationItem>
             </>
         );
 
         if(!this.state.showLogin){
+            console.log("SHOW LOGIN CHECK")
             displayLoginReg = (
                 <>
-                    <NavigationItem exact home link="/user" exact>home</NavigationItem>
-                    <NavigationItem logout handleLogout = {this.logOut} link="/" >logout</NavigationItem>
+                    <NavigationItem exact link="/user" exact>home</NavigationItem>
+                    <NavigationItem handleLogout = {this.logOut} logout link="/">logout</NavigationItem>
                 </>
             );
         }

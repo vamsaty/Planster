@@ -57,7 +57,7 @@ class DashBoard extends Component{
             this.setState({
                 loggedIn : true,
                 loadingUserData : true
-            });
+            }   );
             
             this.getUserInfo();
 
@@ -123,15 +123,13 @@ class DashBoard extends Component{
 
                     <Fab size="small" color="primary" className={buttonClass} onClick = {()=>{this.setState({ showBar : !this.state.showBar})}}>
                         {arrow}
-                   </Fab>           
+                   </Fab>
 
                     <UserSideBar
                         loading = {this.state.loadingUserData}
                         userInfo = {this.state.userInfo} 
                         show = {this.state.showBar}
                     />
-
-
 
                     <main className={contentClass.join(' ')}>
                         {userFunctionalities}

@@ -1,7 +1,8 @@
-.appMain{
+/*.appMain{
     display: flex;
     height: 100%;
-    /* border: 1px solid crimson; */
+    
+    background-image: url('assets/images/background.jpg');
     justify-content: space-between;
     flex-direction: row;
     align-items: flex-end;
@@ -15,4 +16,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+}*/

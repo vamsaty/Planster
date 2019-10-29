@@ -1,7 +1,7 @@
 import React, { useState,useEffect, Component } from "react";
 import axios from "axios";
 import { keys } from "@material-ui/core/styles/createBreakpoints";
-import { CircularProgress,CardContent,Typography, ListItem, Divider, List} from '@material-ui/core';
+import {Paper,CircularProgress,CardContent,Typography, ListItem, Divider, List} from '@material-ui/core';
 
 
 class ListFriends extends Component{
@@ -9,11 +9,15 @@ class ListFriends extends Component{
     constructor(){
         super();
         this.state = {
-            friends : []
+            friends : [],
+            loading : false
         }
     }
-
-    listFriendHandler = () =>{
+    
+    componentWillMount = () =>{
+        this.setState({
+            loading : true
+        })
         axios.get('http://localhost:5000/api/v1/user/friends/' + String(sessionStorage.getItem("userData"))).
         then(res => {
             const friendList = []
@@ -23,7 +27,8 @@ class ListFriends extends Component{
                 friendList.push(res.data.friends[val])
             }
             this.setState({
-                friends : friendList
+                friends : friendList,
+                loading : false
             })
 
         });  
@@ -32,25 +37,34 @@ class ListFriends extends Component{
     render(){
 
         let disp = (
-            
-            <button onClick={this.listFriendHandler}>
-                LIST FRIENDS
-            </button>
+            <p> FRIENDS </p>
         );
-        // }
 
-        let friends = null;
+        let friends = <p>ALONE</p> ;
 
         if(this.state.friends){
             friends = (
                 this.state.friends.map( (val, ind) => {
                     return (
-                        <ListItem button>
-                            {val}
-                        </ListItem>
+                        <>
+                        <Paper>
+                            <ListItem button>
+                                {val}
+                            </ListItem>
+                        </Paper>
+                        <br></br>
+                        </>
                     )
                 })
             );
+        }
+        if(this.state.loading){
+            friends = <CircularProgress />
+            disp = null;
+        }
+
+        if(this.state.friends.length){
+            disp = <p>No friends</p>;
         }
 
         return(

@@ -36,7 +36,7 @@ body {
 }
 
 #flip div:first-child {
-  animation: show 5s linear infinite;
+  animation: show 8s linear infinite;
 }
 #Fflip div{
     background: white;
@@ -54,17 +54,37 @@ body {
 
 #flip div:nth-child(3) div {
     color:rgb(171, 247, 175);
-  }
+}
+
+#flip div:nth-child(4) div {
+    color:rgb(253, 240, 166);
+}
+  
 
 @keyframes show {
-  0% {margin-top:-270px;}
-  5% {margin-top:-180px;}
+  0% {margin-top:0px;}
+
+  12.5% {margin-top:0px;}
+  25% {margin-top:-90px;}
+  37.5% {margin-top:-180px;}
+  
+  50% {margin-top:-250px;}
+  62.5% {margin-top:-250px;}
+
+  75% {margin-top:-180px;}
+  87.5% {margin-top:-90px;}
+  100% {margin-top:0px;}
+  
+  /* 0% {margin-top:-270px; */
+
+  /* 5% {margin-top:-180px;}
   33% {margin-top:-180px;}
   38% {margin-top:-90px;}
   66% {margin-top:-90px;}
   71% {margin-top:0px;}
-  99.99% {margin-top:0px;}
-  100% {margin-top:-270px;}
+  99.99% {margin-top:0px;} */
+  
+  /* 100% {margin-top:-270px;} */
 }
 
 p {

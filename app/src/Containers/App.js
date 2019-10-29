@@ -1,16 +1,11 @@
 import React,{Component} from 'react';
-import './App.css';
 import {withRouter, Route,Link,Switch} from 'react-router-dom';
-import Layout from '../hoc/Layout/Layout';
-import Register from '../components/Registration/Register';
-import Login from '../components/Login/Login';
-import Logout from '../components/Logout/Logout';
+import Register from '../components/HomePage/Register/Register';
+import Login from '../components/HomePage/Login/Login';
 import HomePage from '../components/HomePage/HomePage';
-import DashBoard from '../components/HomePage/DashBoard/DashBoard';
+import UserPage from '../components/UserPage/UserPage'
 import { classes } from 'istanbul-lib-coverage';
 
-// import DashLayout from '../hoc/Layout/DashLayout';
-// import DashBoard from '../components/'
 
 class App extends Component{
   
@@ -33,27 +28,18 @@ class App extends Component{
   render(){
     
     let mainBody = (
-      // <div className={"main_body"}>
         <Switch>
           <Route exact path="/" component = {HomePage} />
-          <Route path="/user" component = {DashBoard} />
+          <Route path="/user" component = {UserPage} />
           <Route exact path="/login" component = {Login} />
-          <Route exact path="/logout" component = {Logout} />
           <Route exact path="/register" component = {Register} />
-          
-          {/* <Route render={()=>{
-            return(
-              <h1>HOME BABy</h1>
-            )
-          }} /> */}
         </Switch>
-      // </div>
     );
       
     return (
-        <Layout>
-          {mainBody}
-        </Layout>
+      <div>
+        {mainBody}
+      </div>         
     );
 
   }

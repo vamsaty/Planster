@@ -1,10 +1,26 @@
 import React, { Component } from 'react';
-import './HomePage.css'
 import { Redirect } from 'react-router-dom';
-import DefaultHome from './DefaultHome/DefaultHome';
-import DashBoard from './DashBoard/DashBoard';
+import TopBar from './TopBar';
+import { withStyles } from '@material-ui/styles';
 
 
+const styles = theme => ({
+    heading: {
+    fontFamily:'Quicksand',
+    fontSize:"3em",
+    fontWeight:"bold",
+    textAlign:"center",
+    color:"#0A2151 "
+    },
+    subheading :{
+    fontFamily:'Quicksand',
+    fontSize:"1.4em",
+    textAlign:"center",
+    fontWeight:"bold",
+    }
+  });
+
+  
 class HomePage extends Component{
 
     constructor(){
@@ -28,23 +44,24 @@ class HomePage extends Component{
     }
 
     render(){
+        const { classes } = this.props;
 
         return(
-            <div>    <div id="container">
-            One Place Destination For All Your Trips.
-            <div id="flip">
-              <div><div>PLAN</div></div>
-              <div><div>SCHEDULE</div></div>
-              <div><div>TRACK</div></div>
-              <div><div>EXPLORE</div></div>
-
-            </div>
             
+            <div >    
+            <TopBar/>
+            <div className={classes.heading}>
+            One Place Destination For All Your Trips.
+            </div><div><br/></div>
+            <div className={classes.subheading}>
+              <span style={{color:"#FF5733 "}}>PLAN.</span>
+              <span style={{color:"#FFC300 "}}>  SCHEDULE.</span>
+              <span style={{color:"#28B463 "}}>  TRACK.</span>
+              <span style={{color:"#6C3483  "}}>  EXPLORE.</span>
+            </div>
           </div>
-          
-          <p> a css3 animation demo</p></div>
         );
     }
 }
 
-export default HomePage;
+export default withStyles(styles)(HomePage);

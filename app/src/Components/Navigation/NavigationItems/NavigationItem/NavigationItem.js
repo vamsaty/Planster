@@ -8,7 +8,7 @@ const navigationItem = ( props ) => {
 
     let item = (
            <Button
-                variant="contained"
+                variant="outlined"
                 color="primary"
                 className={[classes.button, classes.buttonActive].join(' ')}
                 >
@@ -26,7 +26,7 @@ const navigationItem = ( props ) => {
         item = (
             
                     <Button
-                        variant="contained"
+                        variant="outlined"
                         color="primary"
                         className={[classes.button, classes.active].join(' ')}
                         ><NavLink
@@ -40,24 +40,8 @@ const navigationItem = ( props ) => {
             
         );
     }
-    if(props.home){
-        item = (
-            <Button
-                 variant="outlined"
-                 color="primary"
-                 className={[classes.button, classes.buttonActive].join(' ')}
-                 >
-                 <NavLink 
-                     to={props.link}
-                     exact={props.exact}
-                     activeClassName={classes.active}>
-                        {props.children}
-                 </NavLink>
-             </Button>
-         
-     );
- 
-    }
+    
+    
 
     return(
         <li className={classes.NavigationItem}>

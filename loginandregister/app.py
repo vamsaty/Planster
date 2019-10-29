@@ -87,7 +87,8 @@ def login():
             session['username'] = current_user['username']
             print(str(session['user_id']))
             print("done")
-            return jsonify({"userData" : session['username']}),200
+            print(current_user["name"])
+            return jsonify({"userData" : session['username'],"Name":current_user["name"]}),200
         else:
             return "password incorrect!",400
 
@@ -97,11 +98,12 @@ def logout():
     session.pop('user_id', None)
     return "",200
 
-@app.route('/api/v1/add_friend/<friend_username>/<current_username>', methods=['POST'])
-def add_friend(friend_username,current_username):
+@app.route('/api/v1/user/friend/add/<username>', methods=['POST'])
+def add_friend(username):
+    friend_username=request.json['friend_username']
     friend = usercol.find_one({"username":friend_username}) 
-    user = usercol.find_one({"username" : current_username})
-    
+    user = usercol.find_one({"username" : username})
+    print("gffnujfnf"+friend_username)
     # return friend_username
 
     if(friend):
@@ -382,13 +384,17 @@ def schedule_dates():
 
     
 
-@app.route('/api/v1/user/friends/<current_user>', methods=['GET'])
+@app.route('/api/v1/user/friends/list/<current_user>', methods=['GET'])
 def list_friends(current_user):
     # current_user = usercol.find_one({"_id":ObjectId(session['user_id'])})
 
     user = usercol.find_one({'username' : current_user })
 
     friends = user["friends"]
+    friends = []
+    for i in user['friends']:
+        friend=usercol.find_one({"_id":ObjectId(i)})
+        friends.append(friend["name"])
     
     return jsonify({"friends":friends}), 200
 

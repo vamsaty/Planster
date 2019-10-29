@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import { Redirect,Route } from 'react-router-dom';
 
-import Button from '../../components/UI/Button/Button';
+import Button from '@material-ui/core/Button'
+// import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Login.module.css';
 import axios from 'axios';
@@ -144,7 +145,8 @@ class ContactData extends Component {
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
-                <Button btnType="Success" disabled={!this.state.formIsValid}>Lets Go!</Button>
+                <br></br>
+                <Button variant = {"contained"} onClick={this.orderHandler} color="primary" disabled={!this.state.formIsValid}>Log in</Button>
             </form>
         );
         if ( this.state.loading ) {
@@ -152,9 +154,9 @@ class ContactData extends Component {
         }
         
         return (
-            <div className={classes.ContactData}>
+            <div className={classes.LoginData}>
                 <div className="login">
-                <h4>Login</h4>
+                <h3>Login</h3>
                 {form}</div>
             </div>
         );
