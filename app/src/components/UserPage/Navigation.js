@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import avatar from '../../assets/images/avatar.jpg';
+import avatar from '../../assets/images/avatar.png';
 import EditIcon from '@material-ui/icons/Edit';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -21,11 +21,11 @@ const styles = theme => ({
     justifyContent:'center',
   },
   bigAvatar: {
-    width: "130px",
+    width: "120px",
     position:"fixed",
-    left:"80px",
+    left:"90px",
     top:"100px",
-    height: "130px",
+    height: "120px",
   },
   add:{
     position:"fixed",

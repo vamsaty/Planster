@@ -7,7 +7,7 @@ import axios from "axios";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import dp from '../../assets/images/background.jpg';
-import AddGroups from './UserFunctions/AddGroups.js'
+import Add_Del_Group from './UserFunctions/Add_Del_Group.js'
 import Typography from '@material-ui/core/Typography';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
@@ -75,7 +75,7 @@ render(){
  
   return (
     <List className={classes.root}>
-      <AddGroups change_groups={this.listGroupsHandler} groups={this.state.groups}/>
+      <Add_Del_Group change_groups={this.listGroupsHandler} groups={this.state.groups}/>
            {this.state.groups.map( (val, ind) => (
                 <div><ListItem alignItems="flex-start">
                 <ListItemAvatar>
