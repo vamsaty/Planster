@@ -431,6 +431,15 @@ def del_user():
     print(session['user_id'])
     return "", 204
   
+@app.route('/api/v1/places/recommend',methods=['POST'])
+def recommend_places():
+    cost=request.json('cost')
+    seating=request.json('seating')
+    location=request.json('location')
+    category=request.json('category')
+    preference=request.json('preference')
+    output=dummy_recommender(cost,seating,location,category,preference)
+    return jsonify({"Places":output}),200
 
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
