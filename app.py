@@ -439,8 +439,11 @@ def recommend_places():
     category=request.json('category')
     preference=request.json('preference')
     output=dummy_recommender(cost,seating,location,category,preference)
-    return jsonify({"Places":output}),200
+    return jsonify({"Places":output}),200 #a string ,not a list,map UI accordingly
 
+  
+def dummy_recommender(a,b,c,d,e):
+    return "output"
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
