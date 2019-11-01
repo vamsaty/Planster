@@ -25,7 +25,7 @@ code {
 @import url('https://fonts.googleapis.com/css?family=Muli|Quicksand&display=swap');
 body{
   width:100%;
-  background-image: url('assets/images/travel.jpeg');
+  background-image :  linear-gradient( rgb(255, 255, 255),rgb(143, 174, 241));;
   font-family:'Quicksand', sans-serif;
   background-size: cover;
 }
