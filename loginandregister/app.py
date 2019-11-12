@@ -193,7 +193,34 @@ def add_friend_to_group():
         return "",201
     return "permission denied",403
 
-
+@app.route('/api/v1/groups/add_friend/suggest',methods=['GET'])
+def suggest_friend():
+    #admin_id=session['user_id']
+    #group_id=session['group_id']
+    admin_id = "5db8edbd25ba4817314eb20d"
+    group_id = "5dc759acad237b7741e40f13"
+    group=groupscol.find_one({"_id":ObjectId(group_id)})
+    print(group["name"])
+    suggested_friends_ids = set()
+    admin_user = usercol.find_one({"_id":ObjectId(admin_id)})
+    #print(admin_user["name"])
+    for u_id in group["current_users"]:
+        if u_id != admin_id:
+            user = usercol.find_one({"_id":ObjectId(u_id)})
+            #print(user["name"])
+            common_friends = set(user["friends"]) & set(admin_user["friends"])
+            #print(common_friends)
+            suggested_friends_ids.update(common_friends - set(group["current_users"]))
+    suggested_friends = set()
+    if(len(suggested_friends_ids) != 0):
+        for s_id in suggested_friends_ids:
+            user = usercol.find_one({"_id":ObjectId(s_id)})
+            suggested_friends.add(user["name"])
+        
+    return jsonify({
+            "suggested": list(suggested_friends)
+        }), 200
+        
 @app.route('/api/v1/groups/list/<username>',methods=['GET'])
 def list_group(username):
     user=usercol.find_one({"username":username})
@@ -397,6 +424,7 @@ def list_friends(current_user):
         friends.append(friend["name"])
     
     return jsonify({"friends":friends}), 200
+
 
 @app.route('/api/v1/user/expenses', methods=['GET'])#HAVE TO CHANGE LATER
 def get_expense():
