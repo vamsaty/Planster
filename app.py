@@ -69,6 +69,23 @@ def registration():
 
     return "",201
 
+@app.route('/api/v1/setlocation/<username>',methods=['POST'])
+def setlocation(username):
+    latitude=request.json['latitude']
+    longitude=request.json['longitude']
+    print(latitude)
+    usercol.update_one({"username":username},{ "$set" :{"latitude":latitude}})
+    usercol.update_one({"username":username},{ "$set" :{"longitude":longitude}})
+    return "",200
+
+
+@app.route('/api/v1/getlocation/<username>',methods=['GET'])
+def getlocation(username):
+    user=usercol.find_one({"username":username})
+    print(user["latitude"])
+    print(user["longitude"])
+    return jsonify({"latitude":user["latitude"],"longitude":user["longitude"]}),200
+
 @app.route('/api/v1/login',methods=['POST'])
 def login():
     username =  request.json['username']
@@ -223,6 +240,17 @@ def list_group(username):
         "groups" : groups
     }),200
     # return jsonify({}),201
+
+@app.route('/api/v1/groups/list/members/<groupname>',methods=['GET'])
+def list_members(groupname):
+    group=groupscol.find_one({"name":groupname})
+    members=[]
+    for i in group["current_users"]:
+        user=usercol.find_one({"_id":ObjectId(i)})
+        members.append(user["name"])
+    print(members)
+    return jsonify({"members":members}),200
+
 
 
 @app.route('/api/v1/groups/del_user',methods=['DELETE'])

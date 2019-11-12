@@ -5,7 +5,7 @@ import Login from '../components/HomePage/Login/Login';
 import HomePage from '../components/HomePage/HomePage';
 import UserPage from '../components/UserPage/UserPage'
 import { classes } from 'istanbul-lib-coverage';
-
+import Dashboard from '../components/Dashboard/Dashboard'
 
 class App extends Component{
   
@@ -33,6 +33,8 @@ class App extends Component{
           <Route path="/user" component = {UserPage} />
           <Route exact path="/login" component = {Login} />
           <Route exact path="/register" component = {Register} />
+          <Route exact path="/dashboard" component = {Dashboard} />
+          
         </Switch>
     );
       

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles';
-import List from '@material-ui/core/List';
+
+import {withRouter} from 'react-router-dom'
+import List from '@material-ui/core/List';  
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import axios from "axios";
@@ -10,6 +12,9 @@ import dp from '../../assets/images/background.jpg';
 import Add_Del_Group from './UserFunctions/Add_Del_Group.js'
 import Typography from '@material-ui/core/Typography';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Dashboard from '../Dashboard/Dashboard';
+import { Route,Switch} from 'react-router-dom';
+import HomePage from '../HomePage/HomePage'
 
 const styles = theme => ({
   root: {
@@ -36,12 +41,14 @@ const styles = theme => ({
 class Groups extends Component
 {
 
-  constructor(){
-    super();
+  constructor(props) {
+    super(props)
     this.state = {
         groups : [],
-        loaded:0
+        loaded:0,
+       
     }
+    this.routeChange = this.routeChange.bind(this);
 }
 
 
@@ -67,6 +74,10 @@ componentDidMount() {
   this.listGroupsHandler();
 }
 
+routeChange() {
+  
+  this.props.history.push("/dashboard");
+}
 
 render(){
 
@@ -74,6 +85,7 @@ render(){
 
  
   return (
+    <div>
     <List className={classes.root}>
       <Add_Del_Group change_groups={this.listGroupsHandler} groups={this.state.groups}/>
            {this.state.groups.map( (val, ind) => (
@@ -81,13 +93,16 @@ render(){
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
-                <Typography style={{fontFamily:'Quicksand',position:"relative",top:"1.1em"}}>{val}</Typography>
+                <Typography style={{fontFamily:'Quicksand',position:"relative",top:"1.1em"}} onClick={this.routeChange}>{val}</Typography>
                 </ListItem>
                 <Divider variant="inset" component="li" /></div>
             ))}
+            
     </List>
+   
+    </div>
   );
 }
 }
 
-export default withStyles(styles)(Groups);
+export default withRouter(withStyles(styles)(Groups));
