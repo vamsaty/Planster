@@ -130,8 +130,9 @@ renderPopup =(lat,long)=>{
         const min = 0.01;
         const max = 0.001;
         const rand = min + Math.random() * (max - min);
-        x.push(response.data.latitude-rand)
-        x.push(response.data.longitude-rand)
+        x.push(response.data.latitude)
+        x.push(response.data.longitude)
+        x.push(response.data.name)
         coordinates.push(x)
       //  console.log(coordinates)
       this.setState({l:response.data.latitude+rand,lo:response.data.longitude-rand})
@@ -212,7 +213,7 @@ render() {
         latitude={val[0]}
         closeButton={false} closeOnClick={false}
         height="10px">
-        <p>{this.props.members[ind+1]} {this.distance(this.state.viewport.latitude,this.state.viewport.longitude,val[0],val[1],'K')}km</p>
+        <p>{val[2]} {this.distance(this.state.viewport.latitude,this.state.viewport.longitude,val[0],val[1],'K')}km</p>
       </Popup></div></div>
         ))}
         

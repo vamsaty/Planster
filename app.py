@@ -84,7 +84,7 @@ def getlocation(name):
     user=usercol.find_one({"name":name})
     print(user["latitude"])
     print(user["longitude"])
-    return jsonify({"latitude":user["latitude"],"longitude":user["longitude"]}),200
+    return jsonify({"latitude":user["latitude"],"longitude":user["longitude"],"name":name}),200
 
 @app.route('/api/v1/login',methods=['POST'])
 def login():
