@@ -49,11 +49,9 @@ class UserPage extends Component {
       error => alert(error.message),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
-    const min = 0.001;
-    const max = 0.005;
-    const rand = min + Math.random() * (max - min);
-    axios.post('http://localhost:5000/api/v1/setlocation/'+String(sessionStorage.getItem("userData")),
-      {'latitude':this.state.latitude + rand,'longitude':this.state.longitude - rand})
+    
+    axios.post('http://localhost:5000/api/v1/setlocation/'+String(sessionStorage.getItem("Name")),
+      {'latitude':this.state.latitude ,'longitude':this.state.longitude })
       .then( response => {
         })
         .catch(error => {

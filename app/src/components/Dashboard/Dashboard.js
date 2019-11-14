@@ -30,8 +30,13 @@ const styles = theme => ({
       drawer: {
           zIndex : "-1",
           flexShrink: 0,
+          
       
       },
+      paper: {
+    backgroundColor: "#a2adff",
+    color: 'white'
+  },
       
       content: {
         flexGrow: 1,
@@ -58,11 +63,12 @@ class Dashboard extends Component{
          
       }
       this.listMembersHandler=this.listMembersHandler.bind(this);
-      this.handleNavigation=this.handleNavigation.bind(this)
+      this.handleNavigation=this.handleNavigation.bind(this);
+      this.handleElse=this.handleElse.bind(this)
     }
 
     listMembersHandler = () =>{
-        axios.get('http://127.0.0.1:5000/api/v1/groups/list/members/Gokarna').
+        axios.get('http://127.0.0.1:5000/api/v1/groups/list/members/'+String(sessionStorage.getItem("group"))).
         then(res => {
             const membersList = []
             const data = res.data.members
@@ -86,26 +92,31 @@ class Dashboard extends Component{
       handleNavigation(){
           this.setState({"navigate":"track"})
       }
+
+      handleElse(){
+        this.setState({"navigate":""})
+      }
     
     render(){
         let middle
         if(this.state.navigate=="track")
         {
-            middle=(<div><Track/></div>)
+            middle=(<div><Track members={this.state.members}/></div>)
         }
         const { classes } = this.props;
         return (
             <div className={classes.root}>
   
      <TopBar/>
-      <Drawer variant="permanent" className={classes.drawer} >
+      <Drawer variant="permanent" className={classes.drawer}  classes={{ paper: classes.paper }} >
         <div className={classes.toolbar} />
         <Divider/>
         <List button style={{width:"17em"}}>
         
         <p><br/><br/></p>
         <ListItem>
-        <ListItemText primary="Goa"></ListItemText></ListItem>
+        <p onClick={this.handleElse} style={{cursor:"pointer",position:"relative",left:"3em",fontFamily:'Quicksand',fontWeight:"bolder",fontSize:"1.3em"}}>{String(sessionStorage.getItem("group"))}
+        </p></ListItem>
         <Divider/>
         <ListItem>
         <ExpansionPanel style={{width:"100%"}}>
@@ -130,7 +141,17 @@ class Dashboard extends Component{
      
       </ListItem> <Divider/>
         <ListItem>
-        <ListItemText primary="Track" onClick={this.handleNavigation}></ListItemText></ListItem>
+        <ListItemText primary="Track" style={{fontFamily:'Quicksand',cursor:'pointer',textAlign:'center'}}  
+        onClick={this.handleNavigation}></ListItemText></ListItem>
+        <Divider/>
+        <ListItem>
+        <ListItemText primary="Bill Splitter" style={{cursor:'pointer',textAlign:'center'}}  
+        onClick={this.handleElse}
+       ></ListItemText></ListItem>
+       <Divider/>
+        <ListItem>
+        <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleElse}
+       ></ListItemText></ListItem><Divider/>
         </List>
       </Drawer>
       <main className={classes.content}>

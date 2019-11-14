@@ -23,9 +23,10 @@ code {
   box-sizing: border-box;
 }*/
 @import url('https://fonts.googleapis.com/css?family=Muli|Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 body{
   width:100%;
-  background-image :  linear-gradient( rgb(255, 255, 255),rgb(143, 174, 241));;
+  background-color:#eeeeee;
   font-family:'Quicksand', sans-serif;
   background-size: cover;
 }

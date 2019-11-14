@@ -46,6 +46,7 @@ class Groups extends Component
     this.state = {
         groups : [],
         loaded:0,
+        group:"",
        
     }
     this.routeChange = this.routeChange.bind(this);
@@ -75,7 +76,7 @@ componentDidMount() {
 }
 
 routeChange() {
-  
+  sessionStorage.setItem("group",this.state.group );
   this.props.history.push("/dashboard");
 }
 
@@ -93,7 +94,7 @@ render(){
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
-                <Typography style={{fontFamily:'Quicksand',position:"relative",top:"1.1em"}} onClick={this.routeChange}>{val}</Typography>
+                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand',position:"relative",top:"1.1em"}} onMouseEnter={()=>{this.setState({group:val})}} onClick={this.routeChange}>{val}</Typography>
                 </ListItem>
                 <Divider variant="inset" component="li" /></div>
             ))}

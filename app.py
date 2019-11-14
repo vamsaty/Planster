@@ -69,19 +69,19 @@ def registration():
 
     return "",201
 
-@app.route('/api/v1/setlocation/<username>',methods=['POST'])
-def setlocation(username):
+@app.route('/api/v1/setlocation/<name>',methods=['POST'])
+def setlocation(name):
     latitude=request.json['latitude']
     longitude=request.json['longitude']
     print(latitude)
-    usercol.update_one({"username":username},{ "$set" :{"latitude":latitude}})
-    usercol.update_one({"username":username},{ "$set" :{"longitude":longitude}})
+    usercol.update_one({"name":name},{ "$set" :{"latitude":latitude}})
+    usercol.update_one({"name":name},{ "$set" :{"longitude":longitude}})
     return "",200
 
 
-@app.route('/api/v1/getlocation/<username>',methods=['GET'])
-def getlocation(username):
-    user=usercol.find_one({"username":username})
+@app.route('/api/v1/getlocation/<name>',methods=['GET'])
+def getlocation(name):
+    user=usercol.find_one({"name":name})
     print(user["latitude"])
     print(user["longitude"])
     return jsonify({"latitude":user["latitude"],"longitude":user["longitude"]}),200
@@ -209,12 +209,14 @@ def get_details(username):
         }), 200
 
 
-@app.route('/api/v1/groups/add_friend',methods=['POST'])
-def add_friend_to_group():
-    admin_id=session['user_id']
-    username=request.json['username']
-    group_id=session['group_id']
-    group=groupscol.find_one({"_id":ObjectId(group_id)})
+@app.route('/api/v1/groups/add_friend/<groupname>/<username>',methods=['POST'])
+def add_friend_to_group(groupname,username):
+    admin=usercol.find_one({"username":username})
+    admin_id=str(admin.get("_id"))
+    username=request.form['friendname']
+    group=groupscol.find_one({"name":groupname})
+    group_id=str(group.get("_id"))
+    
     user=usercol.find_one({"username":username})
     user_id=str(user.get('_id'))
     #print(type(user_id))
