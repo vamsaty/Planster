@@ -324,7 +324,7 @@ def create_trip():
     ndays= request.json['no_of_days']
     name= request.json['name']
     tentative_date_range={}
-    trip_id=tripscol.insert({"admin_id":admin_id,"name":name,"location":location,"group_id":group_id,"no_of_days":ndays, "individual_expense":[], "tentative_date_range":tentative_date_range})
+    trip_id=tripscol.insert({"admin_id":admin_id,"name":name,"location":location,"group_id":group_id,"no_of_days":ndays, "individual_expense":[], "tentative_date_range":tentative_date_range, "events":[]})
     trip_id=str(trip_id)
     group=groupscol.find_one({"_id":ObjectId(group_id)})
     if(group['admin_id']==admin_id):
@@ -438,8 +438,29 @@ def del_user():
     print(session['user_id'])
     return "", 204
   
+@app.route('/api/v1/trips/create_event', methods=['POST'])
+def create_event():
+    name = request.json['name']
+    location = request.json['location']
+    time = request.json['time']
+    current_trip = tripscol.find_one({"_id":ObjectId(session['trip_id'])})
+    new_event = {"event_name": name, "location":location, "time":time}
+    tripscol.update({'_id':current_trip['_id']}, {'$push':{'events':new_event}})
+    
+@app.route('/api/v1/trips/view_events', methods=['GET'])
+def view_events():
+    current_trip = tripscol.find_one({"_id":ObjectId(session['trip_id'])})
+    events = current_trip["events"]
+    return jsonify({"events":events}), 200
 
-
+@app.route('/api/v1/trips/delete_event/<event_name>', methods=['GET'])
+def delete_event(event_name):
+    tripscol.update({"_id":ObjectId(session['trip_id'])}, { "$pull": { "events": {"name":event_name }}})
+    return "", 200
+        
+#HAVE TO ADD UPDATE EVENT
+    
+    
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 
