@@ -1,32 +1,22 @@
 import React,{ Component } from 'react'
-import ReactMapGL from 'react-map-gl';
-import  {NavigationControl, Marker,Popup} from 'react-map-gl';
-import pointer from '../../assets/images/clocation.png'
-import friend from '../../assets/images/flocation.png'
 import axios from "axios";
+import { Map, GoogleApiWrapper,Marker,InfoWindow } from 'google-maps-react';
+import pointer from '../../assets/images/clocation.png'
 const TOKEN="pk.eyJ1Ijoic2phZG9uIiwiYSI6ImNrMnZ2dDhjajA4cGkzZHBnNGJwdGx3eGoifQ.cochyrkRr-f87PZXJCo4Ww"
 
 
-const navStyle = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  padding: '10px'
+const mapStyles = {
+  width: '60em',
+  height: '30em',
 };
-
 
 class Track extends Component{
 
   constructor(props) {
     super(props)
     this.state = {
-      viewport: {
-          width: 950,
-          height: 550,
-          latitude: 0,  
-          longitude: 0,
-          zoom: 14
-      },
+      latitude:0,
+      longitude:0,
       popupInfo: null,
       friends_coordinates:[],
       l:0,
@@ -37,9 +27,7 @@ class Track extends Component{
   }
 
 
-_onViewportChange = viewport => {
-    this.setState({viewport});
-};
+
 
 trackLocation()
   {
@@ -49,14 +37,14 @@ trackLocation()
         console.log(position)
         let lat=position.coords.latitude
         let long =position.coords.longitude
-        this.setState({viewport:{...this.state.viewport,latitude:position.coords.latitude,
-        longitude:position.coords.longitude}})
+        this.setState({latitude:position.coords.latitude,
+        longitude:position.coords.longitude})
       },
       error => alert(error.message),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
     axios.post('http://localhost:5000/api/v1/setlocation/'+String(sessionStorage.getItem("Name")),
-      {'latitude':this.state.viewport.latitude ,'longitude':this.state.viewport.longitude })
+      {'latitude':this.state.latitude ,'longitude':this.state.longitude })
       .then( response => {})
       .catch(error => {});
         var i;
@@ -118,37 +106,42 @@ distance(lat1, lon1, lat2, lon2, unit) {
 render() {  
     return (
         <div>
-          <ReactMapGL
-            {...this.state.viewport} onViewportChange={this._onViewportChange}
-            mapStyle="mapbox://styles/mapbox/streets-v11"
-            mapboxApiAccessToken={TOKEN} >
-            <div className="nav" style={navStyle}>
-          <NavigationControl onViewportChange={this._onViewportChange}/>
-          <div>
-            <Marker latitude={this.state.viewport.latitude} longitude={this.state.viewport.longitude} offsetLeft={-20} offsetTop={-10}>
-            <img style={{width:"1.8em"}} src={pointer} />
-            </Marker>
-          </div>
-          {this.state.friends_coordinates.map( (val, ind) => (
-          <div key={ind}>
-          <Marker latitude={val[0]} longitude={val[1]} offsetLeft={-20} offsetTop={-10}>
-          <img style={{width:"1.8em"}} src={friend} onMouseEnter={()=>{this.setState({index:ind})}} onClick={this.display}/>
+        <Map
+        google={this.props.google}
+        zoom={15}
+        style={mapStyles}
+        initialCenter={{ lat: 12.932374, lng: 77.546009}}
+      >
+        <Marker options={{icon: {url: require('../../assets/images/clocation.png'), scaledSize: {width: 32, height: 32}}}} position={{ lat: this.state.latitude, lng: this.state.longitude}} />
+        <InfoWindow position={{ lat: this.state.latitude+0.0014, lng: this.state.longitude}} visible={true}>
+            <div>
+              Me
+            </div>
+        </InfoWindow>
+        {this.state.friends_coordinates.map( (val, ind) => (
+         
+          <Marker options={{icon: {url: require('../../assets/images/flocation.png'), scaledSize: {width: 32, height: 32}}}} position={{lat:val[0] ,lng:val[1] }}>
           </Marker>
-          <div id={ind} style={{display:"none"}}>
-          <Popup tipSize={5}
-          anchor="bottom-right"
-          longitude={val[1]}
-          latitude={val[0]}
-          closeButton={false} closeOnClick={false}
-          height="10px">
-          <p>{val[2]} {this.distance(this.state.viewport.latitude,this.state.viewport.longitude,val[0],val[1],'K')}km</p>
-          </Popup></div></div>
+          
+        
         ))}    
-       </div>
-          </ReactMapGL>
+        {this.state.friends_coordinates.map( (val, ind) => (
+         
+          <InfoWindow position={{lat:val[0]+0.0014 ,lng:val[1] }} visible={true}>
+          <div>
+           {val[2]}
+          </div>
+      </InfoWindow>
+          
+        
+        ))}    
+      </Map>
+
         </div>
     );
 }
 }
 
-export default Track
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyCOy5dPWYI2XWvR4c99GcnL76PxdoCZm-U'
+})(Track);
