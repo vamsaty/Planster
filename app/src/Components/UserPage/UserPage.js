@@ -7,7 +7,7 @@ import Navigation from './Navigation'
 import Groups from './Groups'
 import Friends from './Friends';
 import Tags from './Tags'
-
+import axios from "axios";
 
 const styles = theme => ({
   root: {
@@ -26,16 +26,48 @@ class UserPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-       navigate:"profile"
+       navigate:"profile",
+       latitude:0,
+       longitude:0,
     }
     this.handleNavigation= this.handleNavigation.bind(this);
+    this.setLocation=this.setLocation.bind(this);
   }
 
-
+  setLocation()
+  {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const location = JSON.stringify(position);
+        console.log(position)
+        let lat=position.coords.latitude
+        let long =position.coords.longitude
+      this.setState({latitude:position.coords.latitude,longitude:position.coords.longitude})
+        
+  
+      },
+      error => alert(error.message),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+    
+    axios.post('http://localhost:5000/api/v1/setlocation/'+String(sessionStorage.getItem("Name")),
+      {'latitude':this.state.latitude ,'longitude':this.state.longitude })
+      .then( response => {
+        })
+        .catch(error => {
+         
+        });
+      
+  }
   handleNavigation= (nav) => {
     this.setState({navigate:nav});
   }
   
+  componentDidMount() {
+    this.setLocation()
+    setTimeout(this.setLocation,3000)
+    //setInterval(this.setLocation, 10000);
+  }
   render(){
     const { classes } = this.props;
     let middle;

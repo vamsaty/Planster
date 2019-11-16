@@ -6,8 +6,8 @@ import Divider from '@material-ui/core/Divider';
 import axios from "axios";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import dp from '../../assets/images/avatar.jpg';
-import AddFriend from './UserFunctions/AddFriend.js'
+import dp from '../../assets/images/avatar.png';
+import Add_Del_Friend from './UserFunctions/Add_Del_Friend'
 import Typography from '@material-ui/core/Typography';
 
 
@@ -73,7 +73,7 @@ render(){
 
   return (
     <List className={classes.root}>
-    <AddFriend change_friends={this.listFriendsHandler}/>
+    <Add_Del_Friend change_friends={this.listFriendsHandler} friends={this.state.friends}/>
         {this.state.friends.map( (val, ind) => (
               <div><ListItem alignItems="flex-start">
               <ListItemAvatar>

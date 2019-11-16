@@ -64,6 +64,7 @@ class Login extends Component
       {'username':this.state.name.trim() ,'password':this.state.password.trim()})
       .then( response => {
           let responseData = response;
+          console.log(responseData)
             if(responseData.data.userData){
               sessionStorage.setItem("userData", responseData.data.userData);
               sessionStorage.setItem("Name", responseData.data.Name)
@@ -72,7 +73,11 @@ class Login extends Component
               open:0,
             });
             this.props.history.push('/user');
-        }); 
+        })
+        .catch(error => {
+         alert(error.response.data) 
+         
+        });
       }
 
     handleOpen = () =>{

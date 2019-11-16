@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import avatar from '../../assets/images/avatar.jpg';
+import avatar from '../../assets/images/avatar.png';
 import EditIcon from '@material-ui/icons/Edit';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -21,11 +21,11 @@ const styles = theme => ({
     justifyContent:'center',
   },
   bigAvatar: {
-    width: "130px",
+    width: "120px",
     position:"fixed",
-    left:"80px",
+    left:"90px",
     top:"100px",
-    height: "130px",
+    height: "120px",
   },
   add:{
     position:"fixed",
@@ -70,9 +70,9 @@ class Navigation extends Component {
   
     this.state = {
      p_color:"black",
-     c_color:"white",
-     f_color:"white",
-     l_color:"white",
+     c_color:"#464444",
+     f_color:"#464444",
+     l_color:"#464444",
      open:0
     }
     this.profile=this.profile.bind(this)
@@ -89,9 +89,9 @@ class Navigation extends Component {
     this.props.handleNavigation("profile")
     this.setState({
       p_color: "black",
-      c_color:"white",
-     f_color:"white",
-     l_color:"white"
+      c_color:"#464444",
+     f_color:"#464444",
+     l_color:"#464444"
 
     })
    
@@ -100,20 +100,20 @@ class Navigation extends Component {
   {
     this.props.handleNavigation("calendar")
     this.setState({
-      p_color: "white",
+      p_color: "#464444",
       c_color:"black",
-     f_color:"white",
-     l_color:"white"
+     f_color:"#464444",
+     l_color:"#464444"
     })
   }
   files()
   {
     this.props.handleNavigation("files")
     this.setState({
-      p_color: "white",
-      c_color:"white",
+      p_color: "#464444",
+      c_color:"#464444",
      f_color:"black",
-     l_color:"white"
+     l_color:"#464444"
     })
   }
   logout()
@@ -125,10 +125,10 @@ class Navigation extends Component {
   handleOpen = () =>{
     this.setState({
         open:1,
-        p_color: "white",
-      c_color:"white",
+        p_color: "#464444",
+      c_color:"#464444",
      l_color:"black",
-     f_color:"white"
+     f_color:"#464444"
     }) 
    
 }
@@ -137,9 +137,9 @@ handleClose = () =>{
     this.setState({
         open:0,
         p_color: "black",
-      c_color:"white",
-     f_color:"white",
-     l_color:"white"
+      c_color:"#464444",
+     f_color:"#464444",
+     l_color:"#464444"
     }) 
    
 }

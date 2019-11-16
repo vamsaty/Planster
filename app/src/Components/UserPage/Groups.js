@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles';
-import List from '@material-ui/core/List';
+
+import {withRouter} from 'react-router-dom'
+import List from '@material-ui/core/List';  
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import axios from "axios";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import dp from '../../assets/images/background.jpg';
-import AddGroups from './UserFunctions/AddGroups.js'
+import Add_Del_Group from './UserFunctions/Add_Del_Group.js'
 import Typography from '@material-ui/core/Typography';
-
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Dashboard from '../Dashboard/Dashboard';
+import { Route,Switch} from 'react-router-dom';
+import HomePage from '../HomePage/HomePage'
 
 const styles = theme => ({
   root: {
@@ -25,7 +30,9 @@ const styles = theme => ({
   },
   tooltip:{
     cursor:"pointer",position:"relative",top:9,
-  }
+  },
+
+  
   
 });
 
@@ -34,12 +41,15 @@ const styles = theme => ({
 class Groups extends Component
 {
 
-  constructor(){
-    super();
+  constructor(props) {
+    super(props)
     this.state = {
         groups : [],
-        loaded:0
+        loaded:0,
+        group:"",
+       
     }
+    this.routeChange = this.routeChange.bind(this);
 }
 
 
@@ -65,6 +75,10 @@ componentDidMount() {
   this.listGroupsHandler();
 }
 
+routeChange() {
+  sessionStorage.setItem("group",this.state.group );
+  this.props.history.push("/dashboard");
+}
 
 render(){
 
@@ -72,20 +86,24 @@ render(){
 
  
   return (
+    <div>
     <List className={classes.root}>
-      <AddGroups change_groups={this.listGroupsHandler}/>
+      <Add_Del_Group change_groups={this.listGroupsHandler} groups={this.state.groups}/>
            {this.state.groups.map( (val, ind) => (
                 <div><ListItem alignItems="flex-start">
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
-                <Typography style={{fontFamily:'Quicksand',position:"relative",top:"1.1em"}}>{val}</Typography>
+                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand',position:"relative",top:"1.1em"}} onMouseEnter={()=>{this.setState({group:val})}} onClick={this.routeChange}>{val}</Typography>
                 </ListItem>
                 <Divider variant="inset" component="li" /></div>
             ))}
+            
     </List>
+   
+    </div>
   );
 }
 }
 
-export default withStyles(styles)(Groups);
+export default withRouter(withStyles(styles)(Groups));
