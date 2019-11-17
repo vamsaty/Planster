@@ -15,7 +15,7 @@ from flask_static_compress import FlaskStaticCompress
 import logging
 from flask_pymongo import PyMongo
 import pymongo
-
+from dateutil import parser
 from bson.objectid import ObjectId
 from bson import json_util
 
@@ -342,24 +342,36 @@ def del_group(group_name):
 
 @app.route('/api/v1/trips/create',methods=['POST'])
 def create_trip():
-    admin_id= session['user_id']
+    #request.json={'description': 'in thailand', 'date': ['2019-11-05T18:30:00.000Z', '2019-11-16T18:29:59.999Z'], 'name': 'Bangkok, Thailand', 'group': 'Mumbai'}
+    """print(request.json["description"])
+    print(request.json["location"])
+    print(request.json["date"])
+    print(request.json["group"])"""
     location= request.json['location']
-    group_id= session['group_id']
-    ndays= request.json['no_of_days']
-    name= request.json['name']
-    tentative_date_range={}
-    trip_id=tripscol.insert({"admin_id":admin_id,"name":name,"location":location,"group_id":group_id,"no_of_days":ndays, "individual_expense":[], "tentative_date_range":tentative_date_range})
+    groupname=request.json["group"]
+    date=request.json['date']
+    description=request.json['description']
+
+    #print(location,group)
+    #location='Bangkok, Thailand'
+    #description= 'in thailand'
+    #date= ['2019-11-05T18:30:00.000Z', '2019-11-16T18:29:59.999Z']
+    #group='Mumbai'
+    date1=parser.parse(date[0])
+    date2=parser.parse(date[1])
+    print(date2-date1)
+    admin_name=request.json["admin"]
+
+    admin = usercol.find_one({"username" : admin_name})
+    admin_id=str(admin.get("_id"))
+    group = groupscol.find_one({"name":groupname})
+    group_id=str(group.get('_id'))
+    trip_id=tripscol.insert({"description":description,"admin_id":admin_id,"location":location,"group_id":group_id,  "tentative_date_range":date})
     trip_id=str(trip_id)
-    group=groupscol.find_one({"_id":ObjectId(group_id)})
-    if(group['admin_id']==admin_id):
-        new_trips=group["trips"]
-        new_trips.append(trip_id)
-        groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"trips":new_trips}})
-        for x in group["current_users"]:
-            user=usercol.find_one({"_id":ObjectId(x)})
-            new_trips=user["trips"]
-            new_trips.append(trip_id)
-            usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"trips":new_trips}})
+    #group=groupscol.find_one({"_id":ObjectId(group_id)})
+    new_trips=group["trips"]
+    new_trips.append(trip_id)
+    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"trips":new_trips}})
     return "",201
 
 @app.route('/api/v1/trips/del_trip/<trip_name>', methods=['DELETE'])
@@ -390,6 +402,17 @@ def delete_trip(trip_name):
             usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"trips":new_trips}})
     tripscol.delete_one({"_id":ObjectId(trip_id)})
     return "",204
+
+
+@app.route('/api/v1/groups/get_trips/<groupname>',methods=["GET"])
+def get_trips(groupname):
+    group = groupscol.find_one({"name":groupname})
+    group_id=str(group.get('_id'))
+    trips=[]
+    for i in group["trips"]:
+        temp=tripscol.find_one({"_id":ObjectId(i)})
+        trips.append(temp["location"])
+    return jsonify({"trips":trips}),200
 
 @app.route('/api/v1/trips/<trip_name>', methods=['GET'])
 def view_trip(trip_name):

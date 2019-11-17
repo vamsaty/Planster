@@ -6,7 +6,7 @@ import HomePage from '../components/HomePage/HomePage';
 import UserPage from '../components/UserPage/UserPage'
 import { classes } from 'istanbul-lib-coverage';
 import Dashboard from '../components/Dashboard/Dashboard'
-
+import Trips from '../components/Trip/Trip'
 class App extends Component{
   
   state = {
@@ -34,6 +34,7 @@ class App extends Component{
           <Route exact path="/login" component = {Login} />
           <Route exact path="/register" component = {Register} />
           <Route exact path="/dashboard" component = {Dashboard} />
+          <Route exact parth="/dashboard/trip" component={Trips} />
           
         </Switch>
     );

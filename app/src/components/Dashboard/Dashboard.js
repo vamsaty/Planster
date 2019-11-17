@@ -19,6 +19,10 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from "axios";
 import Track from './Track'
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Trip from '../Trip/Trip'
+import TripsFunction from './TripsFunction';
 const drawerWidth = 300;
 
 
@@ -59,7 +63,7 @@ class Dashboard extends Component{
       this.state = {
           members:[],
           navigate:"",
-          
+          trips:[]
          
       }
       this.listMembersHandler=this.listMembersHandler.bind(this);
@@ -85,6 +89,8 @@ class Dashboard extends Component{
         });  
       }
 
+     
+
       componentDidMount() {
         this.listMembersHandler();
       }
@@ -102,6 +108,10 @@ class Dashboard extends Component{
         if(this.state.navigate=="track")
         {
             middle=(<div><Track members={this.state.members}/></div>)
+        }
+        if(this.state.navigate=="trips")
+        {
+            middle=(<div><TripsFunction  /></div>)
         }
         const { classes } = this.props;
         return (
@@ -126,7 +136,10 @@ class Dashboard extends Component{
           id="panel1a-header"
           
         >
+        <AddCircleIcon/>
+        <DeleteIcon/>
           <Typography className={classes.heading}>Members</Typography>
+
         </ExpansionPanelSummary>
         
         {this.state.members.map( (val, ind) => (
@@ -140,19 +153,27 @@ class Dashboard extends Component{
       </ExpansionPanel>
      
       </ListItem> <Divider/>
+        
         <ListItem>
-        <ListItemText primary="Track" style={{fontFamily:'Quicksand',cursor:'pointer',textAlign:'center'}}  
-        onClick={this.handleNavigation}></ListItemText></ListItem>
-        <Divider/>
+        
+        <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  
+        onClick={()=>{this.setState({"navigate":"trips"})}}
+       ></ListItemText>
+      </ListItem> 
+      <Divider/><ListItem>
+      <ListItemText primary="Track" style={{fontFamily:'Quicksand',cursor:'pointer',textAlign:'center'}}  
+      onClick={this.handleNavigation}></ListItemText></ListItem>
+      <Divider/>
         <ListItem>
         <ListItemText primary="Bill Splitter" style={{cursor:'pointer',textAlign:'center'}}  
         onClick={this.handleElse}
        ></ListItemText></ListItem>
        <Divider/>
-        <ListItem>
-        <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleElse}
-       ></ListItemText></ListItem><Divider/>
+       
         </List>
+        <ListItem>
+        <ListItemText primary="Files" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleElse}
+       ></ListItemText></ListItem><Divider/>
       </Drawer>
       <main className={classes.content}>
       <div>{middle}</div></main>

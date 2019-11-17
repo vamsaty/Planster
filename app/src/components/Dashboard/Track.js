@@ -110,10 +110,10 @@ render() {
         google={this.props.google}
         zoom={15}
         style={mapStyles}
-        initialCenter={{ lat: 12.932374, lng: 77.546009}}
+        initialCenter={{ lat:12.935599, lng:  77.534564}}
       >
         <Marker options={{icon: {url: require('../../assets/images/clocation.png'), scaledSize: {width: 32, height: 32}}}} position={{ lat: this.state.latitude, lng: this.state.longitude}} />
-        <InfoWindow position={{ lat: this.state.latitude+0.0014, lng: this.state.longitude}} visible={true}>
+        <InfoWindow position={{ lat: this.state.latitude+0.0016, lng: this.state.longitude}} visible={true}>
             <div>
               Me
             </div>
@@ -127,7 +127,7 @@ render() {
         ))}    
         {this.state.friends_coordinates.map( (val, ind) => (
          
-          <InfoWindow position={{lat:val[0]+0.0014 ,lng:val[1] }} visible={true}>
+          <InfoWindow position={{lat:val[0]+0.0017,lng:val[1] }} visible={true}>
           <div>
            {val[2]}
           </div>
