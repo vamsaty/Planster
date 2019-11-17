@@ -19,7 +19,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from "axios";
 import Track from '../Dashboard/Track';
-import FileUpload from './FileUpload';
+import FileUpload from '../FileUpload/FileUpload';
 
 
 const drawerWidth = 300;

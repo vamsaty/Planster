@@ -19,6 +19,8 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from "axios";
 import Track from './Track'
+import FileUpload from '../FileUpload/FileUpload';
+
 const drawerWidth = 300;
 
 
@@ -65,6 +67,8 @@ class Dashboard extends Component{
       this.listMembersHandler=this.listMembersHandler.bind(this);
       this.handleNavigation=this.handleNavigation.bind(this);
       this.handleElse=this.handleElse.bind(this)
+      this.handleFileUpload = this.handleFileUpload.bind(this)
+
     }
 
     listMembersHandler = () =>{
@@ -96,13 +100,22 @@ class Dashboard extends Component{
       handleElse(){
         this.setState({"navigate":""})
       }
+      
+      handleFileUpload(){
+        this.setState({"navigate" : "file_upload"})
+      }
     
     render(){
         let middle
         if(this.state.navigate=="track")
         {
             middle=(<div><Track members={this.state.members}/></div>)
+        }else if(this.state.navigate=='file_upload')
+        {
+            middle = (<div><FileUpload /></div>)
+
         }
+        
         const { classes } = this.props;
         return (
             <div className={classes.root}>
@@ -149,10 +162,14 @@ class Dashboard extends Component{
         onClick={this.handleElse}
        ></ListItemText></ListItem>
        <Divider/>
-        <ListItem>
+       <ListItem>
         <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleElse}
        ></ListItemText></ListItem><Divider/>
+       <ListItem>
+        <ListItemText primary="Files" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleFileUpload}
+       ></ListItemText></ListItem><Divider/>
         </List>
+        
       </Drawer>
       <main className={classes.content}>
       <div>{middle}</div></main>

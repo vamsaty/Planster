@@ -20,6 +20,9 @@ const useStyles = theme => ({
       width: 500,
       height: 450,
     },
+    fab : {
+        margin : '5px 5px 5px 0px'
+    }
   });
   
 
@@ -120,7 +123,7 @@ class FileUpload extends Component{
             <Divider/>
             <Divider/>
             <Grid>
-                <Paper>
+                {/* <Paper> */}
                 <form onSubmit={this.handleSubmit} method = "POST" enctype = "multipart/form-data">
                     <label class="fileContainer">
                         Click here to trigger the file uploader!
@@ -134,7 +137,7 @@ class FileUpload extends Component{
                         <RefreshRounded />
                     </Fab>
                 </form>
-                </Paper>
+                {/* </Paper> */}
 
             </Grid>
             </div>

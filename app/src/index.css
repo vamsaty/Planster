@@ -33,8 +33,11 @@ body{
 
 .fileContainer {
   overflow: hidden;
-  border:2px solid rebeccapurple;
+  cursor: pointer;
+  /* border:2px solid rebeccapurple; */
   position: relative;
+  padding: 4px;
+  margin: 5px;
 }
 
 .fileContainer [type=file] {
