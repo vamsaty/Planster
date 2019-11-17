@@ -15,7 +15,7 @@ from flask_static_compress import FlaskStaticCompress
 import logging
 from flask_pymongo import PyMongo
 import pymongo
-from dateutil import parser
+
 from bson.objectid import ObjectId
 from bson import json_util
 
@@ -54,9 +54,9 @@ def registration():
     city = request.json['city']
                          
     if(usercol.find_one({"email":email})):
-        return "Email exists!",400
+        return "email exists!",400
     if(usercol.find_one({"username":username})):
-        return "Username already exists!",400
+        return "username exists!",400
     
     usercol.insert({
                 "name":name,"email":email,
@@ -69,23 +69,6 @@ def registration():
 
     return "",201
 
-@app.route('/api/v1/setlocation/<name>',methods=['POST'])
-def setlocation(name):
-    latitude=request.json['latitude']
-    longitude=request.json['longitude']
-    print(latitude)
-    usercol.update_one({"name":name},{ "$set" :{"latitude":latitude}})
-    usercol.update_one({"name":name},{ "$set" :{"longitude":longitude}})
-    return "",200
-
-
-@app.route('/api/v1/getlocation/<name>',methods=['GET'])
-def getlocation(name):
-    user=usercol.find_one({"name":name})
-    print(user["latitude"])
-    print(user["longitude"])
-    return jsonify({"latitude":user["latitude"],"longitude":user["longitude"],"name":name}),200
-
 @app.route('/api/v1/login',methods=['POST'])
 def login():
     username =  request.json['username']
@@ -96,7 +79,7 @@ def login():
     
     print(current_user)
     if(not(current_user)):
-        return "Username does not exists!",400
+        return "username does not exist!",400
     
     if(current_user):
         if(current_user['password']==password):
@@ -107,7 +90,7 @@ def login():
             print(current_user["name"])
             return jsonify({"userData" : session['username'],"Name":current_user["name"]}),200
         else:
-            return "Password Incorrect!",400
+            return "password incorrect!",400
 
 @app.route('/api/v1/logout', methods=['POST'])
 def logout():
@@ -115,27 +98,6 @@ def logout():
     session.pop('user_id', None)
     return "",200
 
-<<<<<<< HEAD:loginandregister/app.py
-=======
-@app.route('/api/v1/user/friend/del/<friend_username>',methods=['DELETE'])
-def del_friend(friend_username):
-    username = request.json["username"]
-    friend = usercol.find_one({"name":friend_username}) 
-    user = usercol.find_one({"username" : username})
-    x=[]
-    print(friend)
-    if(friend):
-        x=user["friends"]
-        x.remove(str(friend.get('_id')))
-        y=friend["friends"]
-        y.remove(str(user.get('_id')))
-        usercol.update_one({"_id":friend["_id"]},{ "$set" :{"friends":y}})
-        usercol.update_one({"_id":user["_id"]},{ "$set" :{"friends":x}})
-        return "",204
-        
-
-
->>>>>>> Shivangi:app.py
 @app.route('/api/v1/user/friend/add/<username>', methods=['POST'])
 def add_friend(username):
     friend_username=request.json['friend_username']
@@ -162,7 +124,7 @@ def add_friend(username):
 
         return "friend added", 200
 
-    return "This username does not exist", 400
+    return "this username does not exist", 400
     
 @app.route('/api/v1/groups/create/<username>',methods=['POST'])
 def create_group(username):
@@ -212,14 +174,12 @@ def get_details(username):
         }), 200
 
 
-@app.route('/api/v1/groups/add_friend/<groupname>/<username>',methods=['POST'])
-def add_friend_to_group(groupname,username):
-    admin=usercol.find_one({"username":username})
-    admin_id=str(admin.get("_id"))
-    username=request.form['friendname']
-    group=groupscol.find_one({"name":groupname})
-    group_id=str(group.get("_id"))
-    
+@app.route('/api/v1/groups/add_friend',methods=['POST'])
+def add_friend_to_group():
+    admin_id=session['user_id']
+    username=request.json['username']
+    group_id=session['group_id']
+    group=groupscol.find_one({"_id":ObjectId(group_id)})
     user=usercol.find_one({"username":username})
     user_id=str(user.get('_id'))
     #print(type(user_id))
@@ -272,17 +232,6 @@ def list_group(username):
         "groups" : groups
     }),200
     # return jsonify({}),201
-
-@app.route('/api/v1/groups/list/members/<groupname>',methods=['GET'])
-def list_members(groupname):
-    group=groupscol.find_one({"name":groupname})
-    members=[]
-    for i in group["current_users"]:
-        user=usercol.find_one({"_id":ObjectId(i)})
-        members.append(user["name"])
-    print(members)
-    return jsonify({"members":members}),200
-
 
 
 @app.route('/api/v1/groups/del_user',methods=['DELETE'])
@@ -339,10 +288,7 @@ def user_leave_from_group():
 def del_group(group_name):
     group = groupscol.find_one({"name":group_name})
     group_id=str(group.get('_id'))
-    username=request.json['username']
-    print('username')
-    user = usercol.find_one({"username" : username})
-    admin_id = str(user.get('_id'))
+    admin_id=session['user_id']
     if(admin_id==group["admin_id"]):
         for x in usercol.find():
             current_groups=x['current_groups']
@@ -372,44 +318,24 @@ def del_group(group_name):
 
 @app.route('/api/v1/trips/create',methods=['POST'])
 def create_trip():
-    #request.json={'description': 'in thailand', 'date': ['2019-11-05T18:30:00.000Z', '2019-11-16T18:29:59.999Z'], 'name': 'Bangkok, Thailand', 'group': 'Mumbai'}
-    """print(request.json["description"])
-    print(request.json["location"])
-    print(request.json["date"])
-    print(request.json["group"])"""
+    admin_id= session['user_id']
     location= request.json['location']
-<<<<<<< HEAD:loginandregister/app.py
     group_id= session['group_id']
     ndays= request.json['no_of_days']
     name= request.json['name']
     tentative_date_range={}
     trip_id=tripscol.insert({"admin_id":admin_id,"name":name,"location":location,"group_id":group_id,"no_of_days":ndays, "individual_expense":[], "tentative_date_range":tentative_date_range, "events":[]})
-=======
-    groupname=request.json["group"]
-    date=request.json['date']
-    description=request.json['description']
-
-    #print(location,group)
-    #location='Bangkok, Thailand'
-    #description= 'in thailand'
-    #date= ['2019-11-05T18:30:00.000Z', '2019-11-16T18:29:59.999Z']
-    #group='Mumbai'
-    date1=parser.parse(date[0])
-    date2=parser.parse(date[1])
-    print(date2-date1)
-    admin_name=request.json["admin"]
-
-    admin = usercol.find_one({"username" : admin_name})
-    admin_id=str(admin.get("_id"))
-    group = groupscol.find_one({"name":groupname})
-    group_id=str(group.get('_id'))
-    trip_id=tripscol.insert({"description":description,"admin_id":admin_id,"location":location,"group_id":group_id,  "tentative_date_range":date})
->>>>>>> Shivangi:app.py
     trip_id=str(trip_id)
-    #group=groupscol.find_one({"_id":ObjectId(group_id)})
-    new_trips=group["trips"]
-    new_trips.append(trip_id)
-    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"trips":new_trips}})
+    group=groupscol.find_one({"_id":ObjectId(group_id)})
+    if(group['admin_id']==admin_id):
+        new_trips=group["trips"]
+        new_trips.append(trip_id)
+        groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"trips":new_trips}})
+        for x in group["current_users"]:
+            user=usercol.find_one({"_id":ObjectId(x)})
+            new_trips=user["trips"]
+            new_trips.append(trip_id)
+            usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"trips":new_trips}})
     return "",201
 
 @app.route('/api/v1/trips/del_trip/<trip_name>', methods=['DELETE'])
@@ -440,17 +366,6 @@ def delete_trip(trip_name):
             usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"trips":new_trips}})
     tripscol.delete_one({"_id":ObjectId(trip_id)})
     return "",204
-
-
-@app.route('/api/v1/groups/get_trips/<groupname>',methods=["GET"])
-def get_trips(groupname):
-    group = groupscol.find_one({"name":groupname})
-    group_id=str(group.get('_id'))
-    trips=[]
-    for i in group["trips"]:
-        temp=tripscol.find_one({"_id":ObjectId(i)})
-        trips.append(temp["location"])
-    return jsonify({"trips":trips}),200
 
 @app.route('/api/v1/trips/<trip_name>', methods=['GET'])
 def view_trip(trip_name):
@@ -523,7 +438,6 @@ def del_user():
     print(session['user_id'])
     return "", 204
   
-<<<<<<< HEAD:loginandregister/app.py
 @app.route('/api/v1/trips/create_event', methods=['POST'])
 def create_event():
     name = request.json['name']
@@ -547,22 +461,6 @@ def delete_event(event_name):
 #HAVE TO ADD UPDATE EVENT
     
     
-=======
-@app.route('/api/v1/places/recommend',methods=['POST'])
-def recommend_places():
-    cost=request.json('cost')
-    seating=request.json('seating')
-    location=request.json('location')
-    category=request.json('category')
-    preference=request.json('preference')
-    output=dummy_recommender(cost,seating,location,category,preference)
-    return jsonify({"Places":output}),200 #a string ,not a list,map UI accordingly
-
-  
-def dummy_recommender(a,b,c,d,e):
-    return "output"
-
->>>>>>> Shivangi:app.py
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 
