@@ -18,7 +18,7 @@ import pymongo
 # import recommender1 as recom
 from bson.objectid import ObjectId
 from bson import json_util
-
+import base64
 app = Flask(__name__)
 CORS(app)
 
@@ -31,7 +31,7 @@ db = pymongo.database.Database(mongo, 'db1')
 usercol = pymongo.collection.Collection(db, 'usercol')
 groupscol=pymongo.collection.Collection(db,'groupscol')
 tripscol=pymongo.collection.Collection(db,'tripscol')
-
+filescol = pymongo.collection.Collection(db, 'files')
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
@@ -709,6 +709,61 @@ def list_members(groupname):
         members.append(user["name"])
     print(members)
     return jsonify({"members":members}),200
+
+
+
+
+
+##FILE UPLOAD
+
+@app.route('/show_gallery/<groupId>',methods=['GET'])
+def dispaly(groupId):
+    
+    group = filescol.find_one({
+        'group' : groupId
+    })
+    data = []
+
+    if group :
+        for i in group['files']:
+            data.append(json.loads(json_util.dumps(i)))
+
+        return jsonify(data), 200
+    
+    return "nothing to show",400
+
+
+@app.route('/file_upload', methods=['POST'])
+def fileUpload():
+
+    file = request.files['file']
+    group = request.form['group']
+
+    if file:
+        encoded_string = base64.b64encode(file.read())
+        pres = filescol.find_one({'group' : group})
+        if not pres:
+            filescol.insert_one(
+                {'group' : group,'files' : [encoded_string] }
+            )
+        else:
+            filescol.update_one(
+                {'group' : group},{'$push' : { 'files' : encoded_string}}
+            )
+
+        return 'done',200
+    return 'fail', 400
+    
+
+
+
+
+
+
+
+
+
+
 
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

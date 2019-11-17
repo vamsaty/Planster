@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles';
-import {GridList,Grid, Paper,GridListTile, Fab, IconButton, Divider} from '@material-ui/core';
+import {GridList,Grid, Paper,GridListTile, Fab, IconButton, Divider, CircularProgress} from '@material-ui/core';
 import {Add as AddIcon, AccessAlarmRounded, RefreshRounded} from '@material-ui/icons';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import axios from 'axios';
@@ -10,15 +10,24 @@ import { sequenceExpression } from '@babel/types';
 const useStyles = theme => ({
     root: {
       display: 'flex',
+    //   minWidth:'700px',
+      paddingTop:'60px',
       flexWrap: 'wrap',
       flexDirection:'column',
-      justifyContent: 'space-around',
+      justifyContent: 'center',
+      alignItems : 'center',
       overflow: 'hidden',
-    //   backgroundColor: theme.palette.background.paper,
+    },
+    gallery:{
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'center',
+        alignItems:'center'
     },
     gridList: {
-      width: 500,
-      height: 450,
+      width: '70%',
+      maxHeight: '700px',
+      padding:0
     },
     fab : {
         margin : '5px 5px 5px 0px'
@@ -38,13 +47,14 @@ class FileUpload extends Component{
     }
 
     getGallery = () =>{
-        const url = 'http://localhost:7000/show_gallery/'+String(sessionStorage.getItem('group'))
+
+        const url = 'http://localhost:5000/show_gallery/'+String(sessionStorage.getItem('group'))
         axios.get(url)
         .then(response => {
             this.setState({
                 gallery : response.data
             })
-            console.log(this.state.gallery)
+            
         })
         .catch(err=>{
 
@@ -58,14 +68,15 @@ class FileUpload extends Component{
         const formData = new FormData();
         formData.append('file',this.state.file)
         formData.append('group', String(sessionStorage.getItem('group')))
-        // console.log('[FORM_DATA]', formData.getAll())
+        
         // formData.append('filename', this.fileName.value);
-    
-        const url = 'http://localhost:7000/file_upload';
+        
+        const url = 'http://localhost:5000/file_upload';
 
         axios.post(url,formData)
         .then(response => {
-            console.log('[RESPONSE] : ', response)
+            // console.log('[RESPONSE] : ', response)
+            this.getGallery()
         })
         .catch(err=>{
 
@@ -99,48 +110,75 @@ class FileUpload extends Component{
         ]
 
         let gallery = null;
-        console.log(this.state.gallery)
-
+        
         if(this.state.gallery){
+            let ncols = 4
+            if(this.state.gallery.length < 4)
+                ncols = this.state.gallery.length
             gallery = (
-                this.state.gallery.map((tile,ind) => {
-                    const hit = atob(tile['$binary'])
-                    console.log(hit)
-                    return (
-                        <GridListTile key={ind} cols={1}>
-                            <img src = {"data:image/jpeg;base64," + hit} />
-                        </GridListTile>
-                    )
-                })
+                <GridList cellHeight={160} className={classes.gridList} cols={ncols}>
+                    {
+                        this.state.gallery.map((tile,ind) => {
+                            const hit = atob(tile['$binary'])
+                            return (
+                                <GridListTile key={ind} cols={1}
+                                    >
+                                    <img src = {"data:image/jpeg;base64," + hit} />
+                                </GridListTile>
+                            )
+                        })
+                    }
+                </GridList>
+            )
+        }else{
+            gallery = (
+                <GridList cellHeight={160} className={classes.gridList} cols={1}>
+                    <CircularProgress />
+                </GridList>
+            )
+        }
+
+        let fileName = 'Click here to trigger the file uploader!';
+        if(this.state.file){
+            fileName = this.state.file.name
+        }
+
+        
+        let formE = (
+            <form style={{padding : '10px', position:'fixed',bottom:'50px',right:'33.5%'}} onSubmit={this.handleSubmit} method = "POST" enctype = "multipart/form-data">
+            <label class="fileContainer">
+                {fileName}
+                <input type="file" onChange={this.onFileChange}/>
+            </label>
+
+            <Fab color="primary" aria-label="add" className={classes.fab} type="submit">
+                <ArrowUpwardIcon />
+            </Fab>
+            
+        </form>
+        );
+
+        let showTime = formE;
+        if(this.state.gallery){
+            showTime = (
+                <>
+                <Grid className={classes.gallery}>
+                    {gallery}
+                </Grid>
+                <Divider/>
+                <Divider/>
+                <Grid>
+                    {formE}
+                   
+                </Grid>
+                </>
             )
         }
 
         return (
-            <div className={classes.root}>
-                <GridList cellHeight={160} className={classes.gridList} cols={3}>
-                    {gallery}
-                </GridList>
-            <Divider/>
-            <Divider/>
-            <Grid>
-                {/* <Paper> */}
-                <form onSubmit={this.handleSubmit} method = "POST" enctype = "multipart/form-data">
-                    <label class="fileContainer">
-                        Click here to trigger the file uploader!
-                        <input type="file"/>
-                    </label>
-
-                    <Fab color="primary" aria-label="add" className={classes.fab}>
-                        <ArrowUpwardIcon />
-                    </Fab>
-                    <Fab color="primary" aria-label="add" className={classes.fab} onClick={this.getGallery}>
-                        <RefreshRounded />
-                    </Fab>
-                </form>
-                {/* </Paper> */}
-
+            <Grid className={classes.root}>
+                {showTime}
             </Grid>
-            </div>
         );
     }
 
