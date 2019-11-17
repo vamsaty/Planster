@@ -34,7 +34,7 @@ usercol = pymongo.collection.Collection(db, 'usercol')
 groupscol=pymongo.collection.Collection(db,'groupscol')
 tripscol=pymongo.collection.Collection(db,'tripscol')
 filescol = pymongo.collection.Collection(db,'files')
-
+chatscol = pymongo.collection.Collection(db,'chats')
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
@@ -536,6 +536,36 @@ def fileUpload():
     return 'fail', 400
     
 
+##chat app
+
+@app.route('/chat/<group>',methods=['GET'])
+def getChats(group):
+    chatBox = chatscol.find_one({'group' : group})
+    data = []
+    if chatBox:
+        for chat in chatBox['chats']:
+            data.append(chat)
+        
+        return jsonify(data), 200
+    else:
+        return 'empty', 400
+
+@app.route('/chat',methods=['POST'])
+def postChat():
+    msg = request.json['msg']
+    username = request.json['username']
+    group = request.json['group']
+    
+    chatBox = chatscol.find_one({'group' : group})
+    if not chatBox:
+        chatscol.insert_one({'group' : group,
+            'chats' : [ {'sender' : username,'msg' : msg} ]})
+    else:
+        chatscol.update_one(
+            {'group' : group},
+            {'$push' : {'chats' : {'sender' : username,'msg' : msg}}}
+        )
+    return 'sent', 200
 
   
 def dummy_recommender(a,b,c,d,e):

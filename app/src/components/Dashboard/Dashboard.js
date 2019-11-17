@@ -24,6 +24,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Trip from '../Trip/Trip'
 import FileUpload from '../FileUpload/FileUpload';
 import TripsFunction from './TripsFunction';
+import Chat from '../Chat/Chat';
+import { ChatBubble } from '@material-ui/icons';
 const drawerWidth = 300;
 
 
@@ -51,6 +53,13 @@ const styles = theme => ({
         left:"15em",
         top:"1em"
       },
+      chatBox: {
+        position : 'absolute',
+        right:'40px',
+        bottom:'40px',
+        cursor:'pointer',
+
+      }
       
      
     
@@ -64,7 +73,8 @@ class Dashboard extends Component{
       this.state = {
           members:[],
           navigate:"",
-          trips:[]
+          trips:[],
+          toggleChat : false
          
       }
       this.listMembersHandler=this.listMembersHandler.bind(this);
@@ -118,6 +128,7 @@ class Dashboard extends Component{
           middle = (<div><FileUpload /></div>)
         }
         const { classes } = this.props;
+        let chatBox = (this.state.toggleChat) ? <Chat /> : null;
         return (
             <div className={classes.root}>
   
@@ -181,7 +192,8 @@ class Dashboard extends Component{
       </Drawer>
       <main className={classes.content}>
       <div>{middle}</div></main>
-      
+        {chatBox}
+      <ChatBubble className={classes.chatBox} onClick={()=>this.setState({toggleChat : !this.state.toggleChat})}/>
     </div>
  
         )
