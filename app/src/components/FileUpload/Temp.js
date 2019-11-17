@@ -18,14 +18,11 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from "axios";
-import Track from './Track'
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Trip from '../Trip/Trip'
+import Track from '../Dashboard/Track';
 import FileUpload from '../FileUpload/FileUpload';
-import TripsFunction from './TripsFunction';
-const drawerWidth = 300;
 
+
+const drawerWidth = 300;
 
 const styles = theme => ({
     root: {
@@ -35,8 +32,7 @@ const styles = theme => ({
       drawer: {
           zIndex : "-1",
           flexShrink: 0,
-          
-      
+
       },
       paper: {
     backgroundColor: "#a2adff",
@@ -64,12 +60,13 @@ class Dashboard extends Component{
       this.state = {
           members:[],
           navigate:"",
-          trips:[]
+          
          
       }
       this.listMembersHandler=this.listMembersHandler.bind(this);
       this.handleNavigation=this.handleNavigation.bind(this);
       this.handleElse=this.handleElse.bind(this)
+      this.handleFileUpload = this.handleFileUpload.bind(this)
     }
 
     listMembersHandler = () =>{
@@ -90,8 +87,6 @@ class Dashboard extends Component{
         });  
       }
 
-     
-
       componentDidMount() {
         this.listMembersHandler();
       }
@@ -100,23 +95,28 @@ class Dashboard extends Component{
           this.setState({"navigate":"track"})
       }
 
+      handleFileUpload(){
+          this.setState({"navigate" : "file_upload"})
+      }
+
       handleElse(){
         this.setState({"navigate":""})
       }
     
     render(){
-        let middle
+        let middle = null;
         if(this.state.navigate=="track")
         {
             middle=(<div><Track members={this.state.members}/></div>)
-        }
-        if(this.state.navigate=="trips")
+
+        }else if(this.state.navigate=='file_upload')
         {
-            middle=(<div><TripsFunction  /></div>)
+            middle = (<div><FileUpload /></div>)
+
         }
-        if(this.state.navigate == 'files'){
-          middle = (<div><FileUpload /></div>)
-        }
+        
+
+
         const { classes } = this.props;
         return (
             <div className={classes.root}>
@@ -140,10 +140,7 @@ class Dashboard extends Component{
           id="panel1a-header"
           
         >
-        <AddCircleIcon/>
-        <DeleteIcon/>
           <Typography className={classes.heading}>Members</Typography>
-
         </ExpansionPanelSummary>
         
         {this.state.members.map( (val, ind) => (
@@ -157,27 +154,23 @@ class Dashboard extends Component{
       </ExpansionPanel>
      
       </ListItem> <Divider/>
-        
         <ListItem>
-        
-        <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  
-        onClick={()=>{this.setState({"navigate":"trips"})}}
-       ></ListItemText>
-      </ListItem> 
-      <Divider/><ListItem>
-      <ListItemText primary="Track" style={{fontFamily:'Quicksand',cursor:'pointer',textAlign:'center'}}  
-      onClick={this.handleNavigation}></ListItemText></ListItem>
-      <Divider/>
+        <ListItemText primary="Track" style={{fontFamily:'Quicksand',cursor:'pointer',textAlign:'center'}}  
+        onClick={this.handleNavigation}></ListItemText></ListItem>
+        <Divider/>
         <ListItem>
         <ListItemText primary="Bill Splitter" style={{cursor:'pointer',textAlign:'center'}}  
         onClick={this.handleElse}
        ></ListItemText></ListItem>
        <Divider/>
+        <ListItem>
+        <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleElse}
+       ></ListItemText></ListItem><Divider/>
+       <ListItem>
+       <ListItemText primary="Files" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleFileUpload}
+      ></ListItemText></ListItem><Divider/>
        
         </List>
-        <ListItem>
-        <ListItemText primary="Files" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>{this.setState({navigate:'files'})}}
-       ></ListItemText></ListItem><Divider/>
       </Drawer>
       <main className={classes.content}>
       <div>{middle}</div></main>
