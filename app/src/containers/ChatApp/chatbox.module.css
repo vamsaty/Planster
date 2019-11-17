@@ -1,0 +1,12 @@
+.chatBoxBody{
+    display: flex;
+    max-height: 500px;
+    /* border: 2px solid red; */
+    cursor: pointer;
+    padding: 10px;
+    justify-content: space-evenly;
+    flex-direction: column;
+    float : right;
+    overflow: auto;
+    background-color: crimson;
+}
