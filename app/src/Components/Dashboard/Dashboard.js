@@ -20,7 +20,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from "axios";
 import Track from './Track'
 import FileUpload from '../FileUpload/FileUpload';
-
+import TripsFunction from './TripsFunction';
+import Trip from '../Trip/Trip'
 const drawerWidth = 300;
 
 
@@ -115,6 +116,10 @@ class Dashboard extends Component{
             middle = (<div><FileUpload /></div>)
 
         }
+        else if(this.state.navigate=="trips")
+        {
+            middle=(<div><TripsFunction  /></div>)
+        }
         
         const { classes } = this.props;
         return (
@@ -163,7 +168,7 @@ class Dashboard extends Component{
        ></ListItemText></ListItem>
        <Divider/>
        <ListItem>
-        <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleElse}
+        <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>{this.setState({"navigate" : "trips"})}}
        ></ListItemText></ListItem><Divider/>
        <ListItem>
         <ListItemText primary="Files" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleFileUpload}
