@@ -19,6 +19,7 @@ from dateutil import parser
 from bson.objectid import ObjectId
 from bson import json_util
 import base64
+import svm_recommend.py
 
 app = Flask(__name__)
 CORS(app)
