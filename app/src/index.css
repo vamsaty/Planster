@@ -30,3 +30,86 @@ body{
   font-family:'Quicksand', sans-serif;
   background-size: cover;
 }
+/*body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  background-image: url('assets/images/background.jpg');
+  background-size: cover;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}*/
+@import url('https://fonts.googleapis.com/css?family=Muli|Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+body{
+  width:100%;
+  background-color:#eeeeee;
+  font-family:'Quicksand', sans-serif;
+  background-size: cover;
+}
+
+.fileContainer {
+  overflow: hidden;
+  cursor: pointer;
+  /* border:2px solid rebeccapurple; */
+  position: relative;
+  padding: 10px;
+  margin: 5px;
+  transition:all 0.2s ease-in-out;
+  border: 1px solid black;
+  box-shadow: 5px 5px 1px rebeccapurple;
+}
+
+
+.fileContainer:hover{
+  box-shadow: -5px -5px 1px rebeccapurple;
+}
+
+.fileContainer:active{
+  box-shadow: 0px 0px 1px rebeccapurple;
+}
+
+.fileContainer [type=file] {
+  cursor: inherit;
+  display: block;
+  /* font-size: 999px; */
+  filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+  /* right: 0; */
+  text-align: right;
+  top: 0;
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
