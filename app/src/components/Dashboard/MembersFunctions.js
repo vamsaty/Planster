@@ -77,7 +77,8 @@ const styles = theme => ({
       width:"100%",
     },
     tooltip:{
-      cursor:"pointer",position:"relative",top:9,
+      cursor:"pointer",
+      // position:"relative",top:9,
     },
    
   formControl: {
@@ -90,9 +91,9 @@ const styles = theme => ({
   root1:{
     width: '100%',
     backgroundColor: 'theme.palette.background.paper',
-    position: 'relative',
+    // position: 'relative',
     overflow: 'auto',
-    maxHeight: 230,
+    // maxHeight: 230,
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -289,12 +290,12 @@ class MembersFunctions extends Component{
       if(sessionStorage.getItem("is_admin")=="true")
       {
         
-        functions=(<Grid item xs={9}>
-          <Button onClick={this.handleOpen} style={{position:"fixed",left:"35em",height:"6em",top:"40em",margin:"1em"}} variant="contained" color="primary" className={classes.button}>
+        functions=(<Grid item xs={9} style={{display:'flex',width:'100%',justifyContent:'space-between'}}>
+          <Button onClick={this.handleOpen} variant="contained" color="primary" className={classes.button}>
          Add Member 
         </Button>
 
-        <Button onClick={this.handleOpen1}  style={{position:"fixed",height:"6em",top:"40em",margin:"1em",right:"15em"}} variant="contained" color="secondary" className={classes.button}>
+        <Button onClick={this.handleOpen1} variant="contained" color="secondary" className={classes.button}>
           Delete Member
         </Button>
           </Grid>)
@@ -307,8 +308,8 @@ class MembersFunctions extends Component{
             
             
             <Grid item xs={12}>
-            <Paper style={{"position":"relative","top":"5em",left:"4em"}}>
-            <Card><CardContent style={{position:"relative",fontSize:"1em",left:"46%"}}><strong>Members</strong></CardContent></Card>
+            <Paper>
+            <Card><CardContent><strong>Members</strong></CardContent></Card>
              <div>
     <List className={classes.root1}>
     <Paper >
@@ -317,7 +318,7 @@ class MembersFunctions extends Component{
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
-                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand',position:"relative",top:"1.1em"}} 
+                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand'}} 
                 onMouseEnter={()=>{this.setState({trip:val})}} 
                 // onClick={this.routeChange}
                 >{val}

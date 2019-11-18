@@ -244,11 +244,11 @@ class TripsFunction extends Component{
       {
         
         functions=(<Grid item xs={9}>
-          <Button onClick={this.handleOpen} style={{position:"fixed",left:"35em",height:"6em",top:"40em",margin:"1em"}} variant="contained" color="primary" className={classes.button}>
+          <Button onClick={this.handleOpen} variant="contained" color="primary" className={classes.button}>
          Create Trip
         </Button>
 
-        <Button onClick={this.handleOpen1} style={{position:"fixed",height:"6em",top:"40em",margin:"1em",right:"15em"}} variant="contained" color="secondary" className={classes.button}>
+        <Button onClick={this.handleOpen1} variant="contained" color="secondary" className={classes.button}>
           Delete Trip
         </Button>
           </Grid>)
@@ -261,8 +261,8 @@ class TripsFunction extends Component{
             
             
             <Grid item xs={12}>
-            <Paper style={{"position":"relative","top":"5em",left:"4em"}}>
-            <Card><CardContent style={{position:"relative",fontSize:"1em",left:"46%"}}><strong>Trips</strong></CardContent></Card>
+            <Paper >
+            <Card><CardContent ><strong>Trips</strong></CardContent></Card>
              <div>
     <List className={classes.root1}>
     <Paper >
@@ -271,7 +271,7 @@ class TripsFunction extends Component{
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
-                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand',position:"relative",top:"1.1em"}} 
+                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand'}} 
                 onMouseEnter={()=>{this.setState({trip:val})}} onClick={this.routeChange}>{val}</Typography>
               </ListItem>  
                </div>

@@ -200,7 +200,7 @@ class Chat extends Component{
                         margin="normal"
                     />
 
-                    <Fab color="primary" aria-label="add" className={classes.fab}
+                    <Fab size='small' color="primary" aria-label="add" className={classes.fab}
                     onClick={this.postChat}>
                         <SendIcon />
                     </Fab>

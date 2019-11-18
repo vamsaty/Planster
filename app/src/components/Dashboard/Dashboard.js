@@ -27,6 +27,7 @@ import MembersFunctions from './MembersFunctions'
 import Chat from '../Chat/Chat';
 import {Fab} from '@material-ui/core';
 import FileUpload from '../FileUpload/FileUpload';
+import BillSplitter from '../BillSplitter/BillSplitter';
 import { ChatBubble } from '@material-ui/icons';
 const drawerWidth = 300;
 
@@ -34,6 +35,13 @@ const drawerWidth = 300;
 const styles = theme => ({
     root: {
         display: 'flex',
+        top:'60px',
+        width:'84%',
+        height:'93%',
+        border:'2px solid blue',
+        position:'fixed',
+        right:'1%',
+        justifyContent:'flex-end'
       },
      
       drawer: {
@@ -48,12 +56,16 @@ const styles = theme => ({
   },
       
       content: {
-        flexGrow: 1,
-        padding: 40,
-        margin:20,
-        position:"absolute",
-        left:"15em",
-        top:"1em"
+        // flexGrow: 1,
+        padding: '10px',
+        display:'flex',
+        width:'100%',
+        // maxWidth:'100%',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        border:'1px solid red',
+        // marginTop:'60px',
       },
       
       chatBox: {
@@ -120,18 +132,21 @@ class Dashboard extends Component{
         let middle
         if(this.state.navigate=="track")
         {
-            middle=(<div><Track members={this.state.members}/></div>)
+            middle=(<Track members={this.state.members}/>)
         }
         if(this.state.navigate=="trips")
         {
-            middle=(<div><TripsFunction  /></div>)
+            middle=(<TripsFunction  />)
         }
         if(this.state.navigate=="members")
         {
-            middle=(<div><MembersFunctions  /></div>)
+            middle=(<MembersFunctions  />)
         }
         if(this.state.navigate == 'files'){
-          middle = (<div><FileUpload /></div>)
+          middle = (<FileUpload />)
+        }
+        if(this.state.navigate == 'bills'){
+          middle = (<BillSplitter />)
         }
         const { classes } = this.props;
         let chatBox = (this.state.toggleChat) ? <Chat /> : null;
@@ -171,7 +186,7 @@ class Dashboard extends Component{
       <Divider/>
         <ListItem>
         <ListItemText primary="Bill Splitter" style={{cursor:'pointer',textAlign:'center'}}  
-        onClick={this.handleElse}
+        onClick={()=>{this.setState({navigate:'bills'})}}
        ></ListItemText></ListItem>
        <Divider/>
        
@@ -181,9 +196,9 @@ class Dashboard extends Component{
        ></ListItemText></ListItem><Divider/>
       </Drawer>
       <main className={classes.content}>
-      <div>{middle}</div></main>
+      {middle}</main>
       {chatBox}
-        <Fab color="primary" aria-label="add" className={classes.chatBox}
+        <Fab color="primary" size = "small" aria-label="add" className={classes.chatBox}
         onClick={()=>this.setState({toggleChat : !this.state.toggleChat})}>
           <ChatBubble />
         </Fab>

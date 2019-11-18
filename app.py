@@ -36,6 +36,7 @@ groupscol=pymongo.collection.Collection(db,'groupscol')
 tripscol=pymongo.collection.Collection(db,'tripscol')
 filescol = pymongo.collection.Collection(db,'files')
 chatscol = pymongo.collection.Collection(db,'chats')
+billSplitCol = pymongo.collection.Collection(db, 'billSplit')
 
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
@@ -631,6 +632,122 @@ def postChat():
 
   
   
+
+@app.route('/api/v1/billSplit',methods=['POST'])
+def initialize():
+    members = request.json['members']
+    for i in members:
+        billSplitCol.insert({"name" : i , "amount" : 0 })
+                            
+    return "",200
+    
+@app.route('/api/v1/new_user',methods=["POST"])
+def new_user_init():
+    member = request.json['member']
+    billSplitCol.insert({"name": member , "amount" : 0})
+    return "",200
+    
+@app.route('/api/v1/split',methods=['POST'])
+def split():
+    #users = request.json['users']
+    users = billSplitCol.find({})
+    userList = []
+    for i in users:
+        userList.append(i['name'])
+    amount = request.json['amount']
+    paid_by = request.json['paid_by']
+    individual_cost = amount/len(userList)
+    for i in userList:
+        t1 = billSplitCol.find_one({'name':i})
+        billSplitCol.update_one({"name":i} , {"$set" : {"amount": (t1["amount"]-individual_cost)}})
+    '''
+    for i in paid_by:
+        users[i]+=paid_by[i]
+    '''
+    t1 = billSplitCol.find_one({"name":paid_by})
+    billSplitCol.update_one({"name":paid_by} , {"$set" : {"amount": t1["amount"]+amount}})
+
+    return "",201
+
+def distribute(users):
+        ret_arr = []
+        n = len(users)
+        for i in range(n):
+            ret_arr.append([0]*n)
+        users1 = sorted(users.items())
+        users2 = []
+        for i in users1:
+            users2.append(list(i))
+        users1 = users2.copy()
+        for i in range(n):
+            if(users1[i][1]>=0):
+                continue
+            for j in range(n):
+                if(i==j):
+                    continue
+                if(users1[j][1]>0):
+                    if(abs(users1[i][1])>=users1[j][1]):
+                        users1[i][1]+=users1[j][1]
+                        ret_arr[i][j] = users1[j][1]
+                        users1[j][1] = 0
+                    else:
+                        users1[j][1]+=users1[i][1]
+                        ret_arr[i][j] = abs(users1[i][1])
+                        users1[i][1] = 0
+        return ret_arr
+
+def minimize_settlement(settle,ll,ret):
+        n = len(settle)
+        amount = [0 for i in range(n)]
+        for p in range(n):
+            for i in range(n):
+                amount[p]+=(settle[i][p] - settle[p][i])
+        
+        min_settle_rec(amount,ll,ret)
+
+def min_settle_rec(amount,ll,ret):
+        cred = amount.index(max(amount))
+        debt = amount.index(min(amount))
+        
+        if(amount[cred]==0 and amount[debt]==0):
+            return 0
+        
+        mi = min(-amount[debt],amount[cred])
+        amount[cred]-=mi
+        amount[debt]+=mi
+        
+        stmt = ll[debt]+" pays "+str(mi)+" to "+ll[cred]
+        ret.append(stmt)
+
+        min_settle_rec(amount,ll,ret)
+
+@app.route('/api/v1/summary',methods=['GET'])  
+def settle_payments():
+    #users = request.json['users']
+    userList = billSplitCol.find({})
+    users = {}
+    for i in userList:
+        users[i["name"]] = i["amount"]
+    settlement = distribute(users)
+    ll = list(users.keys())
+    ll.sort()
+    ret = []
+    minimize_settlement(settlement,ll,ret)
+    return jsonify(ret),200
+        
+@app.route('/api/v1/payment',methods=['POST'])
+def payment():
+    sender = request.json['sender']
+    receiver = request.json['receiver']
+    amount = request.json['amount']
+    
+    t1 = billSplitCol.find_one({"name" : sender})
+    billSplitCol.update_one({"name":sender},{"$set" : {"amount": t1["amount"]+amount}})
+    t1 = billSplitCol.find_one({"name" : receiver})
+    billSplitCol.update_one({"name":receiver},{"$set" : {"amount": t1["amount"]-amount}})
+    return "",200
+        
+
 def dummy_recommender(a,b,c,d,e):
     return "output"
 
