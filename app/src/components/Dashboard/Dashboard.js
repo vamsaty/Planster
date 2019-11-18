@@ -1,27 +1,21 @@
 import React,{Component} from 'react';
 import { withStyles } from '@material-ui/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import TopBar from '../UserPage/TopBar';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from "axios";
 import Track from './Track'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Trip from '../Trip/Trip'
+import {Fab} from '@material-ui/core';
 import FileUpload from '../FileUpload/FileUpload';
 import TripsFunction from './TripsFunction';
 import Chat from '../Chat/Chat';
@@ -193,7 +187,10 @@ class Dashboard extends Component{
       <main className={classes.content}>
       <div>{middle}</div></main>
         {chatBox}
-      <ChatBubble className={classes.chatBox} onClick={()=>this.setState({toggleChat : !this.state.toggleChat})}/>
+        <Fab color="primary" aria-label="add" className={classes.chatBox}
+        onClick={()=>this.setState({toggleChat : !this.state.toggleChat})}>
+          <ChatBubble />
+        </Fab>
     </div>
  
         )

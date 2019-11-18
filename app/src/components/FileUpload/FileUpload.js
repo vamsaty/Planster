@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles';
 import {GridList,Grid, Paper,GridListTile, Fab, IconButton, Divider, CircularProgress} from '@material-ui/core';
-import {Add as AddIcon, AccessAlarmRounded, RefreshRounded} from '@material-ui/icons';
+import {Add as AddIcon, AccessAlarmRounded, RefreshRounded, DeleteForeverRounded} from '@material-ui/icons';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import axios from 'axios';
 import { sequenceExpression } from '@babel/types';
@@ -116,14 +116,19 @@ class FileUpload extends Component{
             let ncols = 4
             if(this.state.gallery.length < 4)
                 ncols = this.state.gallery.length
+            let cHeight = 160
+            if(ncols < 4){
+                cHeight = 300
+            }
             gallery = (
-                <GridList cellHeight={160} className={classes.gridList} cols={ncols}>
+                <GridList cellHeight={cHeight} className={classes.gridList} cols={ncols}>
                     {
                         this.state.gallery.map((tile,ind) => {
                             const hit = atob(tile['$binary'])
                             return (
                                 <GridListTile key={ind} cols={1}
                                     >
+                                        {/* <DeleteForeverRounded onClick={} /> */}
                                     <img src = {"data:image/jpeg;base64," + hit} />
                                 </GridListTile>
                             )
@@ -139,7 +144,7 @@ class FileUpload extends Component{
             )
         }
 
-        let fileName = 'Click here to trigger the file uploader!';
+        let fileName = 'Select Files';
         if(this.state.file){
             fileName = this.state.file.name
         }

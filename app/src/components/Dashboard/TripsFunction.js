@@ -128,7 +128,7 @@ class TripsFunction extends Component{
             })
           .catch(error => {
             console.log("gfd")
-            alert(error.response.data) 
+            // alert(error.response.data) 
             
            })
            

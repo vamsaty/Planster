@@ -107,9 +107,10 @@ def login():
             print(str(session['user_id']))
             print("done")
             print(current_user["name"])
+
             return jsonify({"userData" : session['username'],"Name":current_user["name"]}),200
         else:
-            return "Password Incorrect!",400
+            return "Not found", 400
 
 @app.route('/api/v1/logout', methods=['POST'])
 def logout():

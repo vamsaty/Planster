@@ -8,6 +8,7 @@ import './chat_scroll.css'
 import CircleRipple from 'material-ui/internal/CircleRipple';
 import { LinearProgress, CircularProgress } from 'material-ui';
 // import { forEach } from 'gl-matrix/src/gl-matrix/vec2';
+import KeyboardArrowDownRoundedIcon from '@material-ui/icons/KeyboardArrowDownRounded';
 
 const styles = theme => ({
 
@@ -52,7 +53,7 @@ class Chat extends Component{
         super(props);
         this.state = {
             chatData : [],
-            msg : null
+            msg : ''
         }
         
     }
@@ -83,12 +84,8 @@ class Chat extends Component{
             this.getChats,
             1000
         );
-        this.scrollToBottom()
     }
 
-    componentDidUpdate() {
-        this.scrollToBottom();
-    }
 
     scrollToBottom() {
         const scrollHeight = this.el.scrollHeight;
@@ -137,6 +134,10 @@ class Chat extends Component{
                 <List className={classes.chatBox}
                     ref={el => { this.el = el; }}
                 >
+                {/* <Fab color="primary" aria-label="add" className={classes.fab}
+                    onClick={this.scrollToBottom}>
+                        <KeyboardArrowDownRoundedIcon />
+                    </Fab> */}
                 {this.state.chatData.map((val,index)=>{
                     let lr = 'left';
                     let sender = val.sender;
@@ -173,6 +174,7 @@ class Chat extends Component{
                         </ListItem>
                     )
                 })}
+                
                 </List>
             )
         }else{
@@ -181,6 +183,7 @@ class Chat extends Component{
         return (
             <Paper className = {classes.root}>
                 {chatBox}
+
                 
                 <div className={classes.chatControl}>
                     
