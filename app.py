@@ -19,10 +19,7 @@ from dateutil import parser
 from bson.objectid import ObjectId
 from bson import json_util
 import base64
-<<<<<<< HEAD
-=======
 import svm_recommend
->>>>>>> Shivangi
 
 app = Flask(__name__)
 CORS(app)
@@ -39,11 +36,8 @@ groupscol=pymongo.collection.Collection(db,'groupscol')
 tripscol=pymongo.collection.Collection(db,'tripscol')
 filescol = pymongo.collection.Collection(db,'files')
 chatscol = pymongo.collection.Collection(db,'chats')
-<<<<<<< HEAD
-=======
 billSplitCol = pymongo.collection.Collection(db, 'billSplit')
 
->>>>>>> Shivangi
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
@@ -181,33 +175,6 @@ def getlocation(name):
     print(user["longitude"])
     return jsonify({"latitude":user["latitude"],"longitude":user["longitude"],"name":name}),200
 
-<<<<<<< HEAD
-@app.route('/api/v1/login',methods=['POST'])
-def login():
-    username =  request.json['username']
-    password = request.json['password']
-    current_user=usercol.find_one({"username":username})
-    
-  
-    
-    print(current_user)
-    if(not(current_user)):
-        return "Username does not exists!",400
-    
-    if(current_user):
-        if(current_user['password']==password):
-            session['user_id']= str(current_user['_id'])
-            session['username'] = current_user['username']
-            print(str(session['user_id']))
-            print("done")
-            print(current_user["name"])
-
-            return jsonify({"userData" : session['username'],"Name":current_user["name"]}),200
-        else:
-            return "Not found", 400
-=======
-
->>>>>>> Shivangi
 
 @app.route('/api/v1/logout', methods=['POST'])
 def logout():
@@ -591,10 +558,6 @@ def recommend_places():
     return jsonify({"Places":output}),200 #a string ,not a list,map UI accordingly
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Shivangi
 @app.route('/show_gallery/<groupId>',methods=['GET'])
 def dispaly(groupId):
     
@@ -665,10 +628,7 @@ def postChat():
         )
     return 'sent', 200
 
-<<<<<<< HEAD
-=======
   
->>>>>>> Shivangi
   
 
 @app.route('/api/v1/billSplit',methods=['POST'])

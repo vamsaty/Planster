@@ -10,19 +10,20 @@ import { sequenceExpression } from '@babel/types';
 const useStyles = theme => ({
     root: {
       display: 'flex',
-      border:'1px solid black',
-    //   minWidth:'700px',
-    //   paddingTop:'60px',
+      height:'100%',
+      width:'100%',
       flexWrap: 'wrap',
       flexDirection:'column',
-      justifyContent: 'center',
       alignItems : 'center',
       overflow: 'hidden',
     },
     gallery:{
         display:'flex',
+        width:'100%',
+        height:'100%',
+        padding:'10px',
         flexDirection:'column',
-        justifyContent:'center',
+        justifyContent:'space-between',
         alignItems:'center'
     },
     gridList: {
@@ -111,7 +112,7 @@ class FileUpload extends Component{
             }
         ]
 
-        let gallery = null;
+        let gallery = <CircularProgress className={classes.gridList}/>;
         
         if(this.state.gallery){
             let ncols = 4
@@ -137,22 +138,16 @@ class FileUpload extends Component{
                     }
                 </GridList>
             )
-        }else{
-            gallery = (
-                <GridList cellHeight={160} className={classes.gridList} cols={1}>
-                    <CircularProgress />
-                </GridList>
-            )
         }
 
-        let fileName = 'Select Files';
+        let fileName = 'Select Images';
         if(this.state.file){
             fileName = this.state.file.name
         }
 
         
         let formE = (
-            <form style={{padding : '10px', position:'fixed',bottom:'50px',right:'33.5%'}} onSubmit={this.handleSubmit} method = "POST" enctype = "multipart/form-data">
+            <form onSubmit={this.handleSubmit} method = "POST" enctype = "multipart/form-data">
             <label class="fileContainer">
                 {fileName}
                 <input type="file" onChange={this.onFileChange}/>
@@ -171,13 +166,10 @@ class FileUpload extends Component{
                 <>
                 <Grid className={classes.gallery}>
                     {gallery}
-                </Grid>
-                <Divider/>
-                <Divider/>
-                <Grid>
                     {formE}
-                   
                 </Grid>
+                {/* <Divider/> */}
+                
                 </>
             )
         }

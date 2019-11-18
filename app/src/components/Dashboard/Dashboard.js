@@ -15,18 +15,12 @@ import Track from './Track'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Trip from '../Trip/Trip'
-import {Fab} from '@material-ui/core';
 import FileUpload from '../FileUpload/FileUpload';
 import TripsFunction from './TripsFunction';
-<<<<<<< HEAD
-import Chat from '../Chat/Chat';
-=======
 import MembersFunctions from './MembersFunctions'
 import Chat from '../Chat/Chat';
 import {Fab} from '@material-ui/core';
-import FileUpload from '../FileUpload/FileUpload';
 import BillSplitter from '../BillSplitter/BillSplitter';
->>>>>>> Shivangi
 import { ChatBubble } from '@material-ui/icons';
 const drawerWidth = 300;
 
@@ -37,7 +31,6 @@ const styles = theme => ({
         top:'60px',
         width:'84%',
         height:'93%',
-        border:'2px solid blue',
         position:'fixed',
         right:'1%',
         justifyContent:'flex-end'
@@ -55,16 +48,12 @@ const styles = theme => ({
   },
       
       content: {
-        // flexGrow: 1,
         padding: '10px',
         display:'flex',
         width:'100%',
-        // maxWidth:'100%',
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
-        border:'1px solid red',
-        // marginTop:'60px',
       },
       chatBox: {
         position : 'absolute',
@@ -72,7 +61,7 @@ const styles = theme => ({
         bottom:'40px',
         cursor:'pointer',
 
-      }
+      },
       
       chatBox: {
         position : 'absolute',
@@ -155,14 +144,10 @@ class Dashboard extends Component{
           middle = (<BillSplitter />)
         }
         if(this.state.navigate == 'files'){
-          middle = (<div><FileUpload /></div>)
+          middle = (<FileUpload />)
         }
         const { classes } = this.props;
         let chatBox = (this.state.toggleChat) ? <Chat /> : null;
-<<<<<<< HEAD
-=======
-
->>>>>>> Shivangi
         return (
             <div className={classes.root}>
 
@@ -208,15 +193,9 @@ class Dashboard extends Component{
        ></ListItemText></ListItem><Divider/>
       </Drawer>
       <main className={classes.content}>
-<<<<<<< HEAD
-      <div>{middle}</div></main>
-        {chatBox}
-        <Fab color="primary" aria-label="add" className={classes.chatBox}
-=======
       {middle}</main>
       {chatBox}
         <Fab color="primary" size = "small" aria-label="add" className={classes.chatBox}
->>>>>>> Shivangi
         onClick={()=>this.setState({toggleChat : !this.state.toggleChat})}>
           <ChatBubble />
         </Fab>
