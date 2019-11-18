@@ -58,7 +58,7 @@ class Chat extends Component{
         
     }
 
-
+    chatCaller = 0
 
 
     getChats = () =>{
@@ -80,12 +80,15 @@ class Chat extends Component{
     }
 
     componentDidMount(){
-        setInterval(
+        this.chatCaller = setInterval(
             this.getChats,
             1000
         );
     }
 
+    componentWillUnmount(){
+        clearInterval(this.chatCaller)
+    }
 
     scrollToBottom() {
         const scrollHeight = this.el.scrollHeight;

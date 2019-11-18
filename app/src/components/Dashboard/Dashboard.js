@@ -59,7 +59,7 @@ const styles = theme => ({
       chatBox: {
         position : 'absolute',
         right:'40px',
-        bottom:'40px',
+        bottom:'25px',
         cursor:'pointer',
 
       }
