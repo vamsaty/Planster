@@ -18,7 +18,15 @@ import Trip from '../Trip/Trip'
 import {Fab} from '@material-ui/core';
 import FileUpload from '../FileUpload/FileUpload';
 import TripsFunction from './TripsFunction';
+<<<<<<< HEAD
 import Chat from '../Chat/Chat';
+=======
+import MembersFunctions from './MembersFunctions'
+import Chat from '../Chat/Chat';
+import {Fab} from '@material-ui/core';
+import FileUpload from '../FileUpload/FileUpload';
+import BillSplitter from '../BillSplitter/BillSplitter';
+>>>>>>> Shivangi
 import { ChatBubble } from '@material-ui/icons';
 const drawerWidth = 300;
 
@@ -26,6 +34,13 @@ const drawerWidth = 300;
 const styles = theme => ({
     root: {
         display: 'flex',
+        top:'60px',
+        width:'84%',
+        height:'93%',
+        border:'2px solid blue',
+        position:'fixed',
+        right:'1%',
+        justifyContent:'flex-end'
       },
      
       drawer: {
@@ -40,12 +55,16 @@ const styles = theme => ({
   },
       
       content: {
-        flexGrow: 1,
-        padding: 40,
-        margin:20,
-        position:"absolute",
-        left:"15em",
-        top:"1em"
+        // flexGrow: 1,
+        padding: '10px',
+        display:'flex',
+        width:'100%',
+        // maxWidth:'100%',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        border:'1px solid red',
+        // marginTop:'60px',
       },
       chatBox: {
         position : 'absolute',
@@ -55,7 +74,14 @@ const styles = theme => ({
 
       }
       
-     
+      chatBox: {
+        position : 'absolute',
+        right:'40px',
+        bottom:'25px',
+        cursor:'pointer',
+
+      }
+      
     
     
   });
@@ -112,20 +138,34 @@ class Dashboard extends Component{
         let middle
         if(this.state.navigate=="track")
         {
-            middle=(<div><Track members={this.state.members}/></div>)
+            middle=(<Track members={this.state.members}/>)
         }
         if(this.state.navigate=="trips")
         {
-            middle=(<div><TripsFunction  /></div>)
+            middle=(<TripsFunction  />)
+        }
+        if(this.state.navigate=="members")
+        {
+            middle=(<MembersFunctions  />)
+        }
+        if(this.state.navigate == 'files'){
+          middle = (<FileUpload />)
+        }
+        if(this.state.navigate == 'bills'){
+          middle = (<BillSplitter />)
         }
         if(this.state.navigate == 'files'){
           middle = (<div><FileUpload /></div>)
         }
         const { classes } = this.props;
         let chatBox = (this.state.toggleChat) ? <Chat /> : null;
+<<<<<<< HEAD
+=======
+
+>>>>>>> Shivangi
         return (
             <div className={classes.root}>
-  
+
      <TopBar/>
       <Drawer variant="permanent" className={classes.drawer}  classes={{ paper: classes.paper }} >
         <div className={classes.toolbar} />
@@ -134,48 +174,31 @@ class Dashboard extends Component{
         
         <p><br/><br/></p>
         <ListItem>
-        <p onClick={this.handleElse} style={{cursor:"pointer",position:"relative",left:"3em",fontFamily:'Quicksand',fontWeight:"bolder",fontSize:"1.3em"}}>{String(sessionStorage.getItem("group"))}
+        <p onClick={()=>this.setState({"navigate":"chat"})} style={{cursor:"pointer",position:"relative",left:"3em",fontFamily:'Quicksand',fontWeight:"bolder",fontSize:"1.3em"}}>{String(sessionStorage.getItem("group"))}
         </p></ListItem>
         <Divider/>
-        <ListItem>
-        <ExpansionPanel style={{width:"100%"}}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          
-        >
-        <AddCircleIcon/>
-        <DeleteIcon/>
-          <Typography className={classes.heading}>Members</Typography>
-
-        </ExpansionPanelSummary>
-        
-        {this.state.members.map( (val, ind) => (
-            <div><ListItem alignItems="flex-start"> 
-            <Typography style={{fontFamily:'Quicksand',position:"relative",top:"1.1em"}} >{val}</Typography>
-            </ListItem>
-            </div>
-        ))}
-        <p><br></br></p>
-        
-      </ExpansionPanel>
-     
-      </ListItem> <Divider/>
-        
+        {/* <ListItem>
+        <ListItemText primary="Chat" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>this.setState({"navigate":"chat"})}
+       ></ListItemText></ListItem> */}
+       {/* <Divider/> */}
+       <ListItem>
+       <ListItemText primary="Members" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>this.setState({"navigate":"members"})}
+      ></ListItemText></ListItem>
+      <Divider/><Divider/>
         <ListItem>
         
         <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  
         onClick={()=>{this.setState({"navigate":"trips"})}}
        ></ListItemText>
       </ListItem> 
-      <Divider/><ListItem>
+        <Divider/>
+      <ListItem>
       <ListItemText primary="Track" style={{fontFamily:'Quicksand',cursor:'pointer',textAlign:'center'}}  
       onClick={this.handleNavigation}></ListItemText></ListItem>
       <Divider/>
         <ListItem>
         <ListItemText primary="Bill Splitter" style={{cursor:'pointer',textAlign:'center'}}  
-        onClick={this.handleElse}
+        onClick={()=>{this.setState({navigate:'bills'})}}
        ></ListItemText></ListItem>
        <Divider/>
        
@@ -185,9 +208,15 @@ class Dashboard extends Component{
        ></ListItemText></ListItem><Divider/>
       </Drawer>
       <main className={classes.content}>
+<<<<<<< HEAD
       <div>{middle}</div></main>
         {chatBox}
         <Fab color="primary" aria-label="add" className={classes.chatBox}
+=======
+      {middle}</main>
+      {chatBox}
+        <Fab color="primary" size = "small" aria-label="add" className={classes.chatBox}
+>>>>>>> Shivangi
         onClick={()=>this.setState({toggleChat : !this.state.toggleChat})}>
           <ChatBubble />
         </Fab>

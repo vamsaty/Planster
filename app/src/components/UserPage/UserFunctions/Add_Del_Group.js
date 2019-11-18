@@ -103,7 +103,7 @@ class Add_Del_Group extends Component
       }
 
       handleSubmit(event) {
-       
+       event.preventDefault()
       axios.post('http://localhost:5000/api/v1/groups/create/' + String(sessionStorage.getItem("userData")),{
             'name' : this.state.value.trim()
         }).
@@ -117,11 +117,16 @@ class Add_Del_Group extends Component
             });
             this.props.change_groups()
             
-        });  
+        })
+        .catch(error => {
+          console.log("gfd")
+          alert(error.response.data) 
+          
+         });  
       }
 
       handleDelete(event) {
-       
+       event.preventDefault()
         axios.delete('http://localhost:5000/api/v1/groups/del/' + this.state.value1,{data:{
               'username' : String(sessionStorage.getItem("userData"))
           }}).
@@ -135,7 +140,12 @@ class Add_Del_Group extends Component
               });
               this.props.change_groups()
               
-          });  
+          })
+          .catch(error => {
+            console.log("gfd")
+            alert(error.response.data) 
+            
+           });   
         }
 
     handleOpen = () =>{

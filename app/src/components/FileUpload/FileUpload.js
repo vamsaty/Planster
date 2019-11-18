@@ -10,8 +10,9 @@ import { sequenceExpression } from '@babel/types';
 const useStyles = theme => ({
     root: {
       display: 'flex',
+      border:'1px solid black',
     //   minWidth:'700px',
-      paddingTop:'60px',
+    //   paddingTop:'60px',
       flexWrap: 'wrap',
       flexDirection:'column',
       justifyContent: 'center',

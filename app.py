@@ -19,6 +19,10 @@ from dateutil import parser
 from bson.objectid import ObjectId
 from bson import json_util
 import base64
+<<<<<<< HEAD
+=======
+import svm_recommend
+>>>>>>> Shivangi
 
 app = Flask(__name__)
 CORS(app)
@@ -35,6 +39,11 @@ groupscol=pymongo.collection.Collection(db,'groupscol')
 tripscol=pymongo.collection.Collection(db,'tripscol')
 filescol = pymongo.collection.Collection(db,'files')
 chatscol = pymongo.collection.Collection(db,'chats')
+<<<<<<< HEAD
+=======
+billSplitCol = pymongo.collection.Collection(db, 'billSplit')
+
+>>>>>>> Shivangi
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
@@ -43,6 +52,25 @@ def index():
         return 'logged in as %s' % escape(session['username'])
     return 'you are not logged in'
 
+@app.route('/api/v1/login',methods=['POST'])
+def login():
+    username =  request.json['username']
+    password = request.json['password']
+    current_user=usercol.find_one({"username":username})
+    print(current_user)
+    if(not(current_user)):
+        return "Username does not exists!",400
+    
+    if(current_user):
+        if(current_user['password']==password):
+            session['user_id']= str(current_user['_id'])
+            session['username'] = current_user['username']
+            print(str(session['user_id']))
+            print("done")
+            print(current_user["name"])
+            return jsonify({"userData" : session['username'],"Name":current_user["name"]}),200
+        else:
+            return "Password Incorrect!",400
 
 @app.route('/api/v1/register',methods=['POST'])
 def registration():
@@ -71,6 +99,71 @@ def registration():
 
     return "",201
 
+@app.route('/api/v1/groups/create/<username>',methods=['POST'])
+def create_group(username):
+    user = usercol.find_one({"username" : username})
+    admin_id = str(user.get('_id'))
+    print(admin_id)
+    name = request.json['name']
+    print(name)
+    for i in groupscol.find({}):
+        if(i["name"]==name):
+            return "Oops!Group name already taken",400
+    group_id=groupscol.insert({"name":name,  "admin_id":admin_id,"expense":0,"current_users":[admin_id],"old_users":[],"trips":[]})
+    group_id=str(group_id)
+    current_groups = user['current_groups']
+    current_groups.append([group_id,0])
+    usercol.update_one({"_id":ObjectId(admin_id)},{ "$set" :{"current_groups":current_groups}})
+    return jsonify({"message":"Created"}),201
+
+@app.route('/api/v1/groups/del/<group_name>',methods=['DELETE'])
+def del_group(group_name):
+    group = groupscol.find_one({"name":group_name})
+    group_id=str(group.get('_id'))
+    username=request.json['username']
+    print('username')
+    user = usercol.find_one({"username" : username})
+    admin_id = str(user.get('_id'))
+    if(admin_id==group["admin_id"]):
+        for x in usercol.find():
+            current_groups=x['current_groups']
+            old_groups=x['old_groups']
+            expenses=0
+            for y in current_groups:
+                if(y[0]==group_id):
+                    current_groups.remove(y)
+                    expenses+=y[1]
+            for y in old_groups:
+                if(y[0]==group_id):
+                    old_groups.remove(y)
+                    expenses+=y[1]
+            new_expenses=x['total_expense']
+            new_expenses=new_expenses-expenses
+            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"current_groups":current_groups}})
+            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"old_groups":old_groups}})
+            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"total expenses":new_expenses}})
+            print(new_expenses)
+        for x in group['trips']:
+            trip=tripscol.find_one({"_id":ObjectId(x)})
+            requests.delete('http://127.0.0.1:5000/api/v1/trips/del_trip/'+trip['name'])
+        group=groupscol.delete_one({"_id":ObjectId(group_id)})
+        return "",204
+    return "permission denied!",403
+
+@app.route('/api/v1/groups/is_admin',methods=['POST'])
+def is_admin():
+    username=request.json["username"]
+    user=usercol.find_one({"username":username})
+    admin_id=str(user.get("_id"))
+    group_name=request.json["group_name"]
+    group=groupscol.find_one({"name":group_name})
+    group_admin_id=group["admin_id"]
+    if(admin_id==group_admin_id):
+        return "Yes",200
+    return "No",400
+
+    
+
 @app.route('/api/v1/setlocation/<name>',methods=['POST'])
 def setlocation(name):
     latitude=request.json['latitude']
@@ -88,6 +181,7 @@ def getlocation(name):
     print(user["longitude"])
     return jsonify({"latitude":user["latitude"],"longitude":user["longitude"],"name":name}),200
 
+<<<<<<< HEAD
 @app.route('/api/v1/login',methods=['POST'])
 def login():
     username =  request.json['username']
@@ -111,6 +205,9 @@ def login():
             return jsonify({"userData" : session['username'],"Name":current_user["name"]}),200
         else:
             return "Not found", 400
+=======
+
+>>>>>>> Shivangi
 
 @app.route('/api/v1/logout', methods=['POST'])
 def logout():
@@ -164,19 +261,7 @@ def add_friend(username):
 
     return "This username does not exist", 400
     
-@app.route('/api/v1/groups/create/<username>',methods=['POST'])
-def create_group(username):
-    user = usercol.find_one({"username" : username})
-    admin_id = str(user.get('_id'))
-    print(admin_id)
-    name = request.json['name']
-    print(name)
-    group_id=groupscol.insert({"name":name,"admin_id":admin_id,"expense":0,"current_users":[admin_id],"old_users":[],"trips":[]})
-    group_id=str(group_id)
-    current_groups = user['current_groups']
-    current_groups.append([group_id,0])
-    usercol.update_one({"_id":ObjectId(admin_id)},{ "$set" :{"current_groups":current_groups}})
-    return jsonify({"message":"Created"}),201
+
 
 @app.route('/api/v1/groups/<group_name>', methods=['GET'])
 def view_group(group_name):
@@ -212,26 +297,25 @@ def get_details(username):
         }), 200
 
 
-@app.route('/api/v1/groups/add_friend/<groupname>/<username>',methods=['POST'])
-def add_friend_to_group(groupname,username):
-    admin=usercol.find_one({"username":username})
-    admin_id=str(admin.get("_id"))
-    username=request.form['friendname']
+@app.route('/api/v1/groups/add_friend/<groupname>',methods=['POST'])
+def add_friend_to_group(groupname):
+    username=request.json['friendname']
     group=groupscol.find_one({"name":groupname})
     group_id=str(group.get("_id"))
     
     user=usercol.find_one({"username":username})
+    if(not(user)):
+        return "User does not exist!",400
     user_id=str(user.get('_id'))
-    #print(type(user_id))
-    if(group['admin_id']==admin_id):
-        current_users=group["current_users"]
-        current_users.append(user_id)
-        groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"current_users":current_users}})
-        current_groups=user['current_groups']
-        current_groups.append([group_id,0])
-        usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"current_groups":current_groups}})
-        return "",201
-    return "permission denied",403
+    #print(type(user_id)
+    current_users=group["current_users"]
+    current_users.append(user_id)
+    groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"current_users":current_users}})
+    current_groups=user['current_groups']
+    current_groups.append([group_id,0])
+    usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"current_groups":current_groups}})
+    return "",201
+    #return "permission denied",403
 
 
 @app.route('/api/v1/groups/list/<username>',methods=['GET'])
@@ -258,32 +342,26 @@ def list_members(groupname):
 
 
 
-@app.route('/api/v1/groups/del_user',methods=['DELETE'])
-def del_user_from_group():
-    admin_id=session['user_id']
-    username=request.json['username']
-    group_id=session['group_id']
-    group=groupscol.find_one({"_id":ObjectId(group_id)})
-    if(group['admin_id']==admin_id):
-        user=usercol.find_one({"username":username})
-        user_id=str(user.get("_id"))
-        current_users=group["current_users"]
-        current_users.remove(user_id)
-        old_users=group["old_users"]
-        old_users.append(user_id)
-        groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"current_users":current_users}})
-        groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"old_users":old_users}})
-        current_groups=user["current_groups"]
-        for x in current_groups:
-            if(x[0]==group_id):
-                current_groups.remove(x)
-                break
-        old_groups=user["old_groups"]
-        old_groups.append(x)
-        usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"current_groups":current_groups}})
-        usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"old_groups":old_groups}})
-        return "",204
-    return "permission denied",403
+@app.route('/api/v1/groups/del_user/<groupname>/<username>',methods=['DELETE'])
+def del_user_from_group(groupname,username):
+    #username=request.json["username"]
+    #groupname=request.json["groupname"
+    print(groupname,username)
+    group=groupscol.find_one({"name":groupname})
+    user=usercol.find_one({"username":username})
+    user_id=str(user.get("_id"))
+    current_users=group["current_users"]
+    current_users.remove(user_id)
+    groupscol.update_one({"name":groupname},{"$set":{"current_users":current_users}})
+    group_id=str(group.get("_id"))
+    current_groups=user["current_groups"]
+    for x in current_groups:
+        if(x[0]==group_id):
+            current_groups.remove(x)
+            break
+    usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"current_groups":current_groups}})
+    return "",204
+    
 
 @app.route('/api/v1/groups/user_leave',methods=['DELETE'])
 def user_leave_from_group():
@@ -308,39 +386,87 @@ def user_leave_from_group():
     usercol.update_one({"_id":ObjectId(user_id)},{ "$set" :{"old_groups":old_groups}})
     return "",204
     
-@app.route('/api/v1/groups/del/<group_name>',methods=['DELETE'])
-def del_group(group_name):
-    group = groupscol.find_one({"name":group_name})
-    group_id=str(group.get('_id'))
-    username=request.json['username']
-    print('username')
-    user = usercol.find_one({"username" : username})
-    admin_id = str(user.get('_id'))
-    if(admin_id==group["admin_id"]):
-        for x in usercol.find():
-            current_groups=x['current_groups']
-            old_groups=x['old_groups']
-            expenses=0
-            for y in current_groups:
-                if(y[0]==group_id):
-                    current_groups.remove(y)
-                    expenses+=y[1]
-            for y in old_groups:
-                if(y[0]==group_id):
-                    old_groups.remove(y)
-                    expenses+=y[1]
-            new_expenses=x['total_expense']
-            new_expenses=new_expenses-expenses
-            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"current_groups":current_groups}})
-            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"old_groups":old_groups}})
-            usercol.update_one({"_id":ObjectId(x["_id"])},{ "$set" :{"total expenses":new_expenses}})
-            print(new_expenses)
-        for x in group['trips']:
-            trip=tripscol.find_one({"_id":ObjectId(x)})
-            requests.delete('http://127.0.0.1:5000/api/v1/trips/del_trip/'+trip['name'])
-        group=groupscol.delete_one({"_id":ObjectId(group_id)})
-        return "",204
-    return "permission denied!",403
+
+@app.route('/api/v1/groups/add_friend/suggest',methods=['POST'])
+def suggest_friend():
+    #admin_id=session['user_id']
+    #group_id=session['group_id']
+    admin =request.json["admin"] 
+    groupname = request.json["group"]
+    group=groupscol.find_one({"name":groupname})
+    print(group["name"])
+    suggested_friends_ids = set()
+    admin_user = usercol.find_one({"username":admin})
+    admin_id=str(admin_user.get("_id"))
+    #print(admin_user["name"])
+    for u_id in group["current_users"]:
+        if u_id != admin_id:
+            user = usercol.find_one({"_id":ObjectId(u_id)})
+            #print(user["name"])
+            common_friends = set(user["friends"]) & set(admin_user["friends"])
+            #print(common_friends)
+            suggested_friends_ids.update(common_friends - set(group["current_users"]))
+    suggested_friends = set()
+    if(len(suggested_friends_ids) != 0):
+        for s_id in suggested_friends_ids:
+            user = usercol.find_one({"_id":ObjectId(s_id)})
+            suggested_friends.add(user["name"])
+    else:
+        for s_id in admin_user["friends"]:
+            if(s_id not in group["current_users"]):
+                user = usercol.find_one({"_id":ObjectId(s_id)})
+                suggested_friends.add(user["name"])
+                
+    if len(suggested_friends)== 0:
+        return "No more suggestions", 204
+    print(list(suggested_friends))
+    return jsonify({
+            "suggested": list(suggested_friends)
+        }), 200
+
+@app.route('/api/v1/trips/set_dates', methods=['POST'])
+def set_free_dates():
+    username = request.json['username']
+    tripname = request.json['tripname']
+    date=request.json['date']
+    start_date=date[0]
+    end_date=date[1]
+    pref_date_range = {"start_date":start_date, "end_date":end_date}
+    user_pref_date = {"username":username, "pref_range":pref_date_range}
+    print(user_pref_date)
+    tripscol.update({'location':tripname}, {'$push':{'preferred_dates':user_pref_date}})
+    return "Your preference has beet registered", 200
+
+@app.route('/api/v1/trips/schedule_trip', methods = ['POST'])
+def schedule_dates():
+    tripname = request.json['tripname']
+    current_trip = tripscol.find_one({"location":tripname})
+    pref_dates =current_trip["preferred_dates"]
+    print(pref_dates)
+    start_date_list = []
+    end_date_list = []
+    for date in pref_dates:
+        start_date_list.append(date["pref_range"]["start_date"])
+        end_date_list.append(date["pref_range"]["end_date"])
+    final_start_date = max(s for s in start_date_list)
+    final_end_date = min(e for e in end_date_list)
+    if (parser.parse(final_end_date) - parser.parse(final_start_date)).days <=0 :
+        return "No dates scheduled", 400
+    tripscol.update_one({"location":tripname},{ "$set" :{"scheduled":"true"}})
+    tripscol.update_one({"location":tripname},{ "$set" :{"scheduled_dates":[final_start_date, final_end_date]}})
+    return jsonify({"final_dates":[final_start_date, final_end_date]}), 200
+
+@app.route('/api/v1/trips/check_scheduled/<tripname>',methods=["GET"])
+def check_scheduled(tripname):
+    current_trip = tripscol.find_one({"location":tripname})
+    try:
+        start_date=current_trip["scheduled_dates"][0].split('T')[0]
+        end_date=current_trip["scheduled_dates"][1].split('T')[0]
+    except:
+        start_date=0
+        end_date=0
+        print(current_trip["scheduled"])
+    return jsonify({"scheduled":current_trip["scheduled"],"scheduled_dates":[start_date,end_date]})
 
 
 @app.route('/api/v1/trips/create',methods=['POST'])
@@ -369,7 +495,7 @@ def create_trip():
     admin_id=str(admin.get("_id"))
     group = groupscol.find_one({"name":groupname})
     group_id=str(group.get('_id'))
-    trip_id=tripscol.insert({"description":description,"admin_id":admin_id,"location":location,"group_id":group_id,  "tentative_date_range":date})
+    trip_id=tripscol.insert({"scheduled":"false","preferred_dates":[],"scheduled_dates":[],"description":description,"admin_id":admin_id,"location":location,"group_id":group_id,  "tentative_date_range":date})
     trip_id=str(trip_id)
     #group=groupscol.find_one({"_id":ObjectId(group_id)})
     new_trips=group["trips"]
@@ -379,7 +505,7 @@ def create_trip():
 
 @app.route('/api/v1/trips/del_trip/<trip_name>', methods=['DELETE'])
 def delete_trip(trip_name):
-    trip=tripscol.find_one({"name":trip_name})
+    trip=tripscol.find_one({"location":trip_name})
     trip_id=str(trip.get('_id'))
     group_id=trip["group_id"]
     group=groupscol.find_one({"_id":ObjectId(group_id)})
@@ -393,27 +519,22 @@ def delete_trip(trip_name):
             new_trips.append(i) 
     print(new_trips)           
     groupscol.update_one({"_id":ObjectId(group_id)},{"$set":{"trips":new_trips}})
-    for x in group["current_users"]:
-            user=usercol.find_one({"_id":ObjectId(x)})
-            new_trips=user["trips"]
-            new_trips.remove(trip_id)
-            usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"trips":new_trips}})
-    for x in group["old_users"]:
-            user=usercol.find_one({"_id":ObjectId(x)})
-            new_trips=user["trips"]
-            new_trips.remove(trip_id)
-            usercol.update_one({"_id":ObjectId(x)},{ "$set" :{"trips":new_trips}})
     tripscol.delete_one({"_id":ObjectId(trip_id)})
     return "",204
 
-
+"""@app.route('/api/v1/groups/check_admin',methods=["POST"])
+def check_admin():
+    groupname=groupscol.find_one({"name":request.json["groupname"]})
+    admin_username="""
 @app.route('/api/v1/groups/get_trips/<groupname>',methods=["GET"])
 def get_trips(groupname):
     group = groupscol.find_one({"name":groupname})
     group_id=str(group.get('_id'))
     trips=[]
     for i in group["trips"]:
+        print(i)
         temp=tripscol.find_one({"_id":ObjectId(i)})
+        print(temp)
         trips.append(temp["location"])
     return jsonify({"trips":trips}),200
 
@@ -427,37 +548,9 @@ def view_trip(trip_name):
     return "trip not created yet",404
     return "", 200
     
-@app.route('/api/v1/trips/set_dates', methods=['POST'])#@app.route('/api/v1/trips/<trip_name>/set_dates', methods=['POST'])
-def set_free_dates():#def set_free_dates(trip_name):
-    print(session['trip_id'])
-    current_trip = tripscol.find_one({"_id":ObjectId(session['trip_id'])})
-    print(current_trip)
-    start_date = datetime.strptime(request.json['start_date'], '%d %m %y')
-    end_date = datetime.strptime(request.json['end_date'], '%d %m %y')
-    if((end_date - start_date).days > int(current_trip['no_of_days'])):
-        return "choose lesser days", 400
-    date_range = {'start_date': start_date, 'end_date': end_date} 
-    #pref_date = 
-    #tripscol.update({'_id': current_trip['_id']}, {'$push': {'tentative_date_range': {session['user_id']: date_range}}})
-    return "", 200
 
-@app.route('/api/v1/trips/schedule_trip', methods = ['POST'])
-def schedule_dates():
-    current_trip = tripscol.find_one({"_id":ObjectId(session['trip_id'])})
-    if(session['user_id'] == current_trip['admin_id']):
-        pref_dates =current_trip["tentative_date_range"]
-        for date in pref_dates:
-            s_d = max(d['start_date'] for d in date.values())
-            e_d = min(d['end_date'] for d in date.values())
-            if((e_d - s_d).days > current_trip['no_of_days']):
-                e_d = s_d + timedelta(days=5)
-            elif((e_d - s_d).days < 0):
-                return "cannot schedule trip", 400
-            f_d ={"start_date":s_d, "end_date":e_d}
-            #tripscol.update({'_id': current_trip['_id']}, {'$set': {'final_date': f_d}})
-        return "", 201
-    return "", 401
-    
+
+
 
     
 
@@ -498,6 +591,10 @@ def recommend_places():
     return jsonify({"Places":output}),200 #a string ,not a list,map UI accordingly
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Shivangi
 @app.route('/show_gallery/<groupId>',methods=['GET'])
 def dispaly(groupId):
     
@@ -568,7 +665,127 @@ def postChat():
         )
     return 'sent', 200
 
+<<<<<<< HEAD
+=======
   
+>>>>>>> Shivangi
+  
+
+@app.route('/api/v1/billSplit',methods=['POST'])
+def initialize():
+    members = request.json['members']
+    for i in members:
+        billSplitCol.insert({"name" : i , "amount" : 0 })
+                            
+    return "",200
+    
+@app.route('/api/v1/new_user',methods=["POST"])
+def new_user_init():
+    member = request.json['member']
+    billSplitCol.insert({"name": member , "amount" : 0})
+    return "",200
+    
+@app.route('/api/v1/split',methods=['POST'])
+def split():
+    #users = request.json['users']
+    users = billSplitCol.find({})
+    userList = []
+    for i in users:
+        userList.append(i['name'])
+    amount = request.json['amount']
+    paid_by = request.json['paid_by']
+    individual_cost = amount/len(userList)
+    for i in userList:
+        t1 = billSplitCol.find_one({'name':i})
+        billSplitCol.update_one({"name":i} , {"$set" : {"amount": (t1["amount"]-individual_cost)}})
+    '''
+    for i in paid_by:
+        users[i]+=paid_by[i]
+    '''
+    t1 = billSplitCol.find_one({"name":paid_by})
+    billSplitCol.update_one({"name":paid_by} , {"$set" : {"amount": t1["amount"]+amount}})
+
+    return "",201
+
+def distribute(users):
+        ret_arr = []
+        n = len(users)
+        for i in range(n):
+            ret_arr.append([0]*n)
+        users1 = sorted(users.items())
+        users2 = []
+        for i in users1:
+            users2.append(list(i))
+        users1 = users2.copy()
+        for i in range(n):
+            if(users1[i][1]>=0):
+                continue
+            for j in range(n):
+                if(i==j):
+                    continue
+                if(users1[j][1]>0):
+                    if(abs(users1[i][1])>=users1[j][1]):
+                        users1[i][1]+=users1[j][1]
+                        ret_arr[i][j] = users1[j][1]
+                        users1[j][1] = 0
+                    else:
+                        users1[j][1]+=users1[i][1]
+                        ret_arr[i][j] = abs(users1[i][1])
+                        users1[i][1] = 0
+        return ret_arr
+
+def minimize_settlement(settle,ll,ret):
+        n = len(settle)
+        amount = [0 for i in range(n)]
+        for p in range(n):
+            for i in range(n):
+                amount[p]+=(settle[i][p] - settle[p][i])
+        
+        min_settle_rec(amount,ll,ret)
+
+def min_settle_rec(amount,ll,ret):
+        cred = amount.index(max(amount))
+        debt = amount.index(min(amount))
+        
+        if(amount[cred]==0 and amount[debt]==0):
+            return 0
+        
+        mi = min(-amount[debt],amount[cred])
+        amount[cred]-=mi
+        amount[debt]+=mi
+        
+        stmt = ll[debt]+" pays "+str(mi)+" to "+ll[cred]
+        ret.append(stmt)
+
+        min_settle_rec(amount,ll,ret)
+
+@app.route('/api/v1/summary',methods=['GET'])  
+def settle_payments():
+    #users = request.json['users']
+    userList = billSplitCol.find({})
+    users = {}
+    for i in userList:
+        users[i["name"]] = i["amount"]
+    settlement = distribute(users)
+    ll = list(users.keys())
+    ll.sort()
+    ret = []
+    minimize_settlement(settlement,ll,ret)
+    return jsonify(ret),200
+        
+@app.route('/api/v1/payment',methods=['POST'])
+def payment():
+    sender = request.json['sender']
+    receiver = request.json['receiver']
+    amount = request.json['amount']
+    
+    t1 = billSplitCol.find_one({"name" : sender})
+    billSplitCol.update_one({"name":sender},{"$set" : {"amount": t1["amount"]+amount}})
+    t1 = billSplitCol.find_one({"name" : receiver})
+    billSplitCol.update_one({"name":receiver},{"$set" : {"amount": t1["amount"]-amount}})
+    return "",200
+        
+
 def dummy_recommender(a,b,c,d,e):
     return "output"
 

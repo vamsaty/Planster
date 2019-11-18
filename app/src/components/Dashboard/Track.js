@@ -6,8 +6,8 @@ const TOKEN="pk.eyJ1Ijoic2phZG9uIiwiYSI6ImNrMnZ2dDhjajA4cGkzZHBnNGJwdGx3eGoifQ.c
 
 
 const mapStyles = {
-  width: '60em',
-  height: '30em',
+  width: '70em',
+  height: '40em',
 };
 
 class Track extends Component{
@@ -21,9 +21,14 @@ class Track extends Component{
       friends_coordinates:[],
       l:0,
       lo:0,
+      visible:false,
+      l1:0,
+      l2:0,
+      name:"",
   }
     this.trackLocation=this.trackLocation.bind(this)
     this.display=this.display.bind(this)
+    this.onMarkerClick=this.onMarkerClick.bind(this)
   }
 
 
@@ -103,6 +108,12 @@ distance(lat1, lon1, lat2, lon2, unit) {
 	}
 }
 
+onMarkerClick()
+{
+  alert("ss")
+  //this.setState({visible:true})
+}
+
 render() {  
     return (
         <div>
@@ -111,30 +122,26 @@ render() {
         zoom={15}
         style={mapStyles}
         initialCenter={{ lat:12.935599, lng:  77.534564}}
+        
       >
         <Marker options={{icon: {url: require('../../assets/images/clocation.png'), scaledSize: {width: 32, height: 32}}}} position={{ lat: this.state.latitude, lng: this.state.longitude}} />
-        <InfoWindow position={{ lat: this.state.latitude+0.0016, lng: this.state.longitude}} visible={true}>
-            <div>
-              Me
-            </div>
-        </InfoWindow>
+       
         {this.state.friends_coordinates.map( (val, ind) => (
          
-          <Marker options={{icon: {url: require('../../assets/images/flocation.png'), scaledSize: {width: 32, height: 32}}}} position={{lat:val[0] ,lng:val[1] }}>
+          <Marker options={{icon: {url: require('../../assets/images/flocation.png'), scaledSize: {width: 32, height: 32}}}}
+           position={{lat:val[0] ,lng:val[1] }}
+           onClick={()=>{ this.setState({l1:val[0],l2:val[1],
+          visible:true,name:val[2]})}}  >
           </Marker>
           
         
         ))}    
-        {this.state.friends_coordinates.map( (val, ind) => (
-         
-          <InfoWindow position={{lat:val[0]+0.0017,lng:val[1] }} visible={true}>
-          <div>
-           {val[2]}
-          </div>
-      </InfoWindow>
-          
-        
-        ))}    
+        <InfoWindow position={{ lat: this.state.l1+0.0016, lng: this.state.l2}} visible={this.state.visible}>
+            <div>
+              {this.state.name}
+              {this.distance(this.state.latitude,this.state.longitude, this.state.l1,this.state.l2,'K')}km
+            </div>
+        </InfoWindow>
       </Map>
 
         </div>
