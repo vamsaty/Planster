@@ -23,6 +23,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Trip from '../Trip/Trip'
 import TripsFunction from './TripsFunction';
+import MembersFunctions from './MembersFunctions'
 const drawerWidth = 300;
 
 
@@ -113,6 +114,10 @@ class Dashboard extends Component{
         {
             middle=(<div><TripsFunction  /></div>)
         }
+        if(this.state.navigate=="members")
+        {
+            middle=(<div><MembersFunctions  /></div>)
+        }
         const { classes } = this.props;
         return (
             <div className={classes.root}>
@@ -125,42 +130,25 @@ class Dashboard extends Component{
         
         <p><br/><br/></p>
         <ListItem>
-        <p onClick={this.handleElse} style={{cursor:"pointer",position:"relative",left:"3em",fontFamily:'Quicksand',fontWeight:"bolder",fontSize:"1.3em"}}>{String(sessionStorage.getItem("group"))}
+        <p onClick={()=>this.setState({"navigate":"chat"})} style={{cursor:"pointer",position:"relative",left:"3em",fontFamily:'Quicksand',fontWeight:"bolder",fontSize:"1.3em"}}>{String(sessionStorage.getItem("group"))}
         </p></ListItem>
         <Divider/>
         <ListItem>
-        <ExpansionPanel style={{width:"100%"}}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          
-        >
-        <AddCircleIcon/>
-        <DeleteIcon/>
-          <Typography className={classes.heading}>Members</Typography>
-
-        </ExpansionPanelSummary>
-        
-        {this.state.members.map( (val, ind) => (
-            <div><ListItem alignItems="flex-start"> 
-            <Typography style={{fontFamily:'Quicksand',position:"relative",top:"1.1em"}} >{val}</Typography>
-            </ListItem>
-            </div>
-        ))}
-        <p><br></br></p>
-        
-      </ExpansionPanel>
-     
-      </ListItem> <Divider/>
-        
+        <ListItemText primary="Chat" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>this.setState({"navigate":"chat"})}
+       ></ListItemText></ListItem>
+       <Divider/>
+       <ListItem>
+       <ListItemText primary="Members" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>this.setState({"navigate":"members"})}
+      ></ListItemText></ListItem>
+      <Divider/><Divider/>
         <ListItem>
         
         <ListItemText primary="Trips" style={{cursor:'pointer',textAlign:'center'}}  
         onClick={()=>{this.setState({"navigate":"trips"})}}
        ></ListItemText>
       </ListItem> 
-      <Divider/><ListItem>
+        <Divider/>
+      <ListItem>
       <ListItemText primary="Track" style={{fontFamily:'Quicksand',cursor:'pointer',textAlign:'center'}}  
       onClick={this.handleNavigation}></ListItemText></ListItem>
       <Divider/>

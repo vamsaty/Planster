@@ -75,8 +75,8 @@ class Navigation extends Component {
      l_color:"#464444",
      open:0
     }
-    this.profile=this.profile.bind(this)
-    this.calendar=this.calendar.bind(this)
+    this.groups=this.groups.bind(this)
+    this.friends=this.friends.bind(this)
     this.files=this.files.bind(this)
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -84,9 +84,9 @@ class Navigation extends Component {
     
   }
 
-  profile()
+  groups()
   {
-    this.props.handleNavigation("profile")
+    this.props.handleNavigation("groups")
     this.setState({
       p_color: "black",
       c_color:"#464444",
@@ -96,9 +96,9 @@ class Navigation extends Component {
     })
    
   }
-  calendar()
+  friends()
   {
-    this.props.handleNavigation("calendar")
+    this.props.handleNavigation("friends")
     this.setState({
       p_color: "#464444",
       c_color:"black",
@@ -164,9 +164,8 @@ handleClose = () =>{
      <div className={classes.box}>
      <p>{String(sessionStorage.getItem("Name"))}</p>
      <br/><br/><br/>
-     <p style={{color:this.state.p_color,cursor:"pointer"}} onClick={this.profile}>Profile</p>
-     <p style={{color:this.state.c_color ,cursor:"pointer"}} onClick={this.calendar}>Calendar</p>
-     <p style={{color:this.state.f_color,cursor:"pointer"}}  onClick={this.files}>Files</p>
+     <p style={{color:this.state.p_color,cursor:"pointer"}} onClick={this.groups}>Groups</p>
+     <p style={{color:this.state.c_color ,cursor:"pointer"}} onClick={this.friends}>Friends</p>
      <p style={{color:this.state.l_color,cursor:"pointer"}}  onClick={this.handleOpen}>Logout</p>
      </div>
      </div>

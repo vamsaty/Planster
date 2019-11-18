@@ -13,12 +13,18 @@ import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';  
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import dp from '../../assets/images/background.jpg';
+import dp from '../../assets/images/avatar.png';
 import Divider from '@material-ui/core/Divider';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import axios from "axios";
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+import GridList from '@material-ui/core/GridList';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -87,12 +93,19 @@ const styles = theme => ({
     position: 'relative',
     overflow: 'auto',
     maxHeight: 230,
-  }
+  },
+  icon: {
+    color: 'rgba(255, 255, 255, 0.54)',
     
+  },
+  gridList: {
+    width: 300,
+    height: 300,
+  },
     
   });
 
-class TripsFunction extends Component{
+class MembersFunctions extends Component{
 
     constructor(){
         super();
@@ -101,31 +114,29 @@ class TripsFunction extends Component{
             selectedDate:new Date(),
             setSelectedDate:0,
             date: new Date(),
-            location:"",
+            name:"",
             description:"",
-            trips:[],
+            members:[],
             trip:"",
+            suggestion:[],
             open1:0,
             value1:" ",
+            
            
         }
         this.handleOpen = this.handleOpen.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.listTripsHandler=this.listTripsHandler.bind(this);
+        this.listSuggestions=this.listSuggestions.bind(this);
         this.routeChange=this.routeChange.bind(this);
         this.handleOpen1 = this.handleOpen1.bind(this);
         this.handleChange1 = this.handleChange1.bind(this);
         this.handleClose1 = this.handleClose1.bind(this);
-        
+        this.handleDelete = this.handleDelete.bind(this);
     }
-    handleChange1(event) {
-      console.log(event.target.value)
-      this.setState({value1: event.target.value});
     
-    }
     handleOpen1 = () =>{
       this.setState({
           open1:1
@@ -140,20 +151,26 @@ class TripsFunction extends Component{
      
   }
 
+  handleChange1(event) {
+    console.log(event.target.value)
+    this.setState({value1: event.target.value});
+  
+  }
     handleSubmit(event) {
       event.preventDefault()
-        axios.post('http://localhost:5000/api/v1/trips/create',
-        {'admin':String(sessionStorage.getItem("userData")),'description' : this.state.description.trim(),'date':this.state.date,'location':this.state.location,'group':String(sessionStorage.getItem("group"))
+        axios.post('http://localhost:5000/api/v1/groups/add_friend/'+String(sessionStorage.getItem("group")),
+        {'friendname':this.state.name
           }).then(res => {
             
               const updatedInfo = res.data
               console.log(res)
               
               this.setState({
-                  value : '',
+                  name : '',
                   open:0,
               });
               this.listTripsHandler()
+              this.listSuggestions();
             })
           .catch(error => {
             console.log("gfd")
@@ -166,8 +183,9 @@ class TripsFunction extends Component{
 
         handleDelete(event) {
           event.preventDefault()
-           axios.delete('http://localhost:5000/api/v1/trips/del_trip/' + this.state.value1).
-             then(res => {
+           axios.delete('http://localhost:5000/api/v1/groups/del_user/'+String(sessionStorage.getItem("group")).trim()
+           +'/'+this.state.value1.trim())
+             .then(res => {
                  const updatedInfo = res.data
                  console.log(res)
                  
@@ -176,6 +194,7 @@ class TripsFunction extends Component{
                      open1:0,
                  });
                  this.listTripsHandler();
+                 this.listSuggestions();
                  
              })
              .catch(error => {
@@ -185,16 +204,16 @@ class TripsFunction extends Component{
 
 
         listTripsHandler = () => { 
-          axios.get('http://127.0.0.1:5000/api/v1/groups/get_trips/'+String(sessionStorage.getItem("group"))).
+          axios.get('http://127.0.0.1:5000/api/v1/groups/list/members/'+String(sessionStorage.getItem("group"))).
           then(res => {
-              const tripsList = []
-              const data = res.data.trips
+              const membersList = []
+              const data = res.data.members
               for(let x in data){
-                      tripsList.push(data[x])
+                membersList.push(data[x])
                   
               }
               this.setState({
-                  trips : tripsList,
+                members : membersList,
                   loaded:1
         
               })
@@ -209,8 +228,35 @@ class TripsFunction extends Component{
         }) 
        
     }
+
+
+    listSuggestions()
+    {
+
+      axios.post('http://127.0.0.1:5000/api/v1/groups/add_friend/suggest',
+      {"admin":String(sessionStorage.getItem("userData")),"group":String(sessionStorage.getItem("group"))}).
+          then(res => {
+              console.log("gg")
+              const suggestionList = []
+              const data = res.data.suggested
+              for(let x in data){
+                suggestionList.push(data[x])
+                  
+              }
+              this.setState({
+                suggestion : suggestionList,
+                  loaded:1
+        
+              }) 
+              
+             
+        
+            });  
+
+    }
     componentDidMount() {
       this.listTripsHandler();
+      this.listSuggestions();
     }
     onChange = date => 
     {this.setState({ date })
@@ -245,11 +291,11 @@ class TripsFunction extends Component{
         
         functions=(<Grid item xs={9}>
           <Button onClick={this.handleOpen} style={{position:"fixed",left:"35em",height:"6em",top:"40em",margin:"1em"}} variant="contained" color="primary" className={classes.button}>
-         Create Trip
+         Add Member 
         </Button>
 
-        <Button onClick={this.handleOpen1} style={{position:"fixed",height:"6em",top:"40em",margin:"1em",right:"15em"}} variant="contained" color="secondary" className={classes.button}>
-          Delete Trip
+        <Button onClick={this.handleOpen1}  style={{position:"fixed",height:"6em",top:"40em",margin:"1em",right:"15em"}} variant="contained" color="secondary" className={classes.button}>
+          Delete Member
         </Button>
           </Grid>)
       }
@@ -262,11 +308,11 @@ class TripsFunction extends Component{
             
             <Grid item xs={12}>
             <Paper style={{"position":"relative","top":"5em",left:"4em"}}>
-            <Card><CardContent style={{position:"relative",fontSize:"1em",left:"46%"}}><strong>Trips</strong></CardContent></Card>
+            <Card><CardContent style={{position:"relative",fontSize:"1em",left:"46%"}}><strong>Members</strong></CardContent></Card>
              <div>
     <List className={classes.root1}>
     <Paper >
-    {this.state.trips.map( (val, ind) => (
+    {this.state.members.map( (val, ind) => (
                 <div> <Divider/><ListItem alignItems="flex-start">
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
@@ -304,48 +350,48 @@ class TripsFunction extends Component{
      
         <form onSubmit={this.handleSubmit} className={classes.container} noValidate autoComplete="off">
         <Typography component="h1" variant="h5" style={{fontFamily:'Quicksand'}}>
-        Create Trip
+        Add Member
       </Typography><p><br/></p>
             <p><TextField
           id="standard-basic"
           className={classes.textField}
-          label="Location"
-          name="location"
-          value={this.state.location}
+          label="Name"
+          name="name"
+          value={this.state.name}
           onChange={this.handleChange.bind(this)}
          
         /></p>
-    
-        <TextField
-        id="standard-multiline-flexible"
-        label="Place Description"
-        multiline
-        rowsMax="10"
-        name="description"
-       
-        className={classes.textField}
-        margin="normal"
-        value={this.state.description}
-        onChange={this.handleChange.bind(this)}
-      />
+        <p><br/></p>
+        <Typography  style={{fontFamily:'Quicksand'}}>
+        Some Suggestions
+      </Typography>
+
+        <GridList cellHeight={110}  className={classes.gridList}>
+        {this.state.suggestion.map(tile => (
+          <GridListTile  style={{marginRight:"1.7em","width":"110px"}}>
+          
+          <Avatar style={{height:"100px","width":"100px"}} alt="" src={dp} />
+         
+            <GridListTileBar
+              title={tile}
+              
+              
+            />
+          </GridListTile>
+        ))}
       
+        </GridList>
      
-     <p>Tentative Date Range</p>
-        <Calendar
-        selectRange
-        
-          onChange={this.onChange}
-          value={this.state.date}
-        />
         <p><br/></p>
         <Button type="submit" variant="contained" color="primary" className={classes.button}>
-        Create
+        Add
       </Button>
       
       </form>
         </Paper>
       </Fade>
       </Modal>
+
 
 
       <Modal
@@ -363,27 +409,26 @@ class TripsFunction extends Component{
      <Paper>
      <FormControl component="fieldset" className={classes.formControl}>
      <Typography component="h1" variant="h5" style={{fontFamily:'Quicksand'}}>
-     Trips
+    Members
    </Typography>
      <p><br/></p>
      <RadioGroup aria-label="gender" name="gender1" value={this.state.value1} onChange={this.handleChange1}>
-     {this.state.trips.map( (val, ind) => (
+     {this.state.members.map( (val, ind) => (
       <FormControlLabel control={<Radio color="primary" />} value={val} control={<Radio />} label={val} />
       
   ))}
      </RadioGroup><p><br/></p>
      <Button type="submit" variant="contained" color="primary" className={classes.button} onClick={this.handleDelete}>
-     Delete
+     Remove
    </Button>
    </FormControl>
   
       </Paper>
     </Fade>
     </Modal>
-    
           </div>
         )
     }
 }
 
-export default  withRouter(withStyles(styles)(TripsFunction));
+export default  withRouter(withStyles(styles)(MembersFunctions));

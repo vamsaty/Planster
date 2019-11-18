@@ -76,7 +76,19 @@ componentDidMount() {
 }
 
 routeChange() {
-  sessionStorage.setItem("group",this.state.group );
+  sessionStorage.setItem("group",this.state.group )
+  axios.post('http://localhost:5000/api/v1/groups/is_admin',{
+            'username' : String(sessionStorage.getItem("userData")),
+            "group_name":String(sessionStorage.getItem("group"))}).
+        then(res => {
+          sessionStorage.setItem("is_admin",true)
+          
+            
+        })
+        .catch(error => {
+          sessionStorage.setItem("is_admin",false)
+          
+         });  
   this.props.history.push("/dashboard");
 }
 

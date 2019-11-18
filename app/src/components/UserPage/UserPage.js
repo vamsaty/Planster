@@ -26,7 +26,7 @@ class UserPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-       navigate:"profile",
+       navigate:"groups",
        latitude:0,
        longitude:0,
     }
@@ -71,23 +71,32 @@ class UserPage extends Component {
   render(){
     const { classes } = this.props;
     let middle;
-    if(this.state.navigate=="profile")
+    if(this.state.navigate=="groups")
       {
         middle = (
           <div>
           <Paper className={classes.paper}>
             <Groups />
           </Paper>
+          
+          </div>
+        );
+      }
+      if(this.state.navigate=="friends")
+      {
+        middle = (
+          <div>
           <Paper className={classes.paper}>
-            <Friends/>
+            <Friends />
           </Paper>
+          
           </div>
         );
       }
 
 
     return (
-      <div className={classes.root}>
+      <Paper style={{margin:"2em",height:"32em"}}>  <div className={classes.root}>
         <TopBar/>
         <Grid container spacing={3} style={{position:"relative",top:20}} >
           <Grid item lg={3} style={{position:"fixed"}}>
@@ -97,12 +106,15 @@ class UserPage extends Component {
             {middle}
           </Grid>
           <Grid item lg={3} style={{position:"relative",left:310}}>
-            <Paper className={classes.paper} style={{position:"fixed",top:"4em"}}>
-              <Tags />
-            </Paper>
+            
+              phone
+              address
+              age
+          
           </Grid>
         </Grid>
     </div>
+    </Paper>
   );
 }
 }
