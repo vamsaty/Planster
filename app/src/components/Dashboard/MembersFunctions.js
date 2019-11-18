@@ -318,7 +318,10 @@ class MembersFunctions extends Component{
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
                 <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand',position:"relative",top:"1.1em"}} 
-                onMouseEnter={()=>{this.setState({trip:val})}} onClick={this.routeChange}>{val}</Typography>
+                onMouseEnter={()=>{this.setState({trip:val})}} 
+                // onClick={this.routeChange}
+                >{val}
+                </Typography>
               </ListItem>  
                </div>
                 ))}   
