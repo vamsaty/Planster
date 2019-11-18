@@ -32,6 +32,8 @@ db = pymongo.database.Database(mongo, 'db1')
 usercol = pymongo.collection.Collection(db, 'usercol')
 groupscol=pymongo.collection.Collection(db,'groupscol')
 tripscol=pymongo.collection.Collection(db,'tripscol')
+filescol = pymongo.collection.Collection(db,'files')
+chatscol = pymongo.collection.Collection(db,'chats')
 
 
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
@@ -553,6 +555,79 @@ def recommend_places():
     output=dummy_recommender(cost,seating,location,category,preference)
     return jsonify({"Places":output}),200 #a string ,not a list,map UI accordingly
 
+
+
+@app.route('/show_gallery/<groupId>',methods=['GET'])
+def dispaly(groupId):
+    
+    group = filescol.find_one({
+        'group' : groupId
+    })
+    data = []
+
+    if group :
+        for i in group['files']:
+            data.append(json.loads(json_util.dumps(i)))
+
+        return jsonify(data), 200
+    
+    return "nothing to show",400
+
+
+@app.route('/file_upload', methods=['POST'])
+def fileUpload():
+
+    file = request.files['file']
+    group = request.form['group']
+
+    if file:
+        encoded_string = base64.b64encode(file.read())
+        pres = filescol.find_one({'group' : group})
+        if not pres:
+            filescol.insert_one(
+                {'group' : group,'files' : [encoded_string] }
+            )
+        else:
+            filescol.update_one(
+                {'group' : group},{'$push' : { 'files' : encoded_string}}
+            )
+
+        return 'done',200
+    return 'fail', 400
+    
+
+##chat app
+
+@app.route('/chat/<group>',methods=['GET'])
+def getChats(group):
+    chatBox = chatscol.find_one({'group' : group})
+    data = []
+    if chatBox:
+        for chat in chatBox['chats']:
+            data.append(chat)
+        
+        return jsonify(data), 200
+    else:
+        return 'empty', 400
+
+@app.route('/chat',methods=['POST'])
+def postChat():
+    msg = request.json['msg']
+    username = request.json['username']
+    group = request.json['group']
+    
+    chatBox = chatscol.find_one({'group' : group})
+    if not chatBox:
+        chatscol.insert_one({'group' : group,
+            'chats' : [ {'sender' : username,'msg' : msg} ]})
+    else:
+        chatscol.update_one(
+            {'group' : group},
+            {'$push' : {'chats' : {'sender' : username,'msg' : msg}}}
+        )
+    return 'sent', 200
+
+  
   
 def dummy_recommender(a,b,c,d,e):
     return "output"

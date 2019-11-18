@@ -24,6 +24,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Trip from '../Trip/Trip'
 import TripsFunction from './TripsFunction';
 import MembersFunctions from './MembersFunctions'
+import Chat from '../Chat/Chat';
+import {Fab} from '@material-ui/core';
+import FileUpload from '../FileUpload/FileUpload';
+import { ChatBubble } from '@material-ui/icons';
 const drawerWidth = 300;
 
 
@@ -52,7 +56,14 @@ const styles = theme => ({
         top:"1em"
       },
       
-     
+      chatBox: {
+        position : 'absolute',
+        right:'40px',
+        bottom:'40px',
+        cursor:'pointer',
+
+      }
+      
     
     
   });
@@ -64,7 +75,8 @@ class Dashboard extends Component{
       this.state = {
           members:[],
           navigate:"",
-          trips:[]
+          trips:[],
+          toggleChat : false
          
       }
       this.listMembersHandler=this.listMembersHandler.bind(this);
@@ -118,10 +130,15 @@ class Dashboard extends Component{
         {
             middle=(<div><MembersFunctions  /></div>)
         }
+        if(this.state.navigate == 'files'){
+          middle = (<div><FileUpload /></div>)
+        }
         const { classes } = this.props;
+        let chatBox = (this.state.toggleChat) ? <Chat /> : null;
+
         return (
             <div className={classes.root}>
-  
+
      <TopBar/>
       <Drawer variant="permanent" className={classes.drawer}  classes={{ paper: classes.paper }} >
         <div className={classes.toolbar} />
@@ -133,10 +150,10 @@ class Dashboard extends Component{
         <p onClick={()=>this.setState({"navigate":"chat"})} style={{cursor:"pointer",position:"relative",left:"3em",fontFamily:'Quicksand',fontWeight:"bolder",fontSize:"1.3em"}}>{String(sessionStorage.getItem("group"))}
         </p></ListItem>
         <Divider/>
-        <ListItem>
+        {/* <ListItem>
         <ListItemText primary="Chat" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>this.setState({"navigate":"chat"})}
-       ></ListItemText></ListItem>
-       <Divider/>
+       ></ListItemText></ListItem> */}
+       {/* <Divider/> */}
        <ListItem>
        <ListItemText primary="Members" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>this.setState({"navigate":"members"})}
       ></ListItemText></ListItem>
@@ -160,12 +177,16 @@ class Dashboard extends Component{
        
         </List>
         <ListItem>
-        <ListItemText primary="Files" style={{cursor:'pointer',textAlign:'center'}}  onClick={this.handleElse}
+        <ListItemText primary="Files" style={{cursor:'pointer',textAlign:'center'}}  onClick={()=>{this.setState({navigate:'files'})}}
        ></ListItemText></ListItem><Divider/>
       </Drawer>
       <main className={classes.content}>
       <div>{middle}</div></main>
-      
+      {chatBox}
+        <Fab color="primary" aria-label="add" className={classes.chatBox}
+        onClick={()=>this.setState({toggleChat : !this.state.toggleChat})}>
+          <ChatBubble />
+        </Fab>
     </div>
  
         )
