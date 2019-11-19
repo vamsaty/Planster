@@ -75,8 +75,7 @@ class Login extends Component
             this.props.history.push('/user');
         })
         .catch(error => {
-         alert(error.response.data) 
-         
+          alert(error.response.data)
         });
       }
 

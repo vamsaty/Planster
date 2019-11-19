@@ -5,6 +5,7 @@ Created on Mon Oct 14 09:10:45 2019
 @author: satys
 """    
 import json
+import calendar
 from flask import Flask, render_template, Markup, request, redirect, jsonify, abort, session, redirect, url_for, escape
 from datetime import datetime
 import requests
@@ -19,7 +20,11 @@ from dateutil import parser
 from bson.objectid import ObjectId
 from bson import json_util
 import base64
-import svm_recommend
+from recommender import recom
+from io import BytesIO, TextIOWrapper
+
+# from google_images_download import google_images_download
+import sys
 
 app = Flask(__name__)
 CORS(app)
@@ -36,9 +41,38 @@ groupscol=pymongo.collection.Collection(db,'groupscol')
 tripscol=pymongo.collection.Collection(db,'tripscol')
 filescol = pymongo.collection.Collection(db,'files')
 chatscol = pymongo.collection.Collection(db,'chats')
-billSplitCol = pymongo.collection.Collection(db, 'billSplit')
+
+def url(keyword):
+	old_stdout = sys.stdout
+	sys.stdout = TextIOWrapper(BytesIO(), sys.stdout.encoding)
+	response = google_images_download.googleimagesdownload()
+
+	arguments = {
+	    "keywords": keyword,
+	    "limit": 3,
+	    "print_urls": True,
+	    "size": "large",
+	}
+	paths = response.download(arguments)
+
+	sys.stdout.seek(0)
+	output = sys.stdout.read()
+
+	sys.stdout.close()
+	sys.stdout = old_stdout
+
+	for line in output.split("\n"):
+	    if line.startswith("Image URL:"):
+	        return(line.replace("Image URL: ", ""))
+	        break
+
+@app.route('/get_image/<place>',methods=['GET'])
+def get_url(place):
+
+    return jsonify({"url":url(place.split(',')[0])}),200
 
 
+@app.route('/api/v1/user/get_extra_details',methods=[""])
 @app.route('/', methods=['GET', 'POST', 'OPTIONS'])
 def index():
     if('username' in session):
@@ -176,6 +210,7 @@ def getlocation(name):
     return jsonify({"latitude":user["latitude"],"longitude":user["longitude"],"name":name}),200
 
 
+
 @app.route('/api/v1/logout', methods=['POST'])
 def logout():
     session.pop('username', None)
@@ -242,21 +277,15 @@ def view_group(group_name):
 @app.route('/api/v1/details/<username>', methods=['GET'])
 def get_details(username):
     current_user = usercol.find_one({"username" : username})
-
-    # current_user = usercol.find_one({"_id":ObjectId(session['user_id'])})
-    if(current_user):
-        current_groups = groupscol.find_one({
-            "admin_id" : current_user['_id']
-        })
-    else:
-        return jsonify({}),401
     
     user_details = {
-        'name' : current_user['name'],
+        'username' : current_user['username'],
         'email' : current_user['email'],
         'age' : current_user['age'],
         'address' : current_user['address'],
-        'groups' : json_util.dumps(current_user["current_groups"])
+        'phone':current_user['phone'],
+        'city':current_user['city'],
+
     }
 
     return jsonify({
@@ -301,11 +330,13 @@ def list_group(username):
 def list_members(groupname):
     group=groupscol.find_one({"name":groupname})
     members=[]
+    members_u=[]
     for i in group["current_users"]:
         user=usercol.find_one({"_id":ObjectId(i)})
         members.append(user["name"])
+        members_u.append(user["username"])
     print(members)
-    return jsonify({"members":members}),200
+    return jsonify({"members":members,"members_u":members_u}),200
 
 
 
@@ -428,7 +459,13 @@ def check_scheduled(tripname):
     current_trip = tripscol.find_one({"location":tripname})
     try:
         start_date=current_trip["scheduled_dates"][0].split('T')[0]
+        s=int(start_date.split('-')[1])
+        print(s)
+        s1=calendar.month_name[s]
+        print(s1)
+        start_date=start_date.split('-')[2] +" "+ calendar.month_name[int(start_date.split('-')[1])] + "," +start_date.split('-')[0]
         end_date=current_trip["scheduled_dates"][1].split('T')[0]
+        end_date=end_date.split('-')[2] +" "+ calendar.month_name[int(end_date.split('-')[1])] + "," +end_date.split('-')[0]
     except:
         start_date=0
         end_date=0
@@ -524,16 +561,20 @@ def view_trip(trip_name):
 @app.route('/api/v1/user/friends/list/<current_user>', methods=['GET'])
 def list_friends(current_user):
     # current_user = usercol.find_one({"_id":ObjectId(session['user_id'])})
-
+    
     user = usercol.find_one({'username' : current_user })
+#        user = usercol.find_one({'name' : current_user })
+#    except:
+#        pass
 
-    friends = user["friends"]
     friends = []
+    friends_u = []
     for i in user['friends']:
         friend=usercol.find_one({"_id":ObjectId(i)})
         friends.append(friend["name"])
+        friends_u.append(friend["username"])
     
-    return jsonify({"friends":friends}), 200
+    return jsonify({"friends":friends,"friends_u":friends_u}), 200
 
 @app.route('/api/v1/user/expenses', methods=['GET'])#HAVE TO CHANGE LATER
 def get_expense():
@@ -547,15 +588,11 @@ def del_user():
     print(session['user_id'])
     return "", 204
   
-@app.route('/api/v1/places/recommend',methods=['POST'])
-def recommend_places():
-    cost=request.json('cost')
-    seating=request.json('seating')
-    location=request.json('location')
-    category=request.json('category')
-    preference=request.json('preference')
-    output=dummy_recommender(cost,seating,location,category,preference)
-    return jsonify({"Places":output}),200 #a string ,not a list,map UI accordingly
+@app.route('/api/v1/places/recommend/<query>',methods=['GET'])
+def recommend_places(query):
+
+    return jsonify({"recom":recom(query)}),200 #a string ,not a list,map UI accordingly
+
 
 
 @app.route('/show_gallery/<groupId>',methods=['GET'])
@@ -630,163 +667,6 @@ def postChat():
 
   
   
-
-@app.route('/api/v1/billSplit',methods=['POST'])
-def initialize():
-    group = request.json['group']
-    member = request.json['member']
-
-    billSplitCol.insert_one({
-        'group' : group,
-        'expenses' : [{'name' : member,'amount' : 0}]
-    })
-                            
-    return "",200
-    
-@app.route('/api/v1/new_user',methods=["POST"])
-def new_user_init():
-    member = request.json['member']
-    group = request.json['group']
-    # return member, 200
-
-    billSplitCol.update_one(
-        {'group':group},
-        {'$push': {'expenses' : { 'name' : member, 'amount' : 0 }} }
-    )
-    
-    return "added",200
-    
-@app.route('/api/v1/split',methods=['POST'])
-def split():
-
-    group = request.json['group']    
-    amount = float(request.json['amount'])
-    paid_by = request.json['paid_by']
-
-    users = billSplitCol.find_one({'group' : group})
-    userList = []
-    for i in users['expenses']:
-        userList.append(i['name'])
-
-    individual_cost = amount/len(userList)
-
-    new_cost = []
-    for i in users['expenses']:
-        val = -individual_cost
-        if i['name'] == paid_by:
-            val = amount
-        
-        new_cost.append({'name':i['name'], 'amount' : i['amount'] + val})
-
-    billSplitCol.update_one(
-        {'group' : group},
-        {'$set' : {'expenses' : new_cost}}
-    )
-    
-    return "split done!",201
-
-def distribute(users):
-        ret_arr = []
-        n = len(users)
-        for i in range(n):
-            ret_arr.append([0]*n)
-        users1 = sorted(users.items())
-        users2 = []
-        for i in users1:
-            users2.append(list(i))
-        users1 = users2.copy()
-        for i in range(n):
-            if(users1[i][1]>=0):
-                continue
-            for j in range(n):
-                if(i==j):
-                    continue
-                if(users1[j][1]>0):
-                    if(abs(users1[i][1])>=users1[j][1]):
-                        users1[i][1]+=users1[j][1]
-                        ret_arr[i][j] = users1[j][1]
-                        users1[j][1] = 0
-                    else:
-                        users1[j][1]+=users1[i][1]
-                        ret_arr[i][j] = abs(users1[i][1])
-                        users1[i][1] = 0
-        return ret_arr
-
-def minimize_settlement(settle,ll,ret):
-        n = len(settle)
-        amount = [0 for i in range(n)]
-        for p in range(n):
-            for i in range(n):
-                amount[p]+=(settle[i][p] - settle[p][i])
-        
-        min_settle_rec(amount,ll,ret)
-
-def min_settle_rec(amount,ll,ret):
-        cred = amount.index(max(amount))
-        debt = amount.index(min(amount))
-        
-        if(amount[cred]==0 and amount[debt]==0):
-            return 0
-        
-        mi = min(-amount[debt],amount[cred])
-        amount[cred]-=mi
-        amount[debt]+=mi
-        
-        stmt = ll[debt]+" pays "+str(mi)+" to "+ll[cred]
-        ret.append(stmt)
-
-        min_settle_rec(amount,ll,ret)
-
-@app.route('/api/v1/summary/<group>',methods=['GET'])  
-def settle_payments(group):
-    #users = request.json['users']
-    userList = billSplitCol.find_one({'group' : group})
-    if not userList:
-        return "failed", 404
-
-    userList = userList['expenses']
-    users = {}
-    
-    for i in userList:
-        users[i["name"]] = i["amount"]
-    settlement = distribute(users)
-    ll = list(users.keys())
-    ll.sort()
-    ret = []
-    minimize_settlement(settlement,ll,ret)
-    return jsonify(ret),200
-        
-@app.route('/api/v1/payment',methods=['POST'])
-def payment():
-    sender = request.json['sender']
-    receiver = request.json['receiver']
-    amount = request.json['amount']
-    group = request.json['group']
-
-    t1 = billSplitCol.find_one({"group" : group})
-    
-    if not t1:
-        return 'failed',400
-    amount = float(amount)
-    record = []
-    for x in t1['expenses']:
-        val = 0
-        if x['name'] == sender:
-            val = -amount
-        elif x['name'] == receiver:
-            val = amount
-
-        record.append({'name' : x['name'] , 'amount' : x['amount'] + val })
-
-    billSplitCol.update_one({
-        'group':group
-    },{
-      '$set' : {  'expenses' : record}
-    })
-    
-    return "updated Balance",200
-        
-
 def dummy_recommender(a,b,c,d,e):
     return "output"
 
