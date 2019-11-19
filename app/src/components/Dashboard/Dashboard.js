@@ -28,6 +28,7 @@ import Chat from '../Chat/Chat';
 import {Fab} from '@material-ui/core';
 import FileUpload from '../FileUpload/FileUpload';
 import { ChatBubble } from '@material-ui/icons';
+import BillSplitter from '../BillSplitter/BillSplitter';
 const drawerWidth = 300;
 
 
@@ -133,6 +134,9 @@ class Dashboard extends Component{
         if(this.state.navigate == 'files'){
           middle = (<div><FileUpload /></div>)
         }
+        if(this.state.navigate == 'bill_splitter'){
+          middle = (<div><BillSplitter /></div>)
+        }
         const { classes } = this.props;
         let chatBox = (this.state.toggleChat) ? <Chat /> : null;
 
@@ -174,7 +178,7 @@ class Dashboard extends Component{
       <Divider/>
         <ListItem>
         <ListItemText primary="Bill Splitter" style={{cursor:'pointer',textAlign:'center'}}  
-        onClick={this.handleElse}
+        onClick={()=>{this.setState({navigate:'bill_splitter'})}}
        ></ListItemText></ListItem>
        <Divider/>
        
