@@ -103,8 +103,8 @@ class Add_Del_Friend extends Component
         }).then(res => {
           
             const updatedInfo = res.data
-            console.log(res)
-            
+            // console.log(res)
+            console.log('[FRIENDS - ] : ', res)
             this.setState({
                 value : '',
                 open:0,

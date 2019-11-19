@@ -243,7 +243,7 @@ def add_friend(username):
     user = usercol.find_one({"username" : username})
     print("gffnujfnf"+friend_username)
     # return friend_username
-
+    return 'here'
     if(friend):
 
         print("found")
