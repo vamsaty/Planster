@@ -103,28 +103,34 @@ class Add_Del_Group extends Component
       }
 
       handleSubmit(event) {
-       event.preventDefault()
-      axios.post('http://localhost:5000/api/v1/groups/create/' + String(sessionStorage.getItem("userData")),{
-            'name' : this.state.value.trim()
-        }).
-        then(res => {
-            const updatedInfo = res.data
-            console.log(res)
-            
-            this.setState({
-                value : '',
-                open:0,
-            });
-            this.props.change_groups()
-            
-        })
-        .catch(error => {
-          console.log("gfd")
-          alert(error.response.data) 
+        event.preventDefault()
+        const url = 'http://localhost:5000/api/v1/groups/create/'
+       axios.post(url + String(sessionStorage.getItem("userData")),{
+             'name' : this.state.value.trim()
+         }).
+         then(res => {
+             const updatedInfo = res.data
+             console.log(res)
           
-         });  
-      }
-
+             axios.post('http://localhost:5000/api/v1/billSplit',
+             { 
+               'group' : this.state.value,
+               'member' : String(sessionStorage.getItem("userData"))
+             }).then(response=>{
+               
+             })
+                 
+             this.props.change_groups()
+             
+         })
+         .catch(error => {
+           console.log("gfd")
+           alert(error.response.data) 
+           
+          });
+ 
+          
+       }
       handleDelete(event) {
        event.preventDefault()
         axios.delete('http://localhost:5000/api/v1/groups/del/' + this.state.value1,{data:{
