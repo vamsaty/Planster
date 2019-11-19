@@ -58,9 +58,6 @@ class Chat extends Component{
         
     }
 
-
-
-
     getChats = () =>{
         
         const url = 'http://localhost:5000/chat/' + 
