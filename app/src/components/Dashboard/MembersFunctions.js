@@ -162,24 +162,33 @@ class MembersFunctions extends Component{
         axios.post('http://localhost:5000/api/v1/groups/add_friend/'+String(sessionStorage.getItem("group")),
         {'friendname':this.state.name
           }).then(res => {
-            
-              const updatedInfo = res.data
-              console.log(res)
-              
-              this.setState({
-                  name : '',
-                  open:0,
+      
+            axios.post('http://localhost:5000/api/v1/new_user',{
+                'member' : this.state.name,
+                'group' : String(sessionStorage.getItem('group'))
+              }).then(response=>{ 
+                console.log(response)
+                this.setState({
+                    name : '',
+                    open:0,
               });
+              console.log('wtf is happening')
               this.listTripsHandler()
               this.listSuggestions();
+      
             })
           .catch(error => {
             console.log("gfd")
-            alert(error.response.data) 
+            alert(error.response.data)
             
            })
-           
-        }
+        
+        
+
+        })
+
+      }
+
 
 
         handleDelete(event) {
@@ -187,8 +196,8 @@ class MembersFunctions extends Component{
            axios.delete('http://localhost:5000/api/v1/groups/del_user/'+String(sessionStorage.getItem("group")).trim()
            +'/'+this.state.value1.trim())
              .then(res => {
-                 const updatedInfo = res.data
-                 console.log(res)
+
+                console.log(res)
                  
                  this.setState({
                      value1 : '',

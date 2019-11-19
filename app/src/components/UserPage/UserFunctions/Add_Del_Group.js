@@ -104,17 +104,22 @@ class Add_Del_Group extends Component
 
       handleSubmit(event) {
        event.preventDefault()
-      axios.post('http://localhost:5000/api/v1/groups/create/' + String(sessionStorage.getItem("userData")),{
+       const url = 'http://localhost:5000/api/v1/groups/create/'
+      axios.post(url + String(sessionStorage.getItem("userData")),{
             'name' : this.state.value.trim()
         }).
         then(res => {
             const updatedInfo = res.data
             console.log(res)
-            
-            this.setState({
-                value : '',
-                open:0,
-            });
+         
+            axios.post('http://localhost:5000/api/v1/billSplit',
+            { 
+              'group' : this.state.value,
+              'member' : String(sessionStorage.getItem("userData"))
+            }).then(response=>{
+              
+            })
+                
             this.props.change_groups()
             
         })
@@ -122,7 +127,9 @@ class Add_Del_Group extends Component
           console.log("gfd")
           alert(error.response.data) 
           
-         });  
+         });
+
+         
       }
 
       handleDelete(event) {

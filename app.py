@@ -633,39 +633,57 @@ def postChat():
 
 @app.route('/api/v1/billSplit',methods=['POST'])
 def initialize():
-    members = request.json['members']
-    for i in members:
-        billSplitCol.insert({"name" : i , "amount" : 0 })
+    group = request.json['group']
+    member = request.json['member']
+
+    billSplitCol.insert_one({
+        'group' : group,
+        'expenses' : [{'name' : member,'amount' : 0}]
+    })
                             
     return "",200
     
 @app.route('/api/v1/new_user',methods=["POST"])
 def new_user_init():
     member = request.json['member']
-    billSplitCol.insert({"name": member , "amount" : 0})
-    return "",200
+    group = request.json['group']
+    # return member, 200
+
+    billSplitCol.update_one(
+        {'group':group},
+        {'$push': {'expenses' : { 'name' : member, 'amount' : 0 }} }
+    )
+    
+    return "added",200
     
 @app.route('/api/v1/split',methods=['POST'])
 def split():
-    #users = request.json['users']
-    users = billSplitCol.find({})
-    userList = []
-    for i in users:
-        userList.append(i['name'])
-    amount = request.json['amount']
-    paid_by = request.json['paid_by']
-    individual_cost = amount/len(userList)
-    for i in userList:
-        t1 = billSplitCol.find_one({'name':i})
-        billSplitCol.update_one({"name":i} , {"$set" : {"amount": (t1["amount"]-individual_cost)}})
-    '''
-    for i in paid_by:
-        users[i]+=paid_by[i]
-    '''
-    t1 = billSplitCol.find_one({"name":paid_by})
-    billSplitCol.update_one({"name":paid_by} , {"$set" : {"amount": t1["amount"]+amount}})
 
-    return "",201
+    group = request.json['group']    
+    amount = float(request.json['amount'])
+    paid_by = request.json['paid_by']
+
+    users = billSplitCol.find_one({'group' : group})
+    userList = []
+    for i in users['expenses']:
+        userList.append(i['name'])
+
+    individual_cost = amount/len(userList)
+
+    new_cost = []
+    for i in users['expenses']:
+        val = -individual_cost
+        if i['name'] == paid_by:
+            val = amount
+        
+        new_cost.append({'name':i['name'], 'amount' : i['amount'] + val})
+
+    billSplitCol.update_one(
+        {'group' : group},
+        {'$set' : {'expenses' : new_cost}}
+    )
+    
+    return "split done!",201
 
 def distribute(users):
         ret_arr = []
@@ -719,11 +737,16 @@ def min_settle_rec(amount,ll,ret):
 
         min_settle_rec(amount,ll,ret)
 
-@app.route('/api/v1/summary',methods=['GET'])  
-def settle_payments():
+@app.route('/api/v1/summary/<group>',methods=['GET'])  
+def settle_payments(group):
     #users = request.json['users']
-    userList = billSplitCol.find({})
+    userList = billSplitCol.find_one({'group' : group})
+    if not userList:
+        return "failed", 404
+
+    userList = userList['expenses']
     users = {}
+    
     for i in userList:
         users[i["name"]] = i["amount"]
     settlement = distribute(users)
@@ -738,12 +761,30 @@ def payment():
     sender = request.json['sender']
     receiver = request.json['receiver']
     amount = request.json['amount']
+    group = request.json['group']
+
+    t1 = billSplitCol.find_one({"group" : group})
     
-    t1 = billSplitCol.find_one({"name" : sender})
-    billSplitCol.update_one({"name":sender},{"$set" : {"amount": t1["amount"]+amount}})
-    t1 = billSplitCol.find_one({"name" : receiver})
-    billSplitCol.update_one({"name":receiver},{"$set" : {"amount": t1["amount"]-amount}})
-    return "",200
+    if not t1:
+        return 'failed',400
+    amount = float(amount)
+    record = []
+    for x in t1['expenses']:
+        val = 0
+        if x['name'] == sender:
+            val = -amount
+        elif x['name'] == receiver:
+            val = amount
+
+        record.append({'name' : x['name'] , 'amount' : x['amount'] + val })
+
+    billSplitCol.update_one({
+        'group':group
+    },{
+      '$set' : {  'expenses' : record}
+    })
+    
+    return "updated Balance",200
         
 
 def dummy_recommender(a,b,c,d,e):

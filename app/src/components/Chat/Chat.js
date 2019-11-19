@@ -15,10 +15,10 @@ const styles = theme => ({
     root: {
         display: 'flex',
         flexDirection : 'column',
-        position:'fixed',
+        position:'absolute',
         bottom:'10%',
-        right:'20px',
-        maxHeight:'80%',
+        right:'0',
+        maxHeight:'85%',
         padding:'10px',
         '&::webkit-scrollbar':{
             width:'0'
