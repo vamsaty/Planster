@@ -2,12 +2,14 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/styles';
-import tripimg from '../../assets/images/trip.jpg';
+import tripimg from '../../assets/images/bg6.jpg';
 import Calendar from 'react-calendar';
 import Button from '@material-ui/core/Button';
 import TopBar from '../UserPage/TopBar';
 import { Typography } from '@material-ui/core';
 import axios from "axios";
+import Card from '@material-ui/core/Card';
+import TextField from '@material-ui/core/TextField';
 const styles = theme => ({
   root: {
   },
@@ -15,6 +17,10 @@ const styles = theme => ({
     padding: 20,
    
     textAlign: 'center',
+  }, textField: {
+    marginLeft: `theme.spacing(1)`,
+    marginRight: `theme.spacing(1)`,
+    width: 200,
   },
 });
 class Trip extends React.Component {
@@ -24,11 +30,15 @@ class Trip extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSchedule = this.handleSchedule.bind(this);
     this.checkScheduled = this.checkScheduled.bind(this);
+    this.recommend=this.recommend.bind(this)
+    this.handleChange=this.handleChange.bind(this)
   }
   
   state = {
     date: new Date(),
-    scheduled_dates:[]
+    scheduled_dates:[],
+    url:"",
+    query:""
   }
 
   handleSubmit(event) {
@@ -79,15 +89,47 @@ class Trip extends React.Component {
              })
       }
 
+
+     get_image(){
+        axios.get('http://localhost:5000/get_image/'+ String(sessionStorage.getItem("trip")))
+        .then(res => {
+             // alert("Your preference is recorded")
+              //sessionStorage.setItem("url",res.data.url)
+              this.setState({"url":res.data.url})
+              //alert(res.data.scheduled_dates)
+               
+              })
+            .catch(error => {
+              //alert("Sorry Not able to schedule dates!")
+              
+             })
+      }
+
+      recommend(){
+        var t=document.getElementById("place")
+        t.innerHTML="Loading..."
+        axios.get('http://localhost:5000/api/v1/places/recommend/'+ this.state.query)
+        .then(res => {
+             t.innerHTML=res.data.recom
+              })
+            .catch(error => {
+          
+             })
+      }
+      handleChange(e) {
+        this.setState({ [e.target.name] : e.target.value });
+      }
+
       componentDidMount() {
         this.checkScheduled();
+   
       }
 
 
   onChange = date => this.setState({ date })
   render() {
     const { classes } = this.props;
-    const description = "Japan is an island nation in the Pacific Ocean with dense cities, imperial palaces, mountainous national parks and thousands of shrines and temples"
+    const description = "Welcome! Enter your query and we will recommend a restraunt based on that.Enter your preferred date for the trip!"
     let schedule
     let dates
     if(sessionStorage.getItem("is_admin")=="true")
@@ -109,7 +151,7 @@ class Trip extends React.Component {
     }
     if(sessionStorage.getItem("is_scheduled")=="true")
     {
-      dates=(<div><h4>Start: {String(this.state.scheduled_dates[0])}</h4>
+      dates=(<div><h3>Scheduled Dates</h3><h4>Start: {String(this.state.scheduled_dates[0])}</h4>
       <h4>End: {String(this.state.scheduled_dates[1])}</h4>
       </div>)
     }
@@ -118,45 +160,61 @@ class Trip extends React.Component {
       <div>
       <TopBar/>
       <div>
-      <Paper style={{position:"relative",top:"15em",margin:"2em"}}>
-      <Grid container spacing={2}>
-        <Grid style={{width:"40em",margin:"0"}} container item xs={10} spacing={5}>
-        <Grid item xs={9}>
-       
-        <img width="950em" src={tripimg}></img>
-      </Grid>
-      <Grid container item xs={9} style={{margin:"1em"}}>
-      <Grid item xs={4}>
-      {dates}
-      </Grid>
-      <Grid item xs={3}>
-      <Button style={{width:"10em",margin:"8em"}}variant="contained" color="primary" className={classes.button}>
-   Recommend Places
-  </Button>
-      </Grid>
-    <Grid item xs={3}>
+
+      <Paper style={{backgroundImage:"url("+tripimg+")" ,backgroundPosition: 'center',backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',position:"relative",top:"2em",height:"40em",margin:"2em"}}>
+     
+      
     
-    </Grid>
-      </Grid>
+      <Card style={{position:"absolute",width:"20em",margin:"2em"}}>
+      <div style={{margin:"2em"}}><div>
+      <h1>{String(sessionStorage.getItem("trip"))}</h1></div>
+      <div>
+      <h3>{String(sessionStorage.getItem("group"))}</h3></div>
+      <div>
       
-        </Grid>
-        <Grid style={{width:"20em",margin:"0"}} container item xs={2} spacing={1}>
-        <Grid style={{position:"absolute",right:"9em"}} item xs={3}>
-        
-        <div>
-        <h1>{String(sessionStorage.getItem("trip"))}</h1></div>
-        <div>
-        <h3>{String(sessionStorage.getItem("group"))}</h3></div>
-        <div>
-        <h4>Overview:</h4>
-        <Typography style={{width:"10em"}}>{description}</Typography></div>
+      <Typography style={{width:"10em"}}>{description}</Typography></div>
+      <p><br/></p>
+      {schedule}</div>
+      </Card>
+  
+    
+     
+      
+   
+    <Card  style={{position:"absolute",left:"30em",width:"20em",padding:"1.2em",margin:"2em"}}>
+    <TextField
+          
+          id="standard"
+          label="Your query...."
+          value={this.state.query}
+          onChange={this.handleChange}
+          className={classes.textField}
+          margin="normal"
+          name="query"
+        />
         <p><br/></p>
-        {schedule}
-      </Grid>
+    <Button variant="contained" onClick={this.recommend} color="primary" className={classes.button}>
+ Recommend
+</Button>
+<p><br/></p>
+<h4 id="place"></h4></Card>
+   
+
       
-        </Grid>
+      <Card style={{position:"absolute",left:"60em",margin:"2em",width:"20em",padding:"1.2em"}} >
+      {dates}
+      </Card>
+     
+
+
+      
+
+      
+    
+     
+      
        
-      </Grid>
       </Paper>
       </div>
     </div>

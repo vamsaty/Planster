@@ -96,20 +96,27 @@ class UserPage extends Component {
 
 
     return (
-      <Paper style={{margin:"2em",height:"32em"}}>  <div className={classes.root}>
+      <Paper style={{margin:"2em",height:"32em",backgroundColor:"#516b7761"}}>  <div className={classes.root}>
         <TopBar/>
         <Grid container spacing={3} style={{position:"relative",top:20}} >
-          <Grid item lg={3} style={{position:"fixed"}}>
+          <Grid item lg={4} style={{position:"fixed"}}>
             <Navigation handleNavigation={this.handleNavigation}/>
           </Grid>
-          <Grid item lg={6} style={{position:"relative",left:350}}>
-            {middle}
+          <Grid item lg={4} style={{position:"relative",left:350}}>
+          <div>
+          <Paper className={classes.paper}>
+            <Groups />
+          </Paper>
+          
+          </div>
           </Grid>
-          <Grid item lg={3} style={{position:"relative",left:310}}>
-            
-              phone
-              address
-              age
+          <Grid item lg={4} style={{position:"relative",left:310}}>
+          <div>
+          <Paper className={classes.paper}>
+            <Friends />
+          </Paper>
+          
+          </div>
           
           </Grid>
         </Grid>

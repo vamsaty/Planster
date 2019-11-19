@@ -143,7 +143,7 @@ class TripsFunction extends Component{
     handleSubmit(event) {
       event.preventDefault()
         axios.post('http://localhost:5000/api/v1/trips/create',
-        {'admin':String(sessionStorage.getItem("userData")),'description' : this.state.description.trim(),'date':this.state.date,'location':this.state.location,'group':String(sessionStorage.getItem("group"))
+        {'admin':String(sessionStorage.getItem("userData")),'description' : "",'date':this.state.date,'location':this.state.location,'group':String(sessionStorage.getItem("group"))
           }).then(res => {
             
               const updatedInfo = res.data
@@ -244,11 +244,11 @@ class TripsFunction extends Component{
       {
         
         functions=(<Grid item xs={9}>
-          <Button onClick={this.handleOpen} variant="contained" color="primary" className={classes.button}>
+          <Button onClick={this.handleOpen} style={{position:"fixed",left:"35em",height:"6em",top:"40em",margin:"1em"}} variant="contained" color="primary" className={classes.button}>
          Create Trip
         </Button>
 
-        <Button onClick={this.handleOpen1} variant="contained" color="secondary" className={classes.button}>
+        <Button onClick={this.handleOpen1} style={{position:"fixed",height:"6em",top:"40em",margin:"1em",right:"15em"}} variant="contained" color="secondary" className={classes.button}>
           Delete Trip
         </Button>
           </Grid>)
@@ -261,8 +261,8 @@ class TripsFunction extends Component{
             
             
             <Grid item xs={12}>
-            <Paper >
-            <Card><CardContent ><strong>Trips</strong></CardContent></Card>
+            <Paper style={{"position":"relative","top":"5em",left:"4em"}}>
+            <Card><CardContent style={{position:"relative",fontSize:"1em",left:"46%"}}><strong>Trips</strong></CardContent></Card>
              <div>
     <List className={classes.root1}>
     <Paper >
@@ -271,7 +271,7 @@ class TripsFunction extends Component{
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
-                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand'}} 
+                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand',position:"relative",top:"1.1em"}} 
                 onMouseEnter={()=>{this.setState({trip:val})}} onClick={this.routeChange}>{val}</Typography>
               </ListItem>  
                </div>
@@ -306,28 +306,14 @@ class TripsFunction extends Component{
         <Typography component="h1" variant="h5" style={{fontFamily:'Quicksand'}}>
         Create Trip
       </Typography><p><br/></p>
-            <p><TextField
-          id="standard-basic"
-          className={classes.textField}
-          label="Location"
-          name="location"
-          value={this.state.location}
-          onChange={this.handleChange.bind(this)}
-         
-        /></p>
+            <p> <GooglePlacesAutocomplete placeholder="Place Name"
+            onSelect={({ description }) => (
+               this.setState({ location: description })
+             
+             )}
+   /></p>
     
-        <TextField
-        id="standard-multiline-flexible"
-        label="Place Description"
-        multiline
-        rowsMax="10"
-        name="description"
        
-        className={classes.textField}
-        margin="normal"
-        value={this.state.description}
-        onChange={this.handleChange.bind(this)}
-      />
       
      
      <p>Tentative Date Range</p>

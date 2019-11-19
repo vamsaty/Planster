@@ -13,7 +13,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import HomePage from '../HomePage/HomePage'
 import Tooltip from '@material-ui/core/Tooltip';
-
+import axios from "axios";
 const styles = theme => ({
   root: {
     width: '100%',
@@ -23,21 +23,21 @@ const styles = theme => ({
   bigAvatar: {
     width: "120px",
     position:"fixed",
-    left:"90px",
-    top:"100px",
+    left:"120px",
+    top:"130px",
     height: "120px",
   },
   add:{
     position:"fixed",
-    top:"200px",
-    left:"220px",
+    top:"220px",
+    left:"240px",
     color:"black",
 
   },
   box:
   {
     position:"fixed",
-    top:"230px",
+    top:"250px",
     left:'110px',
     fontFamily:'Quicksand',
     alignItems:'center',
@@ -73,7 +73,16 @@ class Navigation extends Component {
      c_color:"#464444",
      f_color:"#464444",
      l_color:"#464444",
-     open:0
+     open:0,
+
+
+     "username":"",
+     "email":"",
+     "address":"",
+     "phone":"",
+     "age":0,
+     "city":"",
+     "email":""
     }
     this.groups=this.groups.bind(this)
     this.friends=this.friends.bind(this)
@@ -81,7 +90,7 @@ class Navigation extends Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.logout = this.logout.bind(this);
-    
+    this.handleInfo=this.handleInfo.bind(this)
   }
 
   groups()
@@ -133,6 +142,24 @@ class Navigation extends Component {
    
 }
 
+handleInfo()
+{
+  axios.get('http://127.0.0.1:5000/api/v1/details/' + String(sessionStorage.getItem("userData"))).
+    then(res => {
+      
+      this.setState({
+        username:res.data.details.username,
+        email:res.data.details.email,
+        age:res.data.details.age,
+        phone:res.data.details.phone,
+        address:res.data.details.address,
+        city:res.data.details.city,
+      })
+
+
+  });  
+}
+
 handleClose = () =>{
     this.setState({
         open:0,
@@ -144,6 +171,10 @@ handleClose = () =>{
    
 }
 
+componentDidMount()
+{
+  this.handleInfo()
+}
   
   render(){
   
@@ -161,12 +192,22 @@ handleClose = () =>{
      <Tooltip title="Change Photo">
      <EditIcon className={classes.add}/></Tooltip>
      <br/>
+     <p style={{position:"absolute",left:"50px"}}>{String(sessionStorage.getItem("Name"))}</p>
+     <p><br/></p>  
      <div className={classes.box}>
-     <p>{String(sessionStorage.getItem("Name"))}</p>
+     <p><br/></p>
      <br/><br/><br/>
-     <p style={{color:this.state.p_color,cursor:"pointer"}} onClick={this.groups}>Groups</p>
-     <p style={{color:this.state.c_color ,cursor:"pointer"}} onClick={this.friends}>Friends</p>
-     <p style={{color:this.state.l_color,cursor:"pointer"}}  onClick={this.handleOpen}>Logout</p>
+     <p>
+     Username : {this.state.username}</p>
+     <p>Email : {this.state.email}</p>
+     <p>Age : {this.state.age}</p>
+     <p>Address : {this.state.address}</p>
+     <p>City : {this.state.city}</p>
+     <p>PhNo : {this.state.phone}</p>
+     
+    
+     
+     
      </div>
      </div>
      

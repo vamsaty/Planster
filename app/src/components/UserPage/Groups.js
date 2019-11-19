@@ -22,7 +22,7 @@ const styles = theme => ({
     backgroundColor: 'theme.palette.background.paper',
     position: 'relative',
     overflow: 'auto',
-    maxHeight: 180,
+    maxHeight: 300,
   },
   paper:{
     display:"inline-flex",

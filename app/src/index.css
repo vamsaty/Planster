@@ -26,8 +26,10 @@ code {
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 body{
   width:100%;
-  background-color:#eeeeee;
+  background-image: url('https://images.unsplash.com/photo-1517639493569-5666a7b2f494?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');
   font-family:'Quicksand', sans-serif;
+  
+
   background-size: cover;
 }
 /*body {
