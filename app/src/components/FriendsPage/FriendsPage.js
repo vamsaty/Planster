@@ -21,7 +21,7 @@ const styles = theme => ({
 });
 
 
-class UserPage extends Component {
+class FriendsPage extends Component {
 
   constructor(props) {
     super(props)
@@ -126,4 +126,4 @@ class UserPage extends Component {
 }
 }
 
-export default withStyles(styles)(UserPage);
+export default withStyles(styles)(FriendsPage);

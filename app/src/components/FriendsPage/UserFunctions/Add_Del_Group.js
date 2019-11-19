@@ -188,12 +188,7 @@ render(){
     <ListSubheader>
    
     <Paper  className={classes.paper1} > 
-    <Tooltip title="Add Group" className={classes.tooltip} onClick={this.handleOpen}>
-    <ListItemAvatar><AddCircleIcon/></ListItemAvatar>
-    </Tooltip>
-    <Tooltip title="Delete Group" className={classes.tooltip} onClick={this.handleOpen1}>
-    <ListItemAvatar><DeleteIcon style={{"color":"maroon"}}/></ListItemAvatar>
-    </Tooltip>
+    
   <span  style={{position:"relative",left:"30%",fontFamily:'Quicksand',fontWeight:'bold'}}>
   Groups</span>
   

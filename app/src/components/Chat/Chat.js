@@ -15,10 +15,10 @@ const styles = theme => ({
     root: {
         display: 'flex',
         flexDirection : 'column',
-        position:'absolute',
+        position:'fixed',
         bottom:'10%',
-        right:'0',
-        maxHeight:'85%',
+        right:'20px',
+        maxHeight:'70%',
         padding:'10px',
         '&::webkit-scrollbar':{
             width:'0'
@@ -58,7 +58,7 @@ class Chat extends Component{
         
     }
 
-    chatCaller = 0
+
 
 
     getChats = () =>{
@@ -80,15 +80,12 @@ class Chat extends Component{
     }
 
     componentDidMount(){
-        this.chatCaller = setInterval(
+        setInterval(
             this.getChats,
             1000
         );
     }
 
-    componentWillUnmount(){
-        clearInterval(this.chatCaller)
-    }
 
     scrollToBottom() {
         const scrollHeight = this.el.scrollHeight;
@@ -200,7 +197,7 @@ class Chat extends Component{
                         margin="normal"
                     />
 
-                    <Fab size='small' color="primary" aria-label="add" className={classes.fab}
+                    <Fab color="primary" aria-label="add" className={classes.fab}
                     onClick={this.postChat}>
                         <SendIcon />
                     </Fab>

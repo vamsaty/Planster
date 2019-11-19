@@ -5,26 +5,27 @@ import {Add as AddIcon, AccessAlarmRounded, RefreshRounded, DeleteForeverRounded
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import axios from 'axios';
 import { sequenceExpression } from '@babel/types';
-
+import Card from '@material-ui/core/Card';
 
 const useStyles = theme => ({
     root: {
       display: 'flex',
-      height:'100%',
-      width:'100%',
+    //   minWidth:'700px',
+      paddingTop:'60px',
       flexWrap: 'wrap',
       flexDirection:'column',
+      justifyContent: 'center',
       alignItems : 'center',
-      overflow: 'hidden',
+      overflow: 'auto',
+      
     },
     gallery:{
         display:'flex',
-        width:'100%',
-        height:'100%',
-        padding:'10px',
         flexDirection:'column',
-        justifyContent:'space-between',
-        alignItems:'center'
+        justifyContent:'center',
+        alignItems:'center',
+        overflow:'auto',
+        maxHeight:500
     },
     gridList: {
       width: '70%',
@@ -32,7 +33,7 @@ const useStyles = theme => ({
       padding:0
     },
     fab : {
-        margin : '5px 5px 5px 0px'
+        margin : '5px 5px 5px 3px'
     }
   });
   
@@ -79,6 +80,7 @@ class FileUpload extends Component{
         axios.post(url,formData)
         .then(response => {
             // console.log('[RESPONSE] : ', response)
+            alert("Successfully Uploaded!")
             this.getGallery()
         })
         .catch(err=>{
@@ -112,7 +114,7 @@ class FileUpload extends Component{
             }
         ]
 
-        let gallery = <CircularProgress className={classes.gridList}/>;
+        let gallery = null;
         
         if(this.state.gallery){
             let ncols = 4
@@ -138,16 +140,22 @@ class FileUpload extends Component{
                     }
                 </GridList>
             )
+        }else{
+            gallery = (
+                <GridList cellHeight={160} className={classes.gridList} cols={1}>
+                    <CircularProgress />
+                </GridList>
+            )
         }
 
-        let fileName = 'Select Images';
+        let fileName = 'Select Files';
         if(this.state.file){
             fileName = this.state.file.name
         }
 
         
-        let formE = (
-            <form onSubmit={this.handleSubmit} method = "POST" enctype = "multipart/form-data">
+        let formE = (<div><Card>
+            <form style={{padding : '10px',backgroundColor:"white", position:'fixed',bottom:'10px',right:'33.5%'}} onSubmit={this.handleSubmit} method = "POST" enctype = "multipart/form-data">
             <label class="fileContainer">
                 {fileName}
                 <input type="file" onChange={this.onFileChange}/>
@@ -157,7 +165,7 @@ class FileUpload extends Component{
                 <ArrowUpwardIcon />
             </Fab>
             
-        </form>
+        </form></Card></div>
         );
 
         let showTime = formE;
@@ -166,10 +174,13 @@ class FileUpload extends Component{
                 <>
                 <Grid className={classes.gallery}>
                     {gallery}
-                    {formE}
                 </Grid>
-                {/* <Divider/> */}
-                
+                <Divider/>
+                <Divider/>
+                <Grid>
+                    {formE}
+                   
+                </Grid>
                 </>
             )
         }

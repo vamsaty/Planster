@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
 const styles = theme => ({
     button: {
         margin: 'theme.spacing(1)',
@@ -74,14 +75,7 @@ class Login extends Component
             this.props.history.push('/user');
         })
         .catch(error => {
-          console.log('[ERR]: ', error)
-          if(error.response){
-            alert('WRONG USERNAME/PASSWORD')
-          }else if(error.request){
-            alert(error.request)
-          }else{
-            alert('ERROR : ',error.message)
-          }
+         alert(error.response.data) 
          
         });
       }

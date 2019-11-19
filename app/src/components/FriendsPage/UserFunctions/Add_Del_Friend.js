@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/styles';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import axios from "axios";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 import Modal from '@material-ui/core/Modal';
@@ -23,17 +24,14 @@ import FormLabel from '@material-ui/core/FormLabel'
 const styles = theme => ({
     button: {
         margin: 'theme.spacing(1)',
-       fontFamily:'Quicksand',fontWeight:'bold'
-      },
-      input: {
-        display: 'none',
+        fontFamily:'Quicksand',fontWeight:'bold'
       },
     container: {
         display: 'flex-block',
         flexWrap: 'wrap',
         padding:40,
       },
-      textField: {
+    textField: {
         marginLeft: 'theme.spacing(2)',
         marginRight: 'theme.spacing(2)',
         width: 300,
@@ -43,19 +41,17 @@ const styles = theme => ({
         alignItems: 'center',
         justifyContent: 'center',
       },
-  paper1:{
-    display:"inline-flex",
-    width:"100%",
-  },
-  tooltip:{
-    cursor:"pointer",position:"relative",top:9,
-  },
-  paper: {
-    backgroundColor: '#ffffff',
-   // border: '2px solid',
-   border: '1px',
-   borderColor : 'black',
-   
+    paper1:{
+      display:"inline-flex",
+      width:"100%",
+    },
+    tooltip:{
+      cursor:"pointer",position:"relative",top:9,
+    },
+    paper: {
+      backgroundColor: '#ffffff',
+      border: '1px',
+      borderColor : 'black',
   },
   formControl: {
     margin: "10px",
@@ -69,45 +65,43 @@ const styles = theme => ({
 
 
 
-class Add_Del_Group extends Component
+class Add_Del_Friend extends Component
 {
 
-    constructor(){
-        super();
-        this.state = {
-            open:0,
-            open1:0,
-            value:" ",
-            value1:" ",
-        }
-        this.handleOpen = this.handleOpen.bind(this);
-        this.handleOpen1 = this.handleOpen1.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleChange1 = this.handleChange1.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.handleClose1 = this.handleClose1.bind(this);
-
+  constructor(){
+    super();
+    this.state = {
+        open:0,
+        open1:0,
+        value:" ",
+        value1:" ",
     }
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleOpen1 = this.handleOpen1.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChange1 = this.handleChange1.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleClose1 = this.handleClose1.bind(this);
 
+}
 
     handleChange(event) {
         this.setState({value: event.target.value});
       }
-
+      
       handleChange1(event) {
         console.log(event.target.value)
         this.setState({value1: event.target.value});
       
       }
-
+    
       handleSubmit(event) {
-       event.preventDefault()
-      axios.post('http://localhost:5000/api/v1/groups/create/' + String(sessionStorage.getItem("userData")),{
-            'name' : this.state.value.trim()
-        }).
-        then(res => {
+      axios.post('http://localhost:5000/api/v1/user/friend/add/' + String(sessionStorage.getItem("userData")),{
+            'friend_username' : this.state.value.trim()
+        }).then(res => {
+          
             const updatedInfo = res.data
             console.log(res)
             
@@ -115,19 +109,18 @@ class Add_Del_Group extends Component
                 value : '',
                 open:0,
             });
-            this.props.change_groups()
-            
-        })
+          })
         .catch(error => {
           console.log("gfd")
           alert(error.response.data) 
           
-         });  
+         })
+         this.props.change_friends();  
       }
 
       handleDelete(event) {
-       event.preventDefault()
-        axios.delete('http://localhost:5000/api/v1/groups/del/' + this.state.value1,{data:{
+       
+        axios.delete('http://localhost:5000/api/v1/user/friend/del/' + this.state.value1,{data:{
               'username' : String(sessionStorage.getItem("userData"))
           }}).
           then(res => {
@@ -138,15 +131,11 @@ class Add_Del_Group extends Component
                   value1 : '',
                   open1:0,
               });
-              this.props.change_groups()
+              this.props.change_friends()
               
-          })
-          .catch(error => {
-            console.log("gfd")
-            alert(error.response.data) 
-            
-           });   
+          });  
         }
+
 
     handleOpen = () =>{
         this.setState({
@@ -161,7 +150,6 @@ class Add_Del_Group extends Component
         }) 
        
     }
-
     handleOpen1 = () =>{
       this.setState({
           open1:1
@@ -176,28 +164,20 @@ class Add_Del_Group extends Component
      
   }
 
-render(){
+    componentDidMount()
+    {
+      this.props.change_friends()
+    }
   
-
-
-  const { classes } = this.props;
-
- 
-  return (
-    
-    <ListSubheader>
-   
-    <Paper  className={classes.paper1} > 
-    <Tooltip title="Add Group" className={classes.tooltip} onClick={this.handleOpen}>
-    <ListItemAvatar><AddCircleIcon/></ListItemAvatar>
-    </Tooltip>
-    <Tooltip title="Delete Group" className={classes.tooltip} onClick={this.handleOpen1}>
-    <ListItemAvatar><DeleteIcon style={{"color":"maroon"}}/></ListItemAvatar>
-    </Tooltip>
-  <span  style={{position:"relative",left:"30%",fontFamily:'Quicksand',fontWeight:'bold'}}>
-  Groups</span>
-  
-    </Paper>
+    render(){
+    const { classes } = this.props;
+    return (
+      <ListSubheader>
+      <Paper  className={classes.paper1} > 
+       
+      <span style={{position:"relative",left:"30%",fontFamily:'Quicksand',fontWeight:'bold'}}>
+        Friends</span>
+      </Paper>
     
     <Modal
         aria-labelledby="transition-modal-title"
@@ -215,26 +195,27 @@ render(){
           
         <form onSubmit={this.handleSubmit} className={classes.container} noValidate autoComplete="off">
         <Typography component="h1" variant="h5" style={{fontFamily:'Quicksand'}}>
-          Create Group
+          Add Friend
         </Typography>
-      <TextField
+        <TextField
         id="standard-name"
-        label="Group Name"
+        label="Name"
         name="name"
         className={classes.textField}
         value={this.state.value}
        onChange={this.handleChange}
         margin="normal"
-        
-      />
-     <p><br/></p>
-      <Button type="submit" variant="contained" color="primary" className={classes.button}>
-        Create
+        />
+      <p><br/></p>
+        <Button type="submit" variant="contained" color="primary" className={classes.button}>
+        Add
       </Button>
       </form>
         </Paper>
       </Fade>
       </Modal>
+
+      
       
       <Modal
       aria-labelledby="transition-modal-title"
@@ -251,16 +232,16 @@ render(){
      <Paper>
      <FormControl component="fieldset" className={classes.formControl}>
      <Typography component="h1" variant="h5" style={{fontFamily:'Quicksand'}}>
-     Groups
+     Remove Friend
    </Typography>
      <p><br/></p><RadioGroup aria-label="gender" name="gender1" value={this.state.value1} onChange={this.handleChange1}>
-     {this.props.groups.map( (val, ind) => (
+     {this.props.friends.map( (val, ind) => (
       <FormControlLabel control={<Radio color="primary" />} value={val} control={<Radio />} label={val} />
       
   ))}
      </RadioGroup><p><br/></p>
      <Button type="submit" variant="contained" color="primary" className={classes.button} onClick={this.handleDelete}>
-     Delete
+     Remove
    </Button>
    </FormControl>
   
@@ -268,10 +249,10 @@ render(){
     </Fade>
     </Modal>
     
-    </ListSubheader>
+      </ListSubheader>
            
   );
 }
 }
 
-export default withStyles(styles)(Add_Del_Group);
+export default withStyles(styles)(Add_Del_Friend);

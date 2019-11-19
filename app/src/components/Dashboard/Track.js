@@ -6,7 +6,7 @@ const TOKEN="pk.eyJ1Ijoic2phZG9uIiwiYSI6ImNrMnZ2dDhjajA4cGkzZHBnNGJwdGx3eGoifQ.c
 
 
 const mapStyles = {
-  width: '70em',
+  width: '65em',
   height: '40em',
 };
 

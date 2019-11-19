@@ -54,7 +54,7 @@ class Groups extends Component
 
 
 listGroupsHandler = () =>{
-  axios.get('http://127.0.0.1:5000/api/v1/groups/list/' + String(sessionStorage.getItem("userData"))).
+  axios.get('http://127.0.0.1:5000/api/v1/groups/list/' + String(sessionStorage.getItem("friend"))).
   then(res => {
       const groupList = []
       const data = res.data.groups
@@ -106,7 +106,7 @@ render(){
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
-                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand',position:"relative",top:"1.1em"}} onMouseEnter={()=>{this.setState({group:val})}} onClick={this.routeChange}>{val}</Typography>
+                <Typography style={{fontFamily:'Quicksand',position:"relative",top:"1.1em"}} >{val}</Typography>
                 </ListItem>
                 <Divider variant="inset" component="li" /></div>
             ))}

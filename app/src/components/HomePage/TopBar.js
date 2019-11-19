@@ -39,7 +39,7 @@ class TopBar extends Component {
                 </Button>
               </Link>
               <Link to="/register" style={{ textDecoration: 'none' }}>
-                <Button style={{position:"relative",bottom:"4.5em",margin:"5px"}} variant="outlined" color="primary" className={theme.button}>
+                <Button style={{position:"relative",bottom:"4.5em",margin:"5px"}} variant="outlined" color="BLUE" className={theme.button}>
                 REGISTER
                 </Button>
               </Link>

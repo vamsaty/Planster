@@ -30,7 +30,7 @@ const styles = theme => ({
   add:{
     position:"fixed",
     top:"220px",
-    left:"240px",
+    left:"220px",
     color:"black",
 
   },
@@ -144,7 +144,7 @@ class Navigation extends Component {
 
 handleInfo()
 {
-  axios.get('http://127.0.0.1:5000/api/v1/details/' + String(sessionStorage.getItem("userData"))).
+  axios.get('http://127.0.0.1:5000/api/v1/details/' + String(sessionStorage.getItem("friend"))).
     then(res => {
       
       this.setState({
@@ -189,10 +189,9 @@ componentDidMount()
     
      <div className={classes.box} >
      <Avatar alt="" src={avatar} className={classes.bigAvatar} />
-     <Tooltip title="Change Photo">
-     <EditIcon className={classes.add}/></Tooltip>
+    
      <br/>
-     <p style={{position:"absolute",left:"50px"}}>{String(sessionStorage.getItem("Name"))}</p>
+     <p style={{position:"absolute",left:"50px"}}>{String(sessionStorage.getItem("friend_n"))}</p>
      <p><br/></p>  
      <div className={classes.box}>
      <p><br/></p>

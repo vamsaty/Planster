@@ -77,8 +77,7 @@ const styles = theme => ({
       width:"100%",
     },
     tooltip:{
-      cursor:"pointer",
-      // position:"relative",top:9,
+      cursor:"pointer",position:"relative",top:9,
     },
    
   formControl: {
@@ -91,9 +90,9 @@ const styles = theme => ({
   root1:{
     width: '100%',
     backgroundColor: 'theme.palette.background.paper',
-    // position: 'relative',
+    position: 'relative',
     overflow: 'auto',
-    // maxHeight: 230,
+    maxHeight: 230,
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -162,33 +161,24 @@ class MembersFunctions extends Component{
         axios.post('http://localhost:5000/api/v1/groups/add_friend/'+String(sessionStorage.getItem("group")),
         {'friendname':this.state.name
           }).then(res => {
-      
-            axios.post('http://localhost:5000/api/v1/new_user',{
-                'member' : this.state.name,
-                'group' : String(sessionStorage.getItem('group'))
-              }).then(response=>{ 
-                console.log(response)
-                this.setState({
-                    name : '',
-                    open:0,
+            
+              const updatedInfo = res.data
+              console.log(res)
+              
+              this.setState({
+                  name : '',
+                  open:0,
               });
-              console.log('wtf is happening')
               this.listTripsHandler()
               this.listSuggestions();
-      
             })
           .catch(error => {
             console.log("gfd")
-            alert(error.response.data)
+            alert(error.response.data) 
             
            })
-        
-        
-
-        })
-
-      }
-
+           
+        }
 
 
         handleDelete(event) {
@@ -196,8 +186,8 @@ class MembersFunctions extends Component{
            axios.delete('http://localhost:5000/api/v1/groups/del_user/'+String(sessionStorage.getItem("group")).trim()
            +'/'+this.state.value1.trim())
              .then(res => {
-
-                console.log(res)
+                 const updatedInfo = res.data
+                 console.log(res)
                  
                  this.setState({
                      value1 : '',
@@ -299,12 +289,12 @@ class MembersFunctions extends Component{
       if(sessionStorage.getItem("is_admin")=="true")
       {
         
-        functions=(<Grid item xs={9} style={{display:'flex',width:'100%',justifyContent:'space-between'}}>
-          <Button onClick={this.handleOpen} variant="contained" color="primary" className={classes.button}>
+        functions=(<Grid item xs={9}>
+          <Button onClick={this.handleOpen} style={{position:"fixed",left:"35em",height:"6em",top:"40em",margin:"1em"}} variant="contained" color="primary" className={classes.button}>
          Add Member 
         </Button>
 
-        <Button onClick={this.handleOpen1} variant="contained" color="secondary" className={classes.button}>
+        <Button onClick={this.handleOpen1}  style={{position:"fixed",height:"6em",top:"40em",margin:"1em",right:"15em"}} variant="contained" color="secondary" className={classes.button}>
           Delete Member
         </Button>
           </Grid>)
@@ -317,8 +307,8 @@ class MembersFunctions extends Component{
             
             
             <Grid item xs={12}>
-            <Paper>
-            <Card><CardContent><strong>Members</strong></CardContent></Card>
+            <Paper style={{"position":"relative","top":"5em",left:"4em"}}>
+            <Card><CardContent style={{position:"relative",fontSize:"1em",left:"46%"}}><strong>Members</strong></CardContent></Card>
              <div>
     <List className={classes.root1}>
     <Paper >
@@ -327,7 +317,7 @@ class MembersFunctions extends Component{
                 <ListItemAvatar>
                 <Avatar alt="" src={dp} />
                 </ListItemAvatar>
-                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand'}} 
+                <Typography style={{cursor:'pointer' ,fontFamily:'Quicksand',position:"relative",top:"1.1em"}} 
                 onMouseEnter={()=>{this.setState({trip:val})}} 
                 // onClick={this.routeChange}
                 >{val}
