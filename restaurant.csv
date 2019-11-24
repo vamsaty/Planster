@@ -1,0 +1,984 @@
+,Unnamed: 0,name,location,rest_type,dish_liked,cuisines,listed_in(type),cost
+0,0,Jalsa,Banashankari,Casual Dining,"Pasta, Lunch Buffet, Masala Papad, Paneer Lajawab, Tomato Shorba, Dum Biryani, Sweet Corn Soup","North Indian, Mughlai, Chinese",Buffet,moderate
+1,1,Spice Elephant,Banashankari,Casual Dining,"Momos, Lunch Buffet, Chocolate Nirvana, Thai Green Curry, Paneer Tikka, Dum Biryani, Chicken Biryani","Chinese, North Indian, Thai",Buffet,moderate
+2,2,San Churro Cafe,Banashankari,"Cafe, Casual Dining","Churros, Cannelloni, Minestrone Soup, Hot Chocolate, Pink Sauce Pasta, Salsa, Veg Supreme Pizza","Cafe, Mexican, Italian",Buffet,moderate
+3,3,Addhuri Udupi Bhojana,Banashankari,Quick Bites,Masala Dosa,"South Indian, North Indian",Buffet,cheap
+4,4,Grand Village,Basavanagudi,Casual Dining,"Panipuri, Gol Gappe","North Indian, Rajasthani",Buffet,moderate
+5,5,Timepass Dinner,Basavanagudi,Casual Dining,"Onion Rings, Pasta, Kadhai Paneer, Salads, Salad, Roti, Jeera Rice",North Indian,Buffet,moderate
+6,6,Rosewood International Hotel - Bar & Restaurant,Mysore Road,Casual Dining,,"North Indian, South Indian, Andhra, Chinese",Buffet,moderate
+7,7,Onesta,Banashankari,"Casual Dining, Cafe","Farmhouse Pizza, Chocolate Banana, Virgin Mojito, Pasta, Paneer Tikka, Lime Soda, Prawn Pizza","Pizza, Cafe, Italian",Cafes,moderate
+8,8,Penthouse Cafe,Banashankari,Cafe,"Pizza, Mocktails, Coffee, Nachos, Salad, Pasta, Sandwiches","Cafe, Italian, Continental",Cafes,moderate
+9,9,Smacznego,Banashankari,Cafe,"Waffles, Pasta, Coleslaw Sandwich, Choco Waffle, Tacos, Momos, Cheese Nachos","Cafe, Mexican, Italian, Momos, Beverages",Cafes,cheap
+10,10,CafÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© Down The Alley,Banashankari,Cafe,"Waffles, Pasta, Crispy Chicken, Honey Chilli Chicken, Sandwich, Coffee, Crepe",Cafe,Cafes,cheap
+11,11,Cafe Shuffle,Banashankari,Cafe,"Mocktails, Peri Fries, Lasagne, Pizza, Chicken Bbq Wings, Virgin Mojito, Nachos","Cafe, Italian, Continental",Cafes,moderate
+12,12,The Coffee Shack,Banashankari,Cafe,"Coffee, Spaghetti, Pancakes, Nachos, Pasta, Sandwich, Garlic Bread","Cafe, Chinese, Continental, Italian",Cafes,cheap
+13,13,Caf-Eleven,Banashankari,Cafe,"Sandwich, Omelette, Ice Tea, Virgin Mojito, Hot Chocolate, Pasta Arrabiata, Hazelnut Cappuccino","Cafe, Continental",Cafes,cheap
+14,14,San Churro Cafe,Banashankari,"Cafe, Casual Dining","Churros, Cannelloni, Minestrone Soup, Hot Chocolate, Pink Sauce Pasta, Salsa, Veg Supreme Pizza","Cafe, Mexican, Italian",Cafes,moderate
+15,15,Cafe Vivacity,Banashankari,Cafe,"Garlic Bread, Burgers, Sandwiches, Pizza, Hot Chocolate Fudge, Waffles, Potato Wedges",Cafe,Cafes,moderate
+16,16,Catch-up-ino,Banashankari,Cafe,"Momos, Mushroom Bruschettas, Jalapeno Cheeseballs, Pasta, Red Velvet Shake, Red Velvet Milkshake, Maggi","Cafe, Fast Food, Continental, Chinese, Momos",Cafes,moderate
+17,17,Kirthi's Biryani,Banashankari,Cafe,"Pasta, Gelato, Garlic Bread, Mojito, Nachos, Paneer Pizza, Mocktails","Chinese, Cafe, Italian",Cafes,moderate
+18,18,T3H Cafe,Banashankari,Cafe,"Cheese Maggi, Peri Peri Fries, Pasta Arrabiata","Cafe, Italian, American",Cafes,cheap
+19,19,360 Atoms Restaurant And Cafe,Banashankari,Cafe,,"Cafe, Chinese, Continental, Italian",Cafes,cheap
+20,20,The Vintage Cafe,Banashankari,Cafe,"Burgers, Caramel Milkshake, Iced Coffee, Iced Tea","Cafe, French, North Indian",Cafes,cheap
+21,21,Woodee Pizza,Banashankari,Cafe,"Pizza, Garlic Bread","Cafe, Pizza, Fast Food, Beverages",Cafes,cheap
+22,22,Cafe Coffee Day,Banashankari,Cafe,,"Cafe, Fast Food",Cafes,moderate
+23,23,My Tea House,Banashankari,"Quick Bites, Cafe","Pasta, Iced Tea","Italian, Fast Food, Cafe, European",Cafes,moderate
+24,24,Hide Out Cafe,Banashankari,Cafe,,Cafe,Cafes,cheap
+25,25,CAFE NOVA,Banashankari,Cafe,,"Cafe, Bakery",Cafes,moderate
+26,26,Coffee Tindi,Banashankari,"Cafe, Quick Bites",,"Cafe, South Indian",Cafes,cheap
+27,27,Sea Green Cafe,Banashankari,Cafe,,"Cafe, Fast Food, Beverages",Cafes,cheap
+28,28,Cuppa,Banashankari,Cafe,,"Cafe, Fast Food",Cafes,cheap
+29,29,Srinathji's Cafe,Basavanagudi,"Casual Dining, Cafe","Paratha, Sandwich, Chilli Idli, Noodles, Sandwiches, Lime Soda","North Indian, Cafe, Chinese, Fast Food",Cafes,cheap
+30,30,Redberrys,Basavanagudi,Cafe,"Pizza, Fries, Anjeer Ice Cream, Sandwiches, Gelato, Burgers, Kesar Badam","Cafe, Italian",Cafes,moderate
+31,31,Foodiction,Banashankari,Quick Bites,"Burgers, Lassi, Chicken Grill, Naan, Momos, Chicken Burger, Biryani","North Indian, Fast Food, Chinese, Burger",Delivery,cheap
+32,32,Sweet Truth,Banashankari,Delivery,,"Bakery, Desserts",Delivery,cheap
+33,33,Ovenstory Pizza,Banashankari,Delivery,"Paneer Tikka, Garlic Bread, Thin Crust Pizza, Falafel, Veggie Pizza",Pizza,Delivery,moderate
+34,34,Faasos,Banashankari,Quick Bites,"Rolls, Veggie Wrap, Chocolate Fantasy, Rice Bowls, Chicken Rice, Paneer Makhanwala, Chicken Tikka Wrap","North Indian, Biryani, Fast Food",Delivery,cheap
+35,35,Behrouz Biryani,Banashankari,Delivery,"Raita, Gulab Jamun, Paneer Biryani, Vegetable Biryani, Gosht Dum Biryani, Chicken Biryani, Murgh Biryani",Biryani,Delivery,moderate
+36,36,Fast And Fresh,Banashankari,Quick Bites,,"North Indian, Chinese, Fast Food",Delivery,cheap
+37,37,Szechuan Dragon,Banashankari,Casual Dining,"Noodles, Momos, Veg Manchow Soup, Kung Pao Chicken, Chicken Lollipop, Chop Suey, Dragon Chicken","Chinese, Thai, Momos",Delivery,moderate
+38,38,Empire Restaurant,Jayanagar,Casual Dining,"Chicken Tikka Masala, Mutton Keema Dosa, Mutton Biryani, Raan Biryani, Brain Fry, Chicken Grill, Ghee Rice","North Indian, Mughlai, South Indian, Chinese",Delivery,moderate
+39,39,Maruthi Davangere Benne Dosa,Banashankari,Quick Bites,,South Indian,Delivery,cheap
+40,40,Chaatimes,Basavanagudi,Quick Bites,"Dabeli, Faluda, Masala Poori, Sandwiches, Tokri Chaat, Pav Bhaji, Dahipuri","Street Food, Fast Food",Delivery,cheap
+41,41,Havyaka Mess,Banashankari,Mess,,South Indian,Delivery,cheap
+42,42,McDonald's,Banashankari,Quick Bites,"Burgers, Fries, Hot Chocolate","Burger, Fast Food",Delivery,cheap
+43,43,Domino's Pizza,Banashankari,Quick Bites,"Pane Pizza, Lava Cake, Pasta, Stuffed Garlic Bread, Chocolava Cake, Tacos","Pizza, Fast Food",Delivery,moderate
+44,44,Onesta,Banashankari,"Casual Dining, Cafe","Farmhouse Pizza, Chocolate Banana, Virgin Mojito, Pasta, Paneer Tikka, Lime Soda, Prawn Pizza","Pizza, Cafe, Italian",Delivery,moderate
+45,45,Hotboxit,Banashankari,Delivery,Prompt Service,"North Indian, Continental, Italian",Delivery,cheap
+46,46,Kitchen Garden,Kumaraswamy Layout,Quick Bites,Biryani,"North Indian, Chinese",Delivery,cheap
+47,47,Recipe,Kumaraswamy Layout,Casual Dining,"Butter Chicken, Noodles, Thali, Biryani","North Indian, Chinese, Biryani, Rolls",Delivery,cheap
+48,48,Beijing Bites,Rajarajeshwari Nagar,Casual Dining,"Momos, Dragon Chicken, Hakka Noodles, Chowmein, Chop Suey, Chilli Garlic Noodles, Garlic Rice","Chinese, Thai",Delivery,moderate
+49,49,Tasty Bytes,Kumaraswamy Layout,Quick Bites,"Paratha, Pasta","North Indian, Chinese, Momos, Rolls",Delivery,cheap
+50,50,Petoo,Banashankari,Quick Bites,,North Indian,Delivery,cheap
+51,51,Shree Cool Point,Vijay Nagar,Quick Bites,,"Fast Food, Street Food, Beverages",Delivery,cheap
+52,52,Corner House Ice Cream,Banashankari,Dessert Parlor,"Hot Chocolate Fudge, Vanilla Ice Cream, Fudge Cake, Chocolate Mousse","Ice Cream, Desserts",Delivery,cheap
+53,53,Biryanis And More,Jayanagar,Casual Dining,"Prawn Biryani, Dragon Chicken, Chicken Boneless Biryani, Afghani Biryani, Mughlai Biryani, Paneer Tikka Biryani, Gongura Biryani","Biryani, North Indian, Chinese, Andhra, South Indian",Delivery,moderate
+54,54,Roving Feast,Banashankari,Quick Bites,"Pasta, Momos, Rolls, Chicken Roll, Chilli Chicken, Paneer Roll, Spaghetti","Italian, Continental, Fast Food, Chinese, Momos",Delivery,cheap
+55,55,FreshMenu,Banashankari,Delivery,"Salads, Sandwiches, Salad, Thai Rice, Pasta, Noodles, Pizza","Healthy Food, Chinese, Biryani, North Indian, Continental, Salad, American, Burger",Delivery,cheap
+56,56,Banashankari Donne Biriyani,Banashankari,Quick Bites,,"Biryani, Fast Food",Delivery,cheap
+57,57,Wamama,Banashankari,Casual Dining,"Sushi, Noodles, Wine, Khau Suey, Mocktails, Yakisoba, Spring Roll","Asian, Korean, Indonesian, Japanese, Chinese, Thai, Momos",Delivery,moderate
+58,58,Five Star Chicken,Banashankari,Quick Bites,,"Fast Food, Burger",Delivery,cheap
+59,59,XO Belgian Waffle,Banashankari,Dessert Parlor,,"Desserts, Beverages",Delivery,cheap
+60,60,Peppy Peppers,Banashankari,Casual Dining,"Pasta, Pepper Pizza, Paneer Pizza, Peppy Paneer, Nachos, Supreme Pizza, Manchow Soup","Italian, North Indian, Mexican",Delivery,moderate
+61,61,Goa 0 Km,Kumaraswamy Layout,Casual Dining,"Sea Food, Crab Meat, Crab Soup, Fish Curry, Chicken Cafreal, Butter Naan, Butter Chicken","Goan, Seafood, North Indian, Chinese, Biryani",Delivery,moderate
+62,62,Chinese Kitchen,Basavanagudi,Quick Bites,,Chinese,Delivery,cheap
+63,63,1947,Banashankari,Casual Dining,"Salads, Panneer Butter Masala, Rabri, Gajar Ka Halwa, Manchow Soup, Aam Panna, Tomato Basil Soup","North Indian, Chinese",Delivery,moderate
+64,64,Cake of the Day,Banashankari,"Bakery, Dessert Parlor",,Bakery,Delivery,cheap
+65,65,Kabab Magic,Basavanagudi,Quick Bites,"Grape Juice, Chicken Grill, Chicken Tikka Roll, Shawarma Roll, Chicken Shawarama, Biryani Combo, Rolls","North Indian, Kebab, Chinese, Fast Food",Delivery,cheap
+66,66,Namma Brahmin's Idli,Jayanagar,Quick Bites,,South Indian,Delivery,cheap
+67,67,Gustoes Beer House,Banashankari,Pub,"Beer, Wedges, Pizza, Nachos, Salads, Papaya Salad, Buffalo Wings","Continental, Italian, Mexican, North Indian, Chinese, Steak",Delivery,expensive
+68,68,Sugar Rush,Banashankari,Bakery,,"Bakery, Desserts",Delivery,cheap
+69,69,Burger King,Basavanagudi,Quick Bites,,"Burger, Fast Food, Beverages",Delivery,moderate
+70,70,The Good Bowl,Banashankari,"Takeaway, Delivery",,"Italian, North Indian, Biryani",Delivery,cheap
+71,71,The Biryani Cafe,Banashankari,Quick Bites,"Vegetable Biryani, Ginger Chicken, Chicken Biryani, Donne Biryani, Chicken Kebab, Egg Bhurji, Dum Biryani","Biryani, Chinese, Kebab",Delivery,cheap
+72,72,Spicy Tandoor,Banashankari,Quick Bites,,North Indian,Delivery,cheap
+73,73,LSD Cafe,Banashankari,Delivery,,"Chinese, Continental, Italian, North Indian",Delivery,moderate
+74,74,Rolls On Wheels,Banashankari,Quick Bites,"Rolls, Momos, Fries, Veggie Roll, Chicken Kebab Roll, Paneer Roll, Cheese Roll","Fast Food, Rolls, Momos",Delivery,cheap
+75,75,Om Sri Vinayaka Chats,Banashankari,"Takeaway, Delivery",,"Street Food, Fast Food",Delivery,cheap
+76,76,Sri Guru Kottureshwara Davangere Benne Dosa,Basavanagudi,Quick Bites,"Benne Dosa, Mirchi Bajji, Filter Coffee, Poha, Tea, Butter Dosa, Crispy Dosa",South Indian,Delivery,cheap
+77,77,Devanna Dum Biriyani Centre,Banashankari,Quick Bites,,"Biryani, South Indian",Delivery,cheap
+78,78,Kolbeh,Banashankari,Quick Bites,,Fast Food,Delivery,cheap
+79,79,Upahar Sagar,Banashankari,Quick Bites,Masala Dosa,"South Indian, Chinese, North Indian",Delivery,cheap
+80,80,Kadalu Sea Food Restaurant,Vijay Nagar,Fine Dining,,"Seafood, North Indian, Chinese, Andhra, Biryani, Kebab",Delivery,cheap
+81,81,Frozen Bottle,Banashankari,Beverage Shop,"Berryblast, Waffles, Cheesecake, Salted Caramel","Beverages, Desserts, Ice Cream",Delivery,cheap
+82,82,Parimala Sweets,Banashankari,Sweet Shop,,"Mithai, Street Food",Delivery,cheap
+83,83,Vaishali Deluxe,Banashankari,Casual Dining,,"North Indian, Chinese",Delivery,moderate
+84,84,Chill Out,Banashankari,Quick Bites,,"South Indian, Chinese",Delivery,cheap
+85,85,The Big O Bakes,Banashankari,Bakery,,"Bakery, Desserts",Delivery,cheap
+86,86,Meghana Foods,Jayanagar,Casual Dining,"Chicken Boneless Biryani, Hyderabadi Biryani, Paneer Biryani, Tandoori Chicken, Vegetable Biryani, Chicken Kebab, Raita","Biryani, North Indian, Chinese",Delivery,moderate
+87,87,Krishna Sagar,Banashankari,Quick Bites,,North Indian,Delivery,cheap
+88,88,Dessert Rose,Banashankari,Dessert Parlor,,Desserts,Delivery,cheap
+89,89,Chickpet Donne Biryani House,Banashankari,Quick Bites,,Biryani,Delivery,cheap
+90,90,Me And My Cake,Banashankari,Delivery,,"Bakery, Desserts",Delivery,cheap
+91,91,Sunsadm,Banashankari,"Takeaway, Delivery",,South Indian,Delivery,cheap
+92,92,Annapooraneshwari Mess,Banashankari,Mess,,South Indian,Delivery,cheap
+93,93,Thanco's Natural Ice Creams,Banashankari,Dessert Parlor,,Ice Cream,Delivery,cheap
+94,94,Nandhini Deluxe,Banashankari,Casual Dining,"Biryani, Chicken Guntur, Thali, Buttermilk, Manchurian",North Indian,Delivery,moderate
+95,95,Vi Ra's Bar and Restaurant,Banashankari,Bar,Chilli Chicken,"South Indian, North Indian, Chinese",Delivery,moderate
+96,96,Kaggis,Banashankari,Quick Bites,,"Fast Food, Bakery",Delivery,cheap
+97,97,Ayda Persian Kitchen,Banashankari,Casual Dining,,"North Indian, Iranian",Delivery,moderate
+98,98,Chatar Patar,Banashankari,Quick Bites,"Panipuri, Chaat, Noodles, Dahi Bhalle","Fast Food, Street Food",Delivery,cheap
+99,99,Polar Bear,Basavanagudi,Dessert Parlor,Hot Chocolate Fudge,"Ice Cream, Desserts, Beverages, Sandwich",Delivery,cheap
+100,100,Kidambi's Kitchen,Banashankari,Quick Bites,Rooftop Ambience,South Indian,Delivery,cheap
+101,101,Mane Thindi,Banashankari,Quick Bites,"Coffee, Tea, Kesari Bath, Open Dosa, Vada, Idli, Bread Dosa",South Indian,Delivery,cheap
+102,102,Kotian Karavali Restaurant,Banashankari,Quick Bites,,"South Indian, Biryani",Delivery,cheap
+103,103,Floured-Baked With Love,Banashankari,"Takeaway, Delivery","Cup Cake, Chocolate Cake",Bakery,Delivery,cheap
+104,104,CAFE NOVA,Banashankari,Cafe,,"Cafe, Bakery",Delivery,moderate
+105,105,Cakes & Slices,Banashankari,Bakery,,"Bakery, Desserts",Delivery,cheap
+106,106,Spice 9,Banashankari,Quick Bites,,"Biryani, North Indian, Chinese, Fast Food",Delivery,cheap
+107,107,Coffee Shopee,Banashankari,"Takeaway, Delivery",,Beverages,Delivery,cheap
+108,108,Naveen Kabab & Biriyani Mane,Banashankari,Quick Bites,,Biryani,Delivery,cheap
+109,109,Katriguppe Donne Biryani,Banashankari,Quick Bites,,North Indian,Delivery,cheap
+110,110,Hari Super Sandwich,Banashankari,"Takeaway, Delivery",,"Sandwich, Pizza, Beverages",Delivery,cheap
+111,111,Atithi Point Ande Ka Funda,Banashankari,Quick Bites,,North Indian,Delivery,cheap
+112,112,Just Bake,Banashankari,Bakery,,"Bakery, Desserts",Delivery,cheap
+113,113,Dharwad Line Bazaar Mishra Pedha,Banashankari,Dessert Parlor,,Mithai,Delivery,cheap
+114,114,Cake Bite,Banashankari,Bakery,,Bakery,Delivery,cheap
+115,115,Aarush's Food Plaza,Banashankari,Quick Bites,,"North Indian, Street Food",Delivery,cheap
+116,116,Wood Stove,Banashankari,"Takeaway, Delivery",,South Indian,Delivery,cheap
+117,117,Kulfi & More,Banashankari,Dessert Parlor,,"Ice Cream, Desserts, Juices",Delivery,cheap
+118,118,Kannadigas Karavali,Banashankari,Quick Bites,,"Mangalorean, South Indian, North Indian",Delivery,cheap
+119,119,K27 - The Pub,Banashankari,Bar,,"Chinese, North Indian",Delivery,expensive
+120,120,Bengaluru Coffee House,Banashankari,Quick Bites,"Masala Dosa, Tirupathi Pongal, Filter Coffee, Vada, Kharabath, Kali Dosa, Rava Idli","South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+121,121,New Mangalore Lunch Home,Banashankari,Quick Bites,,"Mangalorean, South Indian, North Indian",Delivery,cheap
+122,122,Coffee Bytes,Banashankari,Quick Bites,,"Fast Food, South Indian",Delivery,cheap
+123,123,Parjanya Chat Zone,Banashankari,Quick Bites,,"Street Food, Fast Food",Delivery,cheap
+124,124,Kwality Wall's Swirl's Happiness Station,Banashankari,Dessert Parlor,,"Ice Cream, Desserts",Delivery,cheap
+125,125,Soms Kitchen & Bakes,Banashankari,Delivery,,"South Indian, North Indian, Continental",Delivery,cheap
+126,126,Banashankari Nati Style,Banashankari,Quick Bites,,"Biryani, Chinese, South Indian, North Indian",Delivery,cheap
+127,127,Ruchi Maayaka,Banashankari,Delivery,,South Indian,Delivery,cheap
+128,128,Mohitesh Hut Roll,Banashankari,Quick Bites,,"Rolls, North Indian",Delivery,cheap
+129,129,Sri Basaveshwar Jolada Rotti Oota,Banashankari,Quick Bites,,South Indian,Delivery,cheap
+130,130,Roll Magic Fast Food,Banashankari,"Takeaway, Delivery",,"Biryani, Rolls, Chinese",Delivery,cheap
+131,131,Foodlieious Multi Cuisine,Banashankari,Quick Bites,,North Indian,Delivery,cheap
+132,132,Thanishka Nati And Karavali Style,Banashankari,Quick Bites,,"Biryani, Fast Food",Delivery,cheap
+133,133,Swathi Cool Point,Banashankari,Beverage Shop,,"Beverages, Juices",Delivery,cheap
+134,134,Kaumudis Juoice,Banashankari,"Beverage Shop, Quick Bites",,"Beverages, Fast Food, Juices",Delivery,cheap
+135,135,Amma - Manae,Banashankari,"Takeaway, Delivery",,South Indian,Delivery,cheap
+136,136,Sri Sai Tiffannies,Banashankari,Quick Bites,,"South Indian, Chinese",Delivery,cheap
+137,137,Hotel Andhra Speices,Banashankari,Quick Bites,,Andhra,Delivery,cheap
+138,138,Sri Murari Family Restaurant,Banashankari,Quick Bites,,Biryani,Delivery,cheap
+139,139,Aramane Donne Biriyani,Banashankari,Quick Bites,,"South Indian, Biryani",Delivery,cheap
+140,140,Darkolates,Banashankari,Confectionery,,Desserts,Delivery,cheap
+141,141,Swaada Healthy Kitchen,Banashankari,"Quick Bites, Beverage Shop",,"Healthy Food, Juices, Sandwich",Delivery,cheap
+142,142,Gawdaru Mane Beriyani,Banashankari,Quick Bites,,"South Indian, Biryani",Delivery,cheap
+143,143,Melting Melodies,Banashankari,"Takeaway, Delivery",,"Pizza, Fast Food",Delivery,cheap
+144,144,New Indraprasta,Banashankari,Quick Bites,,"South Indian, Beverages",Delivery,cheap
+145,145,Anna Kuteera,Banashankari,Casual Dining,"Panner Tikka, Kulfi, Coffee, Pav Bhaji, Carrot Halwa, Fried Rice, Set Dosa","South Indian, North Indian, Chinese",Delivery,cheap
+146,146,Darbar,Banashankari,Bar,"Paneer Tikka, Dal Kichadi, French Fries","North Indian, Chinese",Delivery,moderate
+147,147,Vijayalakshmi,Basavanagudi,Quick Bites,,South Indian,Delivery,cheap
+148,148,Sri Udupi Food Hub,Jayanagar,Casual Dining,"Filter Coffee, Masala Dosa, Idli, Vada","South Indian, North Indian, Chinese, Beverages",Delivery,cheap
+149,149,Udupi Upahar,Banashankari,Quick Bites,,"South Indian, Chinese, North Indian, Juices",Delivery,cheap
+150,150,House Of Kebabs,Basavanagudi,Casual Dining,"Rolls, Shawarma, Butter Chicken, Mutton Biryani, Lahori Chicken, Chicken Roll, Grape Juice","North Indian, Kebab, Biryani, Chinese",Delivery,moderate
+151,151,Roll N Rock,Kumaraswamy Layout,Quick Bites,"Rolls, Paratha, Chicken Biryani","Chinese, North Indian, Mughlai, Rolls",Delivery,cheap
+152,152,BOX8- Desi Meals,Banashankari,"Takeaway, Delivery","Paratha, Mughlai Chicken, Masala Lemonade, Butter Chicken, Rajma, Sandwich, Salad","North Indian, Mughlai, Fast Food",Delivery,cheap
+153,153,KFC,Banashankari,Quick Bites,"Burgers, French Fries","Burger, Fast Food",Delivery,cheap
+154,154,Bitez,Banashankari,Quick Bites,,Fast Food,Delivery,cheap
+155,155,Roll Over,Jayanagar,Dessert Parlor,"Rolls, Ice Cream Roll, Paan Ice Cream, Coffee, Vanilla Ice Cream, Chocolate Icecreams, Mississippi Mudpie","Desserts, Ice Cream, Beverages, Fast Food, Sandwich",Delivery,cheap
+156,156,Imperial Restaurant,Mysore Road,Casual Dining,"Kadhai Paneer, Ghee Rice, Chicken Grill, Shawarma, Paratha, Biryani, Butter Chicken","North Indian, Chinese, Biryani, Beverages",Delivery,moderate
+157,157,Lassi Shop,Kumaraswamy Layout,Beverage Shop,,"Beverages, Juices, Ice Cream",Delivery,cheap
+158,158,The Fortuna,Kumaraswamy Layout,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+159,159,Wahab,Jayanagar,Quick Bites,"Chicken Biryani, Rolls","North Indian, Mughlai, Chinese",Delivery,cheap
+160,160,Al Diwan Biryanis And More,Basavanagudi,"Takeaway, Delivery",,Biryani,Delivery,cheap
+161,161,New Gowda's Fried Chicken,Banashankari,Quick Bites,,Biryani,Delivery,cheap
+162,162,Canton,Jayanagar,Casual Dining,"Roast Pork, Tai Pai Chicken, Beer, Sweet Corn Chicken Soup, Masala Peanuts, Chinese Chop Suey, Chicken Lollipop","Chinese, Seafood, Biryani",Delivery,moderate
+163,163,Diabetics Dezire Sugarless Sweets and Bakes,Basavanagudi,"Dessert Parlor, Sweet Shop",,"Desserts, Mithai",Delivery,cheap
+164,164,The Blue Wagon - Kitchen,Jayanagar,Cafe,"Pizza, Nachos, Garlic Maggi, Burgers, Cheese Maggi, Bruschetta Bites, Sandwich","Cafe, Beverages",Delivery,cheap
+165,165,HOT COFFEE,Basavanagudi,Quick Bites,,"South Indian, Chinese",Delivery,cheap
+166,166,Patio 805,Jayanagar,Casual Dining,"Noodles, Laksa Soup, Coffee, Veg Fritters, Vegetarian, Babycorn Manchurian, Mango Salad","Thai, Vietnamese, Asian, Chinese",Delivery,expensive
+167,167,Lassi Corner,Basavanagudi,Beverage Shop,Lassi,"Beverages, Ice Cream",Delivery,cheap
+168,168,Sagar Deluxe,Kumaraswamy Layout,Quick Bites,"Coffee, Chaat","South Indian, North Indian, Chinese, Juices",Delivery,cheap
+169,169,Kanti Sweets,Banashankari,Sweet Shop,,"Mithai, Street Food",Delivery,cheap
+170,170,Vegetalia,Banashankari,"Takeaway, Delivery",,"Italian, Pizza",Delivery,cheap
+171,171,Aramane Donne Biryani,Banashankari,Quick Bites,,Biryani,Delivery,cheap
+172,172,Ande Ka Funda,Banashankari,Quick Bites,,"North Indian, Fast Food, Rolls",Delivery,cheap
+173,173,Cake Ghar,Basavanagudi,Bakery,,Bakery,Delivery,cheap
+174,174,Energy Addaa,Basavanagudi,Quick Bites,"Pizza, Nachos, Salads, Peri Peri Fries, Brownie, Pasta Alfredo, Spaghetti","Salad, Healthy Food, Sandwich, Juices, Burger, Desserts, Pizza",Delivery,cheap
+175,175,Bhattara Bhojana,Banashankari,Quick Bites,,South Indian,Delivery,cheap
+176,176,Tandoori Knight,Banashankari,Quick Bites,"Chicken Grill, Biryani, Roti, Chicken Masala","North Indian, Chinese, Biryani, Kebab",Delivery,cheap
+177,177,Dev Sagar - Food Street,Basavanagudi,Quick Bites,"Chaat, Pav Bhaji, Dabeli, Vada Pav, Tawa Pulav, Panipuri, Malpua",Street Food,Delivery,cheap
+178,178,Mitraa Da Pizza,Kumaraswamy Layout,Quick Bites,"Pizza, Burgers","Fast Food, Pizza",Delivery,cheap
+179,179,Paradise Premium,Banashankari,Casual Dining,,"Biryani, Andhra, Hyderabadi, North Indian",Delivery,moderate
+180,180,Grazers,Jayanagar,Cafe,"Burgers, Panneer Butter Masala, Pasta, Hot Dog, Fries, Cheesy Pizza, Potato Wedges","Cafe, Burger, Continental, Italian, Desserts",Delivery,moderate
+181,181,Shakes Theory,Jayanagar,Beverage Shop,"Sandwiches, Thick Shakes, Paan Shake, Brownie Bomb, Fries, Spinach Corn Sandwich, Paneer Peri Peri","Beverages, Sandwich",Delivery,cheap
+182,182,@Italy,Kumaraswamy Layout,Casual Dining,"Pizza, Pasta, Spinach Salsa, Garlic Bread, Lasagne, Bruschettas, Chocolate Bomb",Italian,Delivery,moderate
+183,183,Chilli Flakes,Banashankari,Quick Bites,,"Fast Food, Italian, Beverages",Delivery,cheap
+184,184,Calcutta Cafe,Kumaraswamy Layout,Quick Bites,,"Bengali, Chinese, Sandwich",Delivery,cheap
+185,185,Old Mumbai Ice Cream,Banashankari,Dessert Parlor,Friendly Staff,Ice Cream,Delivery,cheap
+186,186,Donne Biriyani House,Banashankari,Quick Bites,Biryani,"South Indian, North Indian, Chinese, Biryani",Delivery,cheap
+187,187,By 2 Coffee,Basavanagudi,Quick Bites,,South Indian,Delivery,cheap
+188,188,Kedia's Fun Food,Jayanagar,Quick Bites,"Paratha, Vada Pav, Chaat, Pav Bhaji, Panipuri, Masala Poori, Dhokla","North Indian, Street Food, Juices",Delivery,cheap
+189,189,Davangere Butter Dosa Hotel,Kumaraswamy Layout,Quick Bites,,South Indian,Delivery,cheap
+190,190,Just Shawarma,Kumaraswamy Layout,Quick Bites,"Whole Meat Shawarma, Fries",Arabian,Delivery,cheap
+191,191,Mini Punjabi Dhaba,Banashankari,Quick Bites,"Panneer Butter Masala, Lassi, Paratha, Jeera Rice, Paneer Parantha, Bhindi Fry, Veg Kolhapuri",North Indian,Delivery,cheap
+192,192,Mulabagilu Dosa,Basavanagudi,Quick Bites,,South Indian,Delivery,cheap
+193,193,CafÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© Down The Alley,Banashankari,Cafe,"Waffles, Pasta, Crispy Chicken, Honey Chilli Chicken, Sandwich, Coffee, Crepe",Cafe,Delivery,cheap
+194,194,Gokul Veg,Basavanagudi,Casual Dining,"Masala Papad, Paneer Satay, Vegetable Biryani, Panneer Butter Masala, Tomato Soup, Manchow Soup, Roti","North Indian, Chinese, Beverages",Delivery,moderate
+195,195,Olive - Era,Kumaraswamy Layout,Casual Dining,"Shawarma, Biryani, Bbq Chicken, Chicken Grill, Raita","BBQ, Arabian, Rolls, Chinese, North Indian, Juices, Kebab, Desserts",Delivery,cheap
+196,196,Udupi Ruchi,Banashankari,Quick Bites,,"South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+197,197,Madhappa Hindu Military Hotel,Banashankari,Quick Bites,,South Indian,Delivery,cheap
+198,198,Gama Gama,Banashankari,Quick Bites,"Jowar Roti, Buttermilk, Sabudana Vada, Thali, Mirchi Bajji, Brinjal Curry",South Indian,Delivery,cheap
+199,199,The Vintage Cafe,Banashankari,Cafe,"Burgers, Caramel Milkshake, Iced Coffee, Iced Tea","Cafe, French, North Indian",Delivery,cheap
+200,200,Pizza Hut,Banashankari,Casual Dining,"Supreme Pizza, Potato Wedges, Masala Lemonade, Tandoori Paneer, Exotic Garlic Bread","Pizza, Fast Food",Delivery,moderate
+201,201,Mangalore Pearl,Jayanagar,Casual Dining,"Neer Dosa, Sea Food, Ghee Rice, Marwai Sukka, Egg Biryani, Kori Roti, Thai Fish","Mangalorean, Seafood, Chinese, Biryani",Delivery,moderate
+202,202,Asha Sweets Centre,Basavanagudi,Dessert Parlor,,Fast Food,Delivery,cheap
+203,203,Twiststick House,Basavanagudi,Quick Bites,"White Pasta, Noodles, Babycorn Manchurian, Pizza, Veg Momos, Fry Momos, Tawa Pulav","Continental, Fast Food, Street Food, Momos",Delivery,cheap
+204,204,Cool Corner,Basavanagudi,Quick Bites,"Masala Dosa, Sandwiches, Coffee, Onion Dosa, Rava Dosa, Chaat, Sandwich","Street Food, Fast Food",Delivery,cheap
+205,205,Pizza Mane,Banashankari,Quick Bites,"French Fries, Burgers","Pizza, Sandwich, Burger, Fast Food",Delivery,cheap
+206,206,Dal Tadkaa,Banashankari,Casual Dining,"Paratha, Boondi Raita, Roti, Kulfi, Panneer Butter Masala, Sweet Lassi, Dal Tadka",North Indian,Delivery,cheap
+207,207,Chutney Chang,Jayanagar,Casual Dining,"Veg Momos, Brownie Chocolate, Palak Chaat, Mutton Biryani, Dahipuri, Fish, Sea Food","North Indian, Chinese, BBQ",Delivery,expensive
+208,208,Mystique Palate,Jayanagar,Quick Bites,"Noodles, Pasta, Schezwan Momos, Chicken Momo, Teriyaki Chicken, Thukpa, Fries","Chinese, Fast Food",Delivery,cheap
+209,209,Thamboola,Banashankari,Casual Dining,"Spring Roll, Manchow Soup, Babycorn Manchurian, Mint Cooler, Roti, Panneer Butter Masala","North Indian, Chinese, Continental",Delivery,moderate
+210,210,Castle Rock,Uttarahalli,Casual Dining,Biryani,"North Indian, Chinese",Delivery,moderate
+211,211,Vietnamese Kitchen,Banashankari,Casual Dining,"Pho, Papaya Salad, Coffee, Veg Momos, Rolls",Vietnamese,Delivery,moderate
+212,212,Smacznego,Banashankari,Cafe,"Waffles, Pasta, Coleslaw Sandwich, Choco Waffle, Tacos, Momos, Cheese Nachos","Cafe, Mexican, Italian, Momos, Beverages",Delivery,cheap
+213,213,C Corner,Kumaraswamy Layout,Quick Bites,,"Fast Food, Street Food",Delivery,cheap
+214,214,Paratha Merchant,Kumaraswamy Layout,Quick Bites,,North Indian,Delivery,cheap
+215,215,North Rasoe,Kumaraswamy Layout,Casual Dining,,"North Indian, Chinese, Biryani, Kebab",Delivery,cheap
+216,216,Inchara Restaurant,Basavanagudi,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+217,217,Toscano,Jayanagar,Casual Dining,"Pizza, Pasta, Salads, Calamari, Ravioli, Pumpkin Soup, Wine","Italian, Salad",Delivery,expensive
+218,218,Lord Of The Kitchen,Kumaraswamy Layout,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+219,219,Stoned Monkey,Banashankari,Dessert Parlor,"Nachos, Cup Cake, Hot Chocolate Fudge, Salsa, Cheesy Garlic Bread, Waffles, Tiramisu","Desserts, Ice Cream",Delivery,cheap
+220,220,Central Jail Restaurant,Jayanagar,Casual Dining,"Lime Soda, Manchow Soup, Biryani, Lemon Chicken, Tomato Soup, Butter Naan, Chilli Chicken","Andhra, Seafood, North Indian, Chinese",Delivery,moderate
+221,221,Bella,Jayanagar,Casual Dining,"Murgh Ghee Roast, Fish Fry, Ghee Roast Paneer, Neer Dosa, Appam, Sea Food, Chicken Sukha","Mangalorean, Seafood, South Indian",Delivery,expensive
+222,222,Vennela Andhra Meals,Jayanagar,Quick Bites,,Andhra,Delivery,cheap
+223,223,New Prashanth Hotel,Jayanagar,Casual Dining,"Ragi Mudde, Lemon Chicken, Chilli Chicken, Chicken Curry, Mutton Chops, Mutton Biryani","South Indian, Biryani, Chinese, North Indian",Delivery,moderate
+224,224,The Grillo,Jayanagar,Casual Dining,,"South Indian, Arabian, Chinese, North Indian, Seafood, Mangalorean",Delivery,cheap
+225,225,Re Malnad Nati Style Hotel,JP Nagar,Casual Dining,,South Indian,Delivery,cheap
+226,226,Karma Kaapi,Jayanagar,Beverage Shop,"Pasta, Potato Fries, Potato Wedges, Hot Chocolate, Chaat, Filter Coffee, Americano","Beverages, Tea",Delivery,cheap
+227,227,Tiwari's,Jayanagar,Quick Bites,"Sweet Lassi, Gulab Jamun, Palak Paneer Paratha, Paneer Parantha","North Indian, Street Food",Delivery,cheap
+228,228,Pizza Stop,Basavanagudi,Quick Bites,"Pizza, White Sauce Pasta, Masala Garlic Bread","Pizza, Italian",Delivery,moderate
+229,229,Biggies Burger 'n' More,Kumaraswamy Layout,Quick Bites,"Burgers, Fries, Mojito, Chicken Burger","Cafe, Burger, Beverages",Delivery,moderate
+230,230,Srinathji's Cafe,Basavanagudi,"Casual Dining, Cafe","Paratha, Sandwich, Chilli Idli, Noodles, Sandwiches, Lime Soda","North Indian, Cafe, Chinese, Fast Food",Delivery,cheap
+231,231,Kollapuri's,Basavanagudi,Quick Bites,"Chicken Biryani, Mutton Biryani, Egg Biryani, Chicken Fry, Mutton Fry","South Indian, Mangalorean",Delivery,cheap
+232,232,Sugar Stars Co,Basavanagudi,Bakery,,"Bakery, Desserts",Delivery,cheap
+233,233,Bombay Kulfis,JP Nagar,Dessert Parlor,,Ice Cream,Delivery,cheap
+234,234,Kadamba Classic,Mysore Road,Quick Bites,,South Indian,Delivery,cheap
+235,235,RS Shiv Sagar,Basavanagudi,Casual Dining,"Chaat, Brownie, Onion Rings, Tomato Soup, Paneer Manchurian, Thali, Faluda","North Indian, Chinese, South Indian, Fast Food, Juices",Delivery,cheap
+236,236,Kholi Mane,Basavanagudi,Quick Bites,,"Andhra, South Indian, Biryani, North Indian",Delivery,cheap
+237,237,Harshi Super Sandwich,Basavanagudi,Quick Bites,"Sandwiches, Chocolate Sandwich, Chaat, Veg Cheese Sandwich, Chilli Cheese, Corn Sandwich","Fast Food, Street Food",Delivery,cheap
+238,238,Cake Yard,Basavanagudi,Dessert Parlor,,Desserts,Delivery,cheap
+239,239,Rosewood International Hotel - Bar & Restaurant,Mysore Road,Casual Dining,,"North Indian, South Indian, Andhra, Chinese",Delivery,moderate
+240,240,Sri Udupi Veg,Jayanagar,Quick Bites,,South Indian,Delivery,cheap
+241,241,Cake Art,Basavanagudi,"Bakery, Quick Bites",,Bakery,Delivery,cheap
+242,242,Aahar Cafe,Basavanagudi,Quick Bites,,South Indian,Delivery,cheap
+243,243,Akash Gowdru Biryani Center,Uttarahalli,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+244,244,New Sri Udupi Restaurant,Jayanagar,Quick Bites,,"North Indian, South Indian, Chinese, Beverages, Fast Food",Delivery,cheap
+245,245,Potato House,Uttarahalli,Quick Bites,,Street Food,Delivery,cheap
+246,246,Hotel Biriyani Counter,Vijay Nagar,Quick Bites,,"North Indian, Chinese, Biryani",Delivery,cheap
+247,247,Matru Sagar,Mysore Road,Quick Bites,,"South Indian, North Indian",Delivery,cheap
+248,248,Ugadi,Jayanagar,Casual Dining,"Prawn Biryani, Andhra Meal, Veg Thali, Fry Piece Biryani, Gongura Chicken, Paratha","North Indian, Chinese, Biryani, Andhra, Mangalorean",Delivery,moderate
+249,249,Sri Krishna Sweets,Basavanagudi,Sweet Shop,,"Mithai, Desserts",Delivery,cheap
+250,250,In Time Cane Juice,Kumaraswamy Layout,Beverage Shop,,"Juices, Beverages",Delivery,cheap
+251,251,Subway,Banashankari,Quick Bites,"Veggie Delight, Paneer Tikka, Salad","Salad, Fast Food",Delivery,moderate
+252,252,Daal Roti,Kumaraswamy Layout,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+253,253,The Lassi Park,Jayanagar,Quick Bites,"Faluda, Brownie, Sandwich, Kulfi, Fruit Salad, Sweet Lassi, Chocolate Fudge","Juices, Desserts",Delivery,cheap
+254,254,Cafe Coffee Day,Jayanagar,Cafe,,"Cafe, Fast Food",Delivery,moderate
+255,255,A2B - Adyar Ananda Bhavan,Mysore Road,Casual Dining,"Pav Bhaji, Masala Dosa, Idli Vada, Filter Coffee, Pongal, Curd Rice, Kesari Bath","South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+256,256,Srikrishna Bhavan,Banashankari,Quick Bites,"Roti, Masala Dosa","South Indian, North Indian, Chinese",Delivery,cheap
+257,257,Timepass Dinner,Basavanagudi,Casual Dining,"Onion Rings, Pasta, Kadhai Paneer, Salads, Salad, Roti, Jeera Rice",North Indian,Delivery,moderate
+258,258,Green Gardenia,Banashankari,Casual Dining,"Masala Papad, Paneer Satay, Paneer Hyderabadi, Butter Naan, Roti","North Indian, Chinese",Delivery,moderate
+259,259,J Spice,Banashankari,Casual Dining,"Stuffed Mushroom, Chicken Biryani, Jal-jeera","North Indian, Chinese",Delivery,moderate
+260,260,Karavali Family Restaurant,Jayanagar,Casual Dining,,"Seafood, Biryani, South Indian, North Indian, Chinese",Delivery,cheap
+261,261,Karavali Lunch Home,Kumaraswamy Layout,Quick Bites,,"South Indian, Mangalorean",Delivery,cheap
+262,262,Hatti Kaapi,Jayanagar,Quick Bites,"Filter Coffee, Tea, Hot Coffee, Hatti Samosa","South Indian, Beverages",Delivery,cheap
+263,263,Kolkata Kathi Roll's,Banashankari,Quick Bites,,"Fast Food, Rolls",Delivery,cheap
+264,264,Upahara Darshini,Basavanagudi,Casual Dining,Masala Dosa,"North Indian, Chinese, South Indian, Fast Food",Delivery,moderate
+265,265,The Chaat Shop,Basavanagudi,Quick Bites,"Badam Milk, Potato Twister, Pav Bhaji, Panipuri, Tikki Chaat, Cheese Cutlet",Fast Food,Delivery,cheap
+266,266,Anda Ka Funda,Jayanagar,Quick Bites,,"North Indian, Chinese, Rolls",Delivery,cheap
+267,267,Shri Vinayaka Ice N Juice,Basavanagudi,Quick Bites,,"Beverages, Fast Food",Delivery,cheap
+268,268,My Tea House,Banashankari,"Quick Bites, Cafe","Pasta, Iced Tea","Italian, Fast Food, Cafe, European",Delivery,moderate
+269,269,Ibaco,Jayanagar,Dessert Parlor,,Desserts,Delivery,cheap
+270,270,Jalaram Sweets,Jayanagar,Sweet Shop,,"Desserts, Mithai",Delivery,cheap
+271,271,Samskruti - Sanman Gardenia,Jayanagar,Casual Dining,"Roti, Butter Kulcha, Fried Rice, Tomato Soup, Curd Rice, Lunch Buffet, Paneer Tikka","North Indian, Chinese, South Indian",Delivery,cheap
+272,272,Bendakaluru Bytes,Vijay Nagar,Quick Bites,,Fast Food,Delivery,cheap
+273,273,Cocoa Bakes,Banashankari,Bakery,,"Bakery, Desserts",Delivery,cheap
+274,274,Chumma Delicious,Banashankari,Quick Bites,Chicken Biryani,"South Indian, Fast Food",Delivery,cheap
+275,275,New Prashanth Hotel,Banashankari,Casual Dining,"Chicken Biryani, Ragi Mudde, Mutton Chops","Biryani, North Indian, Seafood, Andhra",Delivery,moderate
+276,276,SSV Upahar,Jayanagar,Quick Bites,,"South Indian, Chinese",Delivery,cheap
+277,277,Dwaraka Grand,Kumaraswamy Layout,Casual Dining,"Masala Dosa, Coffee","South Indian, Chinese, Street Food, Juices",Delivery,cheap
+278,278,Gufha - The President Hotel,Jayanagar,Casual Dining,"Cocktails, Paneer Tikka, Rasmalai, Rabri, Masala Papad, Vegetable Biryani, Chicken Curry","North Indian, Afghani, Mughlai",Delivery,expensive
+279,279,Cafe Vivacity,Banashankari,Cafe,"Garlic Bread, Burgers, Sandwiches, Pizza, Hot Chocolate Fudge, Waffles, Potato Wedges",Cafe,Delivery,moderate
+280,280,Tanna's Kitchen,Kumaraswamy Layout,Quick Bites,,"Italian, Chinese, Street Food",Delivery,cheap
+281,281,Shree Mandarathi Grand,Uttarahalli,Casual Dining,,"South Indian, North Indian",Delivery,cheap
+282,282,Mojo Pizza - 2X Toppings,Banashankari,Delivery,"Veggie Pizza, Garlic Bread, Lava Cake, Chocolava, Spicy Paneer",Pizza,Delivery,moderate
+283,283,Iceberg Icecreams,Basavanagudi,Dessert Parlor,,"Desserts, Ice Cream",Delivery,cheap
+284,284,South Kitchen,Basavanagudi,Quick Bites,"Kharabath, Crispy Vada, Filter Coffee, Idli Vada, Idli Chutney, Kesari Bath, Gulab Jamun",South Indian,Delivery,cheap
+285,285,Chung Wah,Jayanagar,Casual Dining,"Noodles, Veg Momos, Chowmein, Schezwan Fried Rice, Clear Soup, Sweet Corn Soup, Chicken Wings","Chinese, Thai, Momos",Delivery,moderate
+286,286,Shanthi Sagar,Uttarahalli,Casual Dining,,"South Indian, North Indian, Chinese",Delivery,cheap
+287,287,Millet Mama,Basavanagudi,Quick Bites,,"South Indian, Healthy Food",Delivery,cheap
+288,288,Bangarpet Chat Express,Basavanagudi,Quick Bites,,"Street Food, Fast Food",Delivery,cheap
+289,289,South Cool Point,Basavanagudi,Dessert Parlor,,Beverages,Delivery,cheap
+290,290,Prems Graama Bhojanam,Jayanagar,Casual Dining,"Veg Thali, Matka Kulfi, Pongal, Buttermilk, Vada, Ragi Mudde, Curd Rice",South Indian,Delivery,cheap
+291,291,Java City,Jayanagar,Cafe,"Coffee, Sandwich, Hot Chocolate, Ice Tea, Sandwiches, Chicken Lasagne, Pizza","Cafe, American, Pizza",Delivery,cheap
+292,292,Kamat Bugle Rock,Basavanagudi,Quick Bites,"Jowar Roti, Buttermilk, Jolada Rotti, Brinjal Curry, Coffee, Pongal, Vegetable Biryani","South Indian, Fast Food",Delivery,cheap
+293,293,Woodee Pizza,Banashankari,Cafe,"Pizza, Garlic Bread","Cafe, Pizza, Fast Food, Beverages",Delivery,cheap
+294,294,Puliyogare Point,Basavanagudi,Quick Bites,"Sweet Pongal, Mini Idlis, Filter Coffee, Open Masala Dosa, Pakoda, Vada, Raagi Dosa",South Indian,Delivery,cheap
+295,295,Bangalore Agarwal Bhavan,Jayanagar,Quick Bites,"Paratha, Coffee, Halwa, Lassi","Street Food, North Indian, South Indian",Delivery,cheap
+296,296,Rustic Stove,Jayanagar,Casual Dining,"Vegetable Biryani, Pineapple Rasam, Cheese Garlic Naan, Potato Cheese Ball, Bamboo Chicken Biryani, Chicken Skewer, Fish","North Indian, South Indian, Biryani, Beverages",Delivery,moderate
+297,297,Udupi Ruchi Grand,Banashankari,Quick Bites,,"South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+298,298,De Thaali,Jayanagar,Casual Dining,"Malai Kofta, Sandwich, Naan","North Indian, Chinese, Rolls",Delivery,cheap
+299,299,Spice Elephant,Banashankari,Casual Dining,"Momos, Lunch Buffet, Chocolate Nirvana, Thai Green Curry, Paneer Tikka, Dum Biryani, Chicken Biryani","Chinese, North Indian, Thai",Delivery,moderate
+300,300,Just Thindi,Basavanagudi,Quick Bites,,South Indian,Delivery,cheap
+301,301,Matru Sagar,Banashankari,Quick Bites,"Coffee, Masala Dosa","South Indian, North Indian, Chinese",Delivery,cheap
+302,302,Vasanth Vihar - Since 1965,Banashankari,Quick Bites,,"South Indian, Street Food",Delivery,cheap
+303,303,Sea Spice by 7 Star,Banashankari,Casual Dining,"Sea Food, Neer Dosa, Anjal Masala Fry, Coconut Pudding, Chicken Biryani, Roti, Fish Curry","Seafood, Biryani, Beverages, South Indian, North Indian, Kebab",Delivery,expensive
+304,304,Desi Dawat,Kumaraswamy Layout,Quick Bites,"Tandoori Chicken, Rolls","North Indian, Fast Food",Delivery,cheap
+305,305,Cafe Aira,Basavanagudi,Cafe,"Pasta, Nachos, Jalapeno Poppers, Burrito Bowl, Ferrero Rocher Shake, Falafal Sandwich, Banana Waffles","Cafe, Continental, Beverages, Desserts",Delivery,cheap
+306,306,Donne Biriyani combos,Kumaraswamy Layout,Casual Dining,,Biryani,Delivery,cheap
+307,307,Penthouse Cafe,Banashankari,Cafe,"Pizza, Mocktails, Coffee, Nachos, Salad, Pasta, Sandwiches","Cafe, Italian, Continental",Delivery,moderate
+308,308,Mast Punjabi,Kumaraswamy Layout,Quick Bites,Aloo Paratha,"North Indian, Chinese, Rolls, Biryani, Kebab",Delivery,cheap
+309,309,South Grand,Uttarahalli,Casual Dining,Rava Dosa,"South Indian, North Indian, Chinese, Beverages",Delivery,cheap
+310,310,Catch-up-ino,Banashankari,Cafe,"Momos, Mushroom Bruschettas, Jalapeno Cheeseballs, Pasta, Red Velvet Shake, Red Velvet Milkshake, Maggi","Cafe, Fast Food, Continental, Chinese, Momos",Delivery,moderate
+311,311,The Pizzeria,Banashankari,Casual Dining,Pesto Pizza,"Pizza, Italian, Salad",Delivery,moderate
+312,312,Cafe Zone,Kumaraswamy Layout,Quick Bites,,"Fast Food, Chinese, Rolls",Delivery,cheap
+313,313,Ruchis Point,Banashankari,Quick Bites,"Sandwiches, Noodles, Sandwich","Fast Food, Chinese",Delivery,cheap
+314,314,Firangi Bake,Rajarajeshwari Nagar,Delivery,"Lasagne, Steak, Masala Quesadilla, Garlic Bread","Mexican, Italian",Delivery,moderate
+315,315,The Royal Corner - Pai Viceroy,Jayanagar,Casual Dining,"Breakfast Buffet, Kulcha, Almond Soup, Lunch Buffet, Roti, Mocktails, Vegetarian","North Indian, Chinese",Delivery,moderate
+316,316,Hara Fine Dine,Banashankari,Casual Dining,"Hara Bhara Kabab, Crispy Corn, Patiala Paneer, Panneer Butter Masala, Dum Biryani, Jal-jeera, Butter Naan","North Indian, Chinese",Delivery,moderate
+317,317,Chocoberry,Jayanagar,Dessert Parlor,"Waffles, Cup Cake, Chocolate Cake","Ice Cream, Desserts, Beverages",Delivery,cheap
+318,318,Dakshin Grand,Banashankari,Quick Bites,,"South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+319,319,Sandwichwallas,Jayanagar,Quick Bites,,Fast Food,Delivery,cheap
+320,320,Chai Mane,Basavanagudi,Quick Bites,,"Juices, Fast Food",Delivery,cheap
+321,321,SLV Upachar,Kumaraswamy Layout,Quick Bites,,"South Indian, Chinese, Street Food",Delivery,cheap
+322,322,Waffle-A-Go Go,Banashankari,Dessert Parlor,Waffles,"Fast Food, Desserts, Ice Cream",Delivery,cheap
+323,323,Cross Road Cafe,Jayanagar,Cafe,"Momos, Burgers, Rolls, Sandwich, Hot Chocolate, Tea, Naga Thali","Cafe, Fast Food, Chinese",Delivery,cheap
+324,324,Anand Donne Biriyani,Jayanagar,Quick Bites,,Biryani,Delivery,cheap
+325,325,Seven Star,Banashankari,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+326,326,Stop 'N' Joy,Banashankari,Quick Bites,,Fast Food,Delivery,cheap
+327,327,Sri Yaksha Shiv Sagar,Banashankari,Casual Dining,,"North Indian, Chinese",Delivery,moderate
+328,328,Fudge,Basavanagudi,Dessert Parlor,,"Desserts, Momos",Delivery,cheap
+329,329,Just Bunny,Jayanagar,Quick Bites,,Fast Food,Delivery,cheap
+330,330,Bakers Town,Kumaraswamy Layout,Cafe,"Freak Shake, Fries, Pasta Alfredo","Cafe, Continental, Fast Food",Delivery,moderate
+331,331,Shree Mahalakshmi Sweets,Banashankari,Sweet Shop,,"Mithai, Street Food",Delivery,cheap
+332,332,Kaapi Kendra,Jayanagar,Quick Bites,,South Indian,Delivery,cheap
+333,333,Ivy,Kumaraswamy Layout,Casual Dining,"Butter Chicken, Chicken Grill, Tandoori Chicken, Noodles, Biryani, Fried Rice Chicken","North Indian, Chinese, Fast Food",Delivery,moderate
+334,334,The Airos,Jayanagar,Cafe,"Pizza, Pasta, Nachos, Burgers, Sandwich, Tea, Cheese Balls","Cafe, Italian, Pizza",Delivery,moderate
+335,335,Chai Kraft,Jayanagar,Beverage Shop,"Masala Chai, Coffee, Masala Tea, Maggi","Beverages, Tea",Delivery,cheap
+336,336,Kirthi's Biryani,Banashankari,Cafe,"Pasta, Gelato, Garlic Bread, Mojito, Nachos, Paneer Pizza, Mocktails","Chinese, Cafe, Italian",Delivery,moderate
+337,337,South Point Pub,Basavanagudi,Bar,,"North Indian, Seafood, Chinese",Delivery,moderate
+338,338,The Trundle,Jayanagar,Casual Dining,"Salad, Mocktails, Chocolava, Pesto Pasta, Momos, Jasmine Rice, Tom Yum Soup","Chinese, Thai, Continental, North Indian",Delivery,moderate
+339,339,The Krishna Grand Xpress,Jayanagar,Quick Bites,"Vada, Masala Dosa, Idli","South Indian, Fast Food",Delivery,cheap
+340,340,Sri Krishna Darshini,Basavanagudi,Quick Bites,,"South Indian, North Indian, Chinese",Delivery,cheap
+341,341,Shringar Sweets & Snacks,Basavanagudi,"Sweet Shop, Quick Bites",,"Mithai, South Indian, Street Food, Fast Food",Delivery,cheap
+342,342,Udupi Grand,Basavanagudi,Quick Bites,"Coffee, Masala Dosa, Vegetable Biryani","South Indian, North Indian, Chinese",Delivery,cheap
+343,343,Ganesh Grand,Basavanagudi,Quick Bites,,"South Indian, North Indian, Desserts",Delivery,cheap
+344,344,Shreyas Upahar & Burger Point,Basavanagudi,Quick Bites,,"South Indian, Burger",Delivery,cheap
+345,345,Coffee Tindi,Banashankari,"Cafe, Quick Bites",,"Cafe, South Indian",Delivery,cheap
+346,346,Little Cafe,Basavanagudi,Cafe,"Pasta, Pizza, Burgers, Pancakes, Garlic Bread","Cafe, Beverages",Delivery,moderate
+347,347,Mumbai Badam Milk & Lassi Center,Basavanagudi,Kiosk,,"Beverages, Desserts",Delivery,cheap
+348,348,Sri Krishna Sagar,Banashankari,Casual Dining,,"North Indian, Chinese",Delivery,cheap
+349,349,Mylari Biryani Family Restaurant,Banashankari,Quick Bites,,"Biryani, Fast Food",Delivery,cheap
+350,350,1980s Games Cafe,Basavanagudi,Cafe,"Maggi, Pasta, Burgers, Sandwiches, Fries","Cafe, Fast Food",Delivery,cheap
+351,351,Kadala Tarangaa,Banashankari,Casual Dining,"Sea Food, Neer Dosa","Mangalorean, Seafood, North Indian",Delivery,moderate
+352,352,Namma Biryani,Banashankari,Quick Bites,,"Biryani, Chinese, North Indian",Delivery,cheap
+353,353,Nandhanu's Rasoi,Kumaraswamy Layout,Quick Bites,,"Chinese, North Indian",Delivery,cheap
+354,354,Hotel Pork Paradise,Mysore Road,Quick Bites,,South Indian,Delivery,cheap
+355,355,As On Fire,South Bangalore,Food Truck,Pizza,"Pizza, Fast Food, BBQ",Delivery,cheap
+356,356,J K Fish Land,Jayanagar,Quick Bites,,"Seafood, Mangalorean",Delivery,cheap
+357,357,Curry Leaves,Basavanagudi,Casual Dining,"Brownie, Mojito, Prawn Ghee Roast, Corn Tikki, Mushroom Ghee Roast, Pinacolada, Biryani","Andhra, North Indian, Chinese",Delivery,moderate
+358,358,Lassi Shop,Banashankari,Beverage Shop,,"Beverages, Ice Cream, Fast Food",Delivery,cheap
+359,359,Magic Meals,Jayanagar,"Quick Bites, Dessert Parlor","Biryani, Thick Shakes, Fries","Fast Food, Desserts, Beverages",Delivery,cheap
+360,360,Desi Cream Junction,Jayanagar,Casual Dining,Vegetarian,"Chinese, North Indian, Pizza, Italian",Delivery,moderate
+361,361,Drunken Monkey,Kumaraswamy Layout,"Beverage Shop, Quick Bites",,"Beverages, Fast Food",Delivery,cheap
+362,362,Ruchi's Corner,Banashankari,Quick Bites,,Fast Food,Delivery,cheap
+363,363,Tandoori Bytes,Kumaraswamy Layout,Casual Dining,,North Indian,Delivery,moderate
+364,364,Bangalore Donne Biriyani,Kumaraswamy Layout,Quick Bites,,"South Indian, Biryani",Delivery,cheap
+365,365,SGS Non Veg - Gundu Pulav,Banashankari,Quick Bites,,"Biryani, Fast Food",Delivery,cheap
+366,366,Keventers,Banashankari,"Beverage Shop, Dessert Parlor",,"Desserts, Beverages, Ice Cream",Delivery,cheap
+367,367,Sree Sagar,Banashankari,Quick Bites,,South Indian,Delivery,cheap
+368,368,Navi Food Point,Basavanagudi,Quick Bites,,Fast Food,Delivery,cheap
+369,369,Shawarma Inc,Banashankari,Takeaway,,"Rolls, Lebanese",Delivery,cheap
+370,370,The Cafe Nuts and Bolts,Kumaraswamy Layout,Cafe,,"Cafe, Fast Food, Chinese",Delivery,cheap
+371,371,AM WOW,Jayanagar,Beverage Shop,,Beverages,Delivery,cheap
+372,372,Lalbagh Grand,Basavanagudi,Quick Bites,,"South Indian, North Indian, Chinese",Delivery,cheap
+373,373,Funjabi Curries,Banashankari,Quick Bites,,North Indian,Delivery,cheap
+374,374,Eat Repeat,Basavanagudi,Quick Bites,"Sweet Pongal, Curd Rice",South Indian,Delivery,cheap
+375,375,Salut,Jayanagar,"Pub, Casual Dining","Pesto Pizza, Buffalo Wings, Cocktails, Beer, Egg Ghee Roast, Brownie, Pepper Chicken","Continental, Finger Food, Seafood, Pizza",Delivery,expensive
+376,376,Nammura Donne Biriyani,Basavanagudi,Quick Bites,,"Biryani, Fast Food",Delivery,cheap
+377,377,Lassi Stop,Banashankari,"Beverage Shop, Quick Bites",,"Beverages, Fast Food, Juices",Delivery,cheap
+378,378,Dakshin Kitchen,Basavanagudi,Quick Bites,,South Indian,Delivery,cheap
+379,379,Sri Sai Cafe,Basavanagudi,Quick Bites,,South Indian,Delivery,cheap
+380,380,Sri Sai 99 Variety Dosa,Banashankari,Quick Bites,,South Indian,Delivery,cheap
+381,381,Utsav Restaurant,Banashankari,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+382,382,Crunch and Munch,Uttarahalli,Quick Bites,,"Chinese, Street Food, Ice Cream",Delivery,cheap
+383,383,Food Geek,Basavanagudi,Quick Bites,,"Sandwich, Fast Food, Rolls",Delivery,cheap
+384,384,Sri Krishna Aramane,Kumaraswamy Layout,Quick Bites,,"South Indian, North Indian, Chinese, Fast Food",Delivery,cheap
+385,385,Great Indian Rolls,Basavanagudi,Quick Bites,,Rolls,Delivery,cheap
+386,386,Chats Point,Basavanagudi,Quick Bites,,"Fast Food, Street Food",Delivery,cheap
+387,387,Food Point,Kumaraswamy Layout,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+388,388,Swarga Ruchi,Basavanagudi,Quick Bites,,South Indian,Delivery,cheap
+389,389,Kolkata King,Basavanagudi,Quick Bites,,"Fast Food, Rolls",Delivery,cheap
+390,390,Sandwich Mama's And Frozen Monster,Jayanagar,Quick Bites,"Waffles, Sandwiches, Maggi, Thick Shakes, Chocolate Sandwich","Ice Cream, Beverages, Fast Food",Delivery,cheap
+391,391,New Rajadhani Spicy,Kumaraswamy Layout,Casual Dining,,North Indian,Delivery,moderate
+392,392,Big Mishra Pedha,Jayanagar,Sweet Shop,,Mithai,Delivery,cheap
+393,393,VEGeatz,Banashankari,Quick Bites,,"South Indian, North Indian",Delivery,cheap
+394,394,Foodizo,Banashankari,Quick Bites,,"Desserts, Fast Food, Continental",Delivery,cheap
+395,395,Food Springs,Jayanagar,Quick Bites,"Honey Chilli Potatoes, Nachos, Lemonade, Hakka Noodles, Babycorn Manchurian, Mushroom Manchurian, Spring Roll","South Indian, Chinese",Delivery,cheap
+396,396,Chung's Chinese Corner,Jayanagar,Casual Dining,"Manchow Soup, Momos, Wonton Soup, Chowmein, American Chopsuey, Chop Suey, Manchurian",Chinese,Delivery,moderate
+397,397,Eurasia Pasta and Barbeque by Little Italy,Jayanagar,"Casual Dining, Bar","Pasta, Pizza, Nachos, Gelato, Ravioli, Jalapeno Poppers, Cocktails","Italian, Fast Food, Salad, BBQ",Delivery,expensive
+398,398,Goli Vada Pav No. 1,Basavanagudi,Quick Bites,"Masala Vada Pav, Cheese Vada Pav, Fries",Street Food,Delivery,cheap
+399,399,Ragoo's,Jayanagar,Casual Dining,"Corn Augratin, Lasagne, Fries, Garlic Bread, Pili Pili Pizza, Mexican Rice, Ravioli","Italian, Pizza, North Indian, Salad",Delivery,moderate
+400,400,Pure & Natural,Jayanagar,Casual Dining,"Salads, Sandwiches, Pasta, Mocktails, Corn Sandwich, Garden Salad, Miso Salad","Fast Food, Continental, Beverages, Salad, Healthy Food",Delivery,cheap
+401,401,Maiyas,Jayanagar,Quick Bites,"Coffee, Thali, Kharabath, Masala Dosa, Idli Vada, Vanilla Ice Cream, Bisi Bele Bhaath","North Indian, South Indian, Fast Food, Juices",Delivery,cheap
+402,402,Sip n Dine,Vijay Nagar,Casual Dining,"Veg Jaipuri, Neer Dosa, Kulcha, Pepper Chicken, Chilli Mushroom, Murgh Platter, Paneer Tikka","North Indian, Chinese, South Indian",Delivery,moderate
+403,403,Cafe Mondo,Basavanagudi,Cafe,"Pizza, Pasta Alfredo, Brownie, Garlic Bread, Sandwiches, Lemon Mojito, Mocha Fudge","Cafe, Italian, Beverages",Delivery,moderate
+404,404,Jalpaan,Jayanagar,Casual Dining,"Mocktails, Tomato Soup, Pasta, Nachos, Chaat, Potli Biryani, Lassi","North Indian, Continental",Delivery,moderate
+405,405,Kataria's Pakwan,Kumaraswamy Layout,Quick Bites,"Paratha, Lassi, Manchurian, Thali",North Indian,Delivery,cheap
+406,406,Juicy Momos,Banashankari,Quick Bites,"Rolls, Burgers, Juicy Momos, Chicken Momo, Chocolate Momos, Mushroom Momo, Paneer Momos","Tibetan, Momos",Delivery,cheap
+407,407,Amande Patisserie,Basavanagudi,Bakery,"Macaroon, Mousse, Caramel Eclair","Bakery, French, Desserts",Delivery,cheap
+408,408,Anand Sweets and Savouries,Jayanagar,Sweet Shop,"Dahi Papadi Chaat, Papdi Chaat, Bhel Puri, Paratha, Kachori, Thali, Masala Poori","Mithai, Street Food",Delivery,cheap
+409,409,Chicken Hunt,Banashankari,Quick Bites,Chicken Grill,"South Indian, North Indian, Chinese, Biryani",Delivery,cheap
+410,410,Swadesh Tadka,Banashankari,Casual Dining,"Gulab Jamun, Roti, Masala Papad, Babycorn Manchurian, Paratha, Clear Soup, Biryani","North Indian, Chinese, Beverages",Delivery,moderate
+411,411,Cane-O-La,Basavanagudi,Quick Bites,"Sugarcane Juice, Popcorn",Juices,Delivery,cheap
+412,412,New Biryani Mane,Uttarahalli,Casual Dining,"Egg Biryani, Tandoori Chicken, Fish, Rumali Roti","North Indian, Chinese, Biryani, South Indian",Delivery,cheap
+413,413,Upahara Darshini,Jayanagar,Quick Bites,"Rava Dosa, Roti, Masala Dosa, Kulcha, Sandwiches, Vada Pav, Idli","South Indian, North Indian, Chinese",Delivery,cheap
+414,414,Karnataka Bhel House,Basavanagudi,Quick Bites,"Masala Poori, Bhel Puri, Panipuri, Chaat, Dahipuri, Sev Puri, Dahi Aloo Puri",Street Food,Delivery,cheap
+415,415,Sreeraj Lassi Bar,Jayanagar,"Dessert Parlor, Beverage Shop","Faluda, Mango Lassi, Sweet Lassi, Fruit Salad, Shrikhand, Matka Kulfi, Pudina Lassi",Beverages,Delivery,cheap
+416,416,Juice Junction Food Court,Basavanagudi,Quick Bites,,"Juices, South Indian, Chinese, Fast Food",Delivery,cheap
+417,417,Bunt's Biriyani Palace,Banashankari,Quick Bites,"Neer Dosa, Sea Food, Pepper Chicken","North Indian, South Indian, Chinese, Biryani, Seafood",Delivery,cheap
+418,418,Chai Point,Jayanagar,"Beverage Shop, Quick Bites","Ginger Chai, Ginger Tea, Banana Cake, Samosa, Masala Chai, Banana Walnut","Tea, Beverages, Fast Food",Delivery,cheap
+419,419,Janahaar,Banashankari,Quick Bites,"Masala Dosa, Idli, Filter Coffee, Medu Dosa",South Indian,Delivery,cheap
+420,420,Redberrys,Basavanagudi,Cafe,"Pizza, Fries, Anjeer Ice Cream, Sandwiches, Gelato, Burgers, Kesar Badam","Cafe, Italian",Delivery,moderate
+421,421,Utsav,Banashankari,Quick Bites,"Paratha, Kachori, Tea, Lassi, Samosa, Vada Pav","North Indian, Street Food",Delivery,cheap
+422,422,Meat And Eat,Banashankari,Quick Bites,,"Fast Food, Burger",Delivery,cheap
+423,423,Snacks Bite,Kumaraswamy Layout,Quick Bites,,"Fast Food, Momos",Delivery,cheap
+424,424,The Spice Saga,Kumaraswamy Layout,Casual Dining,"Biryani, Chicken Grill, Butter Chicken","Biryani, North Indian, Chinese, Seafood",Delivery,moderate
+425,425,Dakshin Cafe,Kumaraswamy Layout,Quick Bites,,South Indian,Delivery,cheap
+426,426,Mr. Parathewala,Jayanagar,"Takeaway, Delivery",,North Indian,Delivery,cheap
+427,427,Kaulige Millet Corner,Basavanagudi,Quick Bites,,"Healthy Food, South Indian",Delivery,cheap
+428,428,Ifruit Ice Cream,Kumaraswamy Layout,Dessert Parlor,,"Desserts, Ice Cream",Delivery,cheap
+429,429,Havmor,Basavanagudi,Dessert Parlor,,"Ice Cream, Desserts",Delivery,cheap
+430,430,Grand Food,Banashankari,"Quick Bites, Bakery",,"South Indian, Bakery, Chinese",Delivery,cheap
+431,431,Dining Hut,Kumaraswamy Layout,Quick Bites,,"North Indian, Chinese, South Indian",Delivery,cheap
+432,432,7 Hills Garden Restaurant,Banashankari,Quick Bites,,"North Indian, Mughlai, Chinese",Delivery,cheap
+433,433,Desi Swaad,Kumaraswamy Layout,Quick Bites,,North Indian,Delivery,cheap
+434,434,Yummy Momos,Kumaraswamy Layout,Quick Bites,,"Momos, Tibetan, Chinese",Delivery,cheap
+435,435,Masale Daan,Banashankari,Delivery,,North Indian,Delivery,cheap
+436,436,Sri Manjunatha Tandoori Corner,Uttarahalli,Quick Bites,,Mughlai,Delivery,cheap
+437,437,Grow Fit,JP Nagar,"Takeaway, Delivery",,"Healthy Food, North Indian, Thai",Delivery,cheap
+439,439,Cutcakes,Kumaraswamy Layout,"Takeaway, Delivery",,Bakery,Delivery,cheap
+440,440,Lassi Spot,Kumaraswamy Layout,Beverage Shop,,all,Delivery,cheap
+441,441,Sandwich Hub,Jayanagar,Quick Bites,,"Fast Food, Sandwich",Delivery,cheap
+442,442,Healthy Bakes 'n' Brew,Jayanagar,Bakery,,Bakery,Delivery,cheap
+443,443,Udupi Sri Krishna Cafe,Jayanagar,Casual Dining,,"North Indian, South Indian",Delivery,moderate
+444,444,Starlite Bakery & Fastfood,Jayanagar,Quick Bites,,"North Indian, Chinese, Rolls, Bakery, Arabian, Charcoal Chicken, Desserts",Delivery,cheap
+445,445,Veganbreak24x7,City Market,"Takeaway, Delivery",,"South Indian, Chinese, Continental, Biryani",Delivery,cheap
+446,446,Aadhya Hotel,Basavanagudi,"Casual Dining, Bar",,"South Indian, North Indian, Chinese, Biryani",Delivery,moderate
+447,447,Dodda Mane Baaduta,Banashankari,Quick Bites,,"North Indian, South Indian, Chinese, Biryani",Delivery,cheap
+448,448,Swadd Kitchen,Basavanagudi,Casual Dining,,"North Indian, Fast Food",Delivery,cheap
+449,449,Nandini Milk Parlour and Restaurant,Mysore Road,"Dessert Parlor, Quick Bites",,"Sandwich, Rolls, South Indian, Ice Cream",Delivery,cheap
+450,450,Happy Chopsticks,Basavanagudi,Quick Bites,,"Chinese, Fast Food",Delivery,cheap
+451,451,Sai Super Sandwich,Banashankari,Quick Bites,,"Sandwich, Beverages",Delivery,cheap
+452,452,Right Pizza,Basavanagudi,Quick Bites,,Pizza,Delivery,cheap
+453,453,Udupi Upachar,Banashankari,Quick Bites,,"South Indian, North Indian",Delivery,cheap
+454,454,Davanagere Benne Dose Hut,Banashankari,Quick Bites,,South Indian,Delivery,cheap
+455,455,The Sip Shop,Basavanagudi,Quick Bites,,"Pizza, Beverages, Ice Cream",Delivery,cheap
+456,456,Jalsa,Banashankari,Casual Dining,"Pasta, Lunch Buffet, Masala Papad, Paneer Lajawab, Tomato Shorba, Dum Biryani, Sweet Corn Soup","North Indian, Mughlai, Chinese",Delivery,moderate
+457,457,Subz,Jayanagar,Casual Dining,"Veg Buffet, Pasta, Salads, Rasmalai, Chaat, Biryani, Fries","North Indian, South Indian",Delivery,expensive
+458,458,Rajastani Rasoi,Basavanagudi,Quick Bites,,North Indian,Delivery,cheap
+459,459,Sri Banashankari Upahara,Kumaraswamy Layout,Quick Bites,,"North Indian, South Indian",Delivery,cheap
+460,460,Cafe Shuffle,Banashankari,Cafe,"Mocktails, Peri Fries, Lasagne, Pizza, Chicken Bbq Wings, Virgin Mojito, Nachos","Cafe, Italian, Continental",Delivery,moderate
+461,461,Mint and Mustard,Basavanagudi,Casual Dining,"Paneer Tikka, Masala Papad, Garlic Naan","North Indian, Chinese",Delivery,moderate
+462,462,Chinese Square,Basavanagudi,Quick Bites,,Chinese,Delivery,cheap
+463,463,Hyderabad Express,Banashankari,Quick Bites,,"Hyderabadi, Biryani, South Indian, Andhra, Beverages",Delivery,cheap
+464,464,Punjabi Raswada,Jayanagar,Casual Dining,"Gajar Ka Halwa, Lassi, Jeera Rice, Shahi Paneer, Shikanji, Makke Ki Roti, Kofta Curry",North Indian,Delivery,moderate
+465,465,Vinny's,Banashankari,Casual Dining,"Pizza, Pasta, Garlic Bread, Nachos, Penne Alfredo, Mozzarella Sticks, Salad","Pizza, Italian, Continental, Desserts",Delivery,moderate
+466,466,Chetty's Corner,Uttarahalli,Quick Bites,,"Fast Food, Burger, Pizza",Delivery,cheap
+467,467,Kapoor's Cafe,Jayanagar,Casual Dining,"Lassi, French Fries, Cheese Balls, Paneer Pakora, Dal Makhani, Buttermilk, Cheese Paratha",North Indian,Delivery,moderate
+468,468,Donne Biryani & Kabab Corner,Kumaraswamy Layout,Quick Bites,,"Chinese, Biryani",Delivery,cheap
+469,469,Sukh Sagar,Jayanagar,Casual Dining,"Pav Bhaji, Chaat, Sandwiches, Coffee, Noodles, Masala Dosa, Roti","South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+470,470,S M V Snacks Corner,Basavanagudi,Quick Bites,,Fast Food,Delivery,cheap
+471,471,Andhra Ruchulu,Jayanagar,"Casual Dining, Bar","Andhra Meal, Mutton Biryani, Chicken Sholay, Chicken Biryani, Chicken Guntur, Andhra Thali, Guava Ice Cream","Andhra, Biryani, North Indian, Chinese",Delivery,expensive
+472,472,The Samosa Co,Jayanagar,Quick Bites,,"Fast Food, Mithai",Delivery,cheap
+473,473,Steaming Mugs,Basavanagudi,Cafe,"Fries, Oreo Shake, Pasta Arrabiata",Cafe,Delivery,moderate
+474,474,San Churro Cafe,Banashankari,"Cafe, Casual Dining","Churros, Cannelloni, Minestrone Soup, Hot Chocolate, Pink Sauce Pasta, Salsa, Veg Supreme Pizza","Cafe, Mexican, Italian",Delivery,moderate
+475,475,Rajathadri Food Fort,Jayanagar,Casual Dining,"Butter Naan, Filter Coffee, Pav Bhaji, Vada, Babycorn Manchurian, Tea, Paneer Tikka Masala","South Indian, North Indian, Chinese, Street Food",Delivery,moderate
+476,476,Brew Meister,Jayanagar,"Microbrewery, Casual Dining","Cocktails, Pasta, Paneer Tikka, Mocktails, Wheat Beer, Corn Paratha, Misal Pav","North Indian, Continental, Finger Food, American, Asian",Delivery,expensive
+477,477,Rasoi,Banashankari,Quick Bites,"Lassi, Panneer Butter Masala, Paratha, Thali","North Indian, Chinese",Delivery,cheap
+478,478,Mr. Singh Da Dhaba,Kumaraswamy Layout,Quick Bites,"Mughlai Paratha, Laccha Paratha, Rolls","North Indian, Chinese",Delivery,cheap
+479,479,Kababs N Biryani,Banashankari,Quick Bites,,South Indian,Delivery,cheap
+480,480,Ayodhya Upachar,Banashankari,Quick Bites,"Panneer Butter Masala, Vada, Curd Rice, Idli, Jeera Rice, Naan, Kulcha","South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+481,481,Biriyani Mane,Jayanagar,Quick Bites,"Biryani, Chilli Chicken, Neer Dosa","North Indian, Biryani",Delivery,cheap
+482,482,Cafe Ajfan,Jayanagar,Cafe,"Sandwiches, Pasta, Cobb Salad, Pizza, Burgers, Calzone, Fries","Cafe, Continental, Beverages",Delivery,moderate
+483,483,Brundhavana Food Point,Kumaraswamy Layout,Quick Bites,Biryani,"South Indian, North Indian, Chinese, Street Food, Beverages",Delivery,cheap
+484,484,SLV Corner Restaurant,Basavanagudi,Casual Dining,"Masala Dosa, Filter Coffee, Maddur Vada, Curd Vadai, Onion Dosa, Upma, Sunday Breakfast","South Indian, Chinese, North Indian, Street Food, Rolls, Juices",Delivery,cheap
+485,485,Biryani Royals Garden,Kumaraswamy Layout,Quick Bites,,"North Indian, Biryani, Mughlai",Delivery,cheap
+486,486,Hotel New Karavali,Banashankari,Quick Bites,,"Mangalorean, South Indian, North Indian",Delivery,cheap
+487,487,The Krishna Grand,Banashankari,Casual Dining,"Spring Dosa, Coffee, Spring Roll, Masala Papad, Rava Idli, Panneer Butter Masala, Chaat","North Indian, South Indian, Chinese, Fast Food, Juices",Delivery,moderate
+488,488,360 Atoms Restaurant And Cafe,Banashankari,Cafe,,"Cafe, Chinese, Continental, Italian",Delivery,cheap
+489,489,Roti Ghar,Basavanagudi,Casual Dining,"Coffee, Spring Roll, Roti, Panneer Butter Masala, Noodles, Butter Naan, Masala Dosa","North Indian, Chinese, South Indian",Delivery,cheap
+490,490,The Coffee Shack,Banashankari,Cafe,"Coffee, Spaghetti, Pancakes, Nachos, Pasta, Sandwich, Garlic Bread","Cafe, Chinese, Continental, Italian",Delivery,cheap
+491,491,Multi Snacky Hub,Basavanagudi,Quick Bites,,Fast Food,Delivery,cheap
+492,492,Kettle & Kegs,Banashankari,Delivery,,"Tea, Beverages",Delivery,cheap
+493,493,Baisakhi,Basavanagudi,Casual Dining,"Masala Chaach, Tomato Shorba, Gajar Ka Halwa, Biryani, Deluxe Punjabi Thali, Rajma, Paneer Tikka Masala",North Indian,Delivery,cheap
+494,494,Corner House Ice Cream,Banashankari,Dessert Parlor,"Hot Chocolate Fudge, Vanilla Ice Cream, Fudge Cake, Chocolate Mousse","Ice Cream, Desserts",Desserts,cheap
+495,495,Poonam Sweets,Banashankari,Sweet Shop,"Dhokla, Jalebi, Badam Milk, Rabri, Rasgulla, Rasmalai, Samosa Kachori",Mithai,Desserts,cheap
+496,496,XO Belgian Waffle,Banashankari,Dessert Parlor,,"Desserts, Beverages",Desserts,cheap
+497,497,Old Mumbai Ice Cream,Banashankari,Dessert Parlor,Friendly Staff,Ice Cream,Desserts,cheap
+498,498,Cake of the Day,Banashankari,"Bakery, Dessert Parlor",,Bakery,Desserts,cheap
+499,499,Amma's Pastries,Banashankari,Dessert Parlor,,Bakery,Desserts,cheap
+500,500,Kanti Sweets,Banashankari,Sweet Shop,,"Mithai, Street Food",Desserts,cheap
+501,501,Sugar Rush,Banashankari,Bakery,,"Bakery, Desserts",Desserts,cheap
+502,502,Polar Bear,Banashankari,Dessert Parlor,"Sandwiches, Hot Chocolate Fudge, Strawberry Milkshake","Ice Cream, Desserts, Beverages, Sandwich",Desserts,cheap
+503,503,San Churro Cafe,Banashankari,"Cafe, Casual Dining","Churros, Cannelloni, Minestrone Soup, Hot Chocolate, Pink Sauce Pasta, Salsa, Veg Supreme Pizza","Cafe, Mexican, Italian",Desserts,moderate
+504,504,Anand Sweets and Savouries,Banashankari,"Sweet Shop, Quick Bites",,"Mithai, Street Food",Desserts,cheap
+505,505,Ibaco,Banashankari,Dessert Parlor,,Desserts,Desserts,cheap
+506,506,Kirthi's Biryani,Banashankari,Cafe,"Pasta, Gelato, Garlic Bread, Mojito, Nachos, Paneer Pizza, Mocktails","Chinese, Cafe, Italian",Desserts,moderate
+507,507,The Lassi and Juice Park,Banashankari,"Beverage Shop, Dessert Parlor",,"Juices, Desserts",Desserts,cheap
+508,508,Stoned Monkey,Banashankari,Dessert Parlor,"Nachos, Cup Cake, Hot Chocolate Fudge, Salsa, Cheesy Garlic Bread, Waffles, Tiramisu","Desserts, Ice Cream",Desserts,cheap
+509,509,Parimala Sweets,Banashankari,Sweet Shop,,"Mithai, Street Food",Desserts,cheap
+510,510,The Big O Bakes,Banashankari,Bakery,,"Bakery, Desserts",Desserts,cheap
+511,511,Shree Mahalakshmi Sweets,Banashankari,Sweet Shop,,"Mithai, Street Food",Desserts,cheap
+512,512,Keventers,Banashankari,"Beverage Shop, Dessert Parlor",,"Desserts, Beverages, Ice Cream",Desserts,cheap
+513,513,Dessert Rose,Banashankari,Dessert Parlor,,Desserts,Desserts,cheap
+514,514,Thanco's Natural Ice Creams,Banashankari,Dessert Parlor,,Ice Cream,Desserts,cheap
+515,515,Corner Stone,Banashankari,"Beverage Shop, Quick Bites",,"Beverages, Juices, Desserts, Italian",Desserts,cheap
+516,516,Kaggis,Banashankari,Quick Bites,,"Fast Food, Bakery",Desserts,cheap
+517,517,Cocoa Bakes,Banashankari,Bakery,,"Bakery, Desserts",Desserts,cheap
+518,518,Floured-Baked With Love,Banashankari,"Takeaway, Delivery","Cup Cake, Chocolate Cake",Bakery,Desserts,cheap
+519,519,CAFE NOVA,Banashankari,Cafe,,"Cafe, Bakery",Desserts,moderate
+520,520,Cakes & Slices,Banashankari,Bakery,,"Bakery, Desserts",Desserts,cheap
+521,521,Arun Ice Cream,Banashankari,Dessert Parlor,,"Ice Cream, Desserts",Desserts,cheap
+522,522,Just Bake,Banashankari,Bakery,,"Bakery, Desserts",Desserts,cheap
+523,523,Dharwad Line Bazaar Mishra Pedha,Banashankari,Dessert Parlor,,Mithai,Desserts,cheap
+524,524,Cake Bite,Banashankari,Bakery,,Bakery,Desserts,cheap
+525,525,Kwality Wall's Swirl's Happiness Station,Banashankari,Dessert Parlor,,"Ice Cream, Desserts",Desserts,cheap
+526,526,Melting Melodies,Banashankari,Bakery,,Bakery,Desserts,cheap
+527,527,Sweet N Swirl,Banashankari,Dessert Parlor,,"Desserts, Ice Cream",Desserts,cheap
+528,528,Me And My Cake,Banashankari,Delivery,,"Bakery, Desserts",Desserts,cheap
+529,529,Mukesh Sweet Centre,Banashankari,Sweet Shop,,Mithai,Desserts,cheap
+530,530,Darkolates,Banashankari,Confectionery,,Desserts,Desserts,cheap
+531,531,Sai Super Sandwich,Banashankari,Quick Bites,,"Sandwich, Beverages",Desserts,cheap
+532,532,Sweet Truth,Banashankari,Delivery,,"Bakery, Desserts",Desserts,cheap
+533,533,Waffle-A-Go Go,Banashankari,Dessert Parlor,Waffles,"Fast Food, Desserts, Ice Cream",Desserts,cheap
+534,534,Gopi Ice Creams,Banashankari,Dessert Parlor,,Ice Cream,Desserts,cheap
+535,535,Sri Venkateshwara Sweet Meat Stall,Basavanagudi,"Sweet Shop, Quick Bites","Mysore Pak, Pav Bhaji, Chaat, Masala Poori, Badam Milk, Paratha, Panipuri","Mithai, Street Food, North Indian, Chinese",Desserts,cheap
+536,536,Baskin Robbins,Basavanagudi,Dessert Parlor,,"Ice Cream, Desserts",Desserts,cheap
+537,537,Redberrys,Basavanagudi,Cafe,"Pizza, Fries, Anjeer Ice Cream, Sandwiches, Gelato, Burgers, Kesar Badam","Cafe, Italian",Desserts,moderate
+538,538,Amande Patisserie,Basavanagudi,Bakery,"Macaroon, Mousse, Caramel Eclair","Bakery, French, Desserts",Desserts,cheap
+539,539,Srinivasa Brahmins Bakery,Basavanagudi,"Bakery, Quick Bites",,"Bakery, Street Food",Desserts,cheap
+540,540,Jain Bakes,Basavanagudi,Bakery,,"Bakery, Desserts",Desserts,cheap
+541,541,Cake Ghar,Basavanagudi,Bakery,,Bakery,Desserts,cheap
+542,542,KC Das - Sweet Spot,Basavanagudi,"Sweet Shop, Quick Bites",,"Mithai, Street Food",Desserts,cheap
+543,543,Sugar Stars Co,Basavanagudi,Bakery,,"Bakery, Desserts",Desserts,cheap
+544,544,Diabetics Dezire Sugarless Sweets and Bakes,Basavanagudi,"Dessert Parlor, Sweet Shop",,"Desserts, Mithai",Desserts,cheap
+545,545,Cake Yard,Basavanagudi,Dessert Parlor,,Desserts,Desserts,cheap
+546,546,Iceberg Icecreams,Basavanagudi,Dessert Parlor,,"Desserts, Ice Cream",Desserts,cheap
+547,547,A2B Veg - Adyar Ananda Bhavan,Basavanagudi,Casual Dining,Masala Dosa,"South Indian, North Indian, Chinese, Street Food",Desserts,cheap
+548,548,Bombay Kulfis,JP Nagar,Dessert Parlor,,Ice Cream,Desserts,cheap
+549,549,Sri Krishna Sweets,Basavanagudi,Sweet Shop,,"Mithai, Desserts",Desserts,cheap
+550,550,Cake Art,Basavanagudi,"Bakery, Quick Bites",,Bakery,Desserts,cheap
+551,551,Cakecraft,Jayanagar,Takeaway,,Desserts,Desserts,cheap
+552,552,Asha Sweets Centre,Basavanagudi,Dessert Parlor,,Fast Food,Desserts,cheap
+553,553,My Tea House,Banashankari,Casual Dining,,"Continental, Asian, North Indian, Tea",Dine-out,cheap
+554,554,The Krishna Grand,Banashankari,Casual Dining,"Spring Dosa, Coffee, Spring Roll, Masala Papad, Rava Idli, Panneer Butter Masala, Chaat","North Indian, South Indian, Chinese, Fast Food, Juices",Dine-out,moderate
+555,555,Sea Spice by 7 Star,Banashankari,Casual Dining,"Sea Food, Neer Dosa, Anjal Masala Fry, Coconut Pudding, Chicken Biryani, Roti, Fish Curry","Seafood, Biryani, Beverages, South Indian, North Indian, Kebab",Dine-out,expensive
+556,556,Mini Punjabi Dhaba,Banashankari,Quick Bites,"Panneer Butter Masala, Lassi, Paratha, Jeera Rice, Paneer Parantha, Bhindi Fry, Veg Kolhapuri",North Indian,Dine-out,cheap
+557,557,Onesta,Banashankari,"Casual Dining, Cafe","Farmhouse Pizza, Chocolate Banana, Virgin Mojito, Pasta, Paneer Tikka, Lime Soda, Prawn Pizza","Pizza, Cafe, Italian",Dine-out,moderate
+558,558,Wamama,Banashankari,Casual Dining,"Sushi, Noodles, Wine, Khau Suey, Mocktails, Yakisoba, Spring Roll","Asian, Korean, Indonesian, Japanese, Chinese, Thai, Momos",Dine-out,moderate
+559,559,Jalsa,Banashankari,Casual Dining,"Pasta, Lunch Buffet, Masala Papad, Paneer Lajawab, Tomato Shorba, Dum Biryani, Sweet Corn Soup","North Indian, Mughlai, Chinese",Dine-out,moderate
+560,560,Vinny's,Banashankari,Casual Dining,"Pizza, Pasta, Garlic Bread, Nachos, Penne Alfredo, Mozzarella Sticks, Salad","Pizza, Italian, Continental, Desserts",Dine-out,moderate
+561,561,Jcubez,Banashankari,Lounge,"Beer, Chicken Wings, Chilli Chicken, Onion Rings, Fries",Finger Food,Dine-out,expensive
+562,562,Gustoes Beer House,Banashankari,Pub,"Beer, Wedges, Pizza, Nachos, Salads, Papaya Salad, Buffalo Wings","Continental, Italian, Mexican, North Indian, Chinese, Steak",Dine-out,expensive
+563,563,Penthouse Cafe,Banashankari,Cafe,"Pizza, Mocktails, Coffee, Nachos, Salad, Pasta, Sandwiches","Cafe, Italian, Continental",Dine-out,moderate
+564,564,Spice Elephant,Banashankari,Casual Dining,"Momos, Lunch Buffet, Chocolate Nirvana, Thai Green Curry, Paneer Tikka, Dum Biryani, Chicken Biryani","Chinese, North Indian, Thai",Dine-out,moderate
+565,565,Smacznego,Banashankari,Cafe,"Waffles, Pasta, Coleslaw Sandwich, Choco Waffle, Tacos, Momos, Cheese Nachos","Cafe, Mexican, Italian, Momos, Beverages",Dine-out,cheap
+566,566,CafÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© Down The Alley,Banashankari,Cafe,"Waffles, Pasta, Crispy Chicken, Honey Chilli Chicken, Sandwich, Coffee, Crepe",Cafe,Dine-out,cheap
+567,567,Cafe Shuffle,Banashankari,Cafe,"Mocktails, Peri Fries, Lasagne, Pizza, Chicken Bbq Wings, Virgin Mojito, Nachos","Cafe, Italian, Continental",Dine-out,moderate
+568,568,The Coffee Shack,Banashankari,Cafe,"Coffee, Spaghetti, Pancakes, Nachos, Pasta, Sandwich, Garlic Bread","Cafe, Chinese, Continental, Italian",Dine-out,cheap
+569,569,Peppy Peppers,Banashankari,Casual Dining,"Pasta, Pepper Pizza, Paneer Pizza, Peppy Paneer, Nachos, Supreme Pizza, Manchow Soup","Italian, North Indian, Mexican",Dine-out,moderate
+570,570,Anna Kuteera,Banashankari,Casual Dining,"Panner Tikka, Kulfi, Coffee, Pav Bhaji, Carrot Halwa, Fried Rice, Set Dosa","South Indian, North Indian, Chinese",Dine-out,cheap
+571,571,Szechuan Dragon,Banashankari,Casual Dining,"Noodles, Momos, Veg Manchow Soup, Kung Pao Chicken, Chicken Lollipop, Chop Suey, Dragon Chicken","Chinese, Thai, Momos",Dine-out,moderate
+572,572,1947,Banashankari,Casual Dining,"Salads, Panneer Butter Masala, Rabri, Gajar Ka Halwa, Manchow Soup, Aam Panna, Tomato Basil Soup","North Indian, Chinese",Dine-out,moderate
+573,573,Caf-Eleven,Banashankari,Cafe,"Sandwich, Omelette, Ice Tea, Virgin Mojito, Hot Chocolate, Pasta Arrabiata, Hazelnut Cappuccino","Cafe, Continental",Dine-out,cheap
+574,574,Thamboola,Banashankari,Casual Dining,"Spring Roll, Manchow Soup, Babycorn Manchurian, Mint Cooler, Roti, Panneer Butter Masala","North Indian, Chinese, Continental",Dine-out,moderate
+575,575,Ferment,Banashankari,"Casual Dining, Bar",,Continental,Dine-out,expensive
+576,576,Havyaka Mess,Banashankari,Mess,,South Indian,Dine-out,cheap
+577,577,San Churro Cafe,Banashankari,"Cafe, Casual Dining","Churros, Cannelloni, Minestrone Soup, Hot Chocolate, Pink Sauce Pasta, Salsa, Veg Supreme Pizza","Cafe, Mexican, Italian",Dine-out,moderate
+578,578,Cafe Vivacity,Banashankari,Cafe,"Garlic Bread, Burgers, Sandwiches, Pizza, Hot Chocolate Fudge, Waffles, Potato Wedges",Cafe,Dine-out,moderate
+579,579,Chung Wah,Banashankari,Casual Dining,"Tom Yum Soup, Wine, Spring Roll, Singapore Noodles, Manchow Soup, Golden Fried Prawns, Lamb","Chinese, Momos, Thai, Vietnamese",Dine-out,moderate
+580,580,Vietnamese Kitchen,Banashankari,Casual Dining,"Pho, Papaya Salad, Coffee, Veg Momos, Rolls",Vietnamese,Dine-out,moderate
+581,581,Blue Wings Bar & Restaurant,Banashankari,"Bar, Casual Dining",,"North Indian, Chinese",Dine-out,moderate
+582,582,Anand Sweets and Savouries,Banashankari,"Sweet Shop, Quick Bites",,"Mithai, Street Food",Dine-out,cheap
+583,583,Catch-up-ino,Banashankari,Cafe,"Momos, Mushroom Bruschettas, Jalapeno Cheeseballs, Pasta, Red Velvet Shake, Red Velvet Milkshake, Maggi","Cafe, Fast Food, Continental, Chinese, Momos",Dine-out,moderate
+584,584,Kirthi's Biryani,Banashankari,Cafe,"Pasta, Gelato, Garlic Bread, Mojito, Nachos, Paneer Pizza, Mocktails","Chinese, Cafe, Italian",Dine-out,moderate
+585,585,T3H Cafe,Banashankari,Cafe,"Cheese Maggi, Peri Peri Fries, Pasta Arrabiata","Cafe, Italian, American",Dine-out,cheap
+586,586,Srikrishna Bhavan,Banashankari,Quick Bites,"Roti, Masala Dosa","South Indian, North Indian, Chinese",Dine-out,cheap
+587,587,Dal Tadkaa,Banashankari,Casual Dining,"Paratha, Boondi Raita, Roti, Kulfi, Panneer Butter Masala, Sweet Lassi, Dal Tadka",North Indian,Dine-out,cheap
+588,588,360 Atoms Restaurant And Cafe,Banashankari,Cafe,,"Cafe, Chinese, Continental, Italian",Dine-out,cheap
+589,589,New Imperial Restaurant,Banashankari,Casual Dining,,"North Indian, Chinese",Dine-out,cheap
+590,590,The Vintage Cafe,Banashankari,Cafe,"Burgers, Caramel Milkshake, Iced Coffee, Iced Tea","Cafe, French, North Indian",Dine-out,cheap
+591,591,Green Gardenia,Banashankari,Casual Dining,"Masala Papad, Paneer Satay, Paneer Hyderabadi, Butter Naan, Roti","North Indian, Chinese",Dine-out,moderate
+592,592,Parimala Sweets,Banashankari,Sweet Shop,,"Mithai, Street Food",Dine-out,cheap
+593,593,Vaishali Deluxe,Banashankari,Casual Dining,,"North Indian, Chinese",Dine-out,moderate
+594,594,Paradise Premium,Banashankari,Casual Dining,,"Biryani, Andhra, Hyderabadi, North Indian",Dine-out,moderate
+595,595,Kadala Tarangaa,Banashankari,Casual Dining,"Sea Food, Neer Dosa","Mangalorean, Seafood, North Indian",Dine-out,moderate
+596,596,My Tea House,Banashankari,Casual Dining,,"Continental, Asian, North Indian, Tea",Dine-out,cheap
+597,597,Vi Ra's Bar and Restaurant,Banashankari,Bar,Chilli Chicken,"South Indian, North Indian, Chinese",Dine-out,moderate
+598,598,Annapooraneshwari Mess,Banashankari,Mess,,South Indian,Dine-out,cheap
+599,599,Sri Yaksha Shiv Sagar,Banashankari,Casual Dining,,"North Indian, Chinese",Dine-out,moderate
+600,600,7 Hills Restaurant,Banashankari,Casual Dining,,"North Indian, South Indian",Dine-out,cheap
+601,601,Nandhini Deluxe,Banashankari,Casual Dining,"Biryani, Chicken Guntur, Thali, Buttermilk, Manchurian",North Indian,Dine-out,moderate
+602,602,Corner Stone,Banashankari,"Beverage Shop, Quick Bites",,"Beverages, Juices, Desserts, Italian",Dine-out,cheap
+603,603,Karavali Fish Center,Banashankari,Quick Bites,,"Mangalorean, Chinese",Dine-out,cheap
+604,604,Ayda Persian Kitchen,Banashankari,Casual Dining,,"North Indian, Iranian",Dine-out,moderate
+605,605,J Spice,Banashankari,Casual Dining,"Stuffed Mushroom, Chicken Biryani, Jal-jeera","North Indian, Chinese",Dine-out,moderate
+606,606,Swadesh Tadka,Banashankari,Casual Dining,"Gulab Jamun, Roti, Masala Papad, Babycorn Manchurian, Paratha, Clear Soup, Biryani","North Indian, Chinese, Beverages",Dine-out,moderate
+607,607,Iyer's Tiffin Centre,Banashankari,Quick Bites,"Kesari Bath, Masala Dosa","South Indian, Chinese",Dine-out,cheap
+608,608,Kydz Adda,Banashankari,Casual Dining,,Continental,Dine-out,cheap
+609,609,K27 - The Pub,Banashankari,Bar,,"Chinese, North Indian",Dine-out,expensive
+610,610,Kotian Karavali Restaurant,Banashankari,Quick Bites,,"South Indian, Biryani",Dine-out,cheap
+611,611,Food Box Cafe,Banashankari,Casual Dining,,"Mughlai, North Indian, Chinese",Dine-out,cheap
+612,612,Hide Out Cafe,Banashankari,Cafe,,Cafe,Dine-out,cheap
+613,613,Linnet Bar & Restaurant,Banashankari,Bar,,"Fast Food, Finger Food",Dine-out,cheap
+614,614,CAFE NOVA,Banashankari,Cafe,,"Cafe, Bakery",Dine-out,moderate
+615,615,Darbar,Banashankari,Bar,"Paneer Tikka, Dal Kichadi, French Fries","North Indian, Chinese",Dine-out,moderate
+616,616,Sri Ganesh Juice and Chats,Banashankari,"Beverage Shop, Quick Bites",,"Juices, Street Food",Dine-out,cheap
+617,617,Manifest Cafe,Banashankari,Casual Dining,,"South Indian, North Indian, Chinese",Dine-out,cheap
+618,618,Beijing Bites,Banashankari,Casual Dining,"Cantonese Noodles, Basil Chicken, Hunan Chicken Gravy, Manchow Soup, Dragon Chicken, Chicken Grill","Chinese, Thai",Dine-out,moderate
+619,619,Karavali Lunch Home,Banashankari,Quick Bites,,"South Indian, North Indian, Seafood, Mangalorean",Dine-out,cheap
+620,620,The Pizzeria,Banashankari,Casual Dining,Pesto Pizza,"Pizza, Italian, Salad",Dine-out,moderate
+621,621,Sri Krishna Sagar,Banashankari,Casual Dining,,"North Indian, Chinese",Dine-out,cheap
+622,622,Lassi Stop,Banashankari,"Beverage Shop, Quick Bites",,"Beverages, Fast Food, Juices",Dine-out,cheap
+623,623,Banashankari Nati Style,Banashankari,Quick Bites,,"Biryani, Chinese, South Indian, North Indian",Dine-out,cheap
+624,624,Sea Green Cafe,Banashankari,Cafe,,"Cafe, Fast Food, Beverages",Dine-out,cheap
+625,625,Cafe Coffee Day,Banashankari,Cafe,,"Cafe, Fast Food",Dine-out,moderate
+626,626,SLN Bar and Restaurant,Banashankari,Casual Dining,,"North Indian, Chinese",Dine-out,moderate
+627,627,Kaumudis Juoice,Banashankari,"Beverage Shop, Quick Bites",,"Beverages, Fast Food, Juices",Dine-out,cheap
+628,628,Parijatha Paradise,Banashankari,Casual Dining,,"South Indian, North Indian, Fast Food, Chinese, Street Food",Dine-out,cheap
+629,629,As On Fire,South Bangalore,Food Truck,Pizza,"Pizza, Fast Food, BBQ",Dine-out,cheap
+630,630,Pizza Hut,Banashankari,Casual Dining,"Pizza, Potato Wedges, Country Feast, Pasta, Garlic Bread, Lemonade","Pizza, Fast Food",Dine-out,moderate
+631,631,New Prashanth Hotel,Banashankari,Casual Dining,"Chicken Biryani, Ragi Mudde, Mutton Chops","Biryani, North Indian, Seafood, Andhra",Dine-out,moderate
+632,632,Taaza Thindi,Banashankari,Quick Bites,"Masala Dosa, Vada, Upma, Filter Coffee, Kesari Bath, Idli Chutney, Kharabath",South Indian,Dine-out,cheap
+633,633,Hyderabad Express,Banashankari,Quick Bites,,"Hyderabadi, Biryani, South Indian, Andhra, Beverages",Dine-out,cheap
+634,634,Ayodhya Upachar,Banashankari,Quick Bites,"Panneer Butter Masala, Vada, Curd Rice, Idli, Jeera Rice, Naan, Kulcha","South Indian, North Indian, Chinese, Street Food",Dine-out,cheap
+635,635,Petoo,Banashankari,Quick Bites,,North Indian,Dine-out,cheap
+636,636,Roving Feast,Banashankari,Quick Bites,"Pasta, Momos, Rolls, Chicken Roll, Chilli Chicken, Paneer Roll, Spaghetti","Italian, Continental, Fast Food, Chinese, Momos",Dine-out,cheap
+637,637,KFC,Banashankari,Quick Bites,"Burgers, French Fries","Burger, Fast Food",Dine-out,cheap
+638,638,Five Star Chicken,Banashankari,Quick Bites,,"Fast Food, Burger",Dine-out,cheap
+639,639,Gama Gama,Banashankari,Quick Bites,"Jowar Roti, Buttermilk, Sabudana Vada, Thali, Mirchi Bajji, Brinjal Curry",South Indian,Dine-out,cheap
+640,640,Hotel New Karavali,Banashankari,Quick Bites,,"Mangalorean, South Indian, North Indian",Dine-out,cheap
+641,641,Kaapi Corner,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+642,642,McDonald's,Banashankari,Quick Bites,"Burgers, Fries, Hot Chocolate","Burger, Fast Food",Dine-out,cheap
+643,643,Sri Laxmi Venkateshwara Coffee Bar,Banashankari,Quick Bites,"Masala Dosa, Idli Chutney, Kharabath, Filter Coffee, Kesari Bath, Idli Vada, Maddur Vada",South Indian,Dine-out,cheap
+644,644,Bhattara Bhojana,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+645,645,Davanagere Benne Dose Hut,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+646,646,Utsav Restaurant,Banashankari,Quick Bites,,"North Indian, Chinese",Dine-out,cheap
+647,647,Messy Bowl,Banashankari,Quick Bites,"Tandoori Maggi, Paneer Sizzler, Pasta, Pizza, Butter Garlic Fries, Peri Peri Maggi, Garlic Maggi","Fast Food, Beverages",Dine-out,cheap
+648,648,Devanna Dum Biriyani Centre,Banashankari,Quick Bites,,"Biryani, South Indian",Dine-out,cheap
+649,649,Janahaar,Banashankari,Quick Bites,"Masala Dosa, Idli, Filter Coffee, Medu Dosa",South Indian,Dine-out,cheap
+650,650,Stop 'N' Joy,Banashankari,Quick Bites,,Fast Food,Dine-out,cheap
+651,651,Dodda Mane Baaduta,Banashankari,Quick Bites,,"North Indian, South Indian, Chinese, Biryani",Dine-out,cheap
+652,652,Chickpet Donne Biryani House,Banashankari,Quick Bites,,Biryani,Dine-out,cheap
+653,653,Brahmin Cafe,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+654,654,Chumma Delicious,Banashankari,Quick Bites,Chicken Biryani,"South Indian, Fast Food",Dine-out,cheap
+655,655,Udupi Upachar,Banashankari,Quick Bites,,"South Indian, North Indian",Dine-out,cheap
+656,656,Bengaluru Coffee House,Banashankari,Quick Bites,"Masala Dosa, Tirupathi Pongal, Filter Coffee, Vada, Kharabath, Kali Dosa, Rava Idli","South Indian, North Indian, Chinese, Street Food",Dine-out,cheap
+657,657,Foodiction,Banashankari,Quick Bites,"Burgers, Lassi, Chicken Grill, Naan, Momos, Chicken Burger, Biryani","North Indian, Fast Food, Chinese, Burger",Dine-out,cheap
+658,658,The Biryani Cafe,Banashankari,Quick Bites,"Vegetable Biryani, Ginger Chicken, Chicken Biryani, Donne Biryani, Chicken Kebab, Egg Bhurji, Dum Biryani","Biryani, Chinese, Kebab",Dine-out,cheap
+659,659,Spicy Tandoor,Banashankari,Quick Bites,,North Indian,Dine-out,cheap
+660,660,Banashankari Donne Biriyani,Banashankari,Quick Bites,,"Biryani, Fast Food",Dine-out,cheap
+661,661,Addhuri Udupi Bhojana,Banashankari,Quick Bites,Masala Dosa,"South Indian, North Indian",Dine-out,cheap
+662,662,Vasanth Vihar - Since 1965,Banashankari,Quick Bites,,"South Indian, Street Food",Dine-out,cheap
+663,663,Subway,Banashankari,Quick Bites,"Veggie Delight, Paneer Tikka, Salad","Salad, Fast Food",Dine-out,moderate
+664,664,SGS Non Veg - Gundu Pulav,Banashankari,Quick Bites,,"Biryani, Fast Food",Dine-out,cheap
+665,665,Udupi Ruchi Grand,Banashankari,Quick Bites,,"South Indian, North Indian, Chinese, Street Food",Dine-out,cheap
+666,666,Hotel Mangala,Banashankari,Quick Bites,"Khali Dosa, Kali Dosa, Masala Dosa, Vada Sambar",South Indian,Dine-out,cheap
+667,667,Simple Thindies,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+668,668,Rolls On Wheels,Banashankari,Quick Bites,,"Fast Food, Rolls, Momos",Dine-out,cheap
+669,669,Chilli Flakes,Banashankari,Quick Bites,,"Fast Food, Italian, Beverages",Dine-out,cheap
+670,670,Kababs N Biryani,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+671,671,Udupi Ruchi,Banashankari,Quick Bites,,"South Indian, North Indian, Chinese, Street Food",Dine-out,cheap
+672,672,SLV Swadishta,Banashankari,Quick Bites,"Coffee, Jeera Rice, Masala Dosa, Neer Dosa",South Indian,Dine-out,cheap
+673,673,Kolbeh,Banashankari,Quick Bites,,Fast Food,Dine-out,cheap
+674,674,Kolkata Kathi Roll's,Banashankari,Quick Bites,,"Fast Food, Rolls",Dine-out,cheap
+675,675,Mylari Biryani Family Restaurant,Banashankari,Quick Bites,,"Biryani, Fast Food",Dine-out,cheap
+676,676,Upahar Sagar,Banashankari,Quick Bites,Masala Dosa,"South Indian, Chinese, North Indian",Dine-out,cheap
+677,677,Domino's Pizza,Banashankari,Quick Bites,"Pane Pizza, Lava Cake, Pasta, Stuffed Garlic Bread, Chocolava Cake, Tacos","Pizza, Fast Food",Dine-out,moderate
+678,678,New Sagar Fast Food,Banashankari,Quick Bites,"Vegetable Biryani, Masala Dosa, Kulcha, Masala Papad, Tomato Soup","North Indian, South Indian",Dine-out,cheap
+679,679,Namma Biryani,Banashankari,Quick Bites,,"Biryani, Chinese, North Indian",Dine-out,cheap
+680,680,Chill Out,Banashankari,Quick Bites,,"South Indian, Chinese",Dine-out,cheap
+681,681,Parama Ruchi,Banashankari,Quick Bites,,"South Indian, North Indian, Chinese, Street Food",Dine-out,cheap
+682,682,Thrilok Restaurant,Banashankari,Quick Bites,,"Mangalorean, Seafood",Dine-out,cheap
+683,683,Meat And Eat,Banashankari,Quick Bites,,"Fast Food, Burger",Dine-out,cheap
+684,684,Ande Ka Funda,Banashankari,Quick Bites,,"North Indian, Fast Food, Rolls",Dine-out,cheap
+685,685,Dakshin Grand,Banashankari,Quick Bites,,"South Indian, North Indian, Chinese, Street Food",Dine-out,cheap
+686,686,Chicken Hunt,Banashankari,Quick Bites,Chicken Grill,"South Indian, North Indian, Chinese, Biryani",Dine-out,cheap
+687,687,7 Hills Garden Restaurant,Banashankari,Quick Bites,,"North Indian, Mughlai, Chinese",Dine-out,cheap
+688,688,Maruthi Davangere Benne Dosa,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+689,689,Shri Guru Raghavendra Grand Veg,Banashankari,Quick Bites,,"South Indian, North Indian, Chinese",Dine-out,cheap
+690,690,Pizza Stop,Banashankari,Quick Bites,"Garlic Bread, Pasta, Nachos, Salsa, Thin Crust Pizza","Pizza, Italian",Dine-out,moderate
+691,691,Madhappa Hindu Military Hotel,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+692,692,Krishna Sagar,Banashankari,Quick Bites,,North Indian,Dine-out,cheap
+693,693,Hanumanthanagar Biryani Junction,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+694,694,Faasos,Banashankari,Quick Bites,"Rolls, Veggie Wrap, Chocolate Fantasy, Rice Bowls, Chicken Rice, Paneer Makhanwala, Chicken Tikka Wrap","North Indian, Biryani, Fast Food",Dine-out,cheap
+695,695,Rasoi,Banashankari,Quick Bites,"Lassi, Panneer Butter Masala, Paratha, Thali","North Indian, Chinese",Dine-out,cheap
+696,696,SLV Refreshment,Banashankari,Quick Bites,"Coffee, Masala Dosa, Kharabath, Idli Vada, Kesari Bath",South Indian,Dine-out,cheap
+697,697,Kaggis,Banashankari,Quick Bites,,"Fast Food, Bakery",Dine-out,cheap
+698,698,Chatar Patar,Banashankari,Quick Bites,"Panipuri, Chaat, Noodles, Dahi Bhalle","Fast Food, Street Food",Dine-out,cheap
+699,699,Seven Star,Banashankari,Quick Bites,,"North Indian, Chinese",Dine-out,cheap
+700,700,SVKP Daily Fresh,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+701,701,Kidambi's Kitchen,Banashankari,Quick Bites,Rooftop Ambience,South Indian,Dine-out,cheap
+702,702,Ruchi's Corner,Banashankari,Quick Bites,,Fast Food,Dine-out,cheap
+703,703,Tandoori Knight,Banashankari,Quick Bites,"Chicken Grill, Biryani, Roti, Chicken Masala","North Indian, Chinese, Biryani, Kebab",Dine-out,cheap
+704,704,Utsav,Banashankari,Quick Bites,"Paratha, Kachori, Tea, Lassi, Samosa, Vada Pav","North Indian, Street Food",Dine-out,cheap
+705,705,Mane Thindi,Banashankari,Quick Bites,"Coffee, Tea, Kesari Bath, Open Dosa, Vada, Idli, Bread Dosa",South Indian,Dine-out,cheap
+706,706,Fast And Fresh,Banashankari,Quick Bites,,"North Indian, Chinese, Fast Food",Dine-out,cheap
+707,707,New Gowda's Fried Chicken,Banashankari,Quick Bites,,Biryani,Dine-out,cheap
+708,708,Juicy Momos,Banashankari,Quick Bites,"Rolls, Burgers, Juicy Momos, Chicken Momo, Chocolate Momos, Mushroom Momo, Paneer Momos","Tibetan, Momos",Dine-out,cheap
+709,709,Donne Biriyani House,Banashankari,Quick Bites,Biryani,"South Indian, North Indian, Chinese, Biryani",Dine-out,cheap
+710,710,Srinagar Kabab Corner,Banashankari,Quick Bites,,North Indian,Dine-out,cheap
+711,711,Sri Venkateshwara Chat Centre,Banashankari,Quick Bites,,Street Food,Dine-out,cheap
+712,712,Vinay Bhel Corner,Banashankari,Quick Bites,,Street Food,Dine-out,cheap
+713,713,Spice 9,Banashankari,Quick Bites,,"Biryani, North Indian, Chinese, Fast Food",Dine-out,cheap
+714,714,Roti Land,Banashankari,Quick Bites,,North Indian,Dine-out,cheap
+715,715,Naveen Kabab & Biriyani Mane,Banashankari,Quick Bites,,Biryani,Dine-out,cheap
+716,716,Nandi Chats and Juice,Banashankari,Quick Bites,,Street Food,Dine-out,cheap
+717,717,Atithi Point Ande Ka Funda,Banashankari,Quick Bites,,North Indian,Dine-out,cheap
+718,718,Yaarub Hotel,Banashankari,Quick Bites,,Biryani,Dine-out,cheap
+719,719,Aarush's Food Plaza,Banashankari,Quick Bites,,"North Indian, Street Food",Dine-out,cheap
+720,720,Rotti Mane,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+721,721,Karnataka Bhel House,Banashankari,Quick Bites,,Street Food,Dine-out,cheap
+722,722,Kannadigas Karavali,Banashankari,Quick Bites,,"Mangalorean, South Indian, North Indian",Dine-out,cheap
+723,723,The Coorg Kitchen,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+724,724,Just Shawarma,Banashankari,Quick Bites,,Arabian,Dine-out,cheap
+725,725,Aramane Donne Biryani,Banashankari,Quick Bites,,Biryani,Dine-out,cheap
+726,726,FOOD ADDA,Banashankari,Quick Bites,,Fast Food,Dine-out,cheap
+727,727,New Mangalore Lunch Home,Banashankari,Quick Bites,,"Mangalorean, South Indian, North Indian",Dine-out,cheap
+728,728,Hotel Nisarga,Banashankari,Quick Bites,,"North Indian, South Indian",Dine-out,cheap
+729,729,Coffee Bytes,Banashankari,Quick Bites,,"Fast Food, South Indian",Dine-out,cheap
+730,730,Parjanya Chat Zone,Banashankari,Quick Bites,,"Street Food, Fast Food",Dine-out,cheap
+731,731,Yo Roll Corner,Banashankari,Quick Bites,,"Street Food, Rolls",Dine-out,cheap
+732,732,New Quality Dum Biryani,Banashankari,Quick Bites,,Biryani,Dine-out,cheap
+733,733,Sri Lakshmi Kabab Center,Banashankari,Quick Bites,,Kebab,Dine-out,cheap
+734,734,Cueferia A-Cafe,Banashankari,Quick Bites,,"North Indian, South Indian, Fast Food, Chinese, Italian",Dine-out,cheap
+735,735,Sri Basaveshwar Jolada Rotti Oota,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+736,736,Dtink Lab,Banashankari,Quick Bites,,"Beverages, Sandwich",Dine-out,cheap
+737,737,Shree Udupi South kitchen,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+738,738,Foodlieious Multi Cuisine,Banashankari,Quick Bites,,North Indian,Dine-out,cheap
+739,739,Tasty Bites,Banashankari,Quick Bites,,"Fast Food, Pizza",Dine-out,cheap
+740,740,Raams Chicken,Banashankari,Quick Bites,,Andhra,Dine-out,cheap
+741,741,Panchami,Banashankari,Quick Bites,,"North Indian, Chinese",Dine-out,cheap
+742,742,Bangalore Kabab Palace,Banashankari,Quick Bites,,"Andhra, Biryani",Dine-out,cheap
+743,743,Hotel Andhra Speices,Banashankari,Quick Bites,,Andhra,Dine-out,cheap
+744,744,Quality Dum Biriyani,Banashankari,Quick Bites,,"Biryani, Kebab",Dine-out,cheap
+745,745,Sri Murari Family Restaurant,Banashankari,Quick Bites,,Biryani,Dine-out,cheap
+746,746,Taja Coffee,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+747,747,Aramane Donne Biriyani,Banashankari,Quick Bites,,"South Indian, Biryani",Dine-out,cheap
+748,748,Swaada Healthy Kitchen,Banashankari,"Quick Bites, Beverage Shop",,"Healthy Food, Juices, Sandwich",Dine-out,cheap
+749,749,New Prakash Hotel,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+750,750,Gawdaru Mane Beriyani,Banashankari,Quick Bites,,"South Indian, Biryani",Dine-out,cheap
+751,751,Kings Court Daba,Banashankari,Quick Bites,,"Chinese, North Indian",Dine-out,cheap
+752,752,MM Tiffen Center,Banashankari,Quick Bites,,"South Indian, Fast Food",Dine-out,cheap
+753,753,Sri Raghavendra Prasanna Coffee Beans Club,Banashankari,Quick Bites,,South Indian,Dine-out,cheap
+754,754,Sri Balaji Tiffin Centre,Banashankari,Quick Bites,,"South Indian, Chinese",Dine-out,cheap
+771,771,Gokul Veg,Basavanagudi,Casual Dining,"Masala Papad, Paneer Satay, Vegetable Biryani, Panneer Butter Masala, Tomato Soup, Manchow Soup, Roti","North Indian, Chinese, Beverages",Dine-out,moderate
+772,772,SLV Corner Restaurant,Basavanagudi,Casual Dining,"Masala Dosa, Filter Coffee, Maddur Vada, Curd Vadai, Onion Dosa, Upma, Sunday Breakfast","South Indian, Chinese, North Indian, Street Food, Rolls, Juices",Dine-out,cheap
+773,773,Timepass Dinner,Basavanagudi,Casual Dining,"Onion Rings, Pasta, Kadhai Paneer, Salads, Salad, Roti, Jeera Rice",North Indian,Dine-out,moderate
+774,774,Baisakhi,Basavanagudi,Casual Dining,"Masala Chaach, Tomato Shorba, Gajar Ka Halwa, Biryani, Deluxe Punjabi Thali, Rajma, Paneer Tikka Masala",North Indian,Dine-out,cheap
+775,775,Eat Repeat,Basavanagudi,Quick Bites,"Sweet Pongal, Curd Rice",South Indian,Dine-out,cheap
+776,776,Sri Guru Kottureshwara Davangere Benne Dosa,Basavanagudi,Quick Bites,"Benne Dosa, Mirchi Bajji, Filter Coffee, Poha, Tea, Butter Dosa, Crispy Dosa",South Indian,Dine-out,cheap
+777,777,Bridgeway,Mysore Road,Casual Dining,,"North Indian, Chinese",Dine-out,cheap
+778,778,Srinathji's Cafe,Basavanagudi,"Casual Dining, Cafe","Paratha, Sandwich, Chilli Idli, Noodles, Sandwiches, Lime Soda","North Indian, Cafe, Chinese, Fast Food",Dine-out,cheap
+779,779,Soho Bar & Grill,Basavanagudi,Pub,"Thai Chicken, Chicken Lollipop, Cocktails, Jeera Rice, Rolls, Draught Beer, French Fries","North Indian, Chinese, Thai",Dine-out,expensive
+780,780,Kollapuri's,Basavanagudi,Quick Bites,"Chicken Biryani, Mutton Biryani, Egg Biryani, Chicken Fry, Mutton Fry","South Indian, Mangalorean",Dine-out,cheap
+781,781,Aadhya Hotel,Basavanagudi,"Casual Dining, Bar",,"South Indian, North Indian, Chinese, Biryani",Dine-out,moderate
+782,782,Bhavani Restaurant,Basavanagudi,Quick Bites,"Coffee, Vada, Curd Rice, Ghee Roast Paneer, Thali","South Indian, North Indian, Chinese",Dine-out,cheap
+783,783,Puliyogare Point,Basavanagudi,Quick Bites,"Sweet Pongal, Mini Idlis, Filter Coffee, Open Masala Dosa, Pakoda, Vada, Raagi Dosa",South Indian,Dine-out,cheap
+784,784,Zephyr,Basavanagudi,Casual Dining,"Chilli Paneer Pizza, Mocktails, French Fries, White Sauce Pasta, Nachos, Manchurian","Italian, Continental",Dine-out,moderate
+785,785,Redberrys,Basavanagudi,Cafe,"Pizza, Fries, Anjeer Ice Cream, Sandwiches, Gelato, Burgers, Kesar Badam","Cafe, Italian",Dine-out,moderate
+786,786,Hotel Dwarka,Basavanagudi,Quick Bites,"Khali Dosa, Kali Dosa, Upma, Filter Coffee, Kesari Bath, Set Dosa, Masala Dosa",South Indian,Dine-out,cheap
+787,787,Nisarga Garden Restaurant,Basavanagudi,Quick Bites,,"South Indian, Chinese, Desserts, Beverages",Dine-out,cheap
+788,788,Ma-Arya Family Restaurant,Basavanagudi,Casual Dining,"Mutton Biryani, Crispy Fried Chicken","Biryani, South Indian, North Indian, Chinese, Andhra",Dine-out,moderate
+789,789,A2B - Adyar Ananda Bhavan,Mysore Road,Casual Dining,"Pav Bhaji, Masala Dosa, Idli Vada, Filter Coffee, Pongal, Curd Rice, Kesari Bath","South Indian, Fast Food, Street Food",Dine-out,cheap
+790,790,Ragoo's,Jayanagar,Casual Dining,"Corn Augratin, Lasagne, Fries, Garlic Bread, Pili Pili Pizza, Mexican Rice, Ravioli","Italian, Pizza, North Indian, Salad",Dine-out,moderate
+791,791,Imperial Restaurant,Mysore Road,Casual Dining,"Kadhai Paneer, Ghee Rice, Chicken Grill, Shawarma, Paratha, Biryani, Butter Chicken","North Indian, Chinese, Biryani, Beverages",Dine-out,moderate
+792,792,New Prashanth Hotel,Basavanagudi,Casual Dining,,South Indian,Dine-out,cheap
+793,793,Udupi Sri Krishna Bhavan,Basavanagudi,Quick Bites,"Masala Dosa, Vada, Obbattu, Badam Milk, Khara Bhath, Coffee, Puri Saagu",South Indian,Dine-out,moderate
+794,794,Chinese Kitchen,Basavanagudi,Quick Bites,,Chinese,Dine-out,cheap
+795,795,Vijayalakshmi,Basavanagudi,Quick Bites,,South Indian,Dine-out,cheap
+796,796,Nammura Donne Biriyani,Basavanagudi,Quick Bites,,"Biryani, Fast Food",Dine-out,cheap
+797,797,Curry Leaves,Basavanagudi,Casual Dining,"Brownie, Mojito, Prawn Ghee Roast, Corn Tikki, Mushroom Ghee Roast, Pinacolada, Biryani","Andhra, North Indian, Chinese",Dine-out,moderate
+798,798,Goli Vada Pav No. 1,Basavanagudi,Quick Bites,"Masala Vada Pav, Cheese Vada Pav, Fries",Street Food,Dine-out,cheap
+799,799,Ice Thunder,Basavanagudi,Quick Bites,"Masala Poori, Rumali Roti, Sandwiches, Chaat, Burgers","South Indian, Fast Food, North Indian, Desserts",Dine-out,cheap
+800,800,South Kitchen,Basavanagudi,Quick Bites,"Kharabath, Crispy Vada, Filter Coffee, Idli Vada, Idli Chutney, Kesari Bath, Gulab Jamun",South Indian,Dine-out,cheap
+801,801,Upahara Darshini,Basavanagudi,Quick Bites,"Masala Dosa, Vada, Set Dosa, Filter Coffee, Raita, Idli Sambar, Crispy Dosa",South Indian,Dine-out,cheap
+802,802,Mahalaxmi Tiffin Room,Basavanagudi,Quick Bites,"Filter Coffee, Rava Idli, Kali Dosa, Carrot Halwa, Idli Vada, Vada Sambar, Bonda",South Indian,Dine-out,cheap
+803,803,Starlite Bakery & Fastfood,Jayanagar,Quick Bites,,"North Indian, Chinese, Rolls, Bakery, Arabian, Charcoal Chicken, Desserts",Dine-out,cheap
+804,804,Sandwichwallas,Basavanagudi,Quick Bites,"Sandwiches, Veg Burger, Pizza Sandwich, Burgers, French Fries, Wedges, Club Sandwich",Fast Food,Dine-out,cheap
+805,805,J K Fish Land,Jayanagar,Quick Bites,,"Seafood, Mangalorean",Dine-out,cheap
+806,806,Udupi Grand,Basavanagudi,Quick Bites,"Coffee, Masala Dosa, Vegetable Biryani","South Indian, North Indian, Chinese",Dine-out,cheap
+807,807,Chinese Square,Basavanagudi,Quick Bites,,Chinese,Dine-out,cheap
+808,808,Castle Rock,Uttarahalli,Casual Dining,Biryani,"North Indian, Chinese",Dine-out,moderate
+809,809,Swadd Kitchen,Basavanagudi,Casual Dining,,"North Indian, Fast Food",Dine-out,cheap
+810,810,Right Pizza,Basavanagudi,Quick Bites,,Pizza,Dine-out,cheap
+811,811,Kamat Bugle Rock,Basavanagudi,Quick Bites,"Jowar Roti, Buttermilk, Jolada Rotti, Brinjal Curry, Coffee, Pongal, Vegetable Biryani","South Indian, Fast Food",Dine-out,cheap
+812,812,Basavanagudi Mylari,Basavanagudi,Quick Bites,"Coffee, Idli, Masala Dosa, Sagu Dosa, Kesari Bath, Kharabath, Plain Dosa",South Indian,Dine-out,cheap
+813,813,RS Shiv Sagar,Basavanagudi,Casual Dining,"Chaat, Brownie, Onion Rings, Tomato Soup, Paneer Manchurian, Thali, Faluda","North Indian, Chinese, South Indian, Fast Food, Juices",Dine-out,cheap
+814,814,New Prashanth Hotel,Basavanagudi,Casual Dining,,"South Indian, Biryani, Chinese, North Indian",Dine-out,moderate
+815,815,Shrinidhi Military Hotel,Basavanagudi,Quick Bites,,"North Indian, Mughlai",Dine-out,cheap
+816,816,Dakshin Kitchen,Basavanagudi,Quick Bites,,South Indian,Dine-out,cheap
+817,817,Pramukh Family Restaurant,Basavanagudi,Casual Dining,"Murgh Ghee Roast, Malai Kofta, Butter Chicken, Donne Biryani, Cocktails, Palak Rice, Masala Peanuts","North Indian, Chinese, Mughlai",Dine-out,moderate
+818,818,Chaatimes,Basavanagudi,Quick Bites,"Dabeli, Faluda, Masala Poori, Sandwiches, Tokri Chaat, Pav Bhaji, Dahipuri","Street Food, Fast Food",Dine-out,cheap
+819,819,Vybhava,Jayanagar,Quick Bites,"Masala Dosa, Idli, Vada Sambar","South Indian, North Indian",Dine-out,cheap
+820,820,Shree Venkateshwara North Karnataka Hotel,Basavanagudi,Quick Bites,"Buttermilk, Jolada Rotti",South Indian,Dine-out,cheap
+821,821,Kadamba Classic,Mysore Road,Quick Bites,,South Indian,Dine-out,cheap
+822,822,Food Geek,Basavanagudi,Quick Bites,,"Sandwich, Fast Food, Rolls",Dine-out,cheap
+823,823,Rosewood International Hotel - Bar & Restaurant,Mysore Road,Casual Dining,,"North Indian, South Indian, Andhra, Chinese",Dine-out,moderate
+824,824,Anand Sagar Inn,Basavanagudi,Casual Dining,,"South Indian, North Indian, Chinese",Dine-out,cheap
+825,825,Sangam Military Hotel,Jayanagar,Quick Bites,,South Indian,Dine-out,cheap
+826,826,Kholi Mane,Basavanagudi,Quick Bites,,"Andhra, South Indian, Biryani, North Indian",Dine-out,cheap
+827,827,Harshi Super Sandwich,Basavanagudi,Quick Bites,"Sandwiches, Chocolate Sandwich, Chaat, Veg Cheese Sandwich, Chilli Cheese, Corn Sandwich","Fast Food, Street Food",Dine-out,cheap
+828,828,Hotel Pork Paradise,Mysore Road,Quick Bites,,South Indian,Dine-out,cheap
+829,829,Pallavi Bar & Restaurant,Mysore Road,"Casual Dining, Bar",,"North Indian, South Indian, Chinese",Dine-out,cheap
+830,830,Belly Squad Food Truck,South Bangalore,Food Truck,"Biryani, Momos, Rolls","Chinese, Rolls, Biryani, Momos",Dine-out,cheap
+831,831,Tejas Bar and Restaurant,Nagarbhavi,Casual Dining,,"Chinese, South Indian",Dine-out,moderate
+832,832,Old Days North Indian Restaurant,Basavanagudi,Casual Dining,,North Indian,Dine-out,cheap
+833,833,New Rajadhani Spicy,Kumaraswamy Layout,Casual Dining,,North Indian,Dine-out,moderate
+834,834,Matru Sagar,Mysore Road,Quick Bites,,"South Indian, North Indian",Dine-out,cheap
+835,835,Sri Udupi Veg,Jayanagar,Quick Bites,,South Indian,Dine-out,cheap
+836,836,50-50 EATING HOUSE,Basavanagudi,Quick Bites,,"South Indian, Biryani",Dine-out,cheap
+837,837,Aahar Cafe,Basavanagudi,Quick Bites,,South Indian,Dine-out,cheap
+838,838,Om Shiva Shakthi Chats Centre,Basavanagudi,Quick Bites,,"Street Food, Fast Food",Dine-out,cheap
+839,839,Juice Junction Food Court,Basavanagudi,Quick Bites,,"Juices, South Indian, Chinese, Fast Food",Dine-out,cheap
+840,840,Burger King,Basavanagudi,Quick Bites,,"Burger, Fast Food, Beverages",Dine-out,moderate
+841,841,Inchara Restaurant,Basavanagudi,Quick Bites,,"North Indian, Chinese",Dine-out,cheap
+842,842,Rolls Corner,Basavanagudi,Quick Bites,,"Fast Food, Rolls",Dine-out,cheap
+843,843,Charisma's Matru Sagar,Mysore Road,Quick Bites,,"South Indian, Chinese",Dine-out,cheap
+844,844,New Ambur Hot Dum Biryani,Mysore Road,Quick Bites,,Biryani,Dine-out,cheap
+845,845,Sticke2Waffles,Basavanagudi,Quick Bites,,"South Indian, Fast Food",Dine-out,cheap
+846,846,Nimmoora Thindi,Mysore Road,Quick Bites,,"North Indian, South Indian",Dine-out,cheap
+847,847,Oasis Food Center,Basavanagudi,Quick Bites,,Fast Food,Dine-out,cheap
+848,848,Godumana Moddha Hotel,Mysore Road,Quick Bites,,Biryani,Dine-out,cheap
+849,849,Akash Gowdru Biryani Center,Uttarahalli,Quick Bites,,"North Indian, Chinese",Dine-out,cheap
+850,850,New Sri Udupi Restaurant,Jayanagar,Quick Bites,,"North Indian, South Indian, Chinese, Beverages, Fast Food",Dine-out,cheap
+851,851,Shri Vinayaka Ice N Juice,Basavanagudi,Quick Bites,,"Beverages, Fast Food",Dine-out,cheap
+852,852,Happy Chopsticks,Basavanagudi,Quick Bites,,"Chinese, Fast Food",Dine-out,cheap
+853,853,Ambur Dum Biriyani,Basavanagudi,Quick Bites,,Biryani,Dine-out,cheap
+854,854,Food Plaza,Basavanagudi,Quick Bites,,"South Indian, North Indian, Chinese",Dine-out,cheap
+855,855,Jcubez,Banashankari,Lounge,"Beer, Chicken Wings, Chilli Chicken, Onion Rings, Fries",Finger Food,Drinks & nightlife,expensive
+856,856,Gustoes Beer House,Banashankari,Pub,"Beer, Wedges, Pizza, Nachos, Salads, Papaya Salad, Buffalo Wings","Continental, Italian, Mexican, North Indian, Chinese, Steak",Drinks & nightlife,expensive
+857,857,Blue Wings Bar & Restaurant,Banashankari,"Bar, Casual Dining",,"North Indian, Chinese",Drinks & nightlife,moderate
+858,858,Vi Ra's Bar and Restaurant,Banashankari,Bar,Chilli Chicken,"South Indian, North Indian, Chinese",Drinks & nightlife,moderate
+859,859,K27 - The Pub,Banashankari,Bar,,"Chinese, North Indian",Drinks & nightlife,expensive
+860,860,Linnet Bar & Restaurant,Banashankari,Bar,,"Fast Food, Finger Food",Drinks & nightlife,cheap
+861,861,Darbar,Banashankari,Bar,"Paneer Tikka, Dal Kichadi, French Fries","North Indian, Chinese",Drinks & nightlife,moderate
+862,862,Soho Bar & Grill,Basavanagudi,Pub,"Thai Chicken, Chicken Lollipop, Cocktails, Jeera Rice, Rolls, Draught Beer, French Fries","North Indian, Chinese, Thai",Drinks & nightlife,expensive
+863,863,Deja Vu Resto Bar,Bannerghatta Road,Pub,"Gajar Ka Halwa, Chilli Chicken, Hara Bhara Kebab, Custard, Brownie, Sev Puri, Pasta","North Indian, Italian",Buffet,moderate
+864,864,Fattoush,Bannerghatta Road,Casual Dining,"Mango Chiller, Fattoush, Prawn, Salads, Vegetable Biryani, Irani Chicken Tikka, Chilli Chicken","Arabian, Biryani, Chinese, Middle Eastern, Fast Food, North Indian, Mughlai, Seafood",Buffet,expensive
+865,865,Empire Restaurant,Bannerghatta Road,Casual Dining,"Chicken Satay, Mutton Brain, Egg Biryani, Paneer Tikka Masala, Rolls, Lemon Chicken, Butter Chicken","North Indian, Mughlai, South Indian, Chinese",Buffet,moderate
+866,866,Abhiruchi Hotel,Bannerghatta Road,Casual Dining,"Egg Biryani, Chicken Curry, Chicken Boneless Biryani, Chilli Chicken, Vegetable Biryani, Jeera Rice","Andhra, Biryani, North Indian, Chinese",Buffet,cheap
+867,867,Tulips,Bannerghatta Road,Casual Dining,,"North Indian, South Indian, Chinese, Continental",Buffet,moderate
+868,868,Barbeque Nation,JP Nagar,Casual Dining,"Lunch Buffet, Goan Fish Curry, Mocktails, Chicken Biryani, Cocktails, Paan Kulfi, Pasta","North Indian, European, Mediterranean, BBQ, Kebab",Buffet,expensive
+869,869,Sattvam,JP Nagar,Casual Dining,"Noodles, Veg Buffet, Mango Juice, White Pasta, Panipuri, Thin Crust Pizza, Dal Makhani","North Indian, South Indian",Buffet,expensive
+870,870,24th Main,JP Nagar,Casual Dining,"Carrot Halwa, Paneer Satay, Manchow Soup, Gajar Ka Halwa, Butter Naan, Mocktails, Tandoori Mushrooms","North Indian, South Indian, Chinese",Buffet,moderate
+871,871,Zaitoon,JP Nagar,Casual Dining,"Hummus Falafel, Gulab Jamun, Shawarma, Bbq Chicken, Mojito, Chicken Biryani, Manchow Soup","BBQ, Arabian, Chinese, North Indian, Desserts",Buffet,expensive
+872,872,Mango Greens,JP Nagar,Casual Dining,,"North Indian, Continental, Chinese",Buffet,moderate
+873,873,Oye Amritsar,JP Nagar,Casual Dining,"Lassi, Raita, Dal Makhani, Panneer Butter Masala, Jalebi, Biryani, Paneer Tikka",North Indian,Buffet,expensive
+874,874,Melt - Eden Park,JP Nagar,Casual Dining,"Tandoori Chicken, Biryani, Paneer Tikka, Chicken Curry, Plain Rice, Cheese Naan, Malaysian Noodles","North Indian, Chinese, Thai, Mughlai, Seafood",Buffet,expensive
+875,875,Crave Bit Cafe,JP Nagar,Cafe,,Cafe,Buffet,moderate
+876,876,Spice Code,JP Nagar,Casual Dining,"Fries, Lunch Buffet, Appam, Manchow Soup, Paneer Tikka, Vegetable Stew, Biryani","South Indian, North Indian, Chinese, Biryani",Buffet,expensive
+877,877,The Onyx - The HHI Select Bengaluru,JP Nagar,Casual Dining,"Chaat, Custard, Fish, Pepper Chicken, Lunch Buffet, Chicken Tikka, Salads","North Indian, Chinese, Continental",Buffet,moderate
+878,878,The Pavillion,JP Nagar,Casual Dining,,"North Indian, Continental, South Indian, Chinese",Buffet,expensive
+879,879,Sankranthi Veg Restaurant,BTM,Casual Dining,"Tea, Vada Sambar, Masala Dosa","South Indian, North Indian, Chinese",Buffet,moderate
+880,880,Tisano Cafe,Bannerghatta Road,Cafe,,"Cafe, Fast Food, Chinese, Continental",Cafes,cheap
+881,881,Cafe Kabana,Bannerghatta Road,Cafe,"Mocktails, Peri Peri Chicken Pizza, Wings, Pasta, English Breakfast, Fries, Jalapeno Cheeseballs","Cafe, Continental",Cafes,moderate
+882,882,Butterly,Bannerghatta Road,Cafe,"Burgers, Sandwiches, Pizza, French Fries, Cheesecake","Cafe, Bakery, Beverages",Cafes,cheap
+883,883,Cafe Conico,Bannerghatta Road,Cafe,,"Cafe, Beverages",Cafes,moderate
+884,884,Black Mug Cafe,Bannerghatta Road,Cafe,Coffee,Cafe,Cafes,cheap
+885,885,#refuel,Bannerghatta Road,Cafe,"Thick Shakes, Sandwiches, Pasta, Mocktails","Cafe, Beverages",Cafes,cheap
+886,886,WAFL,Bannerghatta Road,Food Court,Waffles,"Cafe, Fast Food, Desserts, Beverages",Cafes,cheap
+887,887,Vaho Kafe & Pressery,Bannerghatta Road,Cafe,"Salad, Chicken Curry, Peri Peri Chicken, Thai Red Curry, Momos, Chicken Satay, Pasta","Cafe, Healthy Food, Asian, Italian, North Indian, Biryani, Juices",Cafes,cheap
+888,888,Dreamcatcher,Bannerghatta Road,Cafe,"English Breakfast, Sandwiches",Cafe,Cafes,moderate
+889,889,Cafe Coffee Day,Bannerghatta Road,Cafe,,"Cafe, Fast Food",Cafes,moderate
+890,890,Cafe Arabica,Bannerghatta Road,"Cafe, Bakery","Coffee, French Fries, Lemon Tea, Veg Sandwich","Cafe, Bakery",Cafes,moderate
+891,891,Starbucks,Bannerghatta Road,Cafe,,"Cafe, Desserts",Cafes,moderate
+892,892,Smoor,Bannerghatta Road,Dessert Parlor,,"Desserts, Cafe, Beverages",Cafes,moderate
+893,893,Kalmane Koffees,Bannerghatta Road,Cafe,"Brownie, Filter Coffee",Cafe,Cafes,cheap
+894,894,Shee-Sha Cafe,Bannerghatta Road,"Cafe, Casual Dining",,"Cafe, North Indian, Chinese, Continental",Cafes,moderate
+895,895,Brews N Bites,Bannerghatta Road,"Quick Bites, Cafe",Thin Crust Pizza,"Chinese, Fast Food, Cafe, Street Food, Finger Food",Cafes,moderate
+896,896,D2V Cafe,Bannerghatta Road,Cafe,,Cafe,Cafes,moderate
+897,897,Wellness Cafe,Bannerghatta Road,Cafe,,"Cafe, Healthy Food",Cafes,cheap
+898,898,Cafe Talk,Bannerghatta Road,"Cafe, Casual Dining",,"Cafe, Continental, North Indian, Bakery, Desserts",Cafes,moderate
+899,899,Cafe Choco Craze,Bannerghatta Road,Cafe,,"Cafe, Fast Food, Desserts",Cafes,cheap
+900,900,Healthy Smoothie,Bannerghatta Road,Delivery,,"American, Bakery, Beverages, Cafe, Healthy Food, Juices, North Indian, Sandwich",Cafes,cheap
+901,901,Me N U,Bannerghatta Road,Quick Bites,,"Finger Food, Wraps, Cafe, Continental, Healthy Food",Cafes,cheap
+902,902,Slate Cafe,JP Nagar,Cafe,"Pasta, Sandwiches","Cafe, Sandwich, Burger",Cafes,moderate
+903,903,Dialogues,JP Nagar,Cafe,"Mayo Sandwich, Pasta, Egg Sandwich, Coffee, Potato Wedges, Vegetable Noodles, Fries","Cafe, Continental",Cafes,moderate
+904,904,Cafe Zuppa,JP Nagar,Cafe,,"Cafe, Pizza, Fast Food",Cafes,cheap
+905,905,Mudpipe Cafe,JP Nagar,Cafe,"Coffee, Pizza, Nachos, Kit Kat Shake, Garlic Bread, Mexican Rice, Burgers","Cafe, Continental, North Indian",Cafes,moderate
+906,906,Crave Bit Cafe,JP Nagar,Cafe,,Cafe,Cafes,moderate
+907,907,TAB - Take A Break,JP Nagar,Cafe,"Pizza, Salads, Pasta, Sandwiches, Veg Quiche, Coffee, Tea","Cafe, Continental, Italian",Cafes,cheap
+908,908,Biggies Burger 'n' More,JP Nagar,"Quick Bites, Cafe","Burgers, Mojito, Lamb Burger, French Fries, Hot Dog, Bbq Burger, Wedges","Cafe, Burger, Beverages",Cafes,moderate
+909,909,Onesta,JP Nagar,"Casual Dining, Cafe","Chicken Alfredo Pizza, Coffee Mousse, Chicken Calzone, Banana Smoothie, Butter Chicken Pizza, Chocolate Pizza, Chicken Tikka Pizza","Pizza, Cafe, Italian",Cafes,moderate
+910,910,Cafe Potpourri,JP Nagar,Cafe,"Poha, Coffee, Pav Bhaji, Masala Chai, Sattu Paratha, Sandwich","Cafe, Sandwich, North Indian, Beverages, Desserts",Cafes,cheap
+911,911,De Oxford Cafe,JP Nagar,Cafe,,"Cafe, Beverages, Fast Food",Cafes,cheap
+912,912,Vinaya Coffee Moments,JP Nagar,Cafe,"Filter Coffee, Pizza, Pasta","Burger, Cafe, Desserts, Sandwich, Italian",Cafes,cheap
+913,913,Brew Point,JP Nagar,Cafe,,"Cafe, American, Burger, Sandwich, Fast Food",Cafes,cheap
+914,914,The Cravery,JP Nagar,Cafe,,"Continental, Burger, Beverages, Cafe, Italian, Rolls",Cafes,cheap
+915,915,Cuppa,JP Nagar,Cafe,"Coffee, Potato Wedges, Tea","Cafe, Fast Food",Cafes,cheap
+916,916,Anju's Cafe,JP Nagar,Cafe,,"Cafe, North Indian",Cafes,moderate
+917,917,Furry Fairy Paw Paradise,JP Nagar,Cafe,,Cafe,Cafes,cheap
+918,918,Junkealth,JP Nagar,Quick Bites,,"Healthy Food, Beverages, Cafe",Cafes,cheap
+919,919,Skytouch Le Cafe,JP Nagar,Cafe,"Pizza, Pasta, Bubble Tea, Brownie, Pancakes, Cheesy Garlic Bread, Chocolate Waffles","Cafe, Italian, Desserts",Cafes,moderate
+920,920,Woodee Pizza,JP Nagar,Cafe,"Pizza, Lemonade, Chilli Cheese Fries, Thick Shakes","Cafe, Pizza, Fast Food, Beverages",Cafes,cheap
+921,921,Hearts Unlock Cafe,BTM,Cafe,,"Cafe, Healthy Food",Cafes,cheap
+922,922,eat.fit,BTM,Delivery,"Healthy Breakfast, Salads, Date Pudding, Chicken Curry, Hakka Noodles, Fruit Bowl, Dal Makhani","Healthy Food, North Indian, Biryani, Continental, Sandwich, Desserts",Delivery,cheap
+923,923,Sai Abhiruchi,BTM,Casual Dining,"Dum Biryani, Dal Fry, Paneer Biryani","Andhra, North Indian, Biryani",Delivery,moderate
+924,924,Capsicum Family Restaurant,BTM,Casual Dining,Mutton Biryani,"Biryani, North Indian",Delivery,moderate
+925,925,Box Magic,Bannerghatta Road,Quick Bites,,"North Indian, South Indian, Seafood, Rolls",Delivery,cheap
+926,926,Maa'r Rannaghor,JP Nagar,Quick Bites,,"Bengali, Chinese",Delivery,cheap
+927,927,Easy Bites,JP Nagar,"Takeaway, Delivery","Sandwich, Crispy Chicken, French Fries","Fast Food, Sandwich",Delivery,cheap
+928,928,Hiyar Majhe Kolkata,BTM,Quick Bites,"Radhaballavi, Biryani, Egg Noodles, Egg Roll, Fish Curry, Egg Devils, Thali","Bengali, North Indian",Delivery,cheap
+929,929,Dabba Gosht,JP Nagar,"Takeaway, Delivery",,"Arabian, Middle Eastern",Delivery,cheap
+930,930,Empire Restaurant,JP Nagar,"Takeaway, Delivery",,"Kerala, Seafood, South Indian, Chinese, North Indian, Charcoal Chicken, Beverages",Delivery,cheap
+931,931,Punjabites,JP Nagar,"Takeaway, Delivery",,"North Indian, Charcoal Chicken",Delivery,cheap
+932,932,Sri Lakshmi Dhaba,BTM,Quick Bites,"Paratha, Shahi Paneer",North Indian,Delivery,cheap
+933,933,XO Belgian Waffle,BTM,Dessert Parlor,"Blueberry Waffles, Nutella Waffle, Hot Chocolate, Thick Shakes, Coffee, Oreo Shake, Chocolate Oreo","Desserts, Beverages",Delivery,cheap
+934,934,Swadista Aahar,BTM,Quick Bites,"Panneer Butter Masala, Idli, Masala Dosa, Vada, Coffee, Roti, Thali","South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+935,935,Vegetarea,BTM,"Takeaway, Delivery",,South Indian,Delivery,cheap
+936,936,Al-Bek,JP Nagar,"Takeaway, Delivery","Chicken Grill, Biryani","Biryani, North Indian, Charcoal Chicken, Chinese, Seafood, Rolls",Delivery,cheap
+937,937,Aniram's,JP Nagar,Delivery,"Chilli Chicken, Butter Chicken, Kadhai Paneer, Hyderabadi Chicken Biryani, Jeera Rice, Ghee Rice, Chicken Masala","Chinese, North Indian",Delivery,cheap
+938,938,Punjabi Nawabi,Bannerghatta Road,Quick Bites,"Dal Makhani, Lassi, Butter Chicken, Panneer Butter Masala, Mix Veg, Saag, Butter Naan",North Indian,Delivery,cheap
+939,939,YummRajj,BTM,Quick Bites,,Fast Food,Delivery,cheap
+940,940,Swad Punjab Da,BTM,Quick Bites,"Lassi, Roti, Veg Thali, Aloo Paratha, Egg Curry",North Indian,Delivery,cheap
+941,941,BOX8- Desi Meals,Bannerghatta Road,"Takeaway, Delivery","Paratha, Salads, Dal Makhani, Salad, Masala Lemonade, Paneer Biryani, Sandwiches","North Indian, Mughlai, Fast Food",Delivery,cheap
+942,942,Roti Wala,BTM,Quick Bites,"Gulab Jamun, Buttermilk, Egg Bhurji, Sprout Salad, Roti",North Indian,Delivery,cheap
+943,943,Midnight Mania,BTM,Quick Bites,"Peri Peri Chicken, Chicken Pizza, White Pasta, Kit Kat Shake","Pizza, Italian, Beverages",Delivery,moderate
+944,944,Kitchens@JP Nagar,JP Nagar,"Takeaway, Delivery",Vegetable Biryani,"Biryani, Kerala, Mughlai, Street Food, North Indian, Chinese, South Indian, Andhra",Delivery,cheap
+945,945,Krishna Kuteera,Bannerghatta Road,Quick Bites,"Pav Bhaji, Coffee, Set Dosa, Vada, Masala Poori","South Indian, North Indian, Chinese",Delivery,cheap
+946,946,Apna Punjab,BTM,Quick Bites,"Thali, Egg Masala, Chole, Paratha, Roti, Butter Chicken, Paneer Manchurian","North Indian, Chinese, Fast Food",Delivery,cheap
+947,947,Paratha Junction,BTM,Quick Bites,"Paratha, Kadai Paneer","North Indian, Chinese",Delivery,cheap
+948,948,Nellore Bhojanam,Bannerghatta Road,Quick Bites,Biryani,Andhra,Delivery,cheap
+949,949,Momoz,BTM,Casual Dining,"Momos, Noodles, Thukpa, Crispy Honey Chicken, Manchow Soup, Manchurian, Chicken Momo","Chinese, Momos",Delivery,moderate
+950,950,Kalingas,BTM,Quick Bites,"Rasgulla, Mutton Kosha, Chicken Kasha, Samosa Chaat, Kheer, Veg Thali","Oriya, Fast Food",Delivery,cheap
+951,951,Kanteen The Eatery,Bannerghatta Road,Quick Bites,"Chole Bhature, Pav Bhaji, Misal Pav",North Indian,Delivery,cheap
+952,952,Kullad Cafe,BTM,Cafe,"Poha, Coffee, Chai, Rolls, Ginger Tea, Aloo Paratha, Elaichi Tea","North Indian, Cafe, Fast Food, Beverages",Delivery,cheap
+953,953,Donne Biriyani House,JP Nagar,Quick Bites,"Biryani, Kshatriya Kebab","Biryani, Andhra",Delivery,cheap
+954,954,Litti Twist,BTM,Quick Bites,"Litti, Liti Chokha, Lassi, Tea, Paratha, Thali, Chai","North Indian, Bihari",Delivery,cheap
+955,955,FreshMenu,Bannerghatta Road,Delivery,"Rolls, Salads, Salad, Sandwiches, Pasta, Burgers, Croissants","Healthy Food, Chinese, Biryani, North Indian, Continental, Salad, American, Burger",Delivery,cheap
+956,956,Shanthi Sagar,JP Nagar,Casual Dining,"Coffee, Mushroom Masala, Masala Dosa, Palak Paneer","South Indian, North Indian, Chinese",Delivery,cheap
+957,957,Cakebuy,Bannerghatta Road,Dessert Parlor,Chocolate Truffle,Desserts,Delivery,cheap
+958,958,Five Star Chicken,JP Nagar,Quick Bites,Fries,"Burger, Fast Food, Roast Chicken, Finger Food",Delivery,cheap
+959,959,Poha House,BTM,Quick Bites,,Maharashtrian,Delivery,cheap
+960,960,Bathinda Tandoor,BTM,Quick Bites,,North Indian,Delivery,cheap
+961,961,Corner House Ice Cream,Jayanagar,Dessert Parlor,"Hot Chocolate Fudge, Chocolate Malt, Thick Shakes, Chocolate Nut Sundae, Ice Cream Sundae, Fudge Cake, Coffee","Ice Cream, Desserts",Delivery,cheap
+962,962,Delight Food,BTM,Casual Dining,,"Andhra, Chinese, Biryani",Delivery,cheap
+963,963,Andhra Kitchen,Bannerghatta Road,"Takeaway, Delivery",,"Andhra, Biryani",Delivery,cheap
+964,964,Veg By Nature,JP Nagar,"Takeaway, Delivery",,North Indian,Delivery,cheap
+965,965,Fattoush,Bannerghatta Road,Casual Dining,"Mango Chiller, Fattoush, Prawn, Salads, Vegetable Biryani, Irani Chicken Tikka, Chilli Chicken","Arabian, Biryani, Chinese, Middle Eastern, Fast Food, North Indian, Mughlai, Seafood",Delivery,expensive
+966,966,Chicken Magic,BTM,Quick Bites,,"Chinese, North Indian",Delivery,cheap
+967,967,Behrouz Biryani,Bannerghatta Road,Delivery,"Gulab Jamun, Vegetable Biryani, Mint Raita",Biryani,Delivery,moderate
+968,968,Abhiruchi Hotel,Bannerghatta Road,Casual Dining,"Egg Biryani, Chicken Curry, Chicken Boneless Biryani, Chilli Chicken, Vegetable Biryani, Jeera Rice","Andhra, Biryani, North Indian, Chinese",Delivery,cheap
+969,969,Swathi Restaurant,JP Nagar,"Takeaway, Delivery",,"Andhra, North Indian, Chinese",Delivery,cheap
+970,970,Fresh Kitchen,Bannerghatta Road,Casual Dining,,"North Indian, Chinese",Delivery,moderate
+971,971,Hind Ka Chulah,Bannerghatta Road,Food Court,"Butter Chicken, Chole, Chicken Tikka, Biryani Combo, Roti, Tandoori Chicken, Naan","North Indian, Biryani",Delivery,moderate
+972,972,Kuttanad,Bannerghatta Road,Quick Bites,,"Kerala, South Indian",Delivery,cheap
+973,973,New Mahesh Friends Food Corner,BTM,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+974,974,Bohra Bohra CafÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©,JP Nagar,Quick Bites,"Fruit Custard, Russian Cutlet",Bohri,Delivery,cheap
+975,975,Pizza Hut,JP Nagar,Quick Bites,Prompt Service,Pizza,Delivery,moderate
+976,976,Shree Krishna Sannidhi,Bannerghatta Road,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+977,977,BingeJoy!,JP Nagar,Kiosk,,"Biryani, Chinese, Fast Food",Delivery,cheap
+978,978,Shiv Sai Hotel,Bannerghatta Road,Quick Bites,,North Indian,Delivery,cheap
+979,979,MRA,BTM,"Takeaway, Delivery",,Bakery,Delivery,cheap
+980,980,Beijing Bites,JP Nagar,"Takeaway, Delivery",,"Chinese, Thai, Momos",Delivery,cheap
+981,981,A2B - Adyar Ananda Bhavan,JP Nagar,"Takeaway, Delivery",,"South Indian, North Indian, Chinese, Street Food",Delivery,cheap
+982,982,Burj Hotel,Bannerghatta Road,Quick Bites,,"North Indian, Chinese",Delivery,cheap
+983,983,Shaadi Ki Biryani,BTM,"Takeaway, Delivery",,"Biryani, North Indian, Mughlai",Delivery,cheap
+984,984,Subway,Bannerghatta Road,Quick Bites,Salad,"Salad, Fast Food",Delivery,moderate
+985,985,Madeena Hotel,Bannerghatta Road,Quick Bites,,"North Indian, Mughlai, Biryani",Delivery,cheap
+986,986,Biryani Durbar,Bannerghatta Road,"Takeaway, Delivery","Chicken Biryani, Chicken Kebab","Biryani, North Indian",Delivery,cheap
+987,987,Adyar Ananda Bhavan Sweets,JP Nagar,"Takeaway, Delivery",,"Mithai, Desserts",Delivery,cheap
+988,988,The Good Bowl,Bannerghatta Road,"Takeaway, Delivery",,"Italian, North Indian, Biryani",Delivery,cheap
+989,989,Mahesh Friends Food Center,BTM,Quick Bites,Lassi,"Chinese, North Indian",Delivery,cheap
+990,990,Juice Shop,JP Nagar,"Takeaway, Delivery",,"Juices, Beverages, Ice Cream",Delivery,cheap
+991,991,Kabab Magic,Jayanagar,Quick Bites,"Chicken Grill, Biryani, Shawarma Roll, Rolls, Chicken Kebab, Chicken Shwarma Roll, Pulpy Grape Juice","North Indian, Kebab, Chinese, Fast Food",Delivery,cheap
+992,992,Nammura Donne Biriyani,Kanakapura Road,Quick Bites,,"Biryani, Fast Food",Delivery,cheap
+993,993,Burger King,Bannerghatta Road,Quick Bites,"Burgers, Whopper Meal, Crispy Chicken, French Fries, Grilled Wings","Burger, Fast Food, Beverages",Delivery,moderate
+994,994,Dadi's Dum Biryani,Bannerghatta Road,Casual Dining,"Chicken Biryani, Basmati Rice, Prawn, Tandoori Chicken, Vegetable Biryani, Galauti Kebab, Faluda","Biryani, North Indian, Mughlai",Delivery,moderate
+995,995,Krishna Kuteera South,Bannerghatta Road,Casual Dining,,"South Indian, North Indian, Chinese",Delivery,cheap
+996,996,Alankrutha,BTM,Casual Dining,"Chicken Biryani, Hyderabadi Biryani, Dum Biryani","Andhra, Biryani, North Indian, Chinese",Delivery,cheap
+997,997,Paradise,JP Nagar,Casual Dining,"Kalmi Kabab, Hyderabadi Dum Biryani, Vegetable Biryani, Haleem, Supreme Mutton Biryani, Paneer Tikka, Hyderabadi Mutton Biryani","Biryani, North Indian, Kebab",Delivery,moderate
+998,998,Kabab Mehal,JP Nagar,Quick Bites,,"Kebab, North Indian, Fast Food, Beverages",Delivery,cheap
+999,999,Mughlai Kitchen,BTM,,"Momos, Oreo Shake","Mughlai, North Indian, Chinese, Momos",Delivery,moderate

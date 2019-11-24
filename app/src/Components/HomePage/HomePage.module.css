@@ -1,9 +1,0 @@
-.topWelcomeBar{
-    display:flex;
-    /* border: 1px solid black; */
-    justify-content: center;
-    /* border-radius: 4px; */
-    /* margin-top: 10px; */
-    background: rgba(100,200,100,0.7);
-    text-align: center;
-}
